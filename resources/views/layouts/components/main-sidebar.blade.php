@@ -3,7 +3,7 @@
 					<div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
 					<div class="app-sidebar">
 						<div class="side-header">
-							<a class="header-brand1" href="{{url('index')}}">
+							<a class="header-brand1" href="{{route('dashboard')}}">
 								<img src="{{asset('build/assets/images/brand/logo.png')}}" class="header-brand-img main-logo"
 									alt="Sparic logo">
 								<img src="{{asset('build/assets/images/brand/logo-light.png')}}" class="header-brand-img darklogo"
@@ -36,7 +36,8 @@
 													<div class="tab-pane active" id="side1">
 														<ul class="sidemenu-list">
 															<li class="side-menu-label1"><a href="javascript:void(0)">Dashboard</a></li>
-															<li><a class="slide-item" href="{{url('index')}}">index</a></li>
+															<li><a class="slide-item" href="{{route('dashboard')}}">index</a></li>
+															<li><a class="slide-item" href="{{route('chat')}}">chat</a></li>
 														</ul>
 													</div>
 												</div>
@@ -44,7 +45,7 @@
 										</li>
 									</ul>
 								</li>
-								<li class="slide">
+								{{-- <li class="slide">
 									<a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
 										<i class="side-menu__icon ri-menu-unfold-fill"></i>
 										<span class="side-menu__label">Submenu items</span><i
@@ -87,7 +88,7 @@
 											</div>
 										</li>
 									</ul>
-								</li>
+								</li> --}}
 							</ul>
 						</div>
 					</div>
