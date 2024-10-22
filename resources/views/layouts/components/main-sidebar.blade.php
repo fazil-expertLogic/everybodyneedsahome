@@ -46,7 +46,7 @@
 								</li>
 								<li class="slide">
 									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('chat')}}">
-											<i class="side-menu__icon ri-home-4-line"></i>
+											<i class="side-menu__icon fa fa-comment-o"></i>
 											<span class="side-menu__label">chat</span>
 									</a>
 									
