@@ -390,10 +390,14 @@
 														<i class="dropdown-icon fe fe-alert-triangle"></i>
 														Support ?
 													</a>
-													<a class="dropdown-item text-dark fw-semibold" href="javascript:void(0)">
-														<i class="dropdown-icon fe fe-log-out"></i> Sign
-														out
+													<a class="dropdown-item text-dark fw-semibold" href="{{ route('logout') }}" 
+														onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+													 <i class="dropdown-icon fe fe-log-out"></i> Sign out
 													</a>
+													
+													<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+														@csrf
+													</form>
 												</div>
 											</div>
 										</div>

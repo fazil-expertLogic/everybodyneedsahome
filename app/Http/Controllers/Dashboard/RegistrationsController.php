@@ -33,7 +33,9 @@ class RegistrationsController extends Controller
         if (Auth::attempt($credentials)) {
             // Regenerate the session to avoid session fixation
             session()->regenerate();
-
+            $user = User::where('id',Auth::user()->id)->first();
+            $user->is_online = 1;
+            $user->save();
             // Redirect the user based on their role
             // $user = Auth::user();
             // $role = $user->roles->first()->name;
@@ -151,6 +153,9 @@ class RegistrationsController extends Controller
     // Handle logout
     public function logout()
     {
+        $user = User::where('id',Auth::user()->id)->first();
+        $user->is_online = 0;
+        $user->save();
         Auth::logout();
         session()->invalidate();
         session()->regenerateToken();
