@@ -17,7 +17,8 @@ class PropertiesController extends Controller
 
     public function index()
     {
-        return view('livewire.properties.addProperty');
+        $properties = Property::get();
+        return view('livewire.properties.listingProperties',compact('properties'));
     }
     public function addProperties()
     {
