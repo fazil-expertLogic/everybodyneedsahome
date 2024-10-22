@@ -22,5 +22,7 @@ Route::get('login', [RegistrationsController::class, 'showLogin']);
 Route::POST('loginPerform', [RegistrationsController::class, 'loginPerform'])->name('login.perform');
 Route::POST('logout', [RegistrationsController::class, 'logout'])->name('logout');
 Route::get('addProperties', [PropertiesController::class, 'addProperties'])->name('addProperties');
+Route::get('index', [PropertiesController::class, 'index'])->name('properties.index');
+Route::POST('postPoperty', [PropertiesController::class, 'postPoperty'])->name('postPoperty');
 
 // Route::get('index', [CustomAuthController::class, 'dashboard']);

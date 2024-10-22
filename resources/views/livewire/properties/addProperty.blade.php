@@ -46,11 +46,11 @@
                 <div class="card-body">
                     <p>Please fill the form below to create property.</p>
 
-                    <form class="row g-3 needs-validation" novalidate>
-                        
+                    <form method="POST" action="{{ route('postPoperty') }}" enctype="multipart/form-data">
+                        @csrf
                         <div class="col-md-6">
                             <label for="property_name" class="form-label">Property Name*</label>
-                            <input type="property_name" class="form-control" id="property_name" value="" required>
+                            <input type="text" name="property_name" class="form-control" id="property_name" value="" required>
                             <div class="valid-feedback">
                                 Please enter the Property Name.
                             </div>
@@ -70,7 +70,7 @@
 
                         <div class="col-md-6">
                             <label for="property_address" class="form-label">Property Address</label>
-                            <input type="property_address" class="form-control" id="property_address" value=""
+                            <input name="property_address" type="text" class="form-control" id="property_address" value=""
                                 required>
                             <div class="valid-feedback">
                                 Please enter the Property address.
@@ -79,7 +79,7 @@
 
                         <div class="col-md-6">
                             <label for="city" class="form-label">city</label>
-                            <input type="city" class="form-control" id="city" value="" required>
+                            <input name="city" type="text" class="form-control" id="city" value="" required>
                             <div class="valid-feedback">
                                 Please enter the Property Address.
                             </div>
@@ -87,12 +87,12 @@
 
                         <div class="col-md-6">
                             <label for="state" class="form-label">State</label>
-                            <select class="form-select select2" id="state" required>
+                            <select name="state" class="form-select select2" id="state" required>
                                 <option selected disabled value="">Choose...</option>
-                                <option>USA</option>
-                                <option>Berlin</option>
-                                <option>Manchester</option>
-                                <option>Flynn</option>
+                                <option value="USA">USA</option>
+                                <option value="Berlin">Berlin</option>
+                                <option value="Manchester">Manchester</option>
+                                <option value="Flynn">Flynn</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please select a valid state.
@@ -101,7 +101,7 @@
 
                         <div class="col-md-6">
                             <label for="zipcode" class="form-label">zipcode</label>
-                            <input type="number" class="form-control" id="zipcode" value="" required>
+                            <input type="number" name="zipcode" class="form-control" id="zipcode" value="" required>
                             <div class="valid-feedback">
                                 Please enter the zipcode.
                             </div>
@@ -109,7 +109,7 @@
 
                         <div class="col-md-6">
                             <label for="property_management_address" class="form-label">Property Management Address *</label>
-                            <input type="property_management_address" class="form-control" id="property_management_address"
+                            <input name="property_management_address" type="text" class="form-control" id="property_management_address"
                                 value="" required>
                             <div class="valid-feedback">
                                 Please enter the Property Management Address.
@@ -118,7 +118,7 @@
 
                         <div class="col-md-6">
                             <label for="property_management_city" class="form-label">Property Management city *</label>
-                            <input type="property_management_city" class="form-control" id="property_management_city"
+                            <input name="property_management_city" type="text" class="form-control" id="property_management_city"
                                 value="" required>
                             <div class="valid-feedback">
                                 Please enter the Property Management city.
@@ -127,12 +127,12 @@
 
                         <div class="col-md-6">
                             <label for="property_management_state" class="form-label">Property Management State</label>
-                            <select class="form-select select2" id="property_management_state" required>
+                            <select class="form-select select2" name="property_management_state" id="property_management_state" required>
                                 <option selected disabled value="">Choose...</option>
-                                <option>USA</option>
-                                <option>Berlin</option>
-                                <option>Manchester</option>
-                                <option>Flynn</option>
+                                <option value="USA">USA</option>
+                                <option value="Berlin">Berlin</option>
+                                <option value="Manchester">Manchester</option>
+                                <option value="Flynn">Flynn</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please select a valid state.
@@ -141,7 +141,7 @@
 
                         <div class="col-md-6">
                             <label for="property_management_zipcode" class="form-label">Property Management Zipcode</label>
-                            <input type="number" class="form-control" id="Property_management_zipcode" value="" required>
+                            <input type="number" class="form-control" name="Property_management_zipcode" id="Property_management_zipcode" value="" required>
                             <div class="valid-feedback">
                                 Please enter the zipcode.
                             </div>
@@ -178,7 +178,7 @@
                             <div class="col-md-6">
                                 <label for="number_of_beds" class="form-label">How many beds are available to rent? *</label>
                                 <input type="number" class="form-control" name="number_of_beds" id="number_of_beds"
-                                    value="" required>
+                                    value="" >
                                 <div class="valid-feedback">
                                     Please enter the number of Beds.
                                 </div>
@@ -190,7 +190,7 @@
                             <div class="col-md-6">
                                 <label for="rent_bed" class="form-label">Rent by Bed</label>
                                 <input type="number" class="form-control" name="rent_bed" id="rent_bed"
-                                    value="" required>
+                                    value="" >
                                 <div class="valid-feedback">
                                     Please enter the number of Beds.
                                 </div>
@@ -204,7 +204,7 @@
                             <div class="col-md-6">
                                 <label for="bed_deposit" class="form-label">Deposit*</label>
                                 <input type="number" class="form-control" name="bed_deposit" id="bed_deposit"
-                                    value="" required>
+                                    value="" >
                                 <div class="valid-feedback">
                                     Please enter the number of Beds.
                                 </div>
@@ -213,7 +213,7 @@
                             <div class="col-md-6">
                                 <label for="bed_Fee" class="form-label">Fee*</label>
                                 <input type="number" class="form-control" name="bed_Fee" id="bed_Fee" value=""
-                                    required>
+                                    >
                                 <div class="valid-feedback">
                                     Please enter the number of Beds.
                                 </div>
@@ -224,7 +224,7 @@
                             <div class="col-md-6">
                                 <label for="number_of_bedrooms" class="form-label">How many bedrooms are available to rent? *</label>
                                 <input type="number" class="form-control" name="number_of_bedrooms" id="number_of_bedrooms"
-                                    value="" required>
+                                    value="" >
                                 <div class="valid-feedback">
                                     Please enter the number of bedrooms.
                                 </div>
@@ -233,7 +233,7 @@
                             <div class="col-md-6">
                                 <label for="stay_one_bedroom" class="form-label">People allowed to stay in one bedroom? *</label>
                                 <input type="number" class="form-control" name="stay_one_bedroom" id="stay_one_bedroom"
-                                    value="" required>
+                                    value="" >
                                 <div class="valid-feedback">
                                     Please enter the number Of People allowed to stay in one bedroom.
                                 </div>
@@ -246,7 +246,7 @@
                             <div class="col-md-6">
                                 <label for="bedroom_deposit" class="form-label">Deposit*</label>
                                 <input type="number" class="form-control" name="bedroom_deposit" id="bedroom_deposit"
-                                    value="" required>
+                                    value="" >
                                 <div class="valid-feedback">
                                     Please enter the number of Beds.
                                 </div>
@@ -255,7 +255,7 @@
                             <div class="col-md-6">
                                 <label for="bedroom_Fee" class="form-label">Fee*</label>
                                 <input type="number" class="form-control" name="bedroom_Fee" id="bedroom_Fee" value=""
-                                    required>
+                                    >
                                 <div class="valid-feedback">
                                     Please enter the number of Beds.
                                 </div>
@@ -268,7 +268,7 @@
                             <div class="col-md-6">
                                 <label for="number_of_bedrooms_house" class="form-label">How many bedrooms are there in the house? *</label>
                                 <input type="number" class="form-control" name="number_of_bedrooms_house" id="number_of_bedrooms_house"
-                                    value="" required>
+                                    value="" >
                                 <div class="valid-feedback">
                                     Please enter the number of bedrooms are there in the house.
                                 </div>
@@ -277,7 +277,7 @@
                             <div class="col-md-6">
                                 <label for="number_of_bath_house" class="form-label">How many baths are there in the house? *</label>
                                 <input type="number" class="form-control" name="number_of_bath_house" id="number_of_bath_house"
-                                    value="" required>
+                                    value="" >
                                 <div class="valid-feedback">
                                     Please enter the number Of baths are there in the house.
                                 </div>
@@ -285,10 +285,10 @@
 
                             <div class="col-md-6">
                                 <label for="utilities_inscluded" class="form-label">Are Utilities included? *</label>
-                                <select class="form-select select2" id="utilities_inscluded" name="utilities_inscluded" required>
+                                <select class="form-select select2" id="utilities_inscluded" name="utilities_inscluded" >
                                     <option selected disabled value="">Choose...</option>
-                                    <option>Yes</option>
-                                    <option>No</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select If Utilities included.
@@ -298,7 +298,7 @@
                             <div class="col-md-6">
                                 <label for="rent_unit" class="form-label">Rent for the Unit/House *</label>
                                 <input type="number" class="form-control" name="rent_unit" id="rent_unit"
-                                    value="" required>
+                                    value="" >
                                 <div class="valid-feedback">
                                     Please enter Rent for the Unit/House.
                                 </div>
@@ -311,7 +311,7 @@
                             <div class="col-md-6">
                                 <label for="Unit_deposit" class="form-label">Deposit*</label>
                                 <input type="number" class="form-control" name="Unit_deposit" id="Unit_deposit"
-                                    value="" required>
+                                    value="" >
                                 <div class="valid-feedback">
                                     Please enter the number of Beds.
                                 </div>
@@ -320,7 +320,7 @@
                             <div class="col-md-6">
                                 <label for="Unit_Fee" class="form-label">Fee*</label>
                                 <input type="number" class="form-control" name="Unit_Fee" id="Unit_Fee" value=""
-                                    required>
+                                    >
                                 <div class="valid-feedback">
                                     Please enter the number of Beds.
                                 </div>
@@ -331,10 +331,10 @@
 
                         <div class="col-md-6">
                             <label for="is_property_occupied" class="form-label">Is property occupied? *</label>
-                            <select class="form-select select2" id="is_property_occupied" required>
+                            <select class="form-select select2" name="is_property_occupied" id="is_property_occupied" required>
                                 <option selected disabled value="">Choose...</option>
-                                <option>Yes</option>
-                                <option>No</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please select Is property occupied.
