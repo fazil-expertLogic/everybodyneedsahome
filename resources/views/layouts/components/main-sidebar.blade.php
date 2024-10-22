@@ -45,25 +45,11 @@
 									</ul>
 								</li>
 								<li class="slide">
-									<a class="side-menu__item has-link" data-bs-toggle="slide" href="javascript:void(1)">
+									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('chat')}}">
 											<i class="side-menu__icon ri-home-4-line"></i>
 											<span class="side-menu__label">chat</span>
-											<i class="angle fe fe-chevron-right"></i>
 									</a>
-									<ul class="slide-menu">
-										<li class="panel sidetab-menu">
-											<div class="panel-body tabs-menu-body p-0 border-0">
-												<div class="tab-content">
-													<div class="tab-pane active" id="side1">
-														<ul class="sidemenu-list">
-															<li class="side-menu-label1"><a href="javascript:void(1)">Dashboard</a></li>
-															<li><a class="slide-item" href="{{route('chat')}}">chat</a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</li>
-									</ul>
+									
 								</li>
 							</ul>
 						</div>
