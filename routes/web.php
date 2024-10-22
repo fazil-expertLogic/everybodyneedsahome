@@ -19,5 +19,6 @@ Route::post('sendMessage', [ChatController::class, 'sendMessage']);
 
 Route::get('login', [RegistrationsController::class, 'showLogin']);
 Route::POST('loginPerform', [RegistrationsController::class, 'loginPerform'])->name('login.perform');
+Route::get('logout', [RegistrationsController::class, 'logout'])->name('logout');
 
 // Route::get('index', [CustomAuthController::class, 'dashboard']);

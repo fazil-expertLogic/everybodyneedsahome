@@ -128,12 +128,12 @@
                 <div class="card-footer">
                     <div class="msb-reply d-flex">
                         <div class="input-group">
-                            
                             <input name="message" type="text" class="form-control bg-white" placeholder="Typing....">
+                            <input name="sender_id" type="hidden" class="form-control bg-white" value="{{ Auth::user()->id }}">
+                            <input name="reciever_id" id='reciever_id'  type="hidden" class="form-control bg-white">
                             <button type="button" class="btn btn-primary" id="messageForm">
                                 <i class="fa fa-send" aria-hidden="true"></i>
                             </button>
-                        
                         </div>
                     </div>
                 </div><!-- card-footer end -->
@@ -151,6 +151,13 @@
         // Initially hide the message area
         $('#chat-messages').hide();
 
+        @if (Auth::check())
+            var authId = {{ Auth::user()->id }};
+        @else
+            var authId = null; // User is not authenticated
+        @endif
+
+        // Event listener for clicking on a user
         $('.user-item').on('click', function() {
             // Clear previous messages
             $('#chat-messages').empty();
@@ -159,12 +166,16 @@
 
             var userId = $(this).data('userid');
             var userName = $(this).data('username');
-            console.log(userName);
+            $('#reciever_id').val(userId);
+            $(".chart-person").empty();
+            $(".chart-person").append(userName);
+
             if (!userId) {
                 $('#no-message').show();
                 return;
             }
 
+            // Fetch chat messages
             $.ajax({
                 url: `fetchChat/${userId}`,
                 method: 'GET',
@@ -173,10 +184,35 @@
                         $('#no-message').show();
                     } else {
                         response.forEach(function(message) {
-                            $(".chart-person").empty();
-                            $(".chart-person").append(userName);
-                            $('#chat-messages').append('<li>' + message.message +
-                                '</li>');
+                            let messageHtml;
+                            if (authId != message.sender_id) {
+                                // If the message is from the authenticated user
+                                messageHtml = `
+                                    <div class="d-flex justify-content-start">
+                                        <div class="img_cont_msg">
+                                            <img src="{{asset("build/assets/images/users/male/28.jpg")}}"
+                                                class="rounded-circle avatar avatar-md" alt="img">
+                                        </div>
+                                        <div class="msg_cotainer br-7"> 
+                                            ${message.message}
+                                            <span class="msg_time">8:40 AM, Today</span>
+                                        </div>
+                                    </div>`;
+                            } else {
+                                // If the message is from another user
+                                messageHtml = `
+                                    <div class="d-flex justify-content-end">
+                                        <div class="msg_cotainer_send br-7"> 
+                                            ${message.message}
+                                            <span class="msg_time_send">8:40 AM, Today</span>
+                                        </div>
+                                        <div class="img_cont_msg">
+                                            <img src="{{asset("build/assets/images/users/male/28.jpg")}}"
+                                                class="rounded-circle avatar avatar-md" alt="img">
+                                        </div>
+                                    </div>`;
+                            }
+                            $('#chat-messages').append(messageHtml);
                         });
                     }
                 },
@@ -186,36 +222,51 @@
             });
         });
 
-
+        // Event listener for sending a message
         $('#messageForm').on('click', function(e) {
-        e.preventDefault(); // Prevent the default form submission
+            e.preventDefault(); // Prevent the default form submission
 
-        // Capture the message
-        var message = $('input[name="message"]').val();
-        console.log(message);
-        // Make sure the message is not empty
-        if (message.trim() !== '') {
-            $.ajax({
-                url: 'sendMessage',  // Replace with your route
-                type: 'POST',
-                data: {
-                    message: message,
-                    _token: '{{ csrf_token() }}' // Include CSRF token for Laravel
-                },
-                success: function(response) {
-                    // Append the message to the chat window
-                    $('#chat-messages').append('<li>' + response.message + '</li>');
-                    
-                    // Clear the input field
-                    $('input[name="message"]').val('');
-                },
-                error: function(xhr, status, error) {
-                    console.log('Error: ' + error);
-                }
-            });
-        } else {
-            alert('Message cannot be empty!');
-        }
-    });
+            // Capture the message
+            var message = $('input[name="message"]').val();
+            var sender_id = $('input[name="sender_id"]').val();
+            var reciever_id = $('input[name="reciever_id"]').val();
+            // Make sure the message is not empty
+            if (message.trim() !== '') {
+                $.ajax({
+                    url: 'sendMessage',  // Replace with your route
+                    type: 'POST',
+                    data: {
+                        message: message,
+                        sender_id:sender_id,
+                        reciever_id:reciever_id,
+                        _token: '{{ csrf_token() }}' // Include CSRF token for Laravel
+                    },
+                    success: function(response) {
+                        // Append the sent message to the chat window
+                        let sentMessageHtml = `
+                            <div class="d-flex justify-content-end">
+                                <div class="msg_cotainer_send br-7"> 
+                                    ${response.message}
+                                    <span class="msg_time_send">Just now</span>
+                                </div>
+                                <div class="img_cont_msg">
+                                    <img src="{{asset("build/assets/images/users/male/28.jpg")}}"
+                                        class="rounded-circle avatar avatar-md" alt="img">
+                                </div>
+                            </div>`;
+                        
+                        $('#chat-messages').append(sentMessageHtml);
+
+                        // Clear the input field
+                        $('input[name="message"]').val('');
+                    },
+                    error: function(xhr, status, error) {
+                        console.log('Error: ' + error);
+                    }
+                });
+            } else {
+                alert('Message cannot be empty!');
+            }
+        });
     });
 </script>

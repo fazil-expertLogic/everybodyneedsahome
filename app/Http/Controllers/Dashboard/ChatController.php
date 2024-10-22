@@ -26,9 +26,8 @@ class ChatController extends Controller
        
         try {
             // Retrieve messages associated with the given user ID
-
-            // $messages = Chat::where(['reciever_id'=>$userId,'sender_id'=>Auth::user()->id])->get();
-            $messages = Chat::get();
+            
+            $messages = Chat::where('reciever_id',$userId)->get();
             return response()->json($messages); // Return messages as JSON
         } catch (\Exception $e) {
             return response()->json([], 500); // Return empty JSON and handle error
@@ -43,8 +42,9 @@ class ChatController extends Controller
         try {
             // Create a new Chat instance
             $Chat = new Chat;
-            $Chat->sender_id = 1; // You can dynamically pass the sender_id from the request
-            $Chat->reciever_id = 46; // You can dynamically pass the receiver_id as well
+            $Chat->sender_id = $request->sender_id; // You can dynamically pass the sender_id from the request
+            // $Chat->user_id = $request->user_id;
+            $Chat->reciever_id = $request->reciever_id; // You can dynamically pass the receiver_id as well
             $Chat->message = $request->message; 
             $Chat->status = 1;
 
