@@ -157,6 +157,9 @@
             var authId = null; // User is not authenticated
         @endif
 
+        var userId, userName; // Variables to store the selected user's ID and name
+        var fetchInterval;
+
         // Event listener for clicking on a user
         $('.user-item').on('click', function() {
             // Clear previous messages
@@ -164,8 +167,9 @@
             $('#no-message').hide();
             $('#chat-messages').show();
 
-            var userId = $(this).data('userid');
-            var userName = $(this).data('username');
+            // Get the selected user ID and name
+            userId = $(this).data('userid');
+            userName = $(this).data('username');
             $('#reciever_id').val(userId);
             $(".chart-person").empty();
             $(".chart-person").append(userName);
@@ -175,18 +179,31 @@
                 return;
             }
 
-            // Fetch chat messages
+            // Fetch chat messages for the selected user
+            fetchMessages();
+
+            // Clear previous interval and start a new one to fetch messages every 3 seconds
+            clearInterval(fetchInterval);
+            fetchInterval = setInterval(fetchMessages, 3000);
+        });
+
+        // Function to fetch chat messages
+        function fetchMessages() {
+            if (!userId) return; // No user selected, skip fetch
+
             $.ajax({
                 url: `fetchChat/${userId}`,
                 method: 'GET',
                 success: function(response) {
+                    $('#chat-messages').empty(); // Clear chat messages to avoid duplication
                     if (response.length === 0) {
                         $('#no-message').show();
                     } else {
+                        $('#no-message').hide();
                         response.forEach(function(message) {
                             let messageHtml;
                             if (authId != message.sender_id) {
-                                // If the message is from the authenticated user
+                                // Message from another user
                                 messageHtml = `
                                     <div class="d-flex justify-content-start">
                                         <div class="img_cont_msg">
@@ -195,16 +212,16 @@
                                         </div>
                                         <div class="msg_cotainer br-7"> 
                                             ${message.message}
-                                            <span class="msg_time">8:40 AM, Today</span>
+                                            <span class="msg_time">${message.created_at}</span>
                                         </div>
                                     </div>`;
                             } else {
-                                // If the message is from another user
+                                // Message from the authenticated user
                                 messageHtml = `
                                     <div class="d-flex justify-content-end">
                                         <div class="msg_cotainer_send br-7"> 
                                             ${message.message}
-                                            <span class="msg_time_send">8:40 AM, Today</span>
+                                            <span class="msg_time_send">${message.created_at}</span>
                                         </div>
                                         <div class="img_cont_msg">
                                             <img src="{{asset("build/assets/images/users/male/28.jpg")}}"
@@ -220,7 +237,7 @@
                     $('#no-message').show();
                 }
             });
-        });
+        }
 
         // Event listener for sending a message
         $('#messageForm').on('click', function(e) {
@@ -230,6 +247,7 @@
             var message = $('input[name="message"]').val();
             var sender_id = $('input[name="sender_id"]').val();
             var reciever_id = $('input[name="reciever_id"]').val();
+
             // Make sure the message is not empty
             if (message.trim() !== '') {
                 $.ajax({
@@ -237,8 +255,8 @@
                     type: 'POST',
                     data: {
                         message: message,
-                        sender_id:sender_id,
-                        reciever_id:reciever_id,
+                        sender_id: sender_id,
+                        reciever_id: reciever_id,
                         _token: '{{ csrf_token() }}' // Include CSRF token for Laravel
                     },
                     success: function(response) {
@@ -267,6 +285,11 @@
             } else {
                 alert('Message cannot be empty!');
             }
+        });
+
+        // Clear interval when leaving the page or switching users
+        $(window).on('beforeunload', function() {
+            clearInterval(fetchInterval);
         });
     });
 </script>
