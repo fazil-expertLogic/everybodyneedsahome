@@ -49,6 +49,10 @@
 											<i class="side-menu__icon fa fa-comment-o"></i>
 											<span class="side-menu__label">chat</span>
 									</a>
+									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('properties.index')}}">
+										<i class="side-menu__icon fa fa-home"></i>
+										<span class="side-menu__label">Property</span>
+									</a>
 									
 								</li>
 							</ul>

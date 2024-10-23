@@ -8,8 +8,8 @@
     <div class="page-header d-sm-flex d-block">
         <ol class="breadcrumb mb-sm-0 mb-3">
             <!-- breadcrumb -->
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Components</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Tables</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0);">Properties</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Properties Tables</li>
         </ol><!-- End breadcrumb -->
         <div class="ms-auto">
             <div>
@@ -41,7 +41,9 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Responsive DataTable</h3>
+                    <h3 class="card-title">Properties Data</h3>
+                </div>
+                <div class="mb-3 text-end">  <!-- Add text-end class here -->
                     <a href="{{ route('properties.add') }}" class="btn bg-primary" data-bs-toggle="tooltip" title="Add New">
                         <span><i class="fa fa-plus"></i> Add Property</span>
                     </a>
