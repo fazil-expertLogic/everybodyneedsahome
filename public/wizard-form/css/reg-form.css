@@ -1,0 +1,793 @@
+/*
+|----------------------------------------------------------------------------
+|	RegForm - Advanced Multi Step Registration HTML Ajax Form main CSS
+|	Author: MGScoder
+|	Version: 2.1
+|	color: #0379ca
+|----------------------------------------------------------------------------
+*/
+.signupForm-section{
+	background-attachment: fixed;
+	background-image: url(../images/bg.jpg);
+	background-position: center center;
+	background-repeat:  no-repeat;
+	background-size:  cover;
+    margin: 0 auto;
+    padding: 0;
+	position: relative;
+    width: 100%;
+	z-index: 1;
+}
+.signupForm-section::before{
+	background-color: rgba(255,255,255,0.5);
+	background-image: url(../images/bg_mask.png);
+	content: "";
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+    width: 100%;
+	z-index: -1;
+}
+.contentBoxMargin {
+	margin: 0 0 50px;
+}
+.signupForm-section .display-table {
+    display: table;
+    height: 100vh;
+    width: 100%;
+}
+.signupForm-section .display-table-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+.signupForm-section .form-wrap {
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 30px auto;
+    padding: 30px;
+}
+.signupForm-section h2.form-title {
+    font-size: 32px;
+    font-weight: bold;
+	color: #0379ca;
+    margin: 50px 0;
+    padding: 0 30px;
+    text-align: center;
+}
+#signUpForm h3.section-title {
+	background-color: rgba(62, 62, 62, 0.9);
+    border: 1px solid rgba(62, 62, 62, 0.9);
+    border-radius: 10px;
+	color: #fff;
+	font-weight: bold;
+    padding: 10px;
+    margin: 50px 0;
+    text-align: center;
+}
+#signUpForm h3.section-form-title {
+	color: #0379ca;
+    border-bottom: 5px solid #b5b5b5;
+	font-weight: bold;
+	max-width: 320px;
+    margin: 50px auto;
+	padding-bottom: 5px;
+    text-align: center;
+}
+.signUpForm-step-holder {
+    overflow: hidden;
+    position: relative;
+}
+.signUpForm-step-wrap  {
+    overflow: hidden;
+	-webkit-transition: all 0.23s ease-in-out 0s;
+    -moz-transition: all 0.23s ease-in-out 0s;
+    -ms-transition: all 0.23s ease-in-out 0s;
+    -o-transition: all 0.23s ease-in-out 0s;
+    transition: all 0.23s ease-in-out 0s;
+}
+#signUpForm .slide-right {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+    width: 100%;
+}
+#signUpForm .slide-left {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+	-webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+#signUpForm .open {
+    height: auto;
+    opacity: 1;
+}
+
+/*Form Step*/
+#signUpForm .form-layer-steps {
+	margin: 0 0 50px;
+    overflow: hidden;
+    position: relative;
+}
+#signUpForm .form-layer-progress {
+    background-color: #b5b5b5;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 26px;
+    width: 100%;
+}
+#signUpForm .form-layer-progress-line {
+    background-color: #0379ca;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+#signUpForm .form-layer-tolal-steps-4 .form-layer-step {
+    float: left;
+    padding: 0;
+    position: relative;
+	text-align: center;
+    width: 25%;
+}
+#signUpForm .form-layer-step-icon {
+    background-color: #b5b5b5;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 4px;
+    width: 40px;
+	text-align: center;
+}
+#signUpForm .form-layer-step-icon.activestep {
+    background-color: #3e3e3e;
+}
+#signUpForm .form-layer-step.activated .form-layer-step-icon {
+    background-color: #fff;
+    border: 1px solid #0379ca;
+    color: #0379ca;
+    line-height: 38px;
+}
+#signUpForm .form-layer-step.active .form-layer-step-icon {
+    background-color: #0379ca;
+    font-size: 22px;
+    height: 48px;
+    line-height: 48px;
+    margin-top: 0;
+    width: 48px;
+}
+
+#signUpForm .form-layer-step p.steptitle {
+    margin: 5px 0 10px;
+}
+#signUpForm .form-layer-step.active p.steptitle {
+    margin: 0 0 10px;
+}
+#signUpForm .form-layer-step.currentstep p.steptitle {
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 2px;
+}
+#signUpForm .form-layer-step.currentstep .form-layer-step-icon::before {
+    position: absolute;
+    left: calc(50% - 8px);
+    top: 18px;
+    color: #3e3e3e;
+    content: "\f0dd";
+    font-family: "Font Awesome 6 Free";
+	font-weight: bold;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/************************ Theme 2 ************************/
+#signUpForm .form-layer-steps.mgscmultisteptheme2 {
+	padding: 0 5px;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step p.steptitle {
+    margin: 10px 0 10px;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step.currentstep p.steptitle {
+    margin: 7px 0 10px;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step-icon {
+	background-color: #ddd;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .currentstep .form-layer-step-icon {
+	background-color: #696969;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step-icon {
+	color: #333;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .active .form-layer-step-icon {
+	background-color: #0379ca;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step-icon:hover,
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step.active .form-layer-step-icon,
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .currentstep .form-layer-step-icon {
+	color: #fff;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-progress {
+    top: 23px;
+    width: calc(100% - 20px);
+	background-color: transparent;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-progress-line {
+	background-color: transparent;
+}	
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step-icon,
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .currentstep .form-layer-step-icon {
+    border-radius: inherit;
+    width: calc(100% - 20px);
+	font-size: 16px;
+	height: 40px;
+	line-height: 40px;
+	margin-top: 4px;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step-icon:hover {
+	background: #696969;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .active .form-layer-step-icon:hover {
+	background: #0379ca;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step-icon::before,
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .currentstep .form-layer-step-icon::before {
+	content: "";
+	position: absolute;
+	top: 24px;
+	margin-top: -20px;
+	border-width: 20px 0 20px 16px;
+	border-style: solid;
+	border-color: #ddd #ddd #ddd transparent;
+	left: -5px;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .currentstep .form-layer-step-icon::before {
+	border-color: #696969 #696969 #696969 transparent;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step-icon:hover::before {
+	border-color: #696969 #696969 #696969 transparent;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step-icon::after,
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .currentstep .form-layer-step-icon::after {
+	content: "";
+	position: absolute;
+	top: 24px;
+	margin-top: -20px;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-left: 16px solid #ddd;
+	right: -5px;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .currentstep .form-layer-step-icon::after {
+	border-left: 16px solid #696969;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step-icon:hover::after {
+	border-left-color: #696969;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step.active .form-layer-step-icon::before {
+	border-color: #0379ca #0379ca #0379ca transparent;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme2 .form-layer-step.active .form-layer-step-icon::after {
+	border-left-color: #0379ca;
+}
+/************************ Theme 3 ************************/
+#signUpForm .form-layer-steps.mgscmultisteptheme3 .form-layer-step.active .form-layer-step-icon {
+    height: 40px;
+    line-height: 40px;
+    margin-top: 4px;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme3 .form-layer-step.active p.steptitle {
+    margin: 10px 0;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme3 .form-layer-step-icon,
+#signUpForm .form-layer-steps.mgscmultisteptheme3 .currentstep .form-layer-step-icon {
+    border-radius: inherit;
+    width: 100%;
+	border-right: 1px solid #9b9a9a;
+	border-bottom: 1px solid #9b9a9a;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme3 .form-layer-step.active .form-layer-step-icon {
+	border-bottom: 1px solid #0379ca;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme3 .form-layer-step.currentstep .form-layer-step-icon {
+	border-bottom: 1px solid #333;
+}
+#signUpForm .form-layer-steps.mgscmultisteptheme3 .form-layer-step.currentstep p.steptitle {
+    margin: 10px 0 6px;
+}
+
+
+/*Form*/
+form#signUpForm {
+    margin: 0 15px 20px;
+}
+#signUpForm h4 {
+    font-size: 16px;
+    font-weight: bold;
+	margin: 10px 0 15px;
+}
+#signUpForm .form-group {
+    margin: 0 0 30px;
+	position: relative;
+}
+#signUpForm .form-control {
+	padding-left: 50px;
+	border: 1px solid #3e3e3e;
+}
+#signUpForm .input-group-icon {
+    background-color: #3e3e3e;
+    border: 0 none;
+    border-radius: 4px 0 0 4px;
+    color: #fff;
+    display: table-cell;
+    font-size: 14px;
+    height: 100%;
+    padding: 8px 7px;
+    text-align: center;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 40px;
+    position: absolute;
+    top: 0;
+}
+#signUpForm .has-error .form-control {
+    border-color: #ce0606;
+}
+#signUpForm .has-error .input-group-icon {
+    background-color: #ce0606;
+    color: #ffffff;
+}
+#signUpForm .form-control:focus, #signUpForm .has-error .form-control:focus {
+	border-color: #0379ca;
+	box-shadow: 0 1px 1px rgba(3, 17, 202, 0.075) inset, 0 0 8px rgba(3, 17, 202, 0.6);
+}
+#signUpForm .form-control:focus + .input-group-icon, #signUpForm .has-error .form-control:focus + .input-group-icon{
+    background-color: #0379ca;
+    color: #fff;
+}
+#signUpForm .help-block {
+    color: #ce0606;
+    margin: 0;
+    position: absolute;
+    bottom: -30px;
+}
+#signUpForm .form-group .help-block ul {
+    margin-bottom: 8px;
+}
+#signUpForm .validagree .help-block.with-errors {
+    bottom: -30px;
+}
+#signUpForm .help-block.with-errors.mandatory-error {
+    bottom: auto;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+}
+#signUpForm .text-danger {
+    color: #ce0606;
+    font-size: 20px;
+}
+#profile-Image img {
+    border: 1px solid #b5b5b5;
+	border-radius: 5px;
+    max-width: 150px;
+}
+
+/*attachment*/
+#signUpForm .form-group.attachmentFile {
+	display: table;
+	margin: 15px 0 40px;
+}
+#signUpForm .input-group-btn ~ .form-control {
+    border-radius: 0 4px 4px 0;
+    cursor: not-allowed;
+    padding-left: 10px;
+}
+#signUpForm .input-group-btn > .btn {
+    background-color: #3e3e3e;
+    border: 1px solid #3e3e3e;
+    border-radius: 4px 0 0 4px;
+    color: #fff;
+    height: 34px;
+    padding: 4.5px 14px;
+}
+#signUpForm .attachmentFile .input-group-btn:first-child > .btn, #signUpForm .input-group-btn:first-child > .btn-group {
+    margin-left: 0;
+}
+#signUpForm .input-group-btn > .btn > input[type="file"] {
+    display: none;
+}
+
+/*upload file b4 fix*/
+#signUpForm .form-group.attachmentFile .input-group-btn ~ .form-control {
+	width: calc(100% - 90px);
+	margin-left: -5px;
+	border-left: none;
+	display: inline;
+}
+#signUpForm .form-group.attachmentFile .input-group-btn > .btn {
+	width: 90px;
+	margin-top: -5px;
+	height: 38px;
+}
+
+/*checkbox b4 fix*/
+.checkbox input[type="checkbox"] {
+    margin: 6px 5px 0 0;
+}
+
+/*radio-inline b4 fix*/
+.form-group .checkbox-inline, .form-group .radio-inline {
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    margin-bottom: 0;
+	margin-right: 15px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.form-group .radio-inline input[type="radio"] {
+    margin: 6px 5px 0 -20px;
+}
+
+/*select box*/
+#signUpForm select {
+	background-color: transparent;
+	display: inline-block;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-image: linear-gradient(45deg, transparent 50%, #3e3e3e 50%),
+		linear-gradient(135deg, #3e3e3e 50%, transparent 50%),
+		radial-gradient(transparent 66%, transparent 66%);
+	background-position: calc(100% - 18px) calc(1em + 2px),
+		calc(100% - 13px) calc(1em + 2px),
+		calc(100% - .5em) .5em;
+	background-size: 5px 6px, 6px 5px, 1.5em 1.5em;
+	background-repeat: no-repeat;
+}
+#signUpForm select:focus {
+	background-image: linear-gradient(45deg, transparent 50%, #0379ca 50%),
+		linear-gradient(135deg, #0379ca 50%, transparent 50%),
+		radial-gradient(transparent 66%, transparent 66%);
+}
+#signUpForm select::-ms-expand {
+    display: none;
+}
+
+/*mgsradio and mgscheckbox style*/
+.mgs-checkbox :checked + label, .mgs-radio :checked + label,
+.mgs-checkbox label:hover, .mgs-radio label:hover {
+    border-color: rgba(62, 62, 62, 0.7);
+    background-color: rgba(62, 62, 62, 0.7);
+}
+
+/************** MgsRadioStyle Radio button ***************/
+.radio-inline.mgsradio-circle-buttons {
+    padding-left: 0;
+}
+.radio-inline.mgsradio-circle-buttons, .radio-inline.mgsradio-circle-buttons li {
+    display: inline-block;
+}
+.mgsradio-circle-buttons li {
+    height: 28px;
+}
+.mgsradio-circle-buttons label {
+    display: block;
+    position: relative;
+    padding: 0 25px;
+    height: 20px;
+    z-index: 9;
+    cursor: pointer;
+}
+.mgsradio-circle-buttons input[type="radio"]:checked ~ .check {
+    border: 11px solid rgba(62, 62, 62, 0.7);
+	width: 0;
+	height: 0;
+}
+.mgsradio-circle-buttons input[type="radio"] {
+    position: absolute;
+    visibility: hidden;
+}
+.mgsradio-circle-buttons .check {
+    display: block;
+    position: relative;
+    border: 1px solid #a0a0a0;
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+    top: -25px;
+    z-index: 5;
+}
+.radio-inline.mgsradio-circle-buttons {
+    padding-left: 0;
+	margin: 0;
+	display: inline-block;
+}
+
+/************** MgsCheckbox Style Checkbox ***************/
+.mgsstyle-checkbox.mgscheckbox-style {
+    padding-left: 0;
+}
+.mgsstyle-checkbox.mgscheckbox-style li {
+    display: inline-block;
+	width: auto;
+    margin: 0 3% 0 0;
+}
+.mgsstyle-checkbox.mgscheckbox-style li:last-child {
+    margin: 0;
+}
+.mgsstyle-checkbox.mgscheckbox-style input[type="checkbox"] {
+	opacity: 0;
+	margin-left: -12px;
+}
+.mgsstyle-checkbox.mgscheckbox-style label  {
+	position: relative;
+	padding: 5px 30px;
+}
+.mgsstyle-checkbox.mgscheckbox-style label:before {
+	border: 1px solid #a0a0a0;
+	border-radius: 3px;
+	content: "";
+	left: 0;
+	position: absolute;
+	top: 4px;
+	width: 24px;
+	height: 24px;
+}
+.mgsstyle-checkbox.mgscheckbox-style :checked + label:before {
+	border: 12px solid rgba(62, 62, 62, 0.7);
+	border-radius: 3px;
+	content: "";
+	left: 0;
+	position: absolute;
+	top: 5px;
+	width: auto;
+	height: auto;
+}
+
+/*
+|----------------------------------------------------------------------------
+| Math Captcha
+|----------------------------------------------------------------------------
+*/
+#humanCheckCaptchaBox {
+    font-weight: bold;
+}
+#humanCheckCaptchaBox, #humanCheckCaptchaInput, #firstDigit, #secondDigit,  #mathfirstnum, #mathsecondnum {
+    display: inline;
+}
+#humanCheckCaptchaInput.form-control {
+    height: 30px;
+    margin-left: 10px;
+    padding: 4px;
+    text-align: center;
+    width: 45px;
+}
+#firstDigit #mathfirstnum, #secondDigit #mathsecondnum {
+	border: none;
+	box-shadow: none;
+    width: 30px;
+    height: 30px;
+	padding: 0;
+    pointer-events: none;
+    text-align: center;
+}
+
+/*
+|----------------------------------------------------------------------------
+| Button
+|----------------------------------------------------------------------------
+*/
+#signUpForm .btn-default {
+    background-color: transparent;
+    border-color: #3e3e3e;
+    color: #222;
+}
+#signUpForm .form-control[disabled], #signUpForm .form-control[readonly], #signUpForm .form-control {
+    background-color: transparent;
+    border: 1px solid #3e3e3e;
+}
+#signUpForm .btn {
+    overflow: hidden;    
+	font-size:16px;
+	padding: 6px 20px;
+}
+#signUpForm .btn-custom {
+    background-color: #3e3e3e;
+	border: 1px solid #3e3e3e;
+    box-shadow: 0 0 1px transparent;
+	color: #fff;
+    display: inline-block;
+    position: relative;
+	text-transform: capitalize;
+    -webkit-transform: perspective(1px) translateZ(0px);
+    -moz-transform: perspective(1px) translateZ(0px);
+    -ms-transform: perspective(1px) translateZ(0px);
+    -o-transform: perspective(1px) translateZ(0px);
+    transform: perspective(1px) translateZ(0px);
+    -webkit-transition: color 0.3s;
+    -moz-transition: color 0.3s;
+    -ms-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+    vertical-align: middle;
+}
+#signUpForm .btn-custom::before {
+    background-color: #0379ca;
+    border-color: #0379ca;
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+	-webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 50% 50% 0;
+	-moz-transform-origin: 50% 50% 0;	
+	-ms-transform-origin: 50% 50% 0;	
+	-o-transform-origin: 50% 50% 0;	
+    transform-origin: 50% 50% 0;
+	-webkit-transition: transform 0.3s ease-out;
+    -moz-transition: transform 0.3s ease-out;
+    -ms-transition: transform 0.3s ease-out;
+    -o-transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+    z-index: -1;
+}
+#signUpForm .btn-custom:hover, #signUpForm .btn-custom:focus, #signUpForm .btn-custom:active {
+    border-color: #0379ca;
+    color: #fff;
+}
+#signUpForm .btn-custom:hover::before, #signUpForm .btn-custom:focus::before, #signUpForm .btn-custom:active::before {
+    -webkit-transform: scaleX(1);
+    -moz-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    -o-transform: scaleX(1);
+	transform: scaleX(1);
+}
+#signUpForm .btn.disabled, #signUpForm .btn[disabled], #signUpForm fieldset[disabled] .btn {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+/*
+|----------------------------------------------------------------------------
+| Review page
+|----------------------------------------------------------------------------
+*/
+#signUpForm .review-submit-section h4 {
+    background-color: transparent;
+    border: 1px solid #3e3e3e;
+    border-radius: 6px;
+    color: #222;
+    padding: 10px;
+	font-weight: bold;
+	text-align: center;
+}
+#signUpForm .review-submit-section h5 {
+    background-color: rgba(62, 62, 62, 0.7);
+    border-radius: 6px;
+    color: #fff;
+    padding: 10px;
+	margin: 0 0 20px;
+	font-size: 22px;
+	text-align: center;
+}
+#signUpForm .review-submit-section p > strong {
+	width: 50%;
+	float: left;
+    color: #0379ca;
+	padding-right: 10px;
+	text-align: right;
+}
+#signUpForm .review-submit-section p > span {
+	width: 50%;
+	float: left;
+}
+#signUpForm .review-submit-section p {
+	clear: both;
+	text-align: left;
+}
+#signUpForm .form-layer-step > p {
+    text-align: center;
+	margin-top: 5px;
+}
+#signUpForm .section-info-box strong {
+    padding-right: 5px;
+}
+
+/************ inline calendar **************/
+#signUpForm .datepicker-inline {
+    border: 1px solid;
+    margin: 0 auto;
+    width: 220px;
+}
+
+/************ sweet-alert **************/
+.sweet-alert button {
+    background-color: #0379ca;
+}
+.sweet-alert {
+	padding: 20px;
+}
+.sweet-alert .sa-icon {
+    margin: 0 auto 20px;
+}
+.sweet-alert h2 {
+    margin: 20px 0;
+}
+.sweet-alert button {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 20px 5px 0;
+    padding: 6px 20px;
+}
+.sweet-alert .sa-icon.sa-error {
+    border-color: #ce0606;
+}
+.sweet-alert .sa-icon.sa-error .sa-line {
+    background-color: #ce0606;
+}
+.sweet-alert .sa-icon.sa-success .sa-placeholder {
+    border: 4px solid rgba(60, 118, 61, 0.4);
+}
+.sweet-alert .sa-icon.sa-success .sa-line {
+    background-color: #3c763d;
+}
+
+/*
+|----------------------------------------------------------------------------
+| responsive
+|----------------------------------------------------------------------------
+*/
+@media screen and (max-width: 767px) {		
+	.signupForm-section h2.form-title {
+		padding: 0 15px;
+	}
+	.signupForm-section .form-wrap {
+		padding: 30px 0;
+	}
+}
+@media screen and (max-width: 480px) {
+	#signUpForm .col-xs-6 {
+		width: 100%;
+	}
+}
+@media screen and (max-width: 420px) {
+	#firstDigit #mathfirstnum, #secondDigit #mathsecondnum {
+		width: 20px;
+	}
+}
+@media screen and (max-width: 360px) {	
+	#signUpForm span.sub-text {
+		right: 30px;
+	}
+}
+@media screen and (max-width: 340px) {
+	#signUpForm .btn {
+		margin: 0 0 20px 10px;
+	}
+	#signUpForm .btn.btn-default.disable {
+		display: none;
+	}
+}
