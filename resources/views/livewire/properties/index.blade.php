@@ -10,7 +10,6 @@
             <!-- breadcrumb -->
             <li class="breadcrumb-item"><a href="javascript:void(0);">Components</a></li>
             <li class="breadcrumb-item active" aria-current="page">Tables</li>
-            <li class="breadcrumb-item active" aria-current="page">Data Table</li>
         </ol><!-- End breadcrumb -->
         <div class="ms-auto">
             <div>
@@ -43,6 +42,9 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Responsive DataTable</h3>
+                    <a href="{{ route('properties.add') }}" class="btn bg-primary" data-bs-toggle="tooltip" title="Add New">
+                        <span><i class="fa fa-plus"></i> Add Property</span>
+                    </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -72,13 +74,9 @@
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                     
-                                        <form action="{{ route('properties.destroy', $property->id) }}" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" title="Delete" onclick="return confirm('Are you sure you want to delete this property?');">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </button>
-                                        </form>
+                                        <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('properties.destroy', $property->id) }}');">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
                                     </td>
                                     
                                 </tr>
@@ -92,13 +90,40 @@
         </div>
     </div>
     <!-- END ROW -->
-
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this property?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="deleteForm" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
    
 @endsection
-
-@section('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- SELECT2 JS -->
     <script src="{{ asset('build/assets/plugins/select2/select2.full.min.js') }}"></script>
+    <script>
+        function confirmDelete(url) {
+            document.getElementById('deleteForm').action = url; // Set the action of the form
+            var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal')); // Initialize the modal
+            deleteModal.show(); // Show the modal
+        }
+    </script>
     @vite('resources/assets/js/select2.js')
 
     <!-- DATA TABLE JS -->
@@ -115,4 +140,3 @@
     <script src="{{ asset('build/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('build/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
     @vite('resources/assets/js/table-data.js')
-@endsection

@@ -19,14 +19,17 @@ Route::get('fetchChat/{userId}', [ChatController::class, 'fetchChat']);
 Route::post('sendMessage', [ChatController::class, 'sendMessage']);
 
 Route::get('login', [RegistrationsController::class, 'showLogin']);
-Route::POST('loginPerform', [RegistrationsController::class, 'loginPerform'])->name('login.perform');
-Route::POST('logout', [RegistrationsController::class, 'logout'])->name('logout');
-Route::get('addProperties', [PropertiesController::class, 'addProperties'])->name('addProperties');
-Route::get('listingProperties', [PropertiesController::class, 'index'])->name('properties.index');
-Route::POST('postPoperty', [PropertiesController::class, 'postPoperty'])->name('postPoperty');
-Route::POST('editPostPoperty', [PropertiesController::class, 'editPostPoperty'])->name('editPostPoperty');
-Route::get('/properties/show/{id}', [PropertiesController::class, 'show'])->name('properties.show');
-Route::put('/properties/{id}', [PropertiesController::class, 'update'])->name('properties.update');
-Route::delete('/properties/{id}', [PropertiesController::class, 'destroy'])->name('properties.destroy');
+Route::post('loginPerform', [RegistrationsController::class, 'loginPerform'])->name('login.perform');
+Route::post('logout', [RegistrationsController::class, 'logout'])->name('logout');
+
+
+Route::get('properties', [PropertiesController::class, 'index'])->name('properties.index');
+Route::get('properties/add', [PropertiesController::class, 'add'])->name('properties.add');
+Route::post('properties/store', [PropertiesController::class, 'store'])->name('properties.store');
+Route::get('properties/show/{id}', [PropertiesController::class, 'show'])->name('properties.show');
+Route::post('properties/update', [PropertiesController::class, 'update'])->name('properties.update');
+Route::DELETE('properties/destroy/{id}', [PropertiesController::class, 'destroy'])->name('properties.destroy');
+// Route::get('properties/delete/{id}', [PropertiesController::class, 'destroy'])->name('organization.destroy');
+
 
 // Route::get('index', [CustomAuthController::class, 'dashboard']);

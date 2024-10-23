@@ -46,7 +46,7 @@
                 <div class="card-body">
                     <p>Please fill the form below to create property.</p>
 
-                    <form method="POST" action="{{ route('editPostPoperty') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('properties.update') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" class="form-control" id="id" value="{{$property->id}}">
                         <div class="col-md-6">

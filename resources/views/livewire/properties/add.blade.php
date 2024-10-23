@@ -46,7 +46,7 @@
                 <div class="card-body">
                     <p>Please fill the form below to create property.</p>
 
-                    <form method="POST" action="{{ route('postPoperty') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('properties.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-6">
                             <label for="property_name" class="form-label">Property Name*</label>
