@@ -14,7 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('livewire.client.add');
+        
     }
 
     /**
@@ -24,7 +24,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('livewire.client.add');
     }
 
     /**
