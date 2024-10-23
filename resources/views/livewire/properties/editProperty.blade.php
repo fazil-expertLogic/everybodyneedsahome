@@ -338,20 +338,27 @@
                                 Please select Is property occupied.
                             </div>
                         </div>
-
-                        <div class="mb-12">
+                        <div class="col-md-12">
+                            <img src="{{ asset('storage/' . $property->main_picture) }}" alt="Main Picture" width="400px"/>
+                        </div>
+                        <div class="col-md-12">
                             <label for="main_picture" class="form-label">Main Picture*</label>
-                            <input type="file" class="form-control" aria-label="file example" name="main_picture"
-                                required>
+                            <input type="file" class="form-control" aria-label="file example" name="main_picture" required>
                             <div class="invalid-feedback">Example invalid form file feedback</div>
                         </div>
-
-                        <div class="mb-12">
+                        <div class="col-md-12">
+                            @if ($property->more_pictures)
+                            @foreach (json_decode($property->more_pictures) as $more_picture)
+                                    <img src="{{ asset('storage/' . $more_picture) }}" alt="More Pictures" width="400px">
+                                @endforeach 
+                            @endif
+                        </div>
+                        <div class="col-md-12">
                             <label for="more_picture" class="form-label">More Pictures*</label>
                             <input type="file" class="form-control" aria-label="file example" name="more_picture[]" multiple required>
                             <div class="invalid-feedback">Example invalid form file feedback</div>
                         </div>
-
+                        
                         <div class="col-12">
                             <button class="btn btn-primary" type="submit">Submit form</button>
                         </div>

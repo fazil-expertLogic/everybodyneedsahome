@@ -57,14 +57,16 @@ class PropertiesController extends Controller
             'unit_fee' => 'nullable|numeric',
             'is_property_occupied' => 'required|boolean',
             'utilities_inscluded' => 'nullable|required|boolean',
-            'main_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'more_pictures.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'main_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'more_pictures.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
+        DB::beginTransaction(); // Start the transaction
 
+        try {
         // Handle image uploads
         $mainPicturePath = $request->file('main_picture')->store('properties/main', 'public');
         $morePicturesPaths = [];
@@ -107,6 +109,16 @@ class PropertiesController extends Controller
             'main_picture' => $mainPicturePath,
             'more_pictures' => json_encode($morePicturesPaths), // Store as JSON if necessary
         ]);
+        DB::commit(); // Commit the transaction if everything works
+
+            return redirect()->route('properties.index')->with('success', 'Property updated successfully.');
+
+        } catch (\Exception $e) {
+            
+            DB::rollBack(); // Rollback if any operation fails
+            dd($e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'An error occurred while updating the property. Please try again.']);
+        }
         // Redirect or return a response
         return redirect()->route('properties.index')->with('success', 'Property created successfully!');
     }
@@ -141,9 +153,9 @@ class PropertiesController extends Controller
             'property_management_zipcode' => 'nullable|string|max:20', // Changed to nullable
             'property_type' => 'required|string|max:50',
             'number_of_beds' => 'nullable|integer',
-            'rent_bed' => 'required|numeric',
-            'bed_deposit' => 'required|numeric',
-            'bed_fee' => 'required|numeric|min:0|max:999999999999.99',
+            'rent_bed' => 'nullable|numeric',
+            'bed_deposit' => 'nullable|numeric',
+            'bed_fee' => 'nullable|numeric|min:0|max:999999999999.99',
             'number_of_bedrooms' => 'nullable|integer',
             'stay_one_bedroom' => 'nullable|numeric',
             'bedroom_deposit' => 'nullable|numeric',
@@ -162,25 +174,28 @@ class PropertiesController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-
-        if ($request->hasFile('main_picture')) {
-            $mainPicture = $request->file('main_picture');
-            $mainPicturePath = $mainPicture->store('property_images', 'public'); // Save in storage/app/public/property_images
-        }
-    
-        // Handle more pictures upload
-        $morePictures = [];
-        if ($request->hasFile('more_picture')) {
-            foreach ($request->file('more_picture') as $picture) {
-                $morePictures[] = $picture->store('property_images', 'public');
-            }
-        }
         DB::beginTransaction(); // Start the transaction
-
         try {
-
             // Create the property record
             $property = Property::findOrFail($request->id);
+
+            if ($request->hasFile('main_picture')) {
+                $mainPicture = $request->file('main_picture');
+                $mainPicturePath = $mainPicture->store('property_images', 'public'); // Save in storage/app/public/property_images
+            }else{
+                $mainPicturePath = $property->main_picture;
+            }
+        
+            // Handle more pictures upload
+            $morePictures = [];
+            if ($request->hasFile('more_picture')) {
+                foreach ($request->file('more_picture') as $picture) {
+                    $morePictures[] = $picture->store('property_images', 'public');
+                }
+            }else{
+                $morePictures =$property->more_pictures;
+            }
+
             $property->update([
                 'property_name' => $request->property_name,
                 'property_description' => $request->property_description,
