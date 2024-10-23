@@ -13,7 +13,6 @@
 		<title> Sparic - Laravel Starerkit</title>
 
         <!-- FAVICON -->
-        {{dd(asset('build/assets/images/brand/favicon.ico'))}}
         <link rel="icon" href="{{asset('build/assets/images/brand/favicon.ico')}}" type="image/x-icon" >
 		<link rel="shortcut icon" href="{{asset('build/assets/images/brand/favicon.ico')}}" type="image/x-icon">
 
