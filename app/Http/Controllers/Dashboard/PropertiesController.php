@@ -68,14 +68,19 @@ class PropertiesController extends Controller
 
         try {
             // Handle image uploads
-            $mainPicturePath = $request->file('main_picture')->store('properties/main', 'public');
-            $morePicturesPaths = [];
+           
+            if ($request->hasFile('main_picture')) {
+                $mainPicture = $request->file('main_picture');
+                $mainPicturePath = $mainPicture->store('property_images', 'public'); // Save in storage/app/public/property_images
+            } 
 
-            if ($request->hasFile('more_pictures')) {
-                foreach ($request->file('more_pictures') as $file) {
-                    $morePicturesPaths[] = $file->store('properties/more', 'public');
+            // Handle more pictures upload
+            $morePictures = [];
+            if ($request->hasFile('more_picture')) {
+                foreach ($request->file('more_picture') as $picture) {
+                    $morePictures[] = $picture->store('property_images', 'public');
                 }
-            }
+            } 
 
             // Create the property record
             Property::create([
@@ -107,7 +112,7 @@ class PropertiesController extends Controller
                 'utilities_inscluded' => $request->utilities_inscluded,
                 'status' => 1,
                 'main_picture' => $mainPicturePath,
-                'more_pictures' => json_encode($morePicturesPaths), // Store as JSON if necessary
+                'more_pictures' => json_encode($morePictures), // Store as JSON if necessary
             ]);
             DB::commit(); // Commit the transaction if everything works
 

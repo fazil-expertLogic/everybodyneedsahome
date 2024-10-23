@@ -345,7 +345,7 @@
                             <div class="invalid-feedback">Example invalid form file feedback</div>
                         </div>
 
-                        <div class="mb-12">
+                        <div class="col-md-12">
                             <label for="more_picture" class="form-label">More Pictures*</label>
                             <input type="file" class="form-control" aria-label="file example" name="more_picture[]" multiple required>
                             <div class="invalid-feedback">Example invalid form file feedback</div>
