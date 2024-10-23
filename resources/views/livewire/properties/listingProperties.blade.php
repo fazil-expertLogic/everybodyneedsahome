@@ -50,22 +50,37 @@
                             <thead>
                                 <tr>
                                     <th class="wd-15p border-bottom-0">Property Name</th>
-                                    <th class="wd-15p border-bottom-0">Property Description</th>
+                                    <th class="wd-15p border-bottom-0">Property Type</th>
                                     <th class="wd-20p border-bottom-0">Property Address</th>
                                     <th class="wd-15p border-bottom-0">City</th>
                                     <th class="wd-10p border-bottom-0">State</th>
                                     <th class="wd-25p border-bottom-0">Created ON</th>
+                                    <th class="wd-25p border-bottom-0">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($properties as $property)   
                                 <tr>
                                     <td>{{$property->property_name}}</td>
-                                    <td>{{$property->property_description}}</td>
+                                    <td>{{$property->property_type}}</td>
                                     <td>{{$property->property_address}}</td>
                                     <td>{{$property->city}}</td>
                                     <td>{{$property->state}}</td>
                                     <td>{{$property->created_at}}</td>
+                                    <td>
+                                        <a href="{{ route('properties.show', $property->id) }}" class="btn btn-primary" title="Edit">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    
+                                        <form action="{{ route('properties.destroy', $property->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" title="Delete" onclick="return confirm('Are you sure you want to delete this property?');">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    
                                 </tr>
                                 @endforeach
                                 
