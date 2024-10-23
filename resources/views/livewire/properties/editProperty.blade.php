@@ -382,6 +382,21 @@
 <script>
     $(document).ready(function() {
         $('.isBed, .isBedroom, .isUnit').hide();
+
+        var property_type = $('input[name="property_type"]').val();  // Get the selected value
+
+        // Hide all sections initially
+        $('.isBed, .isBedroom, .isUnit').hide();
+
+        // Show the appropriate section based on the selected radio button
+        if (property_type === 'bed') {
+            $('.isBed').slideDown('slow');
+        } else if (property_type === 'bedroom') {
+            $('.isBedroom').slideDown('slow');
+        } else if (property_type === 'unit') {
+            $('.isUnit').slideDown('slow');
+        }
+
         // When a radio button is selected
         $('input[name="property_type"]').on('change', function() {
             var selectedValue = $(this).val();  // Get the selected value
