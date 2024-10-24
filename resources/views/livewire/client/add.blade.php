@@ -11,7 +11,7 @@
                             <div class="signUpForm-step-holder">
 
                                 <div id="section-1" class="signUpForm-step-wrap">
-
+                                    <h3 class="section-title">Step 1 of 5</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -24,22 +24,16 @@
                                                 <p class="steptitle">1- Basic Information</p>
                                             </div>
                                             
-
-                                            
                                             <div class="form-layer-step">
                                                 <div class="form-layer-step-icon"><i class="fas fa-user"></i>
                                                 </div>
                                                 <p class="steptitle">2- Criminal History</p>
                                             </div>
                                             
-
-                                            
                                             <div class="form-layer-step">
                                                 <div class="form-layer-step-icon"><i class="far fa-credit-card"></i></div>
                                                 <p class="steptitle">3- Needs Survey</p>
                                             </div>
-                                            
-
                                             
                                             <div class="form-layer-step">
                                                 <div class="form-layer-step-icon"><i class="fas fa-check"></i>
@@ -52,39 +46,11 @@
                                                 </div>
                                                 <p class="steptitle">5- Others info</p>
                                             </div>
-                                            
                                         </div>
 
                                         <h3 class="section-form-title">Basic Information</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
-                                        {{--        ------------------------------remove------------------------------                  --}}
-                                        {{-- <div class="form-group validuname">
-                                            <input class="form-control" name="uname" id="uname" type="text"
-                                                placeholder="UserName*" required data-error="Please enter UserName">
-                                            <div class="input-group-icon"><i class="fas fa-user"></i></div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group validemail">
-                                            <input class="form-control" name="email" id="email" type="email"
-                                                placeholder="Email*" required data-error="Please enter valid email">
-                                            <div class="input-group-icon"><i class="fas fa-envelope"></i></div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group validpass">
-                                            <input class="form-control" name="pass" id="pass" type="password"
-                                                placeholder="Password* at least 6 character" required
-                                                data-error="Please enter password">
-                                            <div class="input-group-icon"><i class="fas fa-key"></i></div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <input class="form-control" name="cpass" id="cpass" type="password"
-                                                placeholder="Confirm Password*" required
-                                                data-error="Please retype password">
-                                            <div class="input-group-icon"><i class="fas fa-key"></i></div>
-                                            <div class="help-block with-errors"></div>
-                                        </div> --}}
-                                        {{--        ------------------------------remove------------------------------                  --}}
+
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_name">
@@ -147,88 +113,48 @@
             
                                             <div class="col-sm-12 col-lg-12" style="display: none;" id="childinfobox">
                                                 <div id="child-boxes-container">
-                                                        <div class="row childBOX">
-                                                            <div class="col-sm-6 col-lg-6">
-                                                                <fieldset class="mb-3">
-                                                                    <label for="child_name_0" class="form-label">Child Name<span class="text-danger">*</span></label>
-                                                                    <input type="text" class="form-control py-2" value="" name="child_name[]" id="child_name_0">
-                                                                </fieldset>
-                                                            </div>
-            
-                                                            <div class="col-sm-6 col-lg-6">
-                                                                <fieldset class="">
-                                                                    <label for="child_age_0" class="form-label">Child Age<span class="text-danger">*</span></label>
-                                                                    <select name="child_age[]" class="form-select" id="child_age_0" aria-label="">
-            
-                                                                                                                                        <option value="0" selected="">
-                                                                                0+
-                                                                            </option>
-                                                                                                                                        <option value="1">
-                                                                                1
-                                                                            </option>
-                                                                                                                                        <option value="2">
-                                                                                2
-                                                                            </option>
-                                                                                                                                        <option value="3">
-                                                                                3
-                                                                            </option>
-                                                                                                                                        <option value="4">
-                                                                                4
-                                                                            </option>
-                                                                                                                                        <option value="5">
-                                                                                5
-                                                                            </option>
-                                                                                                                                        <option value="6">
-                                                                                6
-                                                                            </option>
-                                                                                                                                        <option value="7">
-                                                                                7
-                                                                            </option>
-                                                                                                                                        <option value="8">
-                                                                                8
-                                                                            </option>
-                                                                                                                                        <option value="9">
-                                                                                9
-                                                                            </option>
-                                                                                                                                        <option value="10">
-                                                                                10
-                                                                            </option>
-                                                                                                                                        <option value="11">
-                                                                                11
-                                                                            </option>
-                                                                                                                                        <option value="12">
-                                                                                12
-                                                                            </option>
-                                                                                                                                        <option value="13">
-                                                                                13
-                                                                            </option>
-                                                                                                                                        <option value="14">
-                                                                                14
-                                                                            </option>
-                                                                                                                                        <option value="15">
-                                                                                15
-                                                                            </option>
-                                                                                                                                        <option value="16">
-                                                                                16
-                                                                            </option>
-                                                                                                                                        <option value="17">
-                                                                                17
-                                                                            </option>
-                                                                                                                                        <option value="18">
-                                                                                18
-                                                                            </option>
-                                                                                                                                </select>
-                                                                </fieldset>
-                                                            </div>
+                                                    <div class="row childBOX">
+                                                        <div class="col-sm-6 col-lg-6">
+                                                            <fieldset class="mb-3">
+                                                                <label for="child_name_0" class="form-label">Child Name<span class="text-danger">*</span></label>
+                                                                <input type="text" class="form-control py-2" value="" name="child_name[]" id="child_name_0">
+                                                            </fieldset>
                                                         </div>
-                                                                                        </div>
+        
+                                                        <div class="col-sm-6 col-lg-6">
+                                                            <fieldset class="">
+                                                                <label for="child_age_0" class="form-label">Child Age<span class="text-danger">*</span></label>
+                                                                <select name="child_age[]" class="form-select" id="child_age_0" aria-label="">
+                                                                    <option value="0" selected="">0+</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                    <option value="13">13</option>
+                                                                    <option value="14">14</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="16">16</option>
+                                                                    <option value="17">17</option>
+                                                                    <option value="18">18</option>
+                                                                </select>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </div>
             
                                                 <div class="mb-3 text-end">
                                                     <a href="#" class="delete-child-box text-danger" style="display: none;">Delete</a> <span class="separator" style="display: none;">|</span>
                                                     <a href="#" id="add-new-child" class="text-blue">Add new</a>
                                                 </div>
                                             </div>
-            
             
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_address">
@@ -305,6 +231,7 @@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
+
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_zip">
                                                     <label for="cus_zip" class="form-label">Zip<span class="text-danger">*</span></label>
@@ -312,6 +239,7 @@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
+
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_phone">
                                                     <label for="cus_phone" class="form-label">Phone<span class="text-danger">*</span></label>
@@ -321,6 +249,7 @@
                                             </div>
             
                                         </div>
+                                        
                                         <div class="form-group signUpForm-step-1">
                                             <button class="btn btn-default disable" type="button">Are you
                                                 ready!</button>
@@ -331,7 +260,7 @@
                                 </div>
 
                                 <div id="section-2" class="signUpForm-step-wrap slide-right">
-                                    <h3 class="section-title">Step 2 of 4</h3>
+                                    <h3 class="section-title">Step 2 of 5</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -344,22 +273,16 @@
                                                 <p class="steptitle">1- Basic Information</p>
                                             </div>
                                             
-
-                                            
                                             <div class="form-layer-step currentstep">
                                                 <div class="form-layer-step-icon activestep"><i class="fas fa-user"></i>
                                                 </div>
                                                 <p class="steptitle">2- Criminal History</p>
                                             </div>
                                             
-
-                                            
                                             <div class="form-layer-step">
                                                 <div class="form-layer-step-icon"><i class="far fa-credit-card"></i></div>
                                                 <p class="steptitle">3- Needs Survey</p>
                                             </div>
-                                            
-
                                             
                                             <div class="form-layer-step">
                                                 <div class="form-layer-step-icon"><i class="fas fa-check"></i>
@@ -446,7 +369,7 @@
                                 </div>
 
                                 <div id="section-3" class="signUpForm-step-wrap slide-right">
-                                    <h3 class="section-title">Step 3 of 4</h3>
+                                    <h3 class="section-title">Step 3 of 5</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -456,91 +379,37 @@
                                             
                                             <div class="form-layer-step active">
                                                 <div class="form-layer-step-icon"><i class="fas fa-unlock-alt"></i></div>
-                                                <p class="steptitle">Account</p>
+                                                <p class="steptitle">1- Basic Information</p>
                                             </div>
-                                            
-
                                             
                                             <div class="form-layer-step active">
                                                 <div class="form-layer-step-icon"><i class="fas fa-user"></i>
                                                 </div>
-                                                <p class="steptitle">Personal</p>
+                                                <p class="steptitle">2- Criminal History</p>
                                             </div>
-                                            
-
                                             
                                             <div class="form-layer-step currentstep">
                                                 <div class="form-layer-step-icon activestep"><i
                                                         class="far fa-credit-card"></i></div>
-                                                <p class="steptitle">Payment Info</p>
+                                                <p class="steptitle">3- Needs Survey</p>
                                             </div>
-                                            
 
-                                            
                                             <div class="form-layer-step">
                                                 <div class="form-layer-step-icon"><i class="fas fa-check"></i>
                                                 </div>
-                                                <p class="steptitle">Confirm</p>
+                                                <p class="steptitle">4- Health Insurance</p>
                                             </div>
-                                            
+
+                                            <div class="form-layer-step">
+                                                <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                </div>
+                                                <p class="steptitle">5- Others info</p>
+                                            </div>
                                         </div>
-                                        {{--  =============================== remove =============================== --}}
-                                        {{-- <h3 class="section-title">Payment Details: </h3>
+                                        
+                                        <h3 class="section-form-title">Needs Survey</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
-                                        <div class="form-group validpaymenttype">
-                                            <select class="form-control" name="paymenttype" id="paymenttype"
-                                                title="" required data-error="Please Select Payment Type">
-                                                <option value="">--- Select Your Payment Type* ---
-                                                </option>
-                                                <option value="Master Card">Master Card</option>
-                                                <option value="Visa Card">Visa Card</option>
-                                            </select>
-                                            <div class="input-group-icon"><i class="fas fa-venus"></i></div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group validhname">
-                                            <input class="form-control" name="hname" id="hname" type="text"
-                                                placeholder="Card Holder Name*" required
-                                                data-error="Please enter Card Holder Name">
-                                            <div class="input-group-icon"><i class="fas fa-user"></i></div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group validcardnumber">
-                                            <input class="form-control" name="cardnumber" id="cardnumber" type="text"
-                                                pattern="\d*" placeholder="Card Number*" required
-                                                data-error="Please enter valid card number">
-                                            <div class="input-group-icon"><i class="far fa-credit-card"></i>
-                                            </div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group validcvc">
-                                            <input class="form-control" name="cvc" id="cvc" type="text"
-                                                maxlength="3" pattern="\d*" placeholder="CVC*" required
-                                                data-error="Please enter CVC">
-                                            <div class="input-group-icon"><i class="far fa-credit-card"></i>
-                                            </div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div id="sandbox-container2" class="form-group validexpirydate">
-                                            <input class="form-control" name="expirydate" id="expirydate" type="text"
-                                                placeholder="Expiry Date*" required data-error="Please enter Expiry Date">
-                                            <div class="input-group-icon"><i class="fas fa-calendar-alt"></i>
-                                            </div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-
-                                        <div class="form-group validagree">
-                                            <ul class="mgsstyle-checkbox mgscheckbox-style list-unstyled">
-                                                <li><input name="aggre" id="aggre" type="checkbox" value="1"
-                                                        required data-error="Required Consent"><label for="aggre">
-                                                        Agree with <a href="javascript:void(0)">Terms &amp;
-                                                            Conditions</a></label></li>
-                                            </ul>
-                                            <div class="help-block with-errors"></div>
-                                        </div> --}}
-                                        {{--  =============================== remove =============================== --}}
-
-
+                                       
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_food">
                                                 <label for="cus_food" class="form-label">Do you need food?<span class="text-danger">*</span></label>
@@ -771,7 +640,7 @@
                                 </div>
 
                                 <div id="section-4" class="signUpForm-step-wrap review-submit-section slide-right">
-                                    <h3 class="section-title">Step 4 of 4: Review &amp; Submit</h3>
+                                    <h3 class="section-title">Step 4 of 5</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -781,135 +650,77 @@
                                             
                                             <div class="form-layer-step active">
                                                 <div class="form-layer-step-icon"><i class="fas fa-unlock-alt"></i></div>
-                                                <p class="steptitle">Account</p>
+                                                <p class="steptitle">1- Basic Information</p>
                                             </div>
-                                            
-
                                             
                                             <div class="form-layer-step active">
                                                 <div class="form-layer-step-icon"><i class="fas fa-user"></i>
                                                 </div>
-                                                <p class="steptitle">Personal</p>
+                                                <p class="steptitle">2- Criminal History</p>
                                             </div>
-                                            
-
                                             
                                             <div class="form-layer-step active">
                                                 <div class="form-layer-step-icon"><i class="far fa-credit-card"></i></div>
-                                                <p class="steptitle">Payment Info</p>
+                                                <p class="steptitle">3- Needs Survey</p>
                                             </div>
-                                            
-
                                             
                                             <div class="form-layer-step currentstep">
                                                 <div class="form-layer-step-icon activestep"><i class="fas fa-check"></i>
                                                 </div>
-                                                <p class="steptitle">Confirm</p>
+                                                <p class="steptitle">4- Health Insurance</p>
                                             </div>
                                             
+                                            <div class="form-layer-step">
+                                                <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                </div>
+                                                <p class="steptitle">5- Others info</p>
+                                            </div>
                                         </div>
 
-                                        <h3 class="section-form-title">Confirm Details</h3>
+                                        <h3 class="section-form-title">Health Insurance</h3>
+
                                         <div class="row">
-                                            <div class="contentBoxMargin col-sm-12 text-center">
-                                                <div id="profile-Image"><img id="userPhoto" src="#"
-                                                        alt="Prifile Image" /></div>
-                                                <h3>Profile Image</h3>
-                                            </div>
-                                            <div class="contentBoxMargin col-sm-12 text-center">
-                                                <h5>Account Information</h5>
-                                                <p id="unameData"></p>
-                                                <p id="emailData"></p>
-                                                <p id="passData"></p>
-                                            </div>
-                                            <div class="contentBoxMargin col-sm-12 text-center">
-                                                <h5>Personal Information:</h5>
-                                                <p id="firstNameData"></p>
-                                                <p id="lastNameData"></p>
-                                                <p id="genderData"></p>
-                                                <p id="birthdateData"></p>
-                                                <p id="addressData"></p>
-                                                <p id="emailaddressData"></p>
-                                                <p id="phoneData"></p>
-                                                <p id="preferedcontactData"></p>
-                                            </div>
-                                            <div class="contentBoxMargin col-sm-12 text-center">
-                                                <h5>Payment Information:</h5>
-                                                <p id="paymenttypeData"></p>
-                                                <p id="hnameData"></p>
-                                                <p id="cardnumberData"></p>
-                                                <p id="cvcData"></p>
-                                                <p id="expirydateData"></p>
-                                            </div>
-                                            <div class="help-block with-errors mandatory-error"></div>
-                                            <div class="form-group col-sm-12">
-                                                <div id="humanCheckCaptchaBox"></div>
-                                                <div id="firstDigit"></div> + <div id="secondDigit"></div> =
-                                                <input name="humanCheckCaptchaInput" id="humanCheckCaptchaInput"
-                                                    placeholder="" maxlength="3" class="form-control" type="text"
-                                                    required data-error="Please solve Captcha">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_insurace">
+                                                <label for="cus_insurace" class="form-label">Do you have a health insurance?<span class="text-danger">*</span></label>
+                                                <select class="form-select mb-3" name="cus_insurace" id="cus_insurace" required data-error="Please select">
+                                                    <option value="">Please select</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
+                                                </select>
                                                 <div class="help-block with-errors"></div>
+                                            </div>  
+                
+                                            <div id="ins_box">
+                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_carrier">
+                                                    <label for="cus_carrier">Carrier<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" value="" id="cus_carrier" name="cus_carrier" required data-error="Please select">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_mem_id">
+                                                    <label for="cus_mem_id">Member ID<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" value="" id="cus_mem_id" name="cus_mem_id" required data-error="Please select">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_grp_no">
+                                                    <label for="cus_grp_no">Group No<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" value="" id="cus_grp_no" name="cus_grp_no" required data-error="Please select">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                             </div>
-
-
-
-                                            
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <div id="AggreData"><strong>Agree with terms &amp;
-                                                            conditions:</strong> <input name="aggre" id="aggre2"
-                                                            value="1" checked disabled type="checkbox"></div>
-                                                </div>
-
-
-
-
-
-                                                <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                    <label for="is_insurace" class="form-label">Do you have a health insurance?<span class="text-danger">*</span></label>
-                                                    <select class="form-select mb-3" name="is_health" id="is_insurace">
-                    
-                                                        <option value="">Please select</option>
-                                                        <option value="1">
-                    
-                                                            Yes</option>
-                                                        <option value="2">
-                                                            No</option>
-                                                    </select>
-                                                </fieldset>
-                    
-                                                <input type="hidden" name="gl_ID" value="195">
-                    
-                    
-                                                <div id="ins_box" style="display: block;">
-                                                    <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                        <label for="carrier">Carrier<span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" value="" id="carrier" name="carrier">
-                                                    </fieldset>
-                                                    <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                        <label for="mem_id">Member ID<span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" value="" id="mem_id" name="mem_id">
-                                                    </fieldset>
-                                                    <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                        <label for="grp_no">Group No<span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" value="" id="grp_no" name="grp_no">
-                                                    </fieldset>
-                                                </div>
-                                                <div id="mgsFormSubmit" class="hidden"></div>
-                                                <div id="final-step-buttons" class="form-group  signUpForm-step-4">
-                                                    <button class="btn btn-custom" type="button"
-                                                        onclick="previousStep3()"><span class="fas fa-arrow-left"></span>
-                                                        Back</button>
-                                                    <button id="Submit" class="btn btn-custom float-end"
-                                                        type="submit">Submit </button>
-                                                </div>
+                                            <div id="final-step-buttons" class="form-group  signUpForm-step-4">
+                                                <button class="btn btn-custom" type="button"
+                                                    onclick="previousStep3()"><span class="fas fa-arrow-left"></span>
+                                                    Back</button>
+                                                    <button class="btn btn-custom float-end" type="button"
+                                                    onclick="nextStep5()">Next <span
+                                                        class="fas fa-arrow-right"></span></button>
                                             </div>
                                         </div>
                                     </fieldset>
                                 </div>
 
                                 <div id="section-5" class="signUpForm-step-wrap review-submit-section slide-right">
-                                    <h3 class="section-title">Step 4 of 4: Review &amp; Submit</h3>
+                                    <h3 class="section-title">Step 5 of 5: Review &amp; Submit</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -919,128 +730,96 @@
                                             
                                             <div class="form-layer-step active">
                                                 <div class="form-layer-step-icon"><i class="fas fa-unlock-alt"></i></div>
-                                                <p class="steptitle">Account</p>
+                                                <p class="steptitle">1- Basic Information</p>
                                             </div>
-                                            
-
                                             
                                             <div class="form-layer-step active">
                                                 <div class="form-layer-step-icon"><i class="fas fa-user"></i>
                                                 </div>
-                                                <p class="steptitle">Personal</p>
+                                                <p class="steptitle">2- Criminal History</p>
                                             </div>
-                                            
-
                                             
                                             <div class="form-layer-step active">
                                                 <div class="form-layer-step-icon"><i class="far fa-credit-card"></i></div>
-                                                <p class="steptitle">Payment Info</p>
+                                                <p class="steptitle">3- Needs Survey</p>
                                             </div>
                                             
-
-                                            
-                                            <div class="form-layer-step currentstep">
-                                                <div class="form-layer-step-icon activestep"><i class="fas fa-check"></i>
+                                            <div class="form-layer-step active">
+                                                <div class="form-layer-step-icon"><i class="fas fa-check"></i>
                                                 </div>
-                                                <p class="steptitle">Confirm</p>
+                                                <p class="steptitle">4- Health Insurance</p>
                                             </div>
-                                            
+
+                                            <div class="form-layer-step currentstep">
+                                                <div class="form-layer-step-icon  activestep"><i class="fas fa-check"></i>
+                                                </div>
+                                                <p class="steptitle">5- Others info</p>
+                                            </div>
                                         </div>
 
-                                        <h3 class="section-form-title">Confirm Details</h3>
+                                        <h3 class="section-form-title">Others info</h3>
                                         <div class="row">
-                                            <div class="contentBoxMargin col-sm-12 text-center">
-                                                <div id="profile-Image"><img id="userPhoto" src="#"
-                                                        alt="Prifile Image" /></div>
-                                                <h3>Profile Image</h3>
-                                            </div>
-                                            <div class="contentBoxMargin col-sm-12 text-center">
-                                                <h5>Account Information</h5>
-                                                <p id="unameData"></p>
-                                                <p id="emailData"></p>
-                                                <p id="passData"></p>
-                                            </div>
-                                            <div class="contentBoxMargin col-sm-12 text-center">
-                                                <h5>Personal Information:</h5>
-                                                <p id="firstNameData"></p>
-                                                <p id="lastNameData"></p>
-                                                <p id="genderData"></p>
-                                                <p id="birthdateData"></p>
-                                                <p id="addressData"></p>
-                                                <p id="emailaddressData"></p>
-                                                <p id="phoneData"></p>
-                                                <p id="preferedcontactData"></p>
-                                            </div>
-                                            <div class="contentBoxMargin col-sm-12 text-center">
-                                                <h5>Payment Information:</h5>
-                                                <p id="paymenttypeData"></p>
-                                                <p id="hnameData"></p>
-                                                <p id="cardnumberData"></p>
-                                                <p id="cvcData"></p>
-                                                <p id="expirydateData"></p>
-                                            </div>
-                                            <div class="help-block with-errors mandatory-error"></div>
-                                            <div class="form-group col-sm-12">
-                                                <div id="humanCheckCaptchaBox"></div>
-                                                <div id="firstDigit"></div> + <div id="secondDigit"></div> =
-                                                <input name="humanCheckCaptchaInput" id="humanCheckCaptchaInput"
-                                                    placeholder="" maxlength="3" class="form-control" type="text"
-                                                    required data-error="Please solve Captcha">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_more_friends">
+                                                <label for="cus_more_friends">Could you use more friends?<span class="text-danger">*</span></label>
+                                                <select class="form-select" name="cus_more_friends" id="cus_more_friends" required data-error="Please select">                                    
+                                                    <option value="">Please select</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
+                                                </select>
                                                 <div class="help-block with-errors"></div>
                                             </div>
 
-
-
-                                            
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <div id="AggreData"><strong>Agree with terms &amp;
-                                                            conditions:</strong> <input name="aggre" id="aggre2"
-                                                            value="1" checked disabled type="checkbox"></div>
-                                                </div>
-
-
-
-
-
-                                                <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                    <label for="is_insurace" class="form-label">Do you have a health insurance?<span class="text-danger">*</span></label>
-                                                    <select class="form-select mb-3" name="is_health" id="is_insurace">
-                    
+                                            <div id="consbox">
+                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_counselor">
+                                                    <label for="cus_counselor">Do you believe you could benefit from having a mentor or counselor?<span class="text-danger">*</span></label>
+                                                    <select class="form-select" name="cus_counselor" id="cus_counselor"  required data-error="Please select">
                                                         <option value="">Please select</option>
-                                                        <option value="1">
-                    
-                                                            Yes</option>
-                                                        <option value="2">
-                                                            No</option>
+                                                        <option value="1">Yes</option>
+                                                        <option value="2">No</option>
                                                     </select>
-                                                </fieldset>
-                    
-                                                <input type="hidden" name="gl_ID" value="195">
-                    
-                    
-                                                <div id="ins_box" style="display: block;">
-                                                    <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                        <label for="carrier">Carrier<span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" value="" id="carrier" name="carrier">
-                                                    </fieldset>
-                                                    <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                        <label for="mem_id">Member ID<span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" value="" id="mem_id" name="mem_id">
-                                                    </fieldset>
-                                                    <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                        <label for="grp_no">Group No<span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" value="" id="grp_no" name="grp_no">
-                                                    </fieldset>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
-                                                <div id="mgsFormSubmit" class="hidden"></div>
-                                                <div id="final-step-buttons" class="form-group  signUpForm-step-4">
-                                                    <button class="btn btn-custom" type="button"
-                                                        onclick="previousStep3()"><span class="fas fa-arrow-left"></span>
-                                                        Back</button>
-                                                    <button id="Submit" class="btn btn-custom float-end"
-                                                        type="submit">Submit </button>
-                                                </div>
+                                            </div>
+                                    
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_inv_rom">
+                                                <label for="cus_is_inv_rom">Are you looking for someone with whom you could be involved romantically?<span class="text-danger">*</span></label>
+                                                <select class="form-select" name="cus_is_inv_rom" id="cus_is_inv_rom" required data-error="Please select">
+                                                    <option value="">Please select</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
+                                                </select>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_mental_ill">
+                                                <label for="cus_is_mental_ill">Have you ever been diagnosed with a mental illness?<span class="text-danger">*</span></label>
+                                                <select class="form-select" name="cus_is_mental_ill" id="cus_is_mental_ill" required data-error="Please select">
+                                                    <option value="">Please select</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
+                                                </select>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_phy_dis">
+                                                <label for="cus_phy_dis">Do you have any known physical disabilities<span class="text-danger">*</span></label>
+                                                <textarea class="form-control" id="cus_phy_dis" name="cus_phy_dis"  required data-error="Please select"></textarea>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_comments">
+                                                <label for="cus_comments">Please enter anything else you would like for us to know?</label><br>
+                                                <textarea class="form-control" id="cus_comments" name="cus_comments"></textarea>
+                                                
+                                            </div>
+                                        
+                                            <div id="mgsFormSubmit" class="hidden"></div>
+                                            <div id="final-step-buttons" class="form-group  signUpForm-step-4">
+                                                <button class="btn btn-custom" type="button"
+                                                    onclick="previousStep4()"><span class="fas fa-arrow-left"></span>
+                                                    Back</button>
+                                                <button id="Submit" class="btn btn-custom float-end"
+                                                    type="submit" onclick="nextStep6()">Submit </button>
                                             </div>
                                         </div>
                                     </fieldset>

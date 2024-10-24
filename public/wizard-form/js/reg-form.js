@@ -71,20 +71,20 @@ document.addEventListener("touchstart", function() {},false);
 			formError();
 			submitMSG(false, "Please fill in the form properly!");
 		} else {
-			var mathPart_1 = parseInt( $("#mathfirstnum").val(), 10 );
-			var mathPart_2 = parseInt( $("#mathsecondnum").val(), 10 );       
-			var correctMathSolution = parseInt( ( mathPart_1 + mathPart_2 ), 10 );
-			var inputHumanAns = $("#humanCheckCaptchaInput").val();
-			if (inputHumanAns == correctMathSolution){
+			// var mathPart_1 = parseInt( $("#mathfirstnum").val(), 10 );
+			// var mathPart_2 = parseInt( $("#mathsecondnum").val(), 10 );       
+			// var correctMathSolution = parseInt( ( mathPart_1 + mathPart_2 ), 10 );
+			// var inputHumanAns = $("#humanCheckCaptchaInput").val();
+			// if (inputHumanAns == correctMathSolution){
 				//everything looks good!
 				event.preventDefault();
 				submitForm();					
-			}
-			else{
-				submitMSG(false, "Please solve Human Captcha!!!");
-				sweetAlert("Oops...", "Please solve Human Captcha!!!", "error");
-				return false;
-			}
+			// }
+			// else{
+			// 	submitMSG(false, "Please solve Human Captcha!!!");
+			// 	sweetAlert("Oops...", "Please solve Human Captcha!!!", "error");
+			// 	return false;
+			// }
 		}
 	});
 	
@@ -451,7 +451,6 @@ document.addEventListener("touchstart", function() {},false);
 		// 	sweetAlert("Oops...", "Please Agree with terms & conditions!", "error");return false;
 		// }
 		
-		var paymenttype = $("#cus_name").val();
 		var cus_food = $("#cus_food").val();
 		var cus_cloth = $("#cus_cloth").val();
 		var cus_shelter = $("#cus_shelter").val();
@@ -552,7 +551,7 @@ document.addEventListener("touchstart", function() {},false);
 		else
 			$( ".valid_cus_ssc_no .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
 		
-		if( paymenttype && cus_food && cus_cloth && cus_shelter && cus_tra && cus_emp && cus_extra_income && cus_church  && cus_bcert && cus_born_state && cus_state_id && cus_state_no && cus_d_lice && cus_lice_no && cus_ss_card && cus_ssc_no ) {
+		if( cus_food && cus_cloth && cus_shelter && cus_tra && cus_emp && cus_extra_income && cus_church  && cus_bcert && cus_born_state && cus_state_id && cus_state_no && cus_d_lice && cus_lice_no && cus_ss_card && cus_ssc_no ) {
 			$( "#section-3 .help-block.with-errors.mandatory-error" ).html( '' );
 			$( "#section-3" ).removeClass( "open" );
 			$( "#section-3" ).addClass( "slide-left" );
@@ -570,6 +569,106 @@ document.addEventListener("touchstart", function() {},false);
 		$( "#section-3" ).addClass( "open" );
 		$( "#section-4" ).removeClass( "open" );
 		$( "#section-4" ).addClass( "slide-right" );
+	}
+
+	function nextStep5() {
+		var cus_insurace = $("#cus_insurace").val();
+		var cus_carrier = $("#cus_carrier").val();
+		var cus_mem_id = $("#cus_mem_id").val();
+		var cus_grp_no = $("#cus_grp_no").val();
+
+		if( cus_insurace )
+			$( ".valid_cus_insurace .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_insurace .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_carrier )
+			$( ".valid_cus_carrier .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_carrier .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter carrier</li></ul>' );
+
+		if( cus_mem_id )
+			$( ".valid_cus_mem_id .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_mem_id .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter member id</li></ul>' );
+		
+		if( cus_grp_no )
+			$( ".valid_cus_grp_no .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_grp_no .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter group no</li></ul>' );
+
+		if( cus_insurace && cus_carrier && cus_mem_id && cus_grp_no ) {
+			$( "#section-4 .help-block.with-errors.mandatory-error" ).html( '' );
+			$( "#section-4" ).removeClass( "open" );
+			$( "#section-4" ).addClass( "slide-left" );
+			$( "#section-5" ).removeClass( "slide-right" );
+			$( "#section-5" ).addClass( "open" );
+		}
+		else {
+			$( "#section-4 .help-block.with-errors.mandatory-error" ).html( '<ul class="list-unstyled"><li>Please Fill the Form Properly</li></ul>' );
+			sweetAlert("Oops...", "Please Fill the Form Properly!", "error");
+		}
+	}
+
+	function previousStep4() {
+		$( "#section-4" ).removeClass( "slide-left" );
+		$( "#section-4" ).addClass( "open" );
+		$( "#section-5" ).removeClass( "open" );
+		$( "#section-5" ).addClass( "slide-right" );
+	}
+
+
+	function nextStep6() {
+
+		var cus_more_friends = $('#cus_more_friends').val(); 
+		var cus_counselor = $('#cus_counselor').val(); 
+		var cus_is_inv_rom = $('#cus_is_inv_rom').val(); 
+		var cus_is_mental_ill = $('#cus_is_mental_ill').val(); 
+		var cus_phy_dis = $('#cus_phy_dis').val(); 
+		var cus_comments = $('#cus_comments').val();
+
+		
+		if( cus_more_friends )
+			$( ".valid_cus_more_friends .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_more_friends .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_counselor )
+			$( ".valid_cus_counselor .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_counselor .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter carrier</li></ul>' );
+
+		if( cus_is_inv_rom )
+			$( ".valid_cus_is_inv_rom .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_is_inv_rom .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter member id</li></ul>' );
+		
+		if( cus_is_mental_ill )
+			$( ".valid_cus_is_mental_ill .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_is_mental_ill .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter group no</li></ul>' );
+
+		if( cus_phy_dis )
+			$( ".valid_cus_phy_dis .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_phy_dis .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter group no</li></ul>' );
+
+		if( cus_comments )
+			$( ".valid_cus_comments .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_comments .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter group no</li></ul>' );	
+
+		if(cus_more_friends && cus_counselor && cus_is_inv_rom && cus_is_mental_ill && cus_phy_dis && cus_comments ) {
+			$( "#section-5 .help-block.with-errors.mandatory-error" ).html( '' );
+			$( "#section-5" ).removeClass( "open" );
+			$( "#section-5" ).addClass( "slide-left" );
+			$( "#section-6" ).removeClass( "slide-right" );
+			$( "#section-6" ).addClass( "open" );
+		}
+		else {
+			$( "#section-5 .help-block.with-errors.mandatory-error" ).html( '<ul class="list-unstyled"><li>Please Fill the Form Properly</li></ul>' );
+			sweetAlert("Oops...", "Please Fill the Form Properly!", "error");
+		}
 	}
 	
 /*
