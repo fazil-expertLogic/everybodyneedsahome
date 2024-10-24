@@ -376,7 +376,7 @@
 
                                         <h3 class="section-form-title">Criminal History</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
-                                        {{--  ------------------------------remove------------------------------  --}}
+                                        
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_pp">
@@ -484,8 +484,8 @@
                                             </div>
                                             
                                         </div>
-
-                                        <h3 class="section-title">Payment Details: </h3>
+                                        {{--  =============================== remove =============================== --}}
+                                        {{-- <h3 class="section-title">Payment Details: </h3>
                                         <div class="help-block with-errors mandatory-error"></div>
                                         <div class="form-group validpaymenttype">
                                             <select class="form-control" name="paymenttype" id="paymenttype"
@@ -537,303 +537,229 @@
                                                             Conditions</a></label></li>
                                             </ul>
                                             <div class="help-block with-errors"></div>
-                                        </div>
-
+                                        </div> --}}
+                                        {{--  =============================== remove =============================== --}}
 
 
                                         <div class="row">
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <label for="food" class="form-label">Do you need food?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="food" name="is_food" aria-label="Food">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_food">
+                                                <label for="cus_food" class="form-label">Do you need food?<span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="cus_food" name="cus_food" aria-label="Food" required data-error="Please select">
                                                     <option value="">Please select</option>
-                                                    <option value="1">Yes
-                                                    </option>
-                                                    <option value="2">No
-                                                    </option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
                                                 </select>
-                                            </fieldset>
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <label for="clothing" class="form-label">Do you need clothing?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="clothing" name="is_cloth" aria-label="Clothing">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_cloth">
+                                                <label for="cus_cloth" class="form-label">Do you need clothing?<span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="cus_cloth" name="cus_cloth" aria-label="Clothing" required data-error="Please select">
                                                     <option value="">Please select</option>
-                                                    <option value="1">
-                                                        Yes</option>
-                                                    <option value="2">No
-                                                    </option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
                                                 </select>
-                                            </fieldset>
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <label for="shelter" class="form-label">Do you need shelter/housing?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="shelter" name="is_shelter" aria-label="Shelter">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_shelter">
+                                                <label for="cus_shelter" class="form-label">Do you need shelter/housing?<span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="cus_shelter" name="cus_shelter" aria-label="Shelter" required data-error="Please select">
                                                     <option value="">Please select</option>
-                                                    <option value="1">
-                                                        Yes</option>
-                                                    <option value="2">
-                                                        No</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
                                                 </select>
-                                            </fieldset>
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <label for="transportation" class="form-label">Do you need transportation?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="transportation" name="is_transport" aria-label="Transportation">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_tra">
+                                                <label for="cus_tra" class="form-label">Do you need transportation?<span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="cus_tra" name="cus_tra" aria-label="Transportation" required data-error="Please select">
                                                     <option value="">Please select</option>
-                                                    <option value="1">
-                                                        Yes</option>
-                                                    <option value="2">
-                                                        No</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
                                                 </select>
-                                            </fieldset>
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <label for="employment" class="form-label">Do you need employment?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="employment" name="is_emp" aria-label="Employment">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_emp">
+                                                <label for="cus_emp" class="form-label">Do you need employment?<span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="cus_emp" name="cus_emp" aria-label="Employment" required data-error="Please select">
                                                     <option value="">Please select</option>
-                                                    <option value="1">Yes
-                                                    </option>
-                                                    <option value="2">No
-                                                    </option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
                                                 </select>
-                                            </fieldset>
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <label for="exIncome" class="form-label">Do you need extra income (Gigs, Plasma, etc)?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="exIncome" name="extra_incom" aria-label="Extra Income">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_extra_income">
+                                                <label for="cus_extra_income" class="form-label">Do you need extra income (Gigs, Plasma, etc)?<span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="cus_extra_income" name="cus_extra_income" aria-label="Extra Income" required data-error="Please select">
                                                     <option value="">Please select</option>
-                                                    <option value="1">
-                                                        Yes
-                                                    </option>
-                                                    <option value="2">
-                                                        No
-                                                    </option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
                                                 </select>
-                                            </fieldset>
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <label for="church" class="form-label">Which church did you attend?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="church" name="church" aria-label="Church">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_church">
+                                                <label for="cus_church" class="form-label">Which church did you attend?<span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="cus_church" name="cus_church" aria-label="Church" required data-error="Please select">
                                                     <option value="">Choose one</option>
-                                                                                                <option value="First Baptist Church">
-                                                            First Baptist Church</option>
-                                                                                                <option value="Second Presbyterian Church">
-                                                            Second Presbyterian Church</option>
-                                                                                                <option value="Grace Lutheran Church">
-                                                            Grace Lutheran Church</option>
-                                                                                                <option value="Saint Mary's Catholic Church">
-                                                            Saint Mary's Catholic Church</option>
-                                                                                                <option value="Community Church of Christ">
-                                                            Community Church of Christ</option>
-                                                                                                <option value="Zion United Methodist Church">
-                                                            Zion United Methodist Church</option>
-                                                                                                <option value="Faith Baptist Church">
-                                                            Faith Baptist Church</option>
-                                                                                                <option value="Emmanuel Episcopal Church">
-                                                            Emmanuel Episcopal Church</option>
-                                                                                                <option value="Mount Hope Church">
-                                                            Mount Hope Church</option>
-                                                                                                <option value="Hope Community Church">
-                                                            Hope Community Church</option>
-                                                                                                <option value="Trinity United Church of Christ">
-                                                            Trinity United Church of Christ</option>
-                                                                                                <option value="New Life Assembly">
-                                                            New Life Assembly</option>
-                                                                                                <option value="Cornerstone Church">
-                                                            Cornerstone Church</option>
-                                                                                                <option value="Calvary Baptist Church">
-                                                            Calvary Baptist Church</option>
-                                                                                                <option value="Crossroads Church">
-                                                            Crossroads Church</option>
-                                                                                                <option value="City Harvest Church">
-                                                            City Harvest Church</option>
-                                                                                                <option value="New Hope Christian Church">
-                                                            New Hope Christian Church</option>
-                                                                                                <option value="Abundant Life Church">
-                                                            Abundant Life Church</option>
-                                                                                                <option value="Victory Christian Church">
-                                                            Victory Christian Church</option>
-                                                                                                <option value="Praise Chapel">
-                                                            Praise Chapel</option>
-                                                                                            <option value="other">
-                                                        Other</option>
+                                                    <option value="First Baptist Church">First Baptist Church</option>
+                                                    <option value="Second Presbyterian Church">Second Presbyterian Church</option>
+                                                    <option value="Grace Lutheran Church">Grace Lutheran Church</option>
+                                                    <option value="Saint Mary's Catholic Church">Saint Mary's Catholic Church</option>
+                                                    <option value="Community Church of Christ">Community Church of Christ</option>
+                                                    <option value="Zion United Methodist Church">Zion United Methodist Church</option>
+                                                    <option value="Faith Baptist Church">Faith Baptist Church</option>
+                                                    <option value="Emmanuel Episcopal Church">Emmanuel Episcopal Church</option>
+                                                    <option value="Mount Hope Church">Mount Hope Church</option>
+                                                    <option value="Hope Community Church">Hope Community Church</option>
+                                                    <option value="Trinity United Church of Christ">Trinity United Church of Christ</option>
+                                                    <option value="New Life Assembly">New Life Assembly</option>
+                                                    <option value="Cornerstone Church">Cornerstone Church</option>
+                                                    <option value="Calvary Baptist Church">Calvary Baptist Church</option>
+                                                    <option value="Crossroads Church">Crossroads Church</option>
+                                                    <option value="City Harvest Church">City Harvest Church</option>
+                                                    <option value="New Hope Christian Church">New Hope Christian Church</option>
+                                                    <option value="Abundant Life Church">Abundant Life Church</option>
+                                                    <option value="Victory Christian Church">Victory Christian Church</option>
+                                                    <option value="Praise Chapel">Praise Chapel</option>
+                                                    <option value="other">Other</option>
                                                 </select>
-                                            </fieldset>
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-            
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_other_church">
                                                 <div id="custom-church-container" style="display: none;">
-                                                    <label for="church" class="form-label">Other Church Name<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="custom_church" name="custom_church" placeholder="Enter other church name" value=" ">
+                                                    <label for="cus_other_church" class="form-label">Other Church Name<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="cus_other_church" name="cus_other_church" placeholder="Enter other church name" value=" ">
                                                 </div>
-                                            </fieldset>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
                                             <!-- Hidden input for custom church name -->
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <label for="bCertificate" class="form-label">Do you have your birth certificate?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="is_yourID" name="is_bcert" aria-label="Birth Certificate">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_bcert">
+                                                <label for="cus_bcert" class="form-label">Do you have your birth certificate?<span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="cus_bcert" name="cus_bcert" aria-label="Birth Certificate" required data-error="Please select">
                                                     <option value="">Please select</option>
-            
-                                                    <option value="1">
-                                                        Yes</option>
-                                                    <option value="2">
-                                                        No</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
                                                 </select>
-                                            </fieldset>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
             
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-            
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_born_state">
                                                 <div id="statebox" style="display: block;">
-                                                    <label for="bState" class="form-label">What state were you born?<span class="text-danger">*</span></label>
-                                                    <select class="form-select py-2" id="bState" name="state_name" aria-label="State">
+                                                    <label for="cus_born_state" class="form-label">What state were you born?<span class="text-danger">*</span></label>
+                                                    <select class="form-select py-2" id="cus_born_state" name="cus_born_state" aria-label="State" required data-error="Please select">
                                                         <option value="">Please select</option>
-                                                                                                        <option value="AL">
-                                                                Alabama</option>
-                                                                                                        <option value="AK">
-                                                                Alaska</option>
-                                                                                                        <option value="AZ">
-                                                                Arizona</option>
-                                                                                                        <option value="AR">
-                                                                Arkansas</option>
-                                                                                                        <option value="CA">
-                                                                California</option>
-                                                                                                        <option value="CO">
-                                                                Colorado</option>
-                                                                                                        <option value="CT">
-                                                                Connecticut</option>
-                                                                                                        <option value="DE">
-                                                                Delaware</option>
-                                                                                                        <option value="FL">
-                                                                Florida</option>
-                                                                                                        <option value="GA">
-                                                                Georgia</option>
-                                                                                                        <option value="HI">
-                                                                Hawaii</option>
-                                                                                                        <option value="ID">
-                                                                Idaho</option>
-                                                                                                        <option value="IL">
-                                                                Illinois</option>
-                                                                                                        <option value="IN">
-                                                                Indiana</option>
-                                                                                                        <option value="IA">
-                                                                Iowa</option>
-                                                                                                        <option value="KS">
-                                                                Kansas</option>
-                                                                                                        <option value="KY">
-                                                                Kentucky</option>
-                                                                                                        <option value="LA">
-                                                                Louisiana</option>
-                                                                                                        <option value="ME">
-                                                                Maine</option>
-                                                                                                        <option value="MD">
-                                                                Maryland</option>
-                                                                                                        <option value="MA">
-                                                                Massachusetts</option>
-                                                                                                        <option value="MI">
-                                                                Michigan</option>
-                                                                                                        <option value="MN">
-                                                                Minnesota</option>
-                                                                                                        <option value="MS">
-                                                                Mississippi</option>
-                                                                                                        <option value="MO">
-                                                                Missouri</option>
-                                                                                                        <option value="MT">
-                                                                Montana</option>
-                                                                                                        <option value="NE">
-                                                                Nebraska</option>
-                                                                                                        <option value="NV">
-                                                                Nevada</option>
-                                                                                                        <option value="NH">
-                                                                New Hampshire</option>
-                                                                                                        <option value="NJ">
-                                                                New Jersey</option>
-                                                                                                        <option value="NM">
-                                                                New Mexico</option>
-                                                                                                        <option value="NY">
-                                                                New York</option>
-                                                                                                        <option value="NC">
-                                                                North Carolina</option>
-                                                                                                        <option value="ND">
-                                                                North Dakota</option>
-                                                                                                        <option value="OH">
-                                                                Ohio</option>
-                                                                                                        <option value="OK">
-                                                                Oklahoma</option>
-                                                                                                        <option value="OR">
-                                                                Oregon</option>
-                                                                                                        <option value="PA">
-                                                                Pennsylvania</option>
-                                                                                                        <option value="RI">
-                                                                Rhode Island</option>
-                                                                                                        <option value="SC">
-                                                                South Carolina</option>
-                                                                                                        <option value="SD">
-                                                                South Dakota</option>
-                                                                                                        <option value="TN">
-                                                                Tennessee</option>
-                                                                                                        <option value="TX">
-                                                                Texas</option>
-                                                                                                        <option value="UT">
-                                                                Utah</option>
-                                                                                                        <option value="VT">
-                                                                Vermont</option>
-                                                                                                        <option value="VA">
-                                                                Virginia</option>
-                                                                                                        <option value="WA">
-                                                                Washington</option>
-                                                                                                        <option value="WV">
-                                                                West Virginia</option>
-                                                                                                        <option value="WI">
-                                                                Wisconsin</option>
-                                                                                                        <option value="WY">
-                                                                Wyoming</option>
-                                                                                                </select>
+                                                        <option value="AL">Alabama</option>
+                                                        <option value="AK">Alaska</option>
+                                                        <option value="AZ">Arizona</option>
+                                                        <option value="AR">Arkansas</option>
+                                                        <option value="CA">California</option>
+                                                        <option value="CO">Colorado</option>
+                                                        <option value="CT">Connecticut</option>
+                                                        <option value="DE">Delaware</option>
+                                                        <option value="FL">Florida</option>
+                                                        <option value="GA">Georgia</option>
+                                                        <option value="HI">Hawaii</option>
+                                                        <option value="ID">Idaho</option>
+                                                        <option value="IL">Illinois</option>
+                                                        <option value="IN">Indiana</option>
+                                                        <option value="IA">Iowa</option>
+                                                        <option value="KS">Kansas</option>
+                                                        <option value="KY">Kentucky</option>
+                                                        <option value="LA">Louisiana</option>
+                                                        <option value="ME">Maine</option>
+                                                        <option value="MD">Maryland</option>
+                                                        <option value="MA">Massachusetts</option>
+                                                        <option value="MI">Michigan</option>
+                                                        <option value="MN">Minnesota</option>
+                                                        <option value="MS">Mississippi</option>
+                                                        <option value="MO">Missouri</option>
+                                                        <option value="MT">Montana</option>
+                                                        <option value="NE">Nebraska</option>
+                                                        <option value="NV">Nevada</option>
+                                                        <option value="NH">New Hampshire</option>
+                                                        <option value="NJ">New Jersey</option>
+                                                        <option value="NM">New Mexico</option>
+                                                        <option value="NY">New York</option>
+                                                        <option value="NC">North Carolina</option>
+                                                        <option value="ND">North Dakota</option>
+                                                        <option value="OH">Ohio</option>
+                                                        <option value="OK">Oklahoma</option>
+                                                        <option value="OR">Oregon</option>
+                                                        <option value="PA">Pennsylvania</option>
+                                                        <option value="RI">Rhode Island</option>
+                                                        <option value="SC">South Carolina</option>
+                                                        <option value="SD">South Dakota</option>
+                                                        <option value="TN">Tennessee</option>
+                                                        <option value="TX">Texas</option>
+                                                        <option value="UT">Utah</option>
+                                                        <option value="VT">Vermont</option>
+                                                        <option value="VA">Virginia</option>
+                                                        <option value="WA">Washington</option>
+                                                        <option value="WV">West Virginia</option>
+                                                        <option value="WI">Wisconsin</option>
+                                                        <option value="WY">Wyoming</option>
+                                                    </select>
                                                 </div>
-                                            </fieldset>
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <label for="is_state_id" class="form-label">Do you have state ID?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="is_statedID" name="is_state_id" aria-label="is_state_id">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_state_id">
+                                                <label for="cus_state_id" class="form-label">Do you have state ID?<span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="cus_state_id" name="cus_state_id" aria-label="is_state_id" required data-error="Please select">
                                                     <option value="">Please select</option>
-                                                    <option value="1">
-                                                        Yes</option>
-                                                    <option value="2">
-                                                        No</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
                                                 </select>
-                                            </fieldset>
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-            
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_state_no">
                                                 <div id="stateidbox" style="display: block;">
-                                                    <label for="StateNo" class="form-label">Please enter the state number<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="stateIDno" value="" name="stateIDno">
+                                                    <label for="cus_state_no" class="form-label">Please enter the state number<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control py-2" id="cus_state_no" value="" name="cus_state_no">
                                                 </div>
-                                            </fieldset>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
             
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <label for="dl" class="form-label">Do you have driving license?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="is_DL" name="is_DL" aria-label="DL">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_d_lice">
+                                                <label for="cus_d_lice" class="form-label">Do you have driving license?<span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="cus_d_lice" name="cus_d_lice" aria-label="DL" required data-error="Please select">
                                                     <option value="">Please select</option>
-                                                    <option value="1">Yes
-                                                    </option>
-                                                    <option value="2">No
-                                                    </option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
                                                 </select>
-                                            </fieldset>
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <div id="licencebox" style="display: none;">
-                                                    <label for="licno" class="form-label">Please enter the driving license
-                                                        number<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="licenseNo" value="" name="DlicenseNo">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_lice_no">
+                                                <div id="cus_lice_no_div">
+                                                    <label for="cus_lice_no" class="form-label">Please enter the driving license number<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control py-2" id="cus_lice_no" value="" name="cus_lice_no" data-error="Please enter license number">
                                                 </div>
-                                            </fieldset>
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <label for="SocialCard" class="form-label">Do you have a social security card?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="SocialCard" name="is_ss_card" aria-label="Social Security Card">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_ss_card">
+                                                <label for="cus_ss_card" class="form-label">Do you have a social security card?<span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="cus_ss_card" name="cus_ss_card" aria-label="Social Security Card" required data-error="Please select">
                                                     <option value="">Please select</option>
-                                                    <option value="1">
-                                                        Yes</option>
-                                                    <option value="2">
-                                                        No</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
                                                 </select>
-                                            </fieldset>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
             
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <div id="ssnbox" style="display: block;">
-                                                    <label for="StateNo" class="form-label">Please enter the SSN<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="StateNo" value="" name="ss_number" placeholder="******">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_ssc_no">
+                                                <div id="cus_ssc_no_div">
+                                                    <label for="cus_ssc_no" class="form-label">Please enter the SSN<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control py-2" id="cus_ssc_no" value="" name="cus_ssc_no" placeholder="******"  required data-error="Please enter the SSN">
                                                 </div>
-                                            </fieldset>
+                                            <div class="help-block with-errors"></div>
+                                            </div>
                                         </div>
+
                                         <div class="form-group signUpForm-step-3">
                                             <button class="btn btn-custom" type="button" onclick="previousStep2()"><span
                                                     class="fas fa-arrow-left"></span> Back</button>

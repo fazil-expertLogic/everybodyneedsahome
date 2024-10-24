@@ -382,76 +382,177 @@ document.addEventListener("touchstart", function() {},false);
 	function nextStep4() {
 		
 		//inputed value
-		var uname = $("#cus_name").val();
-		var email = $("#email").val();
-		var pass = $("#pass").val();
-		var fname = $("#fname").val();
-		var lname = $("#lname").val();
-		var gender = $("#gender").val();
-		var birthdate = $("#birthdate").val();
-		var address = $("#address").val();
-		var phone = $("#phone").val();
-		var preferedcontact = $('input[name=preferedcontact]:checked').val();
-		var paymenttype = $("#paymenttype").val();
-		var hname = $("#hname").val();
-		var cardnumber = $("#cardnumber").val();
-		var cvc = $("#cvc").val();
-		var expirydate = $("#expirydate").val();
+		// var uname = $("#cus_name").val();
+		// var email = $("#email").val();
+		// var pass = $("#pass").val();
+		// var fname = $("#fname").val();
+		// var lname = $("#lname").val();
+		// var gender = $("#gender").val();
+		// var birthdate = $("#birthdate").val();
+		// var address = $("#address").val();
+		// var phone = $("#phone").val();
+		// var preferedcontact = $('input[name=preferedcontact]:checked').val();
+		// var paymenttype = $("#paymenttype").val();
+		// var hname = $("#hname").val();
+		// var cardnumber = $("#cardnumber").val();
+		// var cvc = $("#cvc").val();
+		// var expirydate = $("#expirydate").val();
 		
 		//write inputed data
-		$( "#unameData" ).html( '<strong>UserName:</strong> '+ uname );
-		$( "#emailData" ).html( '<strong>email:</strong> '+ email );
-		$( "#passData" ).html( '<strong>Password:</strong> *****' );
-		$( "#firstNameData" ).html( '<strong>First Name:</strong> '+ fname );
-		$( "#lastNameData" ).html( '<strong>Last Name:</strong> '+ lname );
-		$( "#genderData" ).html( '<strong>Gender:</strong> '+ gender );
-		$( "#birthdateData" ).html( '<strong>Date Of Birth:</strong> '+ birthdate );
-		$( "#addressData" ).html( '<strong>Address:</strong> '+ address );
-		$( "#phoneData" ).html( '<strong>Phone:</strong> '+ phone );
-		$( "#preferedcontactData" ).html( '<strong>Prefered Contact Method:</strong> '+ preferedcontact );
-		$( "#paymenttypeData" ).html( '<strong>Payment Type:</strong> '+ paymenttype );
-		$( "#hnameData" ).html( '<strong>Card Holder Name:</strong> '+ hname );
-		$( "#cardnumberData" ).html( '<strong>Card Number:</strong> '+ cardnumber );
-		$( "#cvcData" ).html( '<strong>CVC:</strong> ***' );
-		$( "#expirydateData" ).html( '<strong>Expiry Date:</strong> '+ expirydate );
+		// $( "#unameData" ).html( '<strong>UserName:</strong> '+ uname );
+		// $( "#emailData" ).html( '<strong>email:</strong> '+ email );
+		// $( "#passData" ).html( '<strong>Password:</strong> *****' );
+		// $( "#firstNameData" ).html( '<strong>First Name:</strong> '+ fname );
+		// $( "#lastNameData" ).html( '<strong>Last Name:</strong> '+ lname );
+		// $( "#genderData" ).html( '<strong>Gender:</strong> '+ gender );
+		// $( "#birthdateData" ).html( '<strong>Date Of Birth:</strong> '+ birthdate );
+		// $( "#addressData" ).html( '<strong>Address:</strong> '+ address );
+		// $( "#phoneData" ).html( '<strong>Phone:</strong> '+ phone );
+		// $( "#preferedcontactData" ).html( '<strong>Prefered Contact Method:</strong> '+ preferedcontact );
+		// $( "#paymenttypeData" ).html( '<strong>Payment Type:</strong> '+ paymenttype );
+		// $( "#hnameData" ).html( '<strong>Card Holder Name:</strong> '+ hname );
+		// $( "#cardnumberData" ).html( '<strong>Card Number:</strong> '+ cardnumber );
+		// $( "#cvcData" ).html( '<strong>CVC:</strong> ***' );
+		// $( "#expirydateData" ).html( '<strong>Expiry Date:</strong> '+ expirydate );
 		
-		if( paymenttype )
-			$( ".validpaymenttype .help-block.with-errors" ).html( '' );
+		// if( paymenttype )
+		// 	$( ".validpaymenttype .help-block.with-errors" ).html( '' );
+		// else
+		// 	$( ".validpaymenttype .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please Select Payment Type</li></ul>' );
+		
+		// if( hname )
+		// 	$( ".validhname .help-block.with-errors" ).html( '' );
+		// else
+		// 	$( ".validhname .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter Card Holder Name</li></ul>' );
+		
+		// var re16digit = /^\d{16}$/;
+		
+		// if( cardnumber && re16digit.test(cardnumber) )
+		// 	$( ".validcardnumber .help-block.with-errors" ).html( '' );
+		// else {
+		// 	$( ".validcardnumber .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter 16 digit Card Number</li></ul>' );
+		// 	return false;
+		// }
+		
+		// if( cvc )
+		// 	$( ".validcvc .help-block.with-errors" ).html( '' );
+		// else
+		// 	$( ".validcvc .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter CVC</li></ul>' );
+		
+		// if( expirydate )
+		// 	$( ".validexpirydate .help-block.with-errors" ).html( '' );
+		// else
+		// 	$( ".validexpirydate .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter Expiry Date</li></ul>' );
+		
+		// if( $('#aggre').is(":checked") )
+		// 	$( ".validagree .help-block.with-errors" ).html( '' );
+		// else{
+		// 	$( ".validagree .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please Agree with terms &amp; conditions</li></ul>' );
+		// 	sweetAlert("Oops...", "Please Agree with terms & conditions!", "error");return false;
+		// }
+		
+		var paymenttype = $("#cus_name").val();
+		var cus_food = $("#cus_food").val();
+		var cus_cloth = $("#cus_cloth").val();
+		var cus_shelter = $("#cus_shelter").val();
+		var cus_tra = $("#cus_tra").val();
+		var cus_emp = $("#cus_emp").val();
+		var cus_extra_income = $("#cus_extra_income").val();
+		var cus_church = $("#cus_church").val();
+		var cus_other_church = $("#cus_other_church").val();
+		var cus_bcert = $("#cus_bcert").val();
+		var cus_born_state = $("#cus_born_state").val();
+		var cus_state_id = $("#cus_state_id").val();
+		var cus_state_no = $("#cus_state_no").val();
+		var cus_d_lice = $("#cus_d_lice").val();
+		var cus_lice_no = $("#cus_lice_no").val();
+		console.log(cus_lice_no);
+		var cus_ss_card = $("#cus_ss_card").val();
+		var cus_ssc_no = $("#cus_ssc_no").val();
+
+
+
+		if( cus_food )
+			$( ".valid_cus_food .help-block.with-errors" ).html( '' );
 		else
-			$( ".validpaymenttype .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please Select Payment Type</li></ul>' );
-		
-		if( hname )
-			$( ".validhname .help-block.with-errors" ).html( '' );
+			$( ".valid_cus_food .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_cloth )
+			$( ".valid_cus_cloth .help-block.with-errors" ).html( '' );
 		else
-			$( ".validhname .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter Card Holder Name</li></ul>' );
-		
-		var re16digit = /^\d{16}$/;
-		
-		if( cardnumber && re16digit.test(cardnumber) )
-			$( ".validcardnumber .help-block.with-errors" ).html( '' );
-		else {
-			$( ".validcardnumber .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter 16 digit Card Number</li></ul>' );
-			return false;
-		}
-		
-		if( cvc )
-			$( ".validcvc .help-block.with-errors" ).html( '' );
+			$( ".valid_cus_cloth .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_shelter )
+			$( ".valid_cus_shelter .help-block.with-errors" ).html( '' );
 		else
-			$( ".validcvc .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter CVC</li></ul>' );
+			$( ".valid_cus_shelter .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
 		
-		if( expirydate )
-			$( ".validexpirydate .help-block.with-errors" ).html( '' );
+		if( cus_tra )
+			$( ".valid_cus_tra .help-block.with-errors" ).html( '' );
 		else
-			$( ".validexpirydate .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter Expiry Date</li></ul>' );
+			$( ".valid_cus_tra .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_emp )
+			$( ".valid_cus_emp .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_emp .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_extra_income )
+			$( ".valid_cus_extra_income .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_extra_income .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_church )
+			$( ".valid_cus_church .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_church .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_other_church )
+			$( ".valid_cus_other_church .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_other_church .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_bcert )
+			$( ".valid_cus_bcert .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_bcert .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_born_state )
+			$( ".valid_cus_born_state .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_born_state .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_state_id )
+			$( ".valid_cus_state_id .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_state_id .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_state_no )
+			$( ".valid_cus_state_no .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_state_no .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_d_lice )
+			$( ".valid_cus_d_lice .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_d_lice .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_lice_no )
+			$( ".valid_cus_lice_no .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_lice_no .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter license number</li></ul>' );
+
+		if( cus_ss_card )
+			$( ".valid_cus_ss_card .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_ss_card .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_ssc_no )
+			$( ".valid_cus_ssc_no .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_ssc_no .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
 		
-		if( $('#aggre').is(":checked") )
-			$( ".validagree .help-block.with-errors" ).html( '' );
-		else{
-			$( ".validagree .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please Agree with terms &amp; conditions</li></ul>' );
-			sweetAlert("Oops...", "Please Agree with terms & conditions!", "error");return false;
-		}
-		
-		if( $('#aggre').is(":checked") && paymenttype && hname && cardnumber && cvc && expirydate ) {
+		if( paymenttype && cus_food && cus_cloth && cus_shelter && cus_tra && cus_emp && cus_extra_income && cus_church  && cus_bcert && cus_born_state && cus_state_id && cus_state_no && cus_d_lice && cus_lice_no && cus_ss_card && cus_ssc_no ) {
 			$( "#section-3 .help-block.with-errors.mandatory-error" ).html( '' );
 			$( "#section-3" ).removeClass( "open" );
 			$( "#section-3" ).addClass( "slide-left" );
