@@ -376,143 +376,63 @@
 
                                         <h3 class="section-form-title">Criminal History</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
-                                        
-                                        <div class="form-group validfname">
-                                            <input class="form-control" name="fname" id="fname" type="text"
-                                                placeholder="First Name*" required data-error="Please enter First Name">
-                                            <div class="input-group-icon"><i class="fas fa-user"></i></div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group validlname">
-                                            <input class="form-control" name="lname" id="lname" type="text"
-                                                placeholder="Last Name*" required data-error="Please enter Last Name">
-                                            <div class="input-group-icon"><i class="fas fa-user"></i></div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group validgender">
-                                            <select class="form-control" name="gender" id="gender" title=""
-                                                required data-error="Please Select Gender">
-                                                <option value="">--- Select Your Gender* ---</option>
-                                                <option value="Male">Male</option>
-                                                <option value="Femal">Female</option>
-                                            </select>
-                                            <div class="input-group-icon"><i class="fas fa-venus"></i></div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        {{--  ------------------------------remove------------------------------  --}}
-                                        <div id="date-of-birth" class="form-group validbirthdate">
-                                            <input class="form-control" name="birthdate" id="birthdate" type="text"
-                                                placeholder="Date Of Birth*" required
-                                                data-error="Please enter Date Of Birth">
-                                            <div class="input-group-icon"><i class="fas fa-calendar-alt"></i>
-                                            </div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group validaddress">
-                                            <input class="form-control" name="address" id="address" type="text"
-                                                placeholder="Address*" required data-error="Please enter address">
-                                            <div class="input-group-icon"><i class="fas fa-map-marker-alt"></i></div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group validphone">
-                                            <input class="form-control" name="phone" id="phone" type="text"
-                                                placeholder="Phone*" required data-error="Please enter valid phone">
-                                            <div class="input-group-icon"><i class="fas fa-phone"></i></div>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group validpreferedcontact">
-                                            <strong>Prefered Contact Method*: </strong>
-                                            <ul class="radio-inline mgsradio-circle-buttons list-unstyled">
-                                                <li>
-                                                    <input type="radio" name="preferedcontact" id="preferedcontact1"
-                                                        value="email" required
-                                                        data-error="Please Select Contact Method" />
-                                                    <label for="preferedcontact1">email</label>
-                                                    <div class="check"></div>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="preferedcontact" id="preferedcontact2"
-                                                        value="Phone" required
-                                                        data-error="Please Select Contact Method" />
-                                                    <label for="preferedcontact2">Phone</label>
-                                                    <div class="check"></div>
-                                                </li>
-                                            </ul>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <h3 class="section-form-title">Profile Image</h3>
-                                        <div class="form-group attachmentFile">
-                                            <label class="input-group-btn">
-                                                <span class="btn">
-                                                    Browse&hellip; <input name="userfile" id="userfile" type="file">
-                                                </span>
-                                            </label>
-                                            <input type="text" id="attachedFile" class="form-control"
-                                                placeholder="Browse to select file" readonly>
-                                        </div>
                                         {{--  ------------------------------remove------------------------------  --}}
                                         <div class="row">
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6">
-                                                <label for="probation_parole" class="form-label">Are you currently on probation or
-                                                    parole?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="role" id="probation_parole">
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_cus_pp">
+                                                    <label for="cus_pp" class="form-label">Are you currently on probation or parole?<span class="text-danger">*</span></label>
+                                                    <select class="form-select" name="role" id="cus_pp" required data-error="Please select">
+                                                        <option value="">Please select</option>
+                                                        <option value="1">Probation</option>
+                                                        <option value="2">Parole</option>
+                                                        <option value="3">Both</option>
+                                                        <option value="4">Fully Discharged</option>
+                                                        <option value="5">N/A</option>
+                                                    </select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_dfc">
+                                                <label for="cus_dfc" class="form-label">Date of Conviction<span class="text-danger">*</span></label>
+                                                <input type="date" class="form-control" id="cus_dfc" name="cus_dfc" value="" required data-error="Please enter date of conviction">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+            
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_con">
+                                                <label for="cus_con" class="form-label">Conviction<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="cus_con" name="cus_con" value="" required data-error="Please enter conviction">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+            
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_conq">
+                                                <label for="cus_conq" class="form-label">Consequence<span class="text-danger">*</span></label>
+                                                <select class="form-select" name="cus_conq" id="cus_conq" required data-error="Please select">
                                                     <option value="">Please select</option>
-                                                    <option value="5">N/A
-                                                    </option>
-                                                    <option value="1">Probation
-                                                    </option>
-                                                    <option value="2">Parole
-                                                    </option>
-                                                    <option value="3">Both
-                                                    </option>
-                                                    <option value="4">Fully Discharged
-                                                    </option>
+                                                    <option value="1">Probation</option>
+                                                    <option value="2">Incarceration</option>
                                                 </select>
-                                            </fieldset>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
             
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6 criminal-parole-child-fields">
-                                                <label for="date_of_conviction" class="form-label">Date of Conviction<span class="text-danger">*</span></label>
-                                                <input type="date" class="form-control" id="date_of_conviction" name="date_of_con" value="">
-                                            </fieldset>
-            
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6 criminal-parole-child-fields">
-                                                <label for="conviction" class="form-label">Conviction<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="conviction" name="conviction" value="">
-                                            </fieldset>
-            
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6 criminal-parole-child-fields">
-                                                <label for="consequence" class="form-label">Consequence<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="conq" id="consequence">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_sex_off">
+                                                <label for="cus_sex_off" class="form-label">Are you a registered sex offender?<span class="text-danger">*</span></label>
+                                                <select class="form-select" name="cus_sex_off" id="cus_sex_off" required data-error="Please select">
                                                     <option value="">Please select</option>
-                                                    <option value="1">Probation
-                                                    </option>
-                                                    <option value="2">
-                                                        Incarceration</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
                                                 </select>
-                                            </fieldset>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
             
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6 criminal-parole-child-fields">
-                                                <label for="sex_offender" class="form-label">Are you a registered sex offender?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="is_sex_off" id="sex_offender">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_offend_minor">
+                                                <label for="cus_is_offend_minor" class="form-label">Did your crime involve a minor?<span class="text-danger">*</span></label>
+                                                <select class="form-select" name="cus_is_offend_minor" id="cus_is_offend_minor" required data-error="Please select">
                                                     <option value="">Please select</option>
-                                                    <option value="1">
-                                                        Yes</option>
-                                                    <option value="2">
-                                                        No</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
                                                 </select>
-                                            </fieldset>
-            
-                                            <fieldset class="mb-3 col-sm-6 col-lg-6 criminal-parole-child-fields" id="sexoffender_min" style="">
-                                                <label for="crime_involving_minor" class="form-label">Did your crime involve a
-                                                    minor?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="is_offend_minor" id="crime_involving_minor">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">
-                                                        Yes</option>
-                                                    <option value="2">
-                                                        No</option>
-                                                </select>
-                                            </fieldset>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
                                         </div>
 
                                         <div class="form-group signUpForm-step-2">

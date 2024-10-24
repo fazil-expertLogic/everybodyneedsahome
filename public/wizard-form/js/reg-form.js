@@ -281,55 +281,85 @@ document.addEventListener("touchstart", function() {},false);
 	
 	//checking validation before going to step 3
 	function nextStep3() {
-		var fname = $("#fname").val();
-		var lname = $("#lname").val();
-		var gender = $("#gender").val();
-		var birthdate = $("#birthdate").val();
-		var address = $("#address").val();
-		var phone = $("#phone").val();
-		var preferedcontact = $('input[name=preferedcontact]:checked').val();		
+		var cus_pp = $("#cus_pp").val();
+		var cus_dfc = $("#cus_dfc").val();
+		var cus_con = $("#cus_con").val();
+		var cus_conq = $("#cus_conq").val();
+		var cus_sex_off = $("#cus_sex_off").val();
+		var cus_is_offend_minor = $("#cus_is_offend_minor").val();
+		// var lname = $("#lname").val();
+		// var gender = $("#gender").val();
+		// var birthdate = $("#birthdate").val();
+		// var address = $("#address").val();
+		// var phone = $("#phone").val();
+		// var preferedcontact = $('input[name=preferedcontact]:checked').val();		
 		
-		if( fname )
-			$( ".validfname .help-block.with-errors" ).html( '' );
+		if( cus_pp )
+			$( ".valid_cus_pp .help-block.with-errors" ).html( '' );
 		else
-			$( ".validfname .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter First Name</li></ul>' );
+			$( ".valid_cus_pp .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
 		
-		if( lname )
-			$( ".validlname .help-block.with-errors" ).html( '' );
+		if( cus_dfc )
+			$( ".valid_cus_dfc .help-block.with-errors" ).html( '' );
 		else
-			$( ".validlname .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter Last Name</li></ul>' );
-		
-		if( gender )
-			$( ".validgender .help-block.with-errors" ).html( '' );
+			$( ".valid_cus_dfc .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter date of conviction</li></ul>' );
+
+		if( cus_con )
+			$( ".valid_cus_con .help-block.with-errors" ).html( '' );
 		else
-			$( ".validgender .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please Select Gender</li></ul>' );
-		
-		if( birthdate )
-			$( ".validbirthdate .help-block.with-errors" ).html( '' );
+			$( ".valid_cus_con .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter date of conviction</li></ul>' );
+
+		if( cus_conq )
+			$( ".valid_cus_conq .help-block.with-errors" ).html( '' );
 		else
-			$( ".validbirthdate .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please Select Date Of Birth</li></ul>' );
-		
-		if( address )
-			$( ".validaddress .help-block.with-errors" ).html( '' );
+			$( ".valid_cus_conq .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter date of conviction</li></ul>' );
+
+		if( cus_sex_off )
+			$( ".valid_cus_sex_off .help-block.with-errors" ).html( '' );
 		else
-			$( ".validaddress .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter Address</li></ul>' );
-		
-		var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
-		if (filter.test(phone)) {
-			$( ".validphone .help-block.with-errors" ).html( '' );
-			var validphone = 1;
-		}
-		else{
-			$( ".validphone .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter valid Phone</li></ul>' );
-			var validphone = 0;
-		}
-		
-		if( preferedcontact )
-			$( ".validpreferedcontact .help-block.with-errors" ).html( '' );
+			$( ".valid_cus_sex_off .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter date of conviction</li></ul>' );
+
+		if( cus_is_offend_minor )
+			$( ".valid_cus_is_offend_minor .help-block.with-errors" ).html( '' );
 		else
-			$( ".validpreferedcontact .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please Select Prefered Contact Method</li></ul>' );
+			$( ".valid_cus_is_offend_minor .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter date of conviction</li></ul>' );
 		
-		if( fname.length > 0 && fname && lname.length > 0 && lname && gender && birthdate.length > 4 && birthdate && phone.length > 4 && validphone > 0 && address.length > 0 && address && preferedcontact ) {
+		// if( lname )
+		// 	$( ".validlname .help-block.with-errors" ).html( '' );
+		// else
+		// 	$( ".validlname .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter Last Name</li></ul>' );
+		
+		// if( gender )
+		// 	$( ".validgender .help-block.with-errors" ).html( '' );
+		// else
+		// 	$( ".validgender .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please Select Gender</li></ul>' );
+		
+		// if( birthdate )
+		// 	$( ".validbirthdate .help-block.with-errors" ).html( '' );
+		// else
+		// 	$( ".validbirthdate .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please Select Date Of Birth</li></ul>' );
+		
+		// if( address )
+		// 	$( ".validaddress .help-block.with-errors" ).html( '' );
+		// else
+		// 	$( ".validaddress .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter Address</li></ul>' );
+		
+		// var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
+		// if (filter.test(phone)) {
+		// 	$( ".validphone .help-block.with-errors" ).html( '' );
+		// 	var validphone = 1;
+		// }
+		// else{
+		// 	$( ".validphone .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter valid Phone</li></ul>' );
+		// 	var validphone = 0;
+		// }
+		
+		// if( preferedcontact )
+		// 	$( ".validpreferedcontact .help-block.with-errors" ).html( '' );
+		// else
+		// 	$( ".validpreferedcontact .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please Select Prefered Contact Method</li></ul>' );
+		
+		if( cus_pp && cus_dfc && cus_con && cus_conq && cus_sex_off && cus_is_offend_minor) {
 			$( "#section-2 .help-block.with-errors.mandatory-error" ).html( '' );
 			$( "#section-2" ).removeClass( "open" );
 			$( "#section-2" ).addClass( "slide-left" );
