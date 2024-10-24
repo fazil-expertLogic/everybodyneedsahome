@@ -111,16 +111,16 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_is_child">
                                                     <label for="cus_is_child" class="form-label">Children<span class="text-danger">*</span></label>
-                                                    <select name="cus_is_child" class="form-select" id="cus_is_child" aria-label="" required data-error="Please select Children">
-                                                        <option value="">Please Select</option>
-                                                        <option value="1">Yes</option>
-                                                        <option value="2">No</option>
+                                                    <select name="cus_is_child" class="form-select" id="cus_is_child" aria-label="" required data-error="Please select Children" onchange="toggleDiv()">
+                                                      <option value="">Please Select</option>
+                                                      <option value="1">Yes</option>
+                                                      <option value="2">No</option>
                                                     </select>
                                                     <div class="help-block with-errors"></div>
-                                                </div>
+                                                  </div>
                                             </div>
             
-                                            <div class="col-sm-12 col-lg-12" style="display: none;" id="childinfobox">
+                                            <div class="col-sm-12 col-lg-12" id="childinfobox">
                                                 <div id="child-boxes-container">
                                                     <div class="row childBOX">
                                                         <div class="col-sm-6 col-lg-6">
@@ -161,8 +161,10 @@
             
                                                 <div class="mb-3 text-end">
                                                     <a href="#" class="delete-child-box text-danger" style="display: none;">Delete</a> <span class="separator" style="display: none;">|</span>
-                                                    <a href="#" id="add-new-child" class="text-blue">Add new</a>
+                                                    <a href="#" id="add-new-child" onclick="addchild()" class="text-blue">Add new</a>
                                                 </div>
+                                            </div>
+                                            <div id="child-info-container">
                                             </div>
             
                                             <div class="col-sm-6 col-lg-6">

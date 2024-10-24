@@ -670,6 +670,73 @@ document.addEventListener("touchstart", function() {},false);
 			sweetAlert("Oops...", "Please Fill the Form Properly!", "error");
 		}
 	}
+	function toggleDiv() {
+		console.log('fazil');
+		var selectedValue = $('#cus_is_child').val();
+		if (selectedValue === '1') {
+			$('#childinfobox').show();
+		} else if (selectedValue === '2') {
+			$('#childinfobox').hide();
+		}
+	}
+	$('#childinfobox').hide();
+	
+	var count = 1; 
+	function addchild() {
+		var newChildInfoBox = `
+			<div class="col-sm-12 col-lg-12" id="childinfobox` + count + `">
+				<div id="child-boxes-container">
+					<div class="row childBOX">
+						<div class="col-sm-6 col-lg-6">
+							<fieldset class="mb-3">
+								<label for="child_name_0" class="form-label">Child Name<span class="text-danger">*</span></label>
+								<input type="text" class="form-control py-2" value="" name="child_name[]" id="child_name_0">
+							</fieldset>
+						</div>
+
+						<div class="col-sm-6 col-lg-6">
+							<fieldset class="">
+								<label for="child_age_0" class="form-label">Child Age<span class="text-danger">*</span></label>
+								<select name="child_age[]" class="form-select" id="child_age_0" aria-label="">
+									<option value="0" selected="">0+</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+									<option value="13">13</option>
+									<option value="14">14</option>
+									<option value="15">15</option>
+									<option value="16">16</option>
+									<option value="17">17</option>
+									<option value="18">18</option>
+								</select>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+
+				<div class="mb-3 text-end">
+					<a href="#" class="delete-child-box text-danger" onclick="deletechild(`+count+`)">Delete</a> <span class="separator">|</span>
+					<a href="#" id="add-new-child" onclick="addchild()" class="text-blue">Add new</a>
+				</div>
+			</div>
+			`;
+			$('#child-info-container').append(newChildInfoBox);
+			console.log(count);
+			count++;
+	}
+
+	function deletechild(id){
+		$('#childinfobox'+id).remove();
+	}
 	
 /*
 |--------------------------------------------------------------------------
