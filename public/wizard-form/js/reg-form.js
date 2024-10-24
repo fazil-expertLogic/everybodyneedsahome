@@ -176,32 +176,91 @@ document.addEventListener("touchstart", function() {},false);
 	
 	//checking validation before going to step 2
 	function nextStep2() {
-		var uname = $("#uname").val();
-		var email = $("#email").val();
-		var pass = $("#pass").val();
-		var cpass = $("#cpass").val();
-		var validemail = isEmail(email);
+		var cus_name = $("#cus_name").val();
+		var cus_email = $("#cus_email").val();
+		var validcusemail = isEmail(cus_email);
+		var cus_dob = $("#cus_dob").val();
+		var cus_ss = $("#cus_ss").val();
+		var cus_ms = $("#cus_ms").val();
+		var cus_is_child = $("#cus_is_child").val();
+		var cus_address = $("#cus_address").val();
+		var cus_city = $("#cus_city").val();
+		var cus_state = $("#cus_state").val();
+		var cus_zip = $("#cus_zip").val();
+		var cus_phone = $("#cus_phone").val();
 		
-		if( uname )
-			$( ".validuname .help-block.with-errors" ).html( '' );
+		// var pass = $("#pass").val();
+		// var cpass = $("#cpass").val();
+		
+		
+		if( cus_name )
+			$( ".valid_cus_name .help-block.with-errors" ).html( '' );
 		else
-			$( ".validuname .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter UserName</li></ul>' );
+			$( ".valid_cus_name .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter name</li></ul>' );
 		
-		if( validemail )
-			$( ".validemail .help-block.with-errors" ).html( '' );
+		if( validcusemail )
+			$( ".valid_cus_email .help-block.with-errors" ).html( '' );
 		else	
-			$( ".validemail .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter valid email</li></ul>' );
+			$( ".valid_cus_email .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter valid email</li></ul>' );
+
+		if( cus_dob )
+			$( ".valid_cus_dob .help-block.with-errors" ).html( '' );
+		else	
+			$( ".valid_cus_dob .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter date of birth</li></ul>' );
+
+		if( cus_ss )
+			$( ".valid_cus_ss .help-block.with-errors" ).html( '' );
+		else	
+			$( ".valid_cus_ss .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter social security number</li></ul>' );
 		
-		if(  pass.length < 6 )
-			$( ".validpass .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Password should at least 6 character</li></ul>' );
-		else if(  pass != cpass ) {
-			$( ".validpass .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Password and Confirm Password do not match</li></ul>' );
-			sweetAlert("Oops...", "Password and Confirm Password do not match!!!", "error");return false;
-		}
-		else
-			$( ".validpass .help-block.with-errors" ).html( '' );
+		if( cus_ms )
+			$( ".valid_cus_ms .help-block.with-errors" ).html( '' );
+		else	
+			$( ".valid_cus_ms .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select marital status</li></ul>' );
+
+		if( cus_is_child )
+			$( ".valid_cus_is_child .help-block.with-errors" ).html( '' );
+		else	
+			$( ".valid_cus_is_child .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select marital status</li></ul>' );
+
+		if( cus_address )
+			$( ".valid_cus_address .help-block.with-errors" ).html( '' );
+		else	
+			$( ".valid_cus_address .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select enter address</li></ul>' );	
+
+		if( cus_city )
+			$( ".valid_cus_city .help-block.with-errors" ).html( '' );
+		else	
+			$( ".valid_cus_city .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select enter city</li></ul>' );
+
+		if( cus_state )
+			$( ".valid_cus_state .help-block.with-errors" ).html( '' );
+		else	
+			$( ".valid_cus_state .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select state</li></ul>' );
+
+
+		if( cus_zip )
+			$( ".valid_cus_zip .help-block.with-errors" ).html( '' );
+		else	
+			$( ".valid_cus_zip .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select zip</li></ul>' );
 		
-		if( uname && validemail && pass.length > 5 && pass == cpass ) {
+			
+		if( cus_phone )
+			$( ".valid_cus_phone .help-block.with-errors" ).html( '' );
+		else	
+			$( ".valid_cus_phone .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select phone</li></ul>' );	
+
+		// if(  pass.length < 6 )
+		// 	$( ".validpass .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Password should at least 6 character</li></ul>' );
+		// else if(  pass != cpass ) {
+		// 	$( ".validpass .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Password and Confirm Password do not match</li></ul>' );
+		// 	sweetAlert("Oops...", "Password and Confirm Password do not match!!!", "error");return false;
+		// }
+		// else
+		// 	$( ".validpass .help-block.with-errors" ).html( '' );
+		
+		// if( cus_name && validcusemail && pass.length > 5 && pass == cpass ) {
+		if( cus_name && validcusemail && cus_dob && cus_ss && cus_ms && cus_is_child && cus_address && cus_city && cus_state && cus_zip && cus_phone) {
 			$( "#section-1 .help-block.with-errors" ).html( '' );
 			$( "#section-1" ).removeClass( "open" );
 			$( "#section-1" ).addClass( "slide-left" );
@@ -293,7 +352,7 @@ document.addEventListener("touchstart", function() {},false);
 	function nextStep4() {
 		
 		//inputed value
-		var uname = $("#uname").val();
+		var uname = $("#cus_name").val();
 		var email = $("#email").val();
 		var pass = $("#pass").val();
 		var fname = $("#fname").val();

@@ -58,7 +58,7 @@
                                         <h3 class="section-form-title">Basic Information</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
                                         {{--        ------------------------------remove------------------------------                  --}}
-                                        <div class="form-group validuname">
+                                        {{-- <div class="form-group validuname">
                                             <input class="form-control" name="uname" id="uname" type="text"
                                                 placeholder="UserName*" required data-error="Please enter UserName">
                                             <div class="input-group-icon"><i class="fas fa-user"></i></div>
@@ -83,71 +83,71 @@
                                                 data-error="Please retype password">
                                             <div class="input-group-icon"><i class="fas fa-key"></i></div>
                                             <div class="help-block with-errors"></div>
-                                        </div>
+                                        </div> --}}
                                         {{--        ------------------------------remove------------------------------                  --}}
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6">
-                                                <fieldset class="mb-3">
-                                                    <label for="nam" class="form-label">Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="cus_name" class="form-control py-2" value="" id="nam" placeholder="Your name">
-                                                </fieldset>
+                                                <div class="form-group valid_cus_name">
+                                                    <label for="cus_name" class="form-label">Name<span class="text-danger">*</span></label>
+                                                    <input type="text" name="cus_name" class="form-control py-2" value="" id="cus_name" placeholder="Your name" required data-error="Please enter name">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                             </div>
+
                                             <div class="col-sm-6 col-lg-6">
-                                                <fieldset class="mb-3">
-                                                    <label for="email" class="form-label"> Email<span class="text-danger">*</span></label>
-                                                    <input type="email" name="email" class="form-control py-2" id="email" placeholder="example@email.com" value="">
-                                                </fieldset>
+                                                <div class="form-group valid_cus_email">
+                                                    <label for="cus_email" class="form-label"> Email<span class="text-danger">*</span></label>
+                                                    <input type="email" name="cus_email" class="form-control py-2" id="cus_email" placeholder="example@email.com" value="" required data-error="Please enter email">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                             </div>
+
                                             <div class="col-sm-6 col-lg-6">
-                                                <fieldset class="mb-3">
-                                                    <label for="dob" class="form-label">Date of Birth<span class="text-danger">*</span></label>
-                                                    <input type="date" name="cus_dob" class="form-control py-2" value="" id="dob" placeholder="">
-                                                </fieldset>
+                                                <div class="form-group valid_cus_dob">
+                                                    <label for="cus_dob" class="form-label"> Date of Birth<span class="text-danger">*</span></label>
+                                                    <input type="date" name="cus_dob" class="form-control py-2"id="cus_dob" placeholder="" value="" required data-error="Please enter Date of Birth">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                             </div>
+
                                             <div class="col-sm-6 col-lg-6">
-                                                <fieldset class="mb-3">
-                                                    <label for="ss" class="form-label">Social Security Number<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2 ssn-input-mask" value="" name="cus_ss" id="ss" placeholder="*****">
-                                                </fieldset>
+                                                <div class="form-group valid_cus_ss">
+                                                    <label for="cus_ss" class="form-label">Social Security Number<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control py-2 ssn-input-mask" value="" name="cus_ss" id="cus_ss" placeholder="*****" required data-error="Please enter Social Security Number">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                             </div>
+
                                             <div class="col-sm-6 col-lg-6">
-                                                <fieldset class="mb-3">
-                                                    <label for="ms" class="form-label">Marital Status<span class="text-danger">*</span></label>
-                                                    <select name="martial_status" class="form-select" id="ms" aria-label="">
+                                                <div class="form-group valid_cus_ms">
+                                                    <label for="cus_ms" class="form-label">Marital Status<span class="text-danger">*</span></label>
+                                                    <select name="martial_status" class="form-select" id="cus_ms" aria-label="" required data-error="Please select marital status">
                                                         <option value="">Please Select</option>
-                                                        <option value="1">
-            
-                                                            Single</option>
-                                                        <option value="2">
-                                                            Married</option>
-                                                        <option value="3">
-                                                            Separated</option>
-                                                        <option value="4">
-                                                            Divorced</option>
-                                                        <option value="5">
-                                                            Widowed</option>
+                                                        <option value="1">Single</option>
+                                                        <option value="2">Married</option>
+                                                        <option value="3">Separated</option>
+                                                        <option value="4">Divorced</option>
+                                                        <option value="5">Widowed</option>
                                                     </select>
-                                                </fieldset>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                             </div>
+
                                             <div class="col-sm-6 col-lg-6">
-                                                <fieldset class="mb-3">
-                                                    <label for="child" class="form-label">Children<span class="text-danger">*</span></label>
-                                                    <select name="is_child" class="form-select" id="is_child" aria-label="">
+                                                <div class="form-group valid_cus_is_child">
+                                                    <label for="cus_is_child" class="form-label">Children<span class="text-danger">*</span></label>
+                                                    <select name="cus_is_child" class="form-select" id="cus_is_child" aria-label="" required data-error="Please select Children">
                                                         <option value="">Please Select</option>
-                                                        <option value="1">
-                                                            Yes</option>
-                                                        <option value="2">
-                                                            No</option>
+                                                        <option value="1">Yes</option>
+                                                        <option value="2">No</option>
                                                     </select>
-                                                </fieldset>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                             </div>
             
                                             <div class="col-sm-12 col-lg-12" style="display: none;" id="childinfobox">
-            
                                                 <div id="child-boxes-container">
-                                                    
-                                                    
-                                                                                                <div class="row childBOX">
+                                                        <div class="row childBOX">
                                                             <div class="col-sm-6 col-lg-6">
                                                                 <fieldset class="mb-3">
                                                                     <label for="child_name_0" class="form-label">Child Name<span class="text-danger">*</span></label>
@@ -231,136 +231,93 @@
             
             
                                             <div class="col-sm-6 col-lg-6">
-                                                <fieldset class="mb-3">
-                                                    <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
-                                                    <input type="text" name="address" class="form-control py-2" id="address" placeholder="Address" value="">
-                                                </fieldset>
+                                                <div class="form-group valid_cus_address">
+                                                    <label for="cus_address" class="form-label">Address<span class="text-danger">*</span></label>
+                                                    <input type="text" name="cus_address" class="form-control py-2" id="cus_address" placeholder="Address" value="" required data-error="Please enter address">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                             </div>
+
                                             <div class="col-sm-6 col-lg-6">
-                                                <fieldset class="mb-3">
-                                                    <label for="city" class="form-label">City<span class="text-danger">*</span></label>
-                                                    <input type="text" name="city" class="form-control py-2" id="city" placeholder="City" value="">
-                                                </fieldset>
+                                                <div class="form-group valid_cus_city">
+                                                    <label for="cus_city" class="form-label">City<span class="text-danger">*</span></label>
+                                                    <input type="text" name="cus_city" class="form-control py-2" id="cus_city" placeholder="City" value="" required data-error="Please enter city">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                             </div>
+
                                             <div class="col-sm-6 col-lg-6">
-                                                <fieldset class="mb-3">
-                                                    <label for="state" class="form-label">State<span class="text-danger">*</span></label>
-                                                    <select class="form-select py-2" name="state" id="state" aria-label="">
+                                                <div class="form-group valid_cus_state">
+                                                    <label for="cus_state" class="form-label">State<span class="text-danger">*</span></label>
+                                                    <select class="form-select py-2" name="cus_state" id="cus_state" aria-label="" required data-error="Please enter state">
                                                         <option value="">Please Select</option>
-                                                                                                        <option value="AL">
-                                                                Alabama</option>
-                                                                                                        <option value="AK">
-                                                                Alaska</option>
-                                                                                                        <option value="AZ">
-                                                                Arizona</option>
-                                                                                                        <option value="AR">
-                                                                Arkansas</option>
-                                                                                                        <option value="CA">
-                                                                California</option>
-                                                                                                        <option value="CO">
-                                                                Colorado</option>
-                                                                                                        <option value="CT">
-                                                                Connecticut</option>
-                                                                                                        <option value="DE">
-                                                                Delaware</option>
-                                                                                                        <option value="FL">
-                                                                Florida</option>
-                                                                                                        <option value="GA">
-                                                                Georgia</option>
-                                                                                                        <option value="HI">
-                                                                Hawaii</option>
-                                                                                                        <option value="ID">
-                                                                Idaho</option>
-                                                                                                        <option value="IL">
-                                                                Illinois</option>
-                                                                                                        <option value="IN">
-                                                                Indiana</option>
-                                                                                                        <option value="IA">
-                                                                Iowa</option>
-                                                                                                        <option value="KS">
-                                                                Kansas</option>
-                                                                                                        <option value="KY">
-                                                                Kentucky</option>
-                                                                                                        <option value="LA">
-                                                                Louisiana</option>
-                                                                                                        <option value="ME">
-                                                                Maine</option>
-                                                                                                        <option value="MD">
-                                                                Maryland</option>
-                                                                                                        <option value="MA">
-                                                                Massachusetts</option>
-                                                                                                        <option value="MI">
-                                                                Michigan</option>
-                                                                                                        <option value="MN">
-                                                                Minnesota</option>
-                                                                                                        <option value="MS">
-                                                                Mississippi</option>
-                                                                                                        <option value="MO">
-                                                                Missouri</option>
-                                                                                                        <option value="MT">
-                                                                Montana</option>
-                                                                                                        <option value="NE">
-                                                                Nebraska</option>
-                                                                                                        <option value="NV">
-                                                                Nevada</option>
-                                                                                                        <option value="NH">
-                                                                New Hampshire</option>
-                                                                                                        <option value="NJ">
-                                                                New Jersey</option>
-                                                                                                        <option value="NM">
-                                                                New Mexico</option>
-                                                                                                        <option value="NY">
-                                                                New York</option>
-                                                                                                        <option value="NC">
-                                                                North Carolina</option>
-                                                                                                        <option value="ND">
-                                                                North Dakota</option>
-                                                                                                        <option value="OH">
-                                                                Ohio</option>
-                                                                                                        <option value="OK">
-                                                                Oklahoma</option>
-                                                                                                        <option value="OR">
-                                                                Oregon</option>
-                                                                                                        <option value="PA">
-                                                                Pennsylvania</option>
-                                                                                                        <option value="RI">
-                                                                Rhode Island</option>
-                                                                                                        <option value="SC">
-                                                                South Carolina</option>
-                                                                                                        <option value="SD">
-                                                                South Dakota</option>
-                                                                                                        <option value="TN">
-                                                                Tennessee</option>
-                                                                                                        <option value="TX">
-                                                                Texas</option>
-                                                                                                        <option value="UT">
-                                                                Utah</option>
-                                                                                                        <option value="VT">
-                                                                Vermont</option>
-                                                                                                        <option value="VA">
-                                                                Virginia</option>
-                                                                                                        <option value="WA">
-                                                                Washington</option>
-                                                                                                        <option value="WV">
-                                                                West Virginia</option>
-                                                                                                        <option value="WI">
-                                                                Wisconsin</option>
-                                                                                                        <option value="WY">
-                                                                Wyoming</option>
-                                                                                                </select>
-                                                </fieldset>
+                                                        <option value="AL">Alabama</option>
+                                                        <option value="AK">Alaska</option>
+                                                        <option value="AZ">Arizona</option>
+                                                        <option value="AR">Arkansas</option>
+                                                        <option value="CA">California</option>
+                                                        <option value="CO">Colorado</option>
+                                                        <option value="CT">Connecticut</option>
+                                                        <option value="DE">Delaware</option>
+                                                        <option value="FL">Florida</option>
+                                                        <option value="GA">Georgia</option>
+                                                        <option value="HI">Hawaii</option>
+                                                        <option value="ID">Idaho</option>
+                                                        <option value="IL">Illinois</option>
+                                                        <option value="IN">Indiana</option>
+                                                        <option value="IA">Iowa</option>
+                                                        <option value="KS">Kansas</option>
+                                                        <option value="KY">Kentucky</option>
+                                                        <option value="LA">Louisiana</option>
+                                                        <option value="ME">Maine</option>
+                                                        <option value="MD">Maryland</option>
+                                                        <option value="MA">Massachusetts</option>
+                                                        <option value="MI">Michigan</option>
+                                                        <option value="MN">Minnesota</option>
+                                                        <option value="MS">Mississippi</option>
+                                                        <option value="MO">Missouri</option>
+                                                        <option value="MT">Montana</option>
+                                                        <option value="NE">Nebraska</option>
+                                                        <option value="NV">Nevada</option>
+                                                        <option value="NH">New Hampshire</option>
+                                                        <option value="NJ">New Jersey</option>
+                                                        <option value="NM">New Mexico</option>
+                                                        <option value="NY">New York</option>
+                                                        <option value="NC">North Carolina</option>
+                                                        <option value="ND">North Dakota</option>
+                                                        <option value="OH">Ohio</option>
+                                                        <option value="OK">Oklahoma</option>
+                                                        <option value="OR">Oregon</option>
+                                                        <option value="PA">Pennsylvania</option>
+                                                        <option value="RI">Rhode Island</option>
+                                                        <option value="SC">South Carolina</option>
+                                                        <option value="SD">South Dakota</option>
+                                                        <option value="TN">Tennessee</option>
+                                                        <option value="TX">Texas</option>
+                                                        <option value="UT">Utah</option>
+                                                        <option value="VT">Vermont</option>
+                                                        <option value="VA">Virginia</option>
+                                                        <option value="WA">Washington</option>
+                                                        <option value="WV">West Virginia</option>
+                                                        <option value="WI">Wisconsin</option>
+                                                        <option value="WY">Wyoming</option>
+                                                    </select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                             </div>
                                             <div class="col-sm-6 col-lg-6">
-                                                <fieldset class="mb-3">
-                                                    <label for="zip" class="form-label">Zip<span class="text-danger">*</span></label>
-                                                    <input type="text" name="zipcode" class="form-control py-2 zip-input-mask" id="zip" placeholder="Zip" value="">
-                                                </fieldset>
+                                                <div class="form-group valid_cus_zip">
+                                                    <label for="cus_zip" class="form-label">Zip<span class="text-danger">*</span></label>
+                                                    <input type="text" name="cus_zip" class="form-control py-2 zip-input-mask" id="cus_zip" placeholder="Zip" value="" required data-error="Please enter zipcode">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                             </div>
                                             <div class="col-sm-6 col-lg-6">
-                                                <fieldset class="mb-3">
-                                                    <label for="phone" class="form-label">Phone<span class="text-danger">*</span></label>
-                                                    <input type="text" name="phone" class="form-control py-2 phone-input-mask" id="phone" placeholder="Phone" value="">
-                                                </fieldset>
+                                                <div class="form-group valid_cus_phone">
+                                                    <label for="cus_phone" class="form-label">Phone<span class="text-danger">*</span></label>
+                                                    <input type="text" name="cus_phone" class="form-control py-2 phone-input-mask" id="cus_phone" placeholder="Phone" value="" required data-error="Please enter phone">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                             </div>
             
                                         </div>
