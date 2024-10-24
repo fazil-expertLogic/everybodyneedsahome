@@ -53,6 +53,10 @@
 										<i class="side-menu__icon fa fa-home"></i>
 										<span class="side-menu__label">Property</span>
 									</a>
+									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('clients.index')}}">
+										<i class="side-menu__icon fa fa-home"></i>
+										<span class="side-menu__label">Client</span>
+									</a>
 									
 								</li>
 							</ul>
