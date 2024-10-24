@@ -140,7 +140,7 @@
     padding: 0;
     position: relative;
 	text-align: center;
-    width: 25%;
+    width: 100%;
 }
 #signUpForm .form-layer-step-icon {
     background-color: #b5b5b5;
