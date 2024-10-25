@@ -134,30 +134,29 @@
                                                                 <input type="text" class="form-control py-2" value="{{$clientChild->child_name}}" name="child_name[]" id="child_name_{{$key}}" >
                                                             </fieldset>
                                                         </div>
-        
                                                         <div class="col-sm-6 col-lg-6">
                                                             <fieldset class="">
                                                                 <label for="child_age_{{$key}}" class="form-label">Child Age<span class="text-danger">*</span></label>
                                                                 <select name="child_age[]" class="form-select" id="child_age_{{$key}}" aria-label="" >
-                                                                    <option @if( $client->child_age == 0) selected @endif value="0" selected="">0+</option>
-                                                                    <option @if( $client->child_age == 1) selected @endif value="1">1</option>
-                                                                    <option @if( $client->child_age == 2) selected @endif value="2">2</option>
-                                                                    <option @if( $client->child_age == 3) selected @endif value="3">3</option>
-                                                                    <option @if( $client->child_age == 4) selected @endif value="4">4</option>
-                                                                    <option @if( $client->child_age == 5) selected @endif value="5">5</option>
-                                                                    <option @if( $client->child_age == 6) selected @endif value="6">6</option>
-                                                                    <option @if( $client->child_age == 7) selected @endif value="7">7</option>
-                                                                    <option @if( $client->child_age == 8) selected @endif value="8">8</option>
-                                                                    <option @if( $client->child_age == 9) selected @endif value="9">9</option>
-                                                                    <option @if( $client->child_age == 10) selected @endif value="10">10</option>
-                                                                    <option @if( $client->child_age == 11) selected @endif value="11">11</option>
-                                                                    <option @if( $client->child_age == 12) selected @endif value="12">12</option>
-                                                                    <option @if( $client->child_age == 13) selected @endif value="13">13</option>
-                                                                    <option @if( $client->child_age == 14) selected @endif value="14">14</option>
-                                                                    <option @if( $client->child_age == 15) selected @endif value="15">15</option>
-                                                                    <option @if( $client->child_age == 16) selected @endif value="16">16</option>
-                                                                    <option @if( $client->child_age == 17) selected @endif value="17">17</option>
-                                                                    <option @if( $client->child_age == 18) selected @endif value="18">18</option>
+                                                                    <option @if( $clientChild->child_age == '0') selected @endif value="0" selected="">0+</option>
+                                                                    <option @if( $clientChild->child_age == '1') selected @endif value="1">1</option>
+                                                                    <option @if( $clientChild->child_age == '2') selected @endif value="2">2</option>
+                                                                    <option @if( $clientChild->child_age == '3') selected @endif value="3">3</option>
+                                                                    <option @if( $clientChild->child_age == '4') selected @endif value="4">4</option>
+                                                                    <option @if( $clientChild->child_age == '5') selected @endif value="5">5</option>
+                                                                    <option @if( $clientChild->child_age == '6') selected @endif value="6">6</option>
+                                                                    <option @if( $clientChild->child_age == '7') selected @endif value="7">7</option>
+                                                                    <option @if( $clientChild->child_age == '8') selected @endif value="8">8</option>
+                                                                    <option @if( $clientChild->child_age == '9') selected @endif value="9">9</option>
+                                                                    <option @if( $clientChild->child_age == '10') selected @endif value="10">10</option>
+                                                                    <option @if( $clientChild->child_age == '11') selected @endif value="11">11</option>
+                                                                    <option @if( $clientChild->child_age == '12') selected @endif value="12">12</option>
+                                                                    <option @if( $clientChild->child_age == '13') selected @endif value="13">13</option>
+                                                                    <option @if( $clientChild->child_age == '14') selected @endif value="14">14</option>
+                                                                    <option @if( $clientChild->child_age == '15') selected @endif value="15">15</option>
+                                                                    <option @if( $clientChild->child_age == '16') selected @endif value="16">16</option>
+                                                                    <option @if( $clientChild->child_age == '17') selected @endif value="17">17</option>
+                                                                    <option @if( $clientChild->child_age == '18') selected @endif value="18">18</option>
                                                                 </select>
                                                             </fieldset>
                                                         </div>
