@@ -127,14 +127,14 @@
                                                         <div class="col-sm-6 col-lg-6">
                                                             <fieldset class="mb-3">
                                                                 <label for="child_name_0" class="form-label">Child Name<span class="text-danger">*</span></label>
-                                                                <input type="text" class="form-control py-2" value="" name="child_name[]" id="child_name_0" required>
+                                                                <input type="text" class="form-control py-2" value="" name="child_name[]" id="child_name_0" >
                                                             </fieldset>
                                                         </div>
         
                                                         <div class="col-sm-6 col-lg-6">
                                                             <fieldset class="">
                                                                 <label for="child_age_0" class="form-label">Child Age<span class="text-danger">*</span></label>
-                                                                <select name="child_age[]" class="form-select" id="child_age_0" aria-label="" required>
+                                                                <select name="child_age[]" class="form-select" id="child_age_0" aria-label="" >
                                                                     <option value="0" selected="">0+</option>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
@@ -547,7 +547,7 @@
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_born_state">
                                                 <div id="birthDiv">
                                                     <label for="cus_born_state" class="form-label">What state were you born?<span class="text-danger">*</span></label>
-                                                    <select class="form-select py-2" id="cus_born_state" name="cus_born_state" aria-label="State" required data-error="Please select">
+                                                    <select class="form-select py-2" id="cus_born_state" name="cus_born_state" aria-label="State"  data-error="Please select">
                                                         <option value="">Please select</option>
                                                         <option value="AL">Alabama</option>
                                                         <option value="AK">Alaska</option>
@@ -617,7 +617,7 @@
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_state_no">
                                                 <div id="stateDiv">
                                                     <label for="cus_state_no" class="form-label">Please enter the state number<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="cus_state_no" value="" name="cus_state_no" required data-error="Please enter state no">
+                                                    <input type="text" class="form-control py-2" id="cus_state_no" value="" name="cus_state_no"  data-error="Please enter state no">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -635,7 +635,7 @@
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_lice_no">
                                                 <div id="licenseDiv">
                                                     <label for="cus_lice_no" class="form-label">Please enter the driving license number<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="cus_lice_no" value="" name="cus_lice_no"  required data-error="Please enter license number">
+                                                    <input type="text" class="form-control py-2" id="cus_lice_no" value="" name="cus_lice_no" data-error="Please enter license number">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -653,7 +653,7 @@
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_ssc_no">
                                                 <div id="securityDiv">
                                                     <label for="cus_ssc_no" class="form-label">Please enter the SSN<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="cus_ssc_no" value="" name="cus_ssc_no" placeholder="******"  required data-error="Please enter the SSN">
+                                                    <input type="text" class="form-control py-2" id="cus_ssc_no" value="" name="cus_ssc_no" placeholder="******" data-error="Please enter the SSN">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -732,17 +732,17 @@
                                             <div id="insuranceDiv">
                                                 <div class="col-sm-6 col-lg-6 form-group valid_cus_carrier">
                                                     <label for="cus_carrier">Carrier<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" value="" id="cus_carrier" name="cus_carrier" required data-error="Please select">
+                                                    <input type="text" class="form-control" value="" id="cus_carrier" name="cus_carrier"  data-error="Please select">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                                 <div class="col-sm-6 col-lg-6 form-group valid_cus_mem_id">
                                                     <label for="cus_mem_id">Member ID<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" value="" id="cus_mem_id" name="cus_mem_id" required data-error="Please select">
+                                                    <input type="text" class="form-control" value="" id="cus_mem_id" name="cus_mem_id"  data-error="Please select">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                                 <div class="col-sm-6 col-lg-6 form-group valid_cus_grp_no">
                                                     <label for="cus_grp_no">Group No<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" value="" id="cus_grp_no" name="cus_grp_no" required data-error="Please select">
+                                                    <input type="text" class="form-control" value="" id="cus_grp_no" name="cus_grp_no"  data-error="Please select">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -820,7 +820,7 @@
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_counselor">
                                                 <div id="friendsDiv">
                                                     <label for="cus_counselor">Do you believe you could benefit from having a mentor or counselor?<span class="text-danger">*</span></label>
-                                                    <select class="form-select" name="cus_counselor" id="cus_counselor"  required data-error="Please select">
+                                                    <select class="form-select" name="cus_counselor" id="cus_counselor"   data-error="Please select">
                                                         <option value="">Please select</option>
                                                         <option value="1">Yes</option>
                                                         <option value="2">No</option>

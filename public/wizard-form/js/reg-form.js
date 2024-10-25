@@ -77,8 +77,9 @@ document.addEventListener("touchstart", function() {},false);
 			// var inputHumanAns = $("#humanCheckCaptchaInput").val();
 			// if (inputHumanAns == correctMathSolution){
 				//everything looks good!
-				event.preventDefault();
+				// event.preventDefault();
 				submitForm();					
+				return true;
 			// }
 			// else{
 			// 	submitMSG(false, "Please solve Human Captcha!!!");
@@ -810,14 +811,14 @@ document.addEventListener("touchstart", function() {},false);
 						<div class="col-sm-6 col-lg-6">
 							<fieldset class="mb-3">
 								<label for="child_name_`+count+`" class="form-label">Child Name<span class="text-danger">*</span></label>
-								<input type="text" class="form-control py-2" value="" name="child_name[]" id="child_name_`+count+`" required>
+								<input type="text" class="form-control py-2" value="" name="child_name[]" id="child_name_`+count+`" >
 							</fieldset>
 						</div>
 
 						<div class="col-sm-6 col-lg-6">
 							<fieldset class="">
 								<label for="child_age_`+count+`" class="form-label">Child Age<span class="text-danger">*</span></label>
-								<select name="child_age[]" class="form-select" id="child_age_`+count+`" aria-label="" required>
+								<select name="child_age[]" class="form-select" id="child_age_`+count+`" aria-label="" >
 									<option value="0" selected="">0+</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
