@@ -21,7 +21,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::paginate(10);
+        $clients = Client::active()->paginate(10);
         return view('livewire.client.index', compact('clients'));
     }
 
@@ -371,6 +371,8 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->softDeleteRelations();
+        return response()->json(['message' => 'Client and related records have been soft deleted successfully.'], 200);
     }
 }

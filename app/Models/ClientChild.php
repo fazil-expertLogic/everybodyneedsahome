@@ -27,6 +27,6 @@ class ClientChild extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class, 'gl_ID', 'gl_ID');
+        return $this->belongsTo(Client::class, 'gl_ID', 'gl_ID')->where('status', 1);
     }
 }
