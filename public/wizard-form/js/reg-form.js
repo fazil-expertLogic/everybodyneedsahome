@@ -670,8 +670,72 @@ document.addEventListener("touchstart", function() {},false);
 			sweetAlert("Oops...", "Please Fill the Form Properly!", "error");
 		}
 	}
+	function birthDiv() {
+		var selectedValue = $('#cus_bcert').val();
+		if (selectedValue === '1') {
+			$('#birthDiv').show();
+		} else if (selectedValue === '2') {
+			$('#birthDiv').hide();
+		}
+	}
+
+	function stateDiv() {
+		var selectedValue = $('#cus_state_id').val();
+		if (selectedValue === '1') {
+			$('#stateDiv').show();
+		} else if (selectedValue === '2') {
+			$('#stateDiv').hide();
+		}
+	}
+
+	function licenseDiv() {
+		var selectedValue = $('#cus_d_lice').val();
+		if (selectedValue === '1') {
+			$('#licenseDiv').show();
+		} else if (selectedValue === '2') {
+			$('#licenseDiv').hide();
+		}
+	}
+
+	function securityDiv() {
+		var selectedValue = $('#cus_ss_card').val();
+		if (selectedValue === '1') {
+			$('#securityDiv').show();
+		} else if (selectedValue === '2') {
+			$('#securityDiv').hide();
+		}
+	}
+
+	function insuranceDiv() {
+		var selectedValue = $('#cus_insurace').val();
+		if (selectedValue === '1') {
+			$('#insuranceDiv').show();
+		} else if (selectedValue === '2') {
+			$('#insuranceDiv').hide();
+		}
+	}
+	
+	function friendsDiv() {
+		var selectedValue = $('#cus_more_friends').val();
+		if (selectedValue === '1') {
+			$('#friendsDiv').show();
+		} else if (selectedValue === '2') {
+			$('#friendsDiv').hide();
+		}
+	}
+
+	$('#childinfobox').hide();
+	$('#birthDiv').hide();
+	$('#stateDiv').hide();
+	$('#licenseDiv').hide();
+	$('#securityDiv').hide();
+	$('#insuranceDiv').hide();
+	$('#friendsDiv').hide();
+	
+	
+	
+	
 	function toggleDiv() {
-		console.log('fazil');
 		var selectedValue = $('#cus_is_child').val();
 		if (selectedValue === '1') {
 			$('#childinfobox').show();
@@ -679,8 +743,10 @@ document.addEventListener("touchstart", function() {},false);
 			$('#childinfobox').hide();
 		}
 	}
-	$('#childinfobox').hide();
-	
+
+
+
+
 	var count = 1; 
 	function addchild() {
 		var newChildInfoBox = `
