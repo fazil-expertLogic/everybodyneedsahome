@@ -6,8 +6,9 @@
             <div class="col-sm-12">
                 <div class="form-wrap clearfix mt-8">
                     <div class="col-md-12">
-                        <form id="signUpForm" name="signUpForm" data-toggle="validator" class="signUpForm"
+                        <form method="post" action="{{ route('clients.store') }}" id="signUpForm" class="signUpForm"
                             enctype="multipart/form-data">
+                            @csrf
                             <div class="signUpForm-step-holder">
 
                                 <div id="section-1" class="signUpForm-step-wrap">
@@ -745,11 +746,11 @@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
-                                            <div id="final-step-buttons" class="form-group  signUpForm-step-4">
-                                                <button class="btn btn-custom" type="button"
+                                            <div class="form-group signUpForm-step-4">
+                                                <button class="btn btn-custom" type="button" 
                                                     onclick="previousStep3()"><span class="fas fa-arrow-left"></span>
                                                     Back</button>
-                                                    <button class="btn btn-custom float-end" type="button"
+                                                <button class="btn btn-custom float-end" type="button"
                                                     onclick="nextStep5()">Next <span
                                                         class="fas fa-arrow-right"></span></button>
                                             </div>
@@ -861,7 +862,7 @@
                                             </div>
                                         
                                             <div id="mgsFormSubmit" class="hidden"></div>
-                                            <div id="final-step-buttons" class="form-group  signUpForm-step-4">
+                                            <div id="final-step-buttons" class="form-group  signUpForm-step-5">
                                                 <button class="btn btn-custom" type="button"
                                                     onclick="previousStep4()"><span class="fas fa-arrow-left"></span>
                                                     Back</button>
