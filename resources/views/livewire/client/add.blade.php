@@ -126,14 +126,14 @@
                                                         <div class="col-sm-6 col-lg-6">
                                                             <fieldset class="mb-3">
                                                                 <label for="child_name_0" class="form-label">Child Name<span class="text-danger">*</span></label>
-                                                                <input type="text" class="form-control py-2" value="" name="child_name[]" id="child_name_0">
+                                                                <input type="text" class="form-control py-2" value="" name="child_name[]" id="child_name_0" required>
                                                             </fieldset>
                                                         </div>
         
                                                         <div class="col-sm-6 col-lg-6">
                                                             <fieldset class="">
                                                                 <label for="child_age_0" class="form-label">Child Age<span class="text-danger">*</span></label>
-                                                                <select name="child_age[]" class="form-select" id="child_age_0" aria-label="">
+                                                                <select name="child_age[]" class="form-select" id="child_age_0" aria-label="" required>
                                                                     <option value="0" selected="">0+</option>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
@@ -616,7 +616,7 @@
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_state_no">
                                                 <div id="stateDiv">
                                                     <label for="cus_state_no" class="form-label">Please enter the state number<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="cus_state_no" value="" name="cus_state_no">
+                                                    <input type="text" class="form-control py-2" id="cus_state_no" value="" name="cus_state_no" required data-error="Please enter state no">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -634,7 +634,7 @@
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_lice_no">
                                                 <div id="licenseDiv">
                                                     <label for="cus_lice_no" class="form-label">Please enter the driving license number<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="cus_lice_no" value="" name="cus_lice_no" data-error="Please enter license number">
+                                                    <input type="text" class="form-control py-2" id="cus_lice_no" value="" name="cus_lice_no"  required data-error="Please enter license number">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -816,8 +816,8 @@
                                                 <div class="help-block with-errors"></div>
                                             </div>
 
-                                            <div id="friendsDiv">
-                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_counselor">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_counselor">
+                                                <div id="friendsDiv">
                                                     <label for="cus_counselor">Do you believe you could benefit from having a mentor or counselor?<span class="text-danger">*</span></label>
                                                     <select class="form-select" name="cus_counselor" id="cus_counselor"  required data-error="Please select">
                                                         <option value="">Please select</option>
