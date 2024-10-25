@@ -27,4 +27,9 @@ class ClientsHealthIns extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'gl_ID', 'gl_ID');
+    }
 }

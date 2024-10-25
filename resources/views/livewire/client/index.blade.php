@@ -54,7 +54,7 @@
                             <thead>
                                 <tr>
                                     <th class="wd-15p border-bottom-0">Client Name</th>
-                                    <th class="wd-15p border-bottom-0">Client Type</th>
+                                    <th class="wd-15p border-bottom-0">Client Date of birth</th>
                                     <th class="wd-20p border-bottom-0">Client Address</th>
                                     <th class="wd-15p border-bottom-0">City</th>
                                     <th class="wd-10p border-bottom-0">State</th>
@@ -63,26 +63,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($properties as $property)   
+                                @foreach ($clients as $client)   
                                 <tr>
-                                    <td>{{$property->property_name}}</td>
-                                    <td>{{$property->property_type}}</td>
-                                    <td>{{$property->property_address}}</td>
-                                    <td>{{$property->city}}</td>
-                                    <td>{{$property->state}}</td>
-                                    <td>{{$property->created_at}}</td>
+                                    <td>{{$client->cus_name}}</td>
+                                    <td>{{$client->cus_dob}}</td>
+                                    <td>{{$client->address}}</td>
+                                    <td>{{$client->city}}</td>
+                                    <td>{{$client->state}}</td>
+                                    <td>{{$client->created_at}}</td>
                                     <td>
-                                        <a href="{{ route('properties.show', $property->id) }}" class="btn btn-primary" title="Edit">
+                                        <a href="{{ route('clients.show', $client->id) }}" class="btn btn-primary" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
-                                    
-                                        <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('properties.destroy', $property->id) }}');">
+                                        <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('clients.destroy', $client->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                     </td>
                                     
                                 </tr>
-                                @endforeach --}}
+                                @endforeach
                                 
                             </tbody>
                         </table>

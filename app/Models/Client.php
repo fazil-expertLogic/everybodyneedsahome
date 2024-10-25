@@ -32,4 +32,34 @@ class Client extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function ClientChild()
+    {
+        return $this->hasMany(ClientChild::class,'gl_ID','id');
+    }
+
+    public function criminalHistories()
+    {
+        return $this->hasOne(ClientCriminalHistory::class, 'gl_ID', 'id');
+    }
+
+    public function info()
+    {
+        return $this->hasOne(ClientInfo::class, 'gl_ID', 'id');
+    }
+
+    public function healthIns()
+    {
+        return $this->hasOne(ClientsHealthIns::class, 'gl_ID', 'id');
+    }
+
+    public function surveys()
+    {
+        return $this->hasOne(ClientSurvey::class, 'gl_ID', 'id');
+    }
+
+    public function scopeWithAllRelations($query)
+    {
+        return $query->with(['ClientChild', 'criminalHistories', 'info', 'healthIns', 'surveys']);
+    }
 }
