@@ -373,6 +373,6 @@ class ClientController extends Controller
     {
         $client = Client::findOrFail($id);
         $client->softDeleteRelations();
-        return response()->json(['message' => 'Client and related records have been soft deleted successfully.'], 200);
+        return redirect()->route('clients.index')->with('success', 'Client and related records have been soft deleted successfully');
     }
 }
