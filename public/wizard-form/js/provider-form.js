@@ -246,9 +246,9 @@ document.addEventListener("touchstart", function() {},false);
 		
 		if(other_area_served_option === true){
 			if( custom_area_served )
-				$( ".valid_prov_custom_area_served .help-block.with-errors" ).html( '' );
+				$( ".custom-area-served .help-block.with-errors" ).html( '' );
 			else	
-				$( ".valid_prov_custom_area_served .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter Category </li></ul>' );
+				$( ".custom-area-served .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter Category </li></ul>' );
 		}
 		// ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		if(other_area_served_option === true){

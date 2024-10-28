@@ -12,7 +12,7 @@
                             <div class="signUpForm-step-holder">
 
                                 <div id="section-1" class="signUpForm-step-wrap">
-                                    <h3 class="section-title">Step 1 of 5</h3>
+                                    <h3 class="section-title">Step 1 of 1</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -55,7 +55,7 @@
                                                 <div class="form-group valid_prov_type">
                                                     <label for="type" class="form-label">For Profit or Non-Profit?<span class="text-danger">*</span></label>
                                                     <select class="form-select" id="type" name="type" aria-label="Select Type" required data-error="Please select">
-                                                        <option selected="">Please Select</option>
+                                                        <option value="">Please Select</option>
                                                         <option value="1">Profit</option>
                                                         <option value="0">Non-Profit</option>
                                                     </select>
@@ -171,14 +171,14 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_prov_website">
+                                            <div class="col-sm-12 col-lg-12">
+                                                <div class="form-group">
                                                     <label class="form-label text-dark roboto-medium">Area Served<span class="text-danger">*</span></label>
                                                     <div class="d-flex flex-wrap">
                                                                                                 
                                                         <div class="form-check me-3 mb-3">
-                                                            <input class="form-check-input area-served" type="radio" value="1" id="Food" name="area_served" onchange="toggleDiv()">
-                                                            <label class="form-check-label" checked for="Food">Food</label>
+                                                            <input class="form-check-input area-served" type="radio" value="1" id="Food" name="area_served" checked onchange="toggleDiv()">
+                                                            <label class="form-check-label" for="Food">Food</label>
                                                         </div>
                                                                                                 
                                                         <div class="form-check me-3 mb-3">
@@ -211,14 +211,17 @@
                                             </div>
 
                                             <div class="col-sm-12 col-lg-12" id="childinfobox">
+                                                <div class="col-sm-6 col-lg-6">
                                                 <div class="custom-area-served" >
                                                     <label for="custom-area-served" class="form-label">Category<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="custom-area-served" name="custom_area_served" placeholder="Enter Other Category " value="">
+                                                    <input type="text" class="form-control" id="custom-area-served" name="custom_area_served" placeholder="Enter Other Category" value=""  required data-error="Please enter custom area served">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                                 </div>
                                             </div>
                                         </div>
                                         
-                                        <div class="form-group signUpForm-step-1">
+                                        <div class="form-group signUpForm-step-1" style="margin-top: 50px;">
                                             <button class="btn btn-default disable" type="button">Are you
                                                 ready!</button>
                                             {{-- <button class="btn btn-custom float-end" onclick="nextStep2()"
