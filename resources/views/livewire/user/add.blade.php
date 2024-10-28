@@ -43,8 +43,8 @@
 
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_cpass">
-                                                    <label for="cpass" class="form-label">confirm password<span class="text-danger">*</span></label>
-                                                    <input type="password" class="form-control py-2" id="cpass" name="cpass" placeholder="cpass" required data-error="Please enter confirm password">
+                                                    <label for="pass_confirmation" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control py-2" id="pass_confirmation" name="pass_confirmation" placeholder="Confirm Password" required data-error="Please enter confirm password">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>

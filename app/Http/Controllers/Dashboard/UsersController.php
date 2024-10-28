@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\RoleUser;
 use App\Models\Role;
@@ -39,7 +40,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $roles = Role::get();
+        $roles = Role::active()->get();
         return view('livewire.user.add',compact('roles'));
     }
 
@@ -51,7 +52,33 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'pass' => 'required|string|min:8|confirmed',
+            'role' => 'required', 
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+            // return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        DB::beginTransaction();
+        try {
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->pass), 
+                'role_id' => $request->role,
+            ]);
+            DB::commit();
+            return redirect()->route('users.index')->with('success', 'User created successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            $e->getMessage();
+            return redirect()->back()->with('error', 'Failed to create user. Please try again.');
+        }
     }
 
     /**
@@ -62,7 +89,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id); // Fetch property by ID
+        $roles = Role::active()->get();
+        return view('livewire.user.show', compact('user','roles')); // Return edit view
     }
 
     /**
@@ -85,7 +114,34 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'pass' => 'string|min:8|confirmed',
+            'role' => 'required', 
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+            // return redirect()->back()->withErrors($validator)->withInput();
+        }
+       
+        DB::beginTransaction();
+        try {
+            $user = User::findOrFail($id);
+            $user->update([   
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->pass), 
+                'role_id' => $request->role,
+            ]);
+            DB::commit();
+            return redirect()->route('users.index')->with('success', 'User created successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
+            return redirect()->back()->with('error', 'Failed to create user. Please try again.');
+        }
     }
 
     /**
@@ -96,6 +152,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->softDeleteRelations();
+        return redirect()->route('users.index')->with('success', 'user have been soft deleted successfully');
     }
 }

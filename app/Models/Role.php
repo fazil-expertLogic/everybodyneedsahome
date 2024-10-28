@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
+    protected $table = 'roles';
+
+
+    public function softDeleteRelations()
+    {
+        $this->status = 0;
+        $this->save();
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
 }
