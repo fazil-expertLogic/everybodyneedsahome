@@ -33,7 +33,7 @@
                                             </div>
                                         </div>
 
-                                        <h3 class="section-form-title">Create New Provider</h3>
+                                        <h3 class="section-form-title">Edit Provider</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
