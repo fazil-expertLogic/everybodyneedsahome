@@ -17,11 +17,25 @@ class ProvidersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $providers = Provider::active()->paginate(10);    
+        $query = Provider::active();
+    
+        // Check if there is a search parameter in the request
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            // query->where('provider_name', 'LIKE', '%' . $search . '%'); // Adjust the column 'name' based on your database
+            $query->where(function ($q) use ($search) {
+                $q->where('provider_name', 'LIKE', '%' . $search . '%')
+                  ->orWhere('comany_name', 'LIKE', '%' . $search . '%')
+                  ->orWhere('email', 'LIKE', '%' . $search . '%'); // Add or change columns as needed
+            });
+        }
+    
+        $providers = $query->paginate(10);    
         return view('livewire.provider.index', compact('providers'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -52,7 +66,7 @@ class ProvidersController extends Controller
                 'state' => 'required|string|max:100',
                 'zipcode' => 'required|string|max:20',
                 'phone' => 'required|string|max:255',
-                'email' => 'required|unique:providers|string|max:100',
+                'email' => 'required|unique:users|string|max:100',
                 'website' => 'required|string|max:100',
                 'area_served' => 'required|string|max:20',
                 'custom_area_served' => 'nullable|string|max:255',
@@ -131,7 +145,7 @@ class ProvidersController extends Controller
                 'state' => 'required|string|max:100',
                 'zipcode' => 'required|string|max:20',
                 'phone' => 'required|string|max:255',
-                'email' => 'required|unique:providers|string|max:100',
+                'email' => 'required|unique:users|string|max:100',
                 'website' => 'required|string|max:100',
                 'area_served' => 'required|string|max:20',
                 'custom_area_served' => 'nullable|string|max:255',
