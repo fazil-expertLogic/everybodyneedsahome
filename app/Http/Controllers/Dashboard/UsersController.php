@@ -56,7 +56,7 @@ class UsersController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'pass' => 'required|string|min:8|confirmed',
-            'role' => 'required', 
+            'role' => 'required|exists:roles,id'
         ]);
 
         if ($validator->fails()) {
@@ -118,7 +118,7 @@ class UsersController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'pass' => 'string|min:8|confirmed',
-            'role' => 'required', 
+            'role' => 'required|exists:roles,id'
         ]);
 
         if ($validator->fails()) {

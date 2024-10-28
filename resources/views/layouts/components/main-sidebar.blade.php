@@ -65,6 +65,10 @@
 										<i class="side-menu__icon fa fa-home"></i>
 										<span class="side-menu__label">User</span>
 									</a>
+									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('roles.index')}}">
+										<i class="side-menu__icon fa fa-home"></i>
+										<span class="side-menu__label">Role</span>
+									</a>
 								</li>
 							</ul>
 						</div>
