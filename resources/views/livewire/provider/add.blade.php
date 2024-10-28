@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <div class="form-wrap clearfix mt-8">
+                <div class="form-wrap clearfix">
                     <div class="col-md-12">
                         <form method="post" action="{{ route('providers.store') }}" id="signUpForm" class="signUpForm"
                             enctype="multipart/form-data">
