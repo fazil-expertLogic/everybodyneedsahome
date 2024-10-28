@@ -74,7 +74,8 @@
 	<!-- sweetalert Js -->
     <script src="{{asset('wizard-form/js/sweetalert.min.js')}}"></script>
 	<!-- Template main Js -->
-    <script src="{{asset('wizard-form/js/reg-form.js')}}"></script>
+    @yield('js')
+    
 	<!-- Google Api -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
 	<script>

@@ -884,5 +884,5 @@
     </div>
 @endsection
 @section('js')
-<script src="{{asset('wizard-form/js/reg-form.js')}}"></script>
+<script src="{{asset('wizard-form/js/provider-form.js')}}"></script>
 @endsection

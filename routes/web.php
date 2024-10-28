@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\RegistrationsController;
 use App\Http\Controllers\Dashboard\PropertiesController;
 use App\Http\Controllers\Dashboard\ClientController;
+use App\Http\Controllers\Dashboard\ProvidersController;
 use App\Http\Controllers\Site\CustomAuthController;
 
 use App\Http\Livewire\Index;
@@ -32,6 +33,7 @@ Route::post('properties/update', [PropertiesController::class, 'update'])->name(
 Route::DELETE('properties/destroy/{id}', [PropertiesController::class, 'destroy'])->name('properties.destroy');
 // Route::get('properties/delete/{id}', [PropertiesController::class, 'destroy'])->name('organization.destroy');
 Route::resource('clients', ClientController::class);
+Route::resource('providers', ProvidersController::class);
 
 
 // Route::get('index', [CustomAuthController::class, 'dashboard']);

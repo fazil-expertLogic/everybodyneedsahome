@@ -880,3 +880,6 @@
         </div>
     </div>
 @endsection
+@section('js')
+<script src="{{asset('wizard-form/js/reg-form.js')}}"></script>
+@endsection
