@@ -11,17 +11,20 @@ class Provider extends Model
     protected $table = 'providers';
 
     protected $fillable = [
-        'cus_name',
-        'cus_dob',
-        'cus_ss',
-        'martial_status',
-        'is_child',
+        'gl_ID',
+        'provider_name',
+        'comany_name',
+        'Type',
         'address',
         'city',
         'state',
         'zipcode',
         'phone',
         'email',
+        'website',
+        'area_served',
+        'custom_area_served',
+        'status',
     ];
     // Optionally, you can specify timestamps if you want to handle created_at and updated_at
     public $timestamps = true;
@@ -36,11 +39,6 @@ class Provider extends Model
     {
         // Update the status to 0 for each relation
         $this->status = 0;
-        $this->ClientChild()->update(['status' => 0]);
-        $this->criminalHistories()->update(['status' => 0]);
-        $this->info()->update(['status' => 0]);
-        $this->healthIns()->update(['status' => 0]);
-        $this->surveys()->update(['status' => 0]);
         $this->save();
     }
 

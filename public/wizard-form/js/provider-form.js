@@ -292,50 +292,12 @@ document.addEventListener("touchstart", function() {},false);
 	
 	var is_edit = $('#is_edit').val();
 	if(is_edit == 1){
-		var cus_bcert = $('#cus_bcert').val();
-		if (cus_bcert === '1') {
-			$('#birthDiv').show();
-		} else if (cus_bcert === '2') {
-			$('#birthDiv').hide();
-		}
-		var cus_state_id = $('#cus_state_id').val();
-		if (cus_state_id === '1') {
-			$('#stateDiv').show();
-		} else if (cus_state_id === '2') {
-			$('#stateDiv').hide();
-		}
-		var cus_d_lice = $('#cus_d_lice').val();
-		if (cus_d_lice === '1') {
-			$('#licenseDiv').show();
-		} else if (cus_d_lice === '2') {
-			$('#licenseDiv').hide();
-		}
-		var cus_ss_card = $('#cus_ss_card').val();
-		if (cus_ss_card === '1') {
-			$('#securityDiv').show();
-		} else if (cus_ss_card === '2') {
-			$('#securityDiv').hide();
-		}
-		var cus_insurace = $('#cus_insurace').val();
-		if (cus_insurace === '1') {
-			$('#insuranceDiv').show();
-		} else if (cus_insurace === '2') {
-			$('#insuranceDiv').hide();
-		}
-		var cus_more_friends = $('#cus_more_friends').val();
-		if (cus_more_friends === '1') {
-			$('#friendsDiv').show();
-		} else if (cus_more_friends === '2') {
-			$('#friendsDiv').hide();
-		}
-
-		var cus_is_child = $('#cus_is_child').val();
-		if (cus_is_child === '1') {
+		var other_area_served_option = $('#other-area-served-option').is(':checked');
+		if (other_area_served_option === true) {
 			$('#childinfobox').show();
-		} else if (cus_is_child === '2') {
+		} else {
 			$('#childinfobox').hide();
 		}
-		
 	}
 	
 	
