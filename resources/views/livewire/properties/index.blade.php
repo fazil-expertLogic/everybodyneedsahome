@@ -1,54 +1,57 @@
 @extends('layouts.app')
 
 @section('styles')
+
 @endsection
 
 @section('content')
-    <!-- PAGE-HEADER -->
-    <div class="page-header d-sm-flex d-block">
-        <ol class="breadcrumb mb-sm-0 mb-3">
-            <!-- breadcrumb -->
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Properties</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Properties Tables</li>
-        </ol><!-- End breadcrumb -->
-        <div class="ms-auto">
-            <div>
-                <a href="javascript:void(0);" class="btn bg-secondary-transparent text-secondary btn-sm"
-                    data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Rating">
-                    <span>
-                        <i class="fa fa-star"></i>
-                    </span>
-                </a>
-                <a href="{{ url('lockscreen') }}" class="btn bg-primary-transparent text-primary mx-2 btn-sm"
-                    data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="lock">
-                    <span>
-                        <i class="fa fa-lock"></i>
-                    </span>
-                </a>
-                <a href="javascript:void(0);" class="btn bg-warning-transparent text-warning btn-sm"
-                    data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Add New">
-                    <span>
-                        <i class="fa fa-plus"></i>
-                    </span>
-                </a>
-            </div>
+
+<!-- PAGE-HEADER -->
+<div class="page-header d-sm-flex d-block">
+    <ol class="breadcrumb mb-sm-0 mb-3">
+        <!-- breadcrumb -->
+        <li class="breadcrumb-item"><a href="javascript:void(0);">Properties</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Properties Tables</li>
+    </ol><!-- End breadcrumb -->
+    <div class="ms-auto">
+        <div>
+            <a href="javascript:void(0);" class="btn bg-secondary-transparent text-secondary btn-sm"
+                data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Rating">
+                <span>
+                    <i class="fa fa-star"></i>
+                </span>
+            </a>
+            <a href="{{ url('lockscreen') }}" class="btn bg-primary-transparent text-primary mx-2 btn-sm"
+                data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="lock">
+                <span>
+                    <i class="fa fa-lock"></i>
+                </span>
+            </a>
+            <a href="javascript:void(0);" class="btn bg-warning-transparent text-warning btn-sm"
+                data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Add New">
+                <span>
+                    <i class="fa fa-plus"></i>
+                </span>
+            </a>
         </div>
     </div>
-    <!-- END PAGE-HEADER -->
+</div>
+<!-- END PAGE-HEADER -->
 
-    <!-- ROW -->
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Properties Data</h3>
-                </div>
-                <div class="mb-3 text-end">  <!-- Add text-end class here -->
-                    <a href="{{ route('properties.add') }}" class="btn bg-primary" data-bs-toggle="tooltip" title="Add New">
-                        <span><i class="fa fa-plus"></i> Add Property</span>
-                    </a>
-                </div>
-                <div class="card-body">
+<!-- ROW -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Properties Data</h3>
+            </div>
+            <div class="mb-3 text-end"> <!-- Add text-end class here -->
+                <a href="{{ route('properties.add') }}" class="btn bg-primary" data-bs-toggle="tooltip" title="Add New">
+                    <span><i class="fa fa-plus"></i> Add Property</span>
+                </a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
                     <div class="table-responsive">
                         <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
                             <thead>
@@ -63,7 +66,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($properties as $property)   
+                                @foreach ($properties as $property)
                                 <tr>
                                     <td>{{$property->property_name}}</td>
                                     <td>{{$property->property_type}}</td>
@@ -75,23 +78,84 @@
                                         <a href="{{ route('properties.show', $property->id) }}" class="btn btn-primary" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
-                                    
+
                                         <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('properties.destroy', $property->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                     </td>
-                                    
                                 </tr>
                                 @endforeach
-                                
                             </tbody>
                         </table>
+
+                        <!-- Pagination Links -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Pagination Center Alignment</h2>
+                            </div>
+                            <div class="card-body">
+                                <!-- Display total entry count -->
+                                <p>Total Entries: {{ $properties->total() }}</p>
+
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-center mb-0">
+                                        {{-- Previous Button --}}
+                                        @if ($properties->onFirstPage())
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="javascript:void(0);" tabindex="-1">
+                                                <i class="fa fa-angle-left"></i>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        @else
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ $properties->previousPageUrl() }}">
+                                                <i class="fa fa-angle-left"></i>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        @endif
+
+                                        {{-- Page Links --}}
+                                        @for ($i = 1; $i <= $properties->lastPage(); $i++)
+                                            <li class="page-item {{ ($properties->currentPage() == $i) ? 'active' : '' }}">
+                                                <a class="page-link" href="{{ $properties->url($i) }}">{{ $i }}</a>
+                                            </li>
+                                            @endfor
+
+                                            {{-- Next Button --}}
+                                            @if ($properties->hasMorePages())
+                                            <li class="page-item">
+                                                <a class="page-link" href="{{ $properties->nextPageUrl() }}">
+                                                    <i class="fa fa-angle-right"></i>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </li>
+                                            @else
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="javascript:void(0);">
+                                                    <i class="fa fa-angle-right"></i>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </li>
+                                            @endif
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+
+
                     </div>
+
+
                 </div>
             </div>
+
         </div>
     </div>
-    <!-- END ROW -->
+</div>
+<!-- END ROW -->
 <!-- Delete Confirmation Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -114,31 +178,31 @@
         </div>
     </div>
 </div>
-   
+
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- SELECT2 JS -->
-    <script src="{{ asset('build/assets/plugins/select2/select2.full.min.js') }}"></script>
-    <script>
-        function confirmDelete(url) {
-            document.getElementById('deleteForm').action = url; // Set the action of the form
-            var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal')); // Initialize the modal
-            deleteModal.show(); // Show the modal
-        }
-    </script>
-    @vite('resources/assets/js/select2.js')
+<!-- SELECT2 JS -->
+<script src="{{ asset('build/assets/plugins/select2/select2.full.min.js') }}"></script>
+<script>
+    function confirmDelete(url) {
+        document.getElementById('deleteForm').action = url; // Set the action of the form
+        var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal')); // Initialize the modal
+        deleteModal.show(); // Show the modal
+    }
+</script>
+@vite('resources/assets/js/select2.js')
 
-    <!-- DATA TABLE JS -->
-    <script src="{{ asset('build/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/jszip.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
-    @vite('resources/assets/js/table-data.js')
+<!-- DATA TABLE JS -->
+<script src="{{ asset('build/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/jszip.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
+@vite('resources/assets/js/table-data.js')

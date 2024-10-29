@@ -10,16 +10,23 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Pagination\Paginator;
 
 class PropertiesController extends Controller
 {
     // Show login form
 
-    public function index()
-    {
-        $properties = Property::where('status' ,1)->paginate(10);
-        return view('livewire.properties.index', compact('properties'));
-    }
+
+    public function index(Request $request)
+{
+    $properties = Property::where('status', 1)->paginate(2); // 10 items per page
+
+    return view('livewire.properties.index', [
+        'properties' => $properties,
+    ]);
+}
+
+
 
     public function add()
     {
@@ -68,11 +75,11 @@ class PropertiesController extends Controller
 
         try {
             // Handle image uploads
-           
+
             if ($request->hasFile('main_picture')) {
                 $mainPicture = $request->file('main_picture');
                 $mainPicturePath = $mainPicture->store('property_images', 'public'); // Save in storage/app/public/property_images
-            } 
+            }
 
             // Handle more pictures upload
             $morePictures = [];
@@ -80,7 +87,7 @@ class PropertiesController extends Controller
                 foreach ($request->file('more_picture') as $picture) {
                     $morePictures[] = $picture->store('property_images', 'public');
                 }
-            } 
+            }
 
             // Create the property record
             Property::create([
