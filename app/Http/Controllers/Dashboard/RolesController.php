@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\RoleUser;
 use App\Models\Role;
+use App\Models\Menu;
+use App\Models\Permission;
 
 
 class RolesController extends Controller
@@ -39,7 +41,9 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return view('livewire.role.add');
+        $roles = Role::active()->get();
+        $menus = Menu::active()->get();
+        return view('livewire.role.add',compact('menus','roles'));
     }
 
     /**
@@ -50,17 +54,51 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
+        DB::beginTransaction();
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
+                'permissions' => 'array',
+                'permissions.*.is_listing' => 'nullable|boolean',
+                'permissions.*.is_show' => 'nullable|boolean',
+                'permissions.*.is_create' => 'nullable|boolean',
+                'permissions.*.is_edit' => 'nullable|boolean',
+                'permissions.*.is_delete' => 'nullable|boolean',
             ]);
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 422);
             }
-            DB::beginTransaction();
-            Role::create([
+            $role = Role::create([
                 'name' =>  $request->name,
             ]);
+            // -------------------- permissions --------------------------
+            $permissions = $request->input('permissions', []);
+
+            foreach ($permissions as $menuId => $permissionData) {
+
+                $permissionData = array_merge([
+                    'is_listing' => 0,
+                    'is_show' => 0,
+                    'is_create' => 0,
+                    'is_edit' => 0,
+                    'is_delete' => 0,
+                ], $permissionData);
+
+                Permission::updateOrCreate(
+                    [
+                        'role_id' => $role->id,
+                        'menu_id' => $menuId,
+                    ],
+                    [
+                        'is_listing' => $permissionData['is_listing'],
+                        'is_show' => $permissionData['is_show'],
+                        'is_create' => $permissionData['is_create'],
+                        'is_edit' => $permissionData['is_edit'],
+                        'is_delete' => $permissionData['is_delete'],
+                    ]
+                );
+            }
+            // -------------------- permissions --------------------------
             DB::commit();
             return redirect()->route('roles.index')->with('success', 'Providers create successfully.');
         } catch (\Exception $e) {
@@ -79,7 +117,9 @@ class RolesController extends Controller
     public function show($id)
     {
         $role = Role::findOrFail($id);
-        return view('livewire.role.show', compact('role'));
+        $permissions = Permission::where('role_id',$id)->get();
+        $menus = Menu::active()->get();
+        return view('livewire.role.show', compact('role','menus','permissions'));
     }
 
     /**
@@ -102,23 +142,54 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        DB::beginTransaction();
         try {
-            // Validate the incoming request
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
+                'permissions' => 'array',
+                'permissions.*.is_listing' => 'nullable|boolean',
+                'permissions.*.is_show' => 'nullable|boolean',
+                'permissions.*.is_create' => 'nullable|boolean',
+                'permissions.*.is_edit' => 'nullable|boolean',
+                'permissions.*.is_delete' => 'nullable|boolean',
             ]);
-
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 422);
             }
-            DB::beginTransaction();
             $role = Role::findOrFail($id);
             $role->update([
                 'name' =>  $request->name,
             ]);
+            // -------------------- permissions --------------------------
+            $permissions = $request->input('permissions', []);
 
+            foreach ($permissions as $menuId => $permissionData) {
+
+                $permissionData = array_merge([
+                    'is_listing' => 0,
+                    'is_show' => 0,
+                    'is_create' => 0,
+                    'is_edit' => 0,
+                    'is_delete' => 0,
+                ], $permissionData);
+
+                Permission::updateOrCreate(
+                    [
+                        'role_id' => $role->id,
+                        'menu_id' => $menuId,
+                    ],
+                    [
+                        'is_listing' => $permissionData['is_listing'],
+                        'is_show' => $permissionData['is_show'],
+                        'is_create' => $permissionData['is_create'],
+                        'is_edit' => $permissionData['is_edit'],
+                        'is_delete' => $permissionData['is_delete'],
+                    ]
+                );
+            }
+            // -------------------- permissions --------------------------
             DB::commit();
-            return redirect()->route('roles.index')->with('success', 'roles create successfully.');
+            return redirect()->route('roles.index')->with('success', 'Providers create successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
             dd($e->getMessage());

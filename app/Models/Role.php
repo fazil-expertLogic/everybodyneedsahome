@@ -23,4 +23,8 @@ class Role extends Model
     {
         return $query->where('status', 1);
     }
+    public function permissions()
+    {
+        return $this->hasMany(Permission::class);
+    }
 }
