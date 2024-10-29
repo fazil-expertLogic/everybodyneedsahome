@@ -53,7 +53,7 @@
 
             <div class="mb-3 text-end"> <!-- Add text-end class here -->
                 <div class="input-group w-100 ">
-                    
+
                     <div class="col">
                         <input type="text" name="property_type" class="form-control" placeholder="Property Type" value="{{ request('property_type') }}">
                     </div>
@@ -98,7 +98,10 @@
                                     <td>{{$property->state}}</td>
                                     <td>{{$property->created_at}}</td>
                                     <td>
-                                        <a href="{{ route('properties.show', $property->id) }}" class="btn btn-primary" title="Edit">
+                                        <a href="{{ route('properties.show', $property->id) }}" class="btn btn-warning" title="Edit">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="{{ route('properties.edit', $property->id) }}" class="btn btn-primary" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
 
