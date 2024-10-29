@@ -25,6 +25,11 @@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                                 <div class="form-group valid_use_name">
+                                                    <label for="route" class="form-label">Route<span class="text-danger">*</span></label>
+                                                    <input type="text" name="route" class="form-control py-2" id="route" placeholder="route" value="{{$menu->route}}" required data-error="Please enter route">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                                <div class="form-group valid_use_name">
                                                     <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
                                                     <input type="text" name="icon" class="form-control py-2" id="icon" placeholder="icon" value="{{$menu->icon}}" required data-error="Please enter icon">
                                                     <div class="help-block with-errors"></div>

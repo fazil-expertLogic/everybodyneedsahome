@@ -67,6 +67,7 @@
                                         <a href="{{ route('roles.show', $role->id) }}" class="btn btn-primary" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
+                                        
                                         <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('roles.destroy', $role->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
