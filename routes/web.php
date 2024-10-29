@@ -29,6 +29,7 @@ Route::get('login', [RegistrationsController::class, 'showLogin']);
 Route::post('loginPerform', [RegistrationsController::class, 'loginPerform'])->name('login.perform');
 Route::post('logout', [RegistrationsController::class, 'logout'])->name('logout');
 
+Route::group(['middleware' => 'auth'], function () {
 
 Route::get('properties', [PropertiesController::class, 'index'])->name('properties.index');
 Route::get('properties/add', [PropertiesController::class, 'add'])->name('properties.add');
@@ -44,6 +45,7 @@ Route::resource('roles', RolesController::class);
 Route::resource('menus', MenusController::class);
 Route::resource('permissions', permissionsController::class);
 
+});
 
 // Route::get('index', [CustomAuthController::class, 'dashboard']);
 
