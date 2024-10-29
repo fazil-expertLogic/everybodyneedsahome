@@ -14,17 +14,15 @@ use Illuminate\Pagination\Paginator;
 
 class PropertiesController extends Controller
 {
-    // Show login form
-
-
+  
     public function index(Request $request)
-{
-    $properties = Property::where('status', 1)->paginate(2); // 10 items per page
+    {
+        $properties = Property::where('status', 1)->paginate(2); // 10 items per page
 
-    return view('livewire.properties.index', [
-        'properties' => $properties,
-    ]);
-}
+        return view('livewire.properties.index', [
+            'properties' => $properties,
+        ]);
+    }
 
 
 
@@ -138,6 +136,12 @@ class PropertiesController extends Controller
     {
         $property = Property::findOrFail($id); // Fetch property by ID
         return view('livewire.properties.show', compact('property')); // Return edit view
+    }
+
+    public function edit($id)
+    {
+        $property = Property::findOrFail($id); // Fetch property by ID
+        return view('livewire.properties.edit', compact('property')); // Return edit view
     }
     public function destroy($id)
     {

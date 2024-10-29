@@ -34,8 +34,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('properties', [PropertiesController::class, 'index'])->name('properties.index');
     Route::get('properties/add', [PropertiesController::class, 'add'])->name('properties.add');
     Route::post('properties/store', [PropertiesController::class, 'store'])->name('properties.store');
-    Route::get('properties/show/{id}', [PropertiesController::class, 'show'])->name('properties.show');
+    Route::get('properties/edit/{id}', [PropertiesController::class, 'edit'])->name('properties.edit');
     Route::post('properties/update', [PropertiesController::class, 'update'])->name('properties.update');
+    Route::get('properties/{id}', [PropertiesController::class, 'show'])->name('properties.show');
+  
     Route::DELETE('properties/destroy/{id}', [PropertiesController::class, 'destroy'])->name('properties.destroy');
     // Route::get('properties/delete/{id}', [PropertiesController::class, 'destroy'])->name('organization.destroy');
     Route::resource('clients', ClientController::class);
