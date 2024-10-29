@@ -17,15 +17,39 @@ class PropertiesController extends Controller
   
     public function index(Request $request)
     {
-        $properties = Property::where('status', 1)->paginate(2); // 10 items per page
-
-        return view('livewire.properties.index', [
-            'properties' => $properties,
-        ]);
+        // Get the search parameters from the request
+        $query = Property::query();
+        
+        if ($request->filled('property_type')) {
+            $query->where('property_type', 'like', '%' . $request->property_type . '%');
+        }
+        
+        if ($request->filled('city')) {
+            $query->where('city', 'like', '%' . $request->city . '%');
+        }
+        
+        if ($request->filled('state')) {
+            $query->where('state', 'like', '%' . $request->state . '%');
+        }
+        
+        if ($request->filled('zipcode')) {
+            $query->where('zipcode', 'like', '%' . $request->zipcode . '%');
+        }
+    
+        if ($request->filled('search')) {
+            $query->where(function($subquery) use ($request) {
+                $subquery->where('property_name', 'like', '%' . $request->search . '%')
+                         ->orWhere('property_address', 'like', '%' . $request->search . '%');
+            });
+        }
+    
+        // Pagination
+        $properties = $query->paginate(10);
+    
+        // Return the view with properties
+        return view('livewire.properties.index', compact('properties'));
     }
-
-
-
+    
     public function add()
     {
         return view('livewire.properties.add');
