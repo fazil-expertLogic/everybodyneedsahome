@@ -51,28 +51,27 @@
                 </a>
             </div>
 
-            <div class="mb-3 text-end"> <!-- Add text-end class here -->
-                <div class="input-group w-100 ">
-
-                    <div class="col">
-                        <input type="text" name="property_type" class="form-control" placeholder="Property Type" value="{{ request('property_type') }}">
+            <form action="{{ route('properties.index') }}" method="GET">
+                <div class="mb-3 text-end">
+                    <div class="input-group w-100">
+                        <div class="col">
+                            <input type="text" name="property_type" class="form-control" placeholder="Property Type" value="{{ request('property_type') }}">
+                        </div>
+                        <div class="col">
+                            <input type="text" name="city" class="form-control" placeholder="City" value="{{ request('city') }}">
+                        </div>
+                        <div class="col">
+                            <input type="text" name="state" class="form-control" placeholder="State" value="{{ request('state') }}">
+                        </div>
+                        
+                        <input type="text" name="search" class="form-control bg-white" placeholder="Search here..." value="{{ request('search') }}">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
                     </div>
-                    <div class="col">
-                        <input type="text" name="city" class="form-control" placeholder="City" value="{{ request('city') }}">
-                    </div>
-                    <div class="col">
-                        <input type="text" name="state" class="form-control" placeholder="State" value="{{ request('state') }}">
-                    </div>
-                    <div class="col">
-                        <input type="text" name="zipcode" class="form-control" placeholder="Zip Code" value="{{ request('zipcode') }}">
-                    </div>
-                    <input type="text" class="form-control bg-white" placeholder="Search here...">
-                    <button type="button" class="btn btn-primary ">
-                        <i class="fa fa-search " aria-hidden="true"></i>
-                    </button>
                 </div>
+            </form>
 
-            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <div class="table-responsive">
