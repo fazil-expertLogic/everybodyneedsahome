@@ -1,4 +1,11 @@
 
+<?php
+
+	use App\Models\Menu;
+
+	$menus = Menu::active()->get();
+?>
+
 				<div class="sticky">
 					<div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
 					<div class="app-sidebar">
@@ -45,30 +52,13 @@
 									</ul>
 								</li>
 								<li class="slide">
-									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('chat')}}">
-											<i class="side-menu__icon fa fa-comment-o"></i>
-											<span class="side-menu__label">chat</span>
+									@foreach ( $menus as $menu)
+									
+									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route($menu->route) }}">
+										<i class="{{$menu->icon}}"></i>
+										<span class="side-menu__label">{{$menu->name}}</span>
 									</a>
-									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('properties.index')}}">
-										<i class="side-menu__icon fa fa-home"></i>
-										<span class="side-menu__label">Property</span>
-									</a>
-									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('clients.index')}}">
-										<i class="side-menu__icon fa fa-home"></i>
-										<span class="side-menu__label">Client</span>
-									</a>
-									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('providers.index')}}">
-										<i class="side-menu__icon fa fa-home"></i>
-										<span class="side-menu__label">Provider</span>
-									</a>
-									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('users.index')}}">
-										<i class="side-menu__icon fa fa-home"></i>
-										<span class="side-menu__label">User</span>
-									</a>
-									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('roles.index')}}">
-										<i class="side-menu__icon fa fa-home"></i>
-										<span class="side-menu__label">Role</span>
-									</a>
+									@endforeach
 								</li>
 							</ul>
 						</div>

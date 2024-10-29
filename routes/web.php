@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\ClientController;
 use App\Http\Controllers\Dashboard\ProvidersController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\RolesController;
+use App\Http\Controllers\Dashboard\MenusController;
 
 use App\Http\Controllers\Site\CustomAuthController;
 
@@ -39,6 +40,7 @@ Route::resource('clients', ClientController::class);
 Route::resource('providers', ProvidersController::class);
 Route::resource('users', UsersController::class);
 Route::resource('roles', RolesController::class);
+Route::resource('menus', MenusController::class);
 
 
 // Route::get('index', [CustomAuthController::class, 'dashboard']);
