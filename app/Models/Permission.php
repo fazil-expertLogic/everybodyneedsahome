@@ -17,7 +17,7 @@ class Permission extends Model
         'is_edit',
         'is_delete',
     ];
-
+    
     public function role()
     {
         return $this->belongsTo(Role::class);

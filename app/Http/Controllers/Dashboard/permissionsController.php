@@ -42,7 +42,8 @@ class permissionsController extends Controller
      */
     public function store(Request $request)
     {
-         // Validate the input
+        DB::beginTransaction();
+        try {
         $request->validate([
             'role' => 'required|exists:roles,id',
             'permissions' => 'array',
@@ -79,9 +80,13 @@ class permissionsController extends Controller
                 ]
             );
         }
-
-        // Redirect back with a success message
-        return redirect()->back()->with('success', 'Permissions saved successfully!');
+        DB::commit();
+        return redirect()->route('roles.index')->with('success', 'permissions create successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
+            return redirect()->back()->with('error', 'Failed to create permissions. Please try again.');
+        }
     }
 
     /**
@@ -92,7 +97,9 @@ class permissionsController extends Controller
      */
     public function show($id)
     {
-        //
+        $permissions = Permission::where('role_id',$id)->get();
+        $menus = Menu::active()->get();
+        return view('livewire.permissions.show', compact('menus','permissions','id'));
     }
 
     /**
@@ -114,9 +121,53 @@ class permissionsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    { 
+        DB::beginTransaction();
+        try {
+            $request->validate([
+                'role' => 'required|exists:roles,id',
+                'permissions' => 'array',
+                'permissions.*.is_listing' => 'nullable|boolean',
+                'permissions.*.is_show' => 'nullable|boolean',
+                'permissions.*.is_create' => 'nullable|boolean',
+                'permissions.*.is_edit' => 'nullable|boolean',
+                'permissions.*.is_delete' => 'nullable|boolean',
+            ]);
+
+            $roleId = $request->input('role');
+            $permissions = $request->input('permissions', []);
+
+            foreach ($permissions as $menuId => $permissionData) {
+                $permissionData = array_merge([
+                    'is_listing' => 0,
+                    'is_show' => 0,
+                    'is_create' => 0,
+                    'is_edit' => 0,
+                    'is_delete' => 0,
+                ], $permissionData);
+                Permission::updateOrCreate(
+                    [
+                        'role_id' => $roleId,
+                        'menu_id' => $menuId,
+                    ],
+                    [
+                        'is_listing' => $permissionData['is_listing'],
+                        'is_show' => $permissionData['is_show'],
+                        'is_create' => $permissionData['is_create'],
+                        'is_edit' => $permissionData['is_edit'],
+                        'is_delete' => $permissionData['is_delete'],
+                    ]
+                );
+            }
+            DB::commit();
+            return redirect()->route('roles.index')->with('success', 'menu create successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
+            return redirect()->back()->with('error', 'Failed to update permissions. Please try again.');
+        }
     }
+    
 
     /**
      * Remove the specified resource from storage.
