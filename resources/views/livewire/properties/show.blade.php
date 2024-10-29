@@ -123,24 +123,24 @@
                     <div class="col-md-6">
                         <p>Do you charge by the bed, bedroom or entire unit/house? *</p>
                     </div>
-
+                    
                     <div class="col-md-2">
                         <div class="form-check">
-                            <input type="radio" name="property_type" class="form-check-input" id="is_beds" value="bed" @if($property->property_type == 'bed') checked @endif>
+                            <input type="radio" name="property_type" class="form-check-input" id="is_beds" value="bed" @if($property->property_type == 'bed') checked @endif disabled>
                             <label class="form-check-label" for="is_beds">By Bed</label>
                         </div>
                     </div>
 
                     <div class="col-md-2">
                         <div class="form-check">
-                            <input type="radio" name="property_type" class="form-check-input" id="is_bedroom" value="bedroom" @if($property->property_type == 'bedroom') checked @endif>
+                            <input type="radio" name="property_type" class="form-check-input" id="is_bedroom" value="bedroom" @if($property->property_type == 'bedroom') checked @endif disabled>
                             <label class="form-check-label" for="is_bedroom">By Bedroom</label>
                         </div>
                     </div>
 
                     <div class="col-md-2">
                         <div class="form-check">
-                            <input type="radio" name="property_type" class="form-check-input" id="is_unit" value="unit" @if($property->property_type == 'unit') checked @endif>
+                            <input type="radio" name="property_type" class="form-check-input" id="is_unit" value="unit" @if($property->property_type == 'unit') checked @endif disabled>
                             <label class="form-check-label" for="is_unit">By Unit/House</label>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                     <div class="col-md-6">
                         <label for="number_of_beds" class="form-label">How many beds are available to rent? *</label>
                         <input type="number" class="form-control" name="number_of_beds" id="number_of_beds"
-                            value="{{$property->number_of_beds}}">
+                            value="{{$property->number_of_beds}}" disabled>
                         <div class="valid-feedback">
                             Please enter the number of Beds.
                         </div>
@@ -164,7 +164,7 @@
                     <div class="col-md-6">
                         <label for="rent_bed" class="form-label">Rent by Bed</label>
                         <input type="number" class="form-control" name="rent_bed" id="rent_bed"
-                            value="{{$property->rent_bed}}">
+                            value="{{$property->rent_bed}}" disabled>
                         <div class="valid-feedback">
                             Please enter the number of Beds.
                         </div>
@@ -178,7 +178,7 @@
                     <div class="col-md-6">
                         <label for="bed_deposit" class="form-label">Deposit*</label>
                         <input type="number" class="form-control" name="bed_deposit" id="bed_deposit"
-                            value="{{$property->bed_deposit}}">
+                            value="{{$property->bed_deposit}}" disabled>
                         <div class="valid-feedback">
                             Please enter the number of Beds.
                         </div>
@@ -186,7 +186,7 @@
 
                     <div class="col-md-6">
                         <label for="bed_fee" class="form-label">Fee*</label>
-                        <input type="number" class="form-control" name="bed_fee" id="bed_fee" value="{{$property->bed_fee}}">
+                        <input type="number" class="form-control" name="bed_fee" id="bed_fee" value="{{$property->bed_fee}}" disabled>
                         <div class="valid-feedback">
                             Please enter the number of Beds.
                         </div>
@@ -197,7 +197,7 @@
                     <div class="col-md-6">
                         <label for="number_of_bedrooms" class="form-label">How many bedrooms are available to rent? *</label>
                         <input type="number" class="form-control" name="number_of_bedrooms" id="number_of_bedrooms"
-                            value="{{$property->number_of_bedrooms}}">
+                            value="{{$property->number_of_bedrooms}}" disabled>
                         <div class="valid-feedback">
                             Please enter the number of bedrooms.
                         </div>
@@ -206,7 +206,7 @@
                     <div class="col-md-6">
                         <label for="stay_one_bedroom" class="form-label">People allowed to stay in one bedroom? *</label>
                         <input type="number" class="form-control" name="stay_one_bedroom" id="stay_one_bedroom"
-                            value="{{$property->stay_one_bedroom}}">
+                            value="{{$property->stay_one_bedroom}}" disabled>
                         <div class="valid-feedback">
                             Please enter the number Of People allowed to stay in one bedroom.
                         </div>
@@ -219,7 +219,7 @@
                     <div class="col-md-6">
                         <label for="bedroom_deposit" class="form-label">Deposit*</label>
                         <input type="number" class="form-control" name="bedroom_deposit" id="bedroom_deposit"
-                            value="{{$property->bedroom_deposit}}">
+                            value="{{$property->bedroom_deposit}}" disabled>
                         <div class="valid-feedback">
                             Please enter the number of Beds.
                         </div>
@@ -227,7 +227,7 @@
 
                     <div class="col-md-6">
                         <label for="bedroom_fee" class="form-label">Fee*</label>
-                        <input type="number" class="form-control" name="bedroom_fee" id="bedroom_fee" value="{{$property->bedroom_fee}}">
+                        <input type="number" class="form-control" name="bedroom_fee" id="bedroom_fee" value="{{$property->bedroom_fee}}" disabled>
                         <div class="valid-feedback">
                             Please enter the number of Beds.
                         </div>
@@ -240,7 +240,7 @@
                     <div class="col-md-6">
                         <label for="number_of_bedrooms_house" class="form-label">How many bedrooms are there in the house? *</label>
                         <input type="number" class="form-control" name="number_of_bedrooms_house" id="number_of_bedrooms_house"
-                            value="{{$property->number_of_bedrooms_house}}">
+                            value="{{$property->number_of_bedrooms_house}}" disabled>
                         <div class="valid-feedback">
                             Please enter the number of bedrooms are there in the house.
                         </div>
@@ -249,7 +249,7 @@
                     <div class="col-md-6">
                         <label for="number_of_bath_house" class="form-label">How many baths are there in the house? *</label>
                         <input type="number" class="form-control" name="number_of_bath_house" id="number_of_bath_house"
-                            value="{{$property->number_of_bath_house}}">
+                            value="{{$property->number_of_bath_house}}" disabled>
                         <div class="valid-feedback">
                             Please enter the number Of baths are there in the house.
                         </div>
@@ -257,7 +257,7 @@
 
                     <div class="col-md-6">
                         <label for="utilities_inscluded" class="form-label">Are Utilities included? *</label>
-                        <select class="form-select select2" id="utilities_inscluded" name="utilities_inscluded">
+                        <select class="form-select select2" id="utilities_inscluded" name="utilities_inscluded" disabled>
                             <option selected disabled value="">Choose...</option>
                             <option @if($property->is_property_occupied == '1') selected @endif value="1">Yes</option>
                             <option @if($property->is_property_occupied == '0') selected @endif value="0">No</option>
@@ -270,7 +270,7 @@
                     <div class="col-md-6">
                         <label for="rent_unit" class="form-label">Rent for the Unit/House *</label>
                         <input type="number" class="form-control" name="rent_unit" id="rent_unit"
-                            value="{{$property->rent_unit}}">
+                            value="{{$property->rent_unit}}" disabled>
                         <div class="valid-feedback">
                             Please enter Rent for the Unit/House.
                         </div>
@@ -283,7 +283,7 @@
                     <div class="col-md-6">
                         <label for="unit_deposit" class="form-label">Deposit*</label>
                         <input type="number" class="form-control" name="unit_deposit" id="unit_deposit"
-                            value="{{$property->unit_deposit}}">
+                            value="{{$property->unit_deposit}}" disabled>
                         <div class="valid-feedback">
                             Please enter the number of Beds.
                         </div>
@@ -291,7 +291,7 @@
 
                     <div class="col-md-6">
                         <label for="unit_fee" class="form-label">Fee*</label>
-                        <input type="number" class="form-control" name="unit_fee" id="unit_fee" value="{{$property->unit_fee}}">
+                        <input type="number" class="form-control" name="unit_fee" id="unit_fee" value="{{$property->unit_fee}}" disabled>
                         <div class="valid-feedback">
                             Please enter the number of Beds.
                         </div>
@@ -302,7 +302,7 @@
 
                 <div class="col-md-6">
                     <label for="is_property_occupied" class="form-label">Is property occupied? *</label>
-                    <select class="form-select select2" name="is_property_occupied" id="is_property_occupied" required>
+                    <select class="form-select select2" name="is_property_occupied" id="is_property_occupied" required disabled>
                         <option selected disabled value="">Choose...</option>
                         <option @if($property->is_property_occupied == '1') selected @endif value="1">Yes</option>
                         <option @if($property->is_property_occupied == '0') selected @endif value="0">No</option>
@@ -326,13 +326,13 @@
                 <div class="col-md-6">
                     <label for="property_description" class="form-label">Property Description*</label>
                     <textarea name="property_description" class="form-control" id="property_description" placeholder="Property Description"
-                        required>{{$property->property_description}}</textarea>
+                        required disabled>{{$property->property_description}}</textarea>
 
                 </div>
 
-                <div class="col-12">
+                {{-- <div class="col-12">
                     <button class="btn btn-primary" type="submit">Submit form</button>
-                </div>
+                </div> --}}
                 </form>
             </div>
         </div>
