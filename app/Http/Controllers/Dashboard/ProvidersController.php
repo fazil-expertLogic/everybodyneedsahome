@@ -19,20 +19,33 @@ class ProvidersController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Provider::active();
+        $query = Provider::query();
+        
+        if ($request->filled('provider_name')) {
+            $query->where('provider_name', 'like', '%' . $request->provider_name . '%');
+        }
+        
+        if ($request->filled('provider_email')) {
+            $query->where('email', 'like', '%' . $request->provider_email . '%');
+        }
+        
+        if ($request->filled('state')) {
+            $query->where('state', 'like', '%' . $request->state . '%');
+        }
+        
+        if ($request->filled('provider_company_name')) {
+            $query->where('comany_name', 'like', '%' . $request->provider_company_name . '%');
+        }
     
-        // Check if there is a search parameter in the request
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            // query->where('provider_name', 'LIKE', '%' . $search . '%'); // Adjust the column 'name' based on your database
-            $query->where(function ($q) use ($search) {
-                $q->where('provider_name', 'LIKE', '%' . $search . '%')
-                  ->orWhere('comany_name', 'LIKE', '%' . $search . '%')
-                  ->orWhere('email', 'LIKE', '%' . $search . '%'); // Add or change columns as needed
+        if ($request->filled('search')) {
+            $query->where(function($subquery) use ($request) {
+                $subquery->where('provider_name', 'like', '%' . $request->search . '%')
+                         ->orWhere('comany_name', 'like', '%' . $request->search . '%');
             });
         }
     
-        $providers = $query->paginate(10);    
+        // Pagination
+        $providers = $query->active()->paginate(10);
         return view('livewire.provider.index', compact('providers'));
     }
     

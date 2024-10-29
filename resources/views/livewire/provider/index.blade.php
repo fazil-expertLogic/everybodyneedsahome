@@ -42,12 +42,36 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Provider Data</h3>
+                    <a href="{{ route('providers.create') }}" class="btn bg-primary  ms-auto" data-bs-toggle="tooltip" title="Add New">
+                        <span><i class="fa fa-plus"></i> </span>
+                    </a>
                 </div>
-                <div class="mb-3 text-end">  <!-- Add text-end class here -->
+                {{-- <div class="mb-3 text-end">  <!-- Add text-end class here -->
                     <a href="{{ route('providers.create') }}" class="btn bg-primary" data-bs-toggle="tooltip" title="Add New">
                         <span><i class="fa fa-plus"></i> Add Provider</span>
                     </a>
-                </div>
+                </div> --}}
+                <form action="{{ route('providers.index') }}" method="GET">
+                    <div class="mb-3 text-end">
+                        <div class="input-group w-100">
+                            <div class="col">
+                                <input type="text" name="provider_name" class="form-control" placeholder="Provider Name" value="{{ request('provider_name') }}">
+                            </div>
+                            <div class="col">
+                                <input type="text" name="provider_email" class="form-control" placeholder="Provider Email" value="{{ request('provider_email') }}">
+                            </div>
+                            <div class="col">
+                                <input type="text" name="provider_company_name" class="form-control" placeholder="Provider Company Name" value="{{ request('provider_company_name') }}">
+                            </div>
+                            
+                            <input type="text" name="search" class="form-control bg-white" placeholder="Search here..." value="{{ request('search') }}">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+    
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
