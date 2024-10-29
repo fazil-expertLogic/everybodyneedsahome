@@ -85,6 +85,61 @@
                                 
                             </tbody>
                         </table>
+                        <!-- Pagination Links -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Pagination Center Alignment</h2>
+                            </div>
+                            <div class="card-body">
+                                <!-- Display total entry count -->
+                                <p>Total Entries: {{ $clients->total() }}</p>
+
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-center mb-0">
+                                        {{-- Previous Button --}}
+                                        @if ($clients->onFirstPage())
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="javascript:void(0);" tabindex="-1">
+                                                <i class="fa fa-angle-left"></i>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        @else
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ $clients->previousPageUrl() }}">
+                                                <i class="fa fa-angle-left"></i>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        @endif
+
+                                        {{-- Page Links --}}
+                                        @for ($i = 1; $i <= $clients->lastPage(); $i++)
+                                            <li class="page-item {{ ($clients->currentPage() == $i) ? 'active' : '' }}">
+                                                <a class="page-link" href="{{ $clients->url($i) }}">{{ $i }}</a>
+                                            </li>
+                                            @endfor
+
+                                            {{-- Next Button --}}
+                                            @if ($clients->hasMorePages())
+                                            <li class="page-item">
+                                                <a class="page-link" href="{{ $clients->nextPageUrl() }}">
+                                                    <i class="fa fa-angle-right"></i>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </li>
+                                            @else
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="javascript:void(0);">
+                                                    <i class="fa fa-angle-right"></i>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </li>
+                                            @endif
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
