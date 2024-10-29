@@ -2022,11 +2022,11 @@ textarea.form-control-lg {
 .form-check-input:disabled {
 	pointer-events: none;
 	filter: none;
-	opacity: .5
+	/* opacity: .5 */
 }
 .form-check-input:disabled~.form-check-label, .form-check-input[disabled]~.form-check-label {
 	cursor: default;
-	opacity: .5
+	/* opacity: .5 */
 }
 .form-switch {
 	padding-left: 2.5em
