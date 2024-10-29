@@ -11,11 +11,11 @@
     <ol class="breadcrumb mb-sm-0 mb-3">
         <!-- breadcrumb -->
         <li class="breadcrumb-item"><a href="javascript:void(0);">Properties</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Properties Tables</li>
+        <li class="breadcrumb-item active" aria-current="page">List</li>
     </ol><!-- End breadcrumb -->
     <div class="ms-auto">
         <div>
-            <a href="javascript:void(0);" class="btn bg-secondary-transparent text-secondary btn-sm"
+            <a href="{{route('properties.index')}}" class="btn bg-secondary-transparent text-secondary btn-sm"
                 data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Rating">
                 <span>
                     <i class="fa fa-star"></i>
@@ -39,16 +39,39 @@
 <!-- END PAGE-HEADER -->
 
 <!-- ROW -->
+
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Properties Data</h3>
-            </div>
-            <div class="mb-3 text-end"> <!-- Add text-end class here -->
-                <a href="{{ route('properties.add') }}" class="btn bg-primary" data-bs-toggle="tooltip" title="Add New">
-                    <span><i class="fa fa-plus"></i> Add Property</span>
+                <h3 class="card-title">Properties</h3>
+
+                <a href="{{ route('properties.add') }}" class="btn bg-primary  ms-auto" data-bs-toggle="tooltip" title="Add New">
+                    <span><i class="fa fa-plus"></i> </span>
                 </a>
+            </div>
+
+            <div class="mb-3 text-end"> <!-- Add text-end class here -->
+                <div class="input-group w-100 ">
+                    
+                    <div class="col">
+                        <input type="text" name="property_type" class="form-control" placeholder="Property Type" value="{{ request('property_type') }}">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="city" class="form-control" placeholder="City" value="{{ request('city') }}">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="state" class="form-control" placeholder="State" value="{{ request('state') }}">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="zipcode" class="form-control" placeholder="Zip Code" value="{{ request('zipcode') }}">
+                    </div>
+                    <input type="text" class="form-control bg-white" placeholder="Search here...">
+                    <button type="button" class="btn btn-primary ">
+                        <i class="fa fa-search " aria-hidden="true"></i>
+                    </button>
+                </div>
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
