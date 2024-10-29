@@ -43,6 +43,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+    
+    public function hasPermission($menuId, $permissionType)
+    {
+        // Check if the user has a role
+        if (!$this->role) {
+            return false; // User has no role, hence no permissions
+        }
+
+        // Check if the role has the specific permission type for the given menu
+        return $this->role->permissions()
+                        ->where('menu_id', $menuId)
+                        ->where($permissionType, true)
+                        ->exists();
+    }
+
+
     public function softDeleteRelations()
     {
         $this->status = 0;
