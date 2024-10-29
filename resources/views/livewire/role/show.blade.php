@@ -14,7 +14,7 @@
                             <div class="signUpForm-step-holder">
                                 <div id="section-1" class="signUpForm-step-wrap">
                                     <fieldset>
-                                        <h3 class="section-form-title">Create New Roles</h3>
+                                        <h3 class="section-form-title">Edit Roles</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
@@ -25,11 +25,50 @@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
+                                            <div class="col-sm-12 col-lg-12">
+                                                @foreach ($menus as $key => $menu)
+                                                    @php
+                                                        $menuPermission = $permissions->firstWhere('menu_id', $menu->id);
+                                                    @endphp
+                                            
+                                                    <h3>{{ $menu->name }}</h3>
+                                                    <input type="hidden" id="menu_id" name="menu_id[{{ $key }}]" value="{{ $menu->id }}">
+                                            
+                                                    <div class="row">
+                                                        <div class="col-sm-1 col-lg-1"></div>
+                                            
+                                                        <div class="col-sm-2 col-lg-2">
+                                                            <input type="checkbox" id="is_listing_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_listing]" value="1" {{ $menuPermission && $menuPermission->is_listing ? 'checked' : '' }}>
+                                                            <label for="is_listing_{{ $menu->id }}"> Listing </label>
+                                                        </div>
+                                            
+                                                        <div class="col-sm-2 col-lg-2">
+                                                            <input type="checkbox" id="is_show_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_show]" value="1" {{ $menuPermission && $menuPermission->is_show ? 'checked' : '' }}>
+                                                            <label for="is_show_{{ $menu->id }}"> Show </label>
+                                                        </div>
+                                            
+                                                        <div class="col-sm-2 col-lg-2">
+                                                            <input type="checkbox" id="is_create_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_create]" value="1" {{ $menuPermission && $menuPermission->is_create ? 'checked' : '' }}>
+                                                            <label for="is_create_{{ $menu->id }}"> Create </label>
+                                                        </div>
+                                            
+                                                        <div class="col-sm-2 col-lg-2">
+                                                            <input type="checkbox" id="is_edit_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_edit]" value="1" {{ $menuPermission && $menuPermission->is_edit ? 'checked' : '' }}>
+                                                            <label for="is_edit_{{ $menu->id }}"> Edit </label>
+                                                        </div>
+                                            
+                                                        <div class="col-sm-2 col-lg-2">
+                                                            <input type="checkbox" id="is_delete_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_delete]" value="1" {{ $menuPermission && $menuPermission->is_delete ? 'checked' : '' }}>
+                                                            <label for="is_delete_{{ $menu->id }}"> Delete</label>
+                                                        </div>
+                                            
+                                                        <div class="col-sm-1 col-lg-1"></div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            
                                         </div>
-                                        
                                         <div class="form-group signUpForm-step-1" style="margin-top: 50px;">
-                                            <button class="btn btn-default disable" type="button">Are you
-                                                ready!</button>
                                             <button id="Submit" class="btn btn-custom float-end"
                                                     type="submit" onclick="nextStep2()">Submit </button>
                                         </div>
