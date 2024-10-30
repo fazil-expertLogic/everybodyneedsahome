@@ -263,6 +263,14 @@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12">
+                                                <img src="{{ asset('storage/' . $client->profile_image) }}" alt="Main Picture" width="400px" />
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label for="main_picture" class="form-label">Main Picture*</label>
+                                                <input type="file" class="form-control" aria-label="file example" name="main_picture" required>
+                                                <div class="invalid-feedback">Example invalid form file feedback</div>
+                                            </div>
             
                                         </div>
                                         

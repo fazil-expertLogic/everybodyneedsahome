@@ -134,7 +134,13 @@ class ClientController extends Controller
         DB::beginTransaction(); // Start the transaction
         
         try {
-             // Create the property record
+
+            if ($request->hasFile('main_picture')) {
+                $mainPicture = $request->file('main_picture');
+                $mainPicturePath = $mainPicture->store('client', 'public');
+            }
+
+            // Create the property record
             $user = User::create([
                 'name' => $request->cus_name,
                 'email' => $request->cus_email,
@@ -154,7 +160,8 @@ class ClientController extends Controller
                 'state' => $request->cus_state ?? '',
                 'zipcode' => $request->cus_zip ?? '',
                 'phone' => $request->cus_phone ?? '',
-                'user_id' => $user->id
+                'user_id' => $user->id,
+                'profile_image' => $mainPicturePath,
             ]);
 
             foreach($request->child_name as $child){

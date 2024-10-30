@@ -263,7 +263,10 @@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
-            
+                                            <div class="col-md-12">
+                                                <label for="cus_phone" class="form-label">Profile Image<span class="text-danger">*</span></label>
+                                                <img src="{{ asset('storage/' . $client->profile_image) }}" alt="Main Picture" width="400px" />
+                                            </div>
                                         </div>
                                         
                                         <div class="form-group signUpForm-step-1">
