@@ -84,7 +84,7 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->created_at}}</td>
                                     <td>
-                                        @if($allow_edit)
+                                        @if($allow_show)
                                         <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning" title="Show">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
