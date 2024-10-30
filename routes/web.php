@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\ChatController;
 use App\Http\Controllers\Dashboard\Login;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,9 @@ use App\Http\Controllers\Site\CustomAuthController;
 use App\Http\Livewire\Index;
 
 //Dashbaord
-Route::get('dashboard', Index::class)->name('dashboard');
+Route::get('/', function () {
+    return view('site.index');
+})->name('index');
 
 
 
@@ -26,6 +29,8 @@ Route::post('loginPerform', [RegistrationsController::class, 'loginPerform'])->n
 Route::post('logout', [RegistrationsController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('dashboard', Index::class)->name('dashboard');
+    Route::resource('categories', CategoryController::class);
 
     Route::group(['middleware' => ['permission:2']], function () {
         Route::get('properties', [PropertiesController::class, 'index'])->name('properties.index');
@@ -36,7 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('properties/{id}', [PropertiesController::class, 'show'])->name('properties.show');
         Route::DELETE('properties/destroy/{id}', [PropertiesController::class, 'destroy'])->name('properties.destroy');
     });
-  
+
     // Route::get('properties/delete/{id}', [PropertiesController::class, 'destroy'])->name('organization.destroy');
     Route::group(['middleware' => ['permission:3']], function () {
         Route::resource('clients', ClientController::class);
@@ -52,9 +57,9 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     // Route::group(['middleware' => ['permission:7']], function () {
-        Route::get('chat', [ChatController::class, 'index'])->name('chat');
-        Route::get('fetchChat/{userId}', [ChatController::class, 'fetchChat']);
-        Route::post('sendMessage', [ChatController::class, 'sendMessage']);
+    Route::get('chat', [ChatController::class, 'index'])->name('chat');
+    Route::get('fetchChat/{userId}', [ChatController::class, 'fetchChat']);
+    Route::post('sendMessage', [ChatController::class, 'sendMessage']);
     // });
 
     Route::group(['middleware' => ['permission:8']], function () {
@@ -65,8 +70,3 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 // Route::get('index', [CustomAuthController::class, 'dashboard']);
-
-
-Route::get('/', function () {
-    return view('site.index');
-})->name('index');
