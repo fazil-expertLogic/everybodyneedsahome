@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Helpers\Helper;
 
 class PermissionMiddleware
 {
@@ -14,8 +15,11 @@ class PermissionMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
-    {
-        return $next($request);
+    public function handle($request, Closure $next, $right)
+    {   
+        if (Helper::check_rights($right)->is_listing) {
+            return $next($request);
+        }
+        abort(401);
     }
 }
