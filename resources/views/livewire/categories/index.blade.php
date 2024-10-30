@@ -76,7 +76,8 @@
                                     <td class="text-center align-middle">
                                         <div class="btn-group align-top br-7">
                                             @if($allow_show)
-                                            <button class="btn btn-sm btn-warning btn-sm badge" type="button"> <i class="fa fa-eye"></i></button>
+                                            
+                                            <a href="{{route('categories.show',[$category->id])}}" class="btn btn-sm btn-warning btn-sm badge" type="button"> <i class="fa fa-eye"></i></a>
                                             @endif
                                             @if($allow_edit)
                                             <a href="{{route('categories.edit',[$category->id])}}" class="btn btn-primary btn-sm badge" type="button"> <i class="fa fa-pencil"></i></a>
