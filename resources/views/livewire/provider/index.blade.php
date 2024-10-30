@@ -42,9 +42,11 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Provider Data</h3>
+                    @if ($allow_create)
                     <a href="{{ route('providers.create') }}" class="btn bg-primary  ms-auto" data-bs-toggle="tooltip" title="Add New">
                         <span><i class="fa fa-plus"></i> </span>
                     </a>
+                    @endif
                 </div>
                 {{-- <div class="mb-3 text-end">  <!-- Add text-end class here -->
                     <a href="{{ route('providers.create') }}" class="btn bg-primary" data-bs-toggle="tooltip" title="Add New">
@@ -93,12 +95,16 @@
                                     <td>{{$provider->comany_name}}</td>
                                     <td>{{$provider->created_at}}</td>
                                     <td>
+                                        @if ($allow_edit)
                                         <a href="{{ route('providers.show', $provider->id) }}" class="btn btn-primary" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
+                                        @endif
+                                        @if ($allow_delete)
                                         <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('providers.destroy', $provider->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach 

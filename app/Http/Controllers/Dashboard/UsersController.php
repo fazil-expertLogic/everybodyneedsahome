@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\RoleUser;
 use App\Models\Role;
-
+use App\Helpers\Helper;
 class UsersController extends Controller
 {
     /**
@@ -20,6 +20,11 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
+        $allow_show = Helper::check_rights(5)->is_show;
+        $allow_create = Helper::check_rights(5)->is_create;
+        $allow_edit = Helper::check_rights(5)->is_edit;
+        $allow_delete = Helper::check_rights(5)->is_delete;
+
         $query = User::active();
         if ($request->has('search')) {
             $search = $request->input('search');
@@ -30,7 +35,7 @@ class UsersController extends Controller
             });
         }
         $users = $query->paginate(10);    
-        return view('livewire.user.index', compact('users'));
+        return view('livewire.user.index', compact('users','allow_show','allow_create','allow_edit','allow_delete'));
     }
 
     /**

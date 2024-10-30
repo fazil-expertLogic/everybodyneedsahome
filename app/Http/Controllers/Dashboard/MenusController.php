@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Models\Menu;
-
+use App\Helpers\Helper;
 
 class MenusController extends Controller
 {
@@ -18,8 +18,12 @@ class MenusController extends Controller
      */
     public function index()
     {
+        $allow_show = Helper::check_rights(8)->is_show;
+        $allow_create = Helper::check_rights(8)->is_create;
+        $allow_edit = Helper::check_rights(8)->is_edit;
+        $allow_delete = Helper::check_rights(8)->is_delete;
         $menus = Menu::active()->paginate(10);
-        return view('livewire.menus.index', compact('menus'));
+        return view('livewire.menus.index', compact('menus','allow_show','allow_create','allow_edit','allow_delete'));
     }
 
     /**

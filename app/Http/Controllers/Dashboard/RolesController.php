@@ -12,7 +12,7 @@ use App\Models\RoleUser;
 use App\Models\Role;
 use App\Models\Menu;
 use App\Models\Permission;
-
+use App\Helpers\Helper;
 
 class RolesController extends Controller
 {
@@ -23,6 +23,11 @@ class RolesController extends Controller
      */
     public function index(Request $request)
     {
+        $allow_show = Helper::check_rights(6)->is_show;
+        $allow_create = Helper::check_rights(6)->is_create;
+        $allow_edit = Helper::check_rights(6)->is_edit;
+        $allow_delete = Helper::check_rights(6)->is_delete;
+
         $query = Role::active();
         if ($request->has('search')) {
             $search = $request->input('search');
@@ -31,7 +36,7 @@ class RolesController extends Controller
             });
         }
         $roles = $query->paginate(10);
-        return view('livewire.role.index', compact('roles'));
+        return view('livewire.role.index', compact('roles','allow_show','allow_create','allow_edit','allow_delete'));
     }
 
     /**
