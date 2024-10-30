@@ -134,7 +134,7 @@ class ClientController extends Controller
         DB::beginTransaction(); // Start the transaction
         
         try {
-
+            $mainPicturePath = '';
             if ($request->hasFile('main_picture')) {
                 $mainPicture = $request->file('main_picture');
                 $mainPicturePath = $mainPicture->store('client', 'public');
@@ -161,7 +161,7 @@ class ClientController extends Controller
                 'zipcode' => $request->cus_zip ?? '',
                 'phone' => $request->cus_phone ?? '',
                 'user_id' => $user->id,
-                'profile_image' => $mainPicturePath,
+                'profile_image' => $mainPicturePath ?? '',
             ]);
 
             foreach($request->child_name as $child){
@@ -313,7 +313,7 @@ class ClientController extends Controller
             'cus_is_mental_ill' => 'required|in:1,2',
             'cus_phy_dis' => 'nullable|string|max:255',
             'cus_comments' => 'nullable|string|max:255',
-            'pass' => 'string|min:8|confirmed',
+            'pass' => 'nullable|string|min:8|confirmed',
         ]);
         
         if ($validator->fails()) {
@@ -324,15 +324,20 @@ class ClientController extends Controller
         DB::beginTransaction(); // Start the transaction
 
         try {
+          
+            if ($request->hasFile('main_picture')) {
+                $mainPicture = $request->file('main_picture');
+                $mainPicturePath = $mainPicture->store('client', 'public');
+            }
              // Create the property record
-             $client = Client::findOrFail($id);
-             $user = User::where('id',$client->user_id)->first();
-             $user->update([
-                 'name' => $request->cus_name,
-                 'email' => $request->cus_email,
-                 'password' => Hash::make($request->pass), 
-                 'role_id' => "3",
-             ]);
+            $client = Client::findOrFail($id);
+            $user = User::where('id',$client->user_id)->first();
+            $user->update([
+                'name' => $request->cus_name,
+                'email' => $request->cus_email,
+                'password' => $request->pass ? Hash::make($request->pass) : $user->password,
+                'role_id' => "3",
+            ]);
             $client->update([
                 'cus_name' => $request->cus_name ?? '',
                 'email' => $request->cus_email ?? '',
@@ -345,7 +350,8 @@ class ClientController extends Controller
                 'state' => $request->cus_state ?? '',
                 'zipcode' => $request->cus_zip ?? '',
                 'phone' => $request->cus_phone ?? '',
-                'user_id'=>$user->id
+                'user_id'=>$user->id,
+                'profile_image' => $mainPicturePath ?? $client->profile_image,
             ]);
 
             ClientChild::where('gl_ID',$id)->delete();
