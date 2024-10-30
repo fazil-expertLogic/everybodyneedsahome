@@ -39,5 +39,9 @@ class Property extends Model
         'is_property_occupied',
         'main_picture',
         'more_pictures',
+        'is_feature',
+        'is_new',
+        'created_by',
+        'category_id'
     ];
 }

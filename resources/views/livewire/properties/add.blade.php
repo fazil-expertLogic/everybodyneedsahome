@@ -106,6 +106,26 @@
                                 Please enter the zipcode.
                             </div>
                         </div>
+                        
+                        <div class="col-md-6">
+                            <label for="category_id" class="form-label">Category</label>
+                            <select name="category_id" class="form-select select2" id="category_id" required>
+                                <option selected disabled value="">Choose...</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                @endforeach
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a valid category.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <input type="checkbox" name="is_feature" id="is_feature" value="1" {{ old('is_feature') ? 'checked' : '' }}>
+                            <label for="is_feature">Is Featured</label>
+                            <input type="checkbox" name="is_new" id="is_new" value="1" {{ old('is_new') ? 'checked' : '' }}>
+                            <label for="is_new">Is New</label>
+                        </div>
 
                         <div class="col-md-6">
                             <label for="property_management_address" class="form-label">Property Management Address *</label>

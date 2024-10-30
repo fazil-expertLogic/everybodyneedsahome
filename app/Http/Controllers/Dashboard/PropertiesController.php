@@ -4,14 +4,15 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Property;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Pagination\Paginator;
 use App\Helpers\Helper;
+use App\Models\User;
+use App\Models\Property;
+use App\Models\Category;
 
 class PropertiesController extends Controller
 {
@@ -58,12 +59,13 @@ class PropertiesController extends Controller
     
     public function add()
     {
-        return view('livewire.properties.add');
+        $categories = Category::get();
+        return view('livewire.properties.add',compact('categories'));
     }
 
     public function store(Request $request)
     {
-
+        
         // Validate the incoming request
         $validator = Validator::make($request->all(), [
             'property_name' => 'required|string|max:255',
@@ -91,9 +93,10 @@ class PropertiesController extends Controller
             'unit_deposit' => 'nullable|numeric',
             'unit_fee' => 'nullable|numeric',
             'is_property_occupied' => 'required|boolean',
-            'utilities_inscluded' => 'nullable|required|boolean',
+            'utilities_inscluded' => 'nullable|boolean',
             'main_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'more_pictures.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category_id' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -146,6 +149,10 @@ class PropertiesController extends Controller
                 'is_property_occupied' => $request->is_property_occupied,
                 'utilities_inscluded' => $request->utilities_inscluded,
                 'status' => 1,
+                'is_feature' => $request->is_feature ?? 0,
+                'is_new' => $request->is_new ?? 0,
+                'category_id'=>$request->category_id,
+                'created_by' => Auth::user()->id,
                 'main_picture' => $mainPicturePath,
                 'more_pictures' => json_encode($morePictures), // Store as JSON if necessary
             ]);
@@ -164,14 +171,16 @@ class PropertiesController extends Controller
 
     public function show($id)
     {
+        $categories = Category::get();
         $property = Property::findOrFail($id); // Fetch property by ID
-        return view('livewire.properties.show', compact('property')); // Return edit view
+        return view('livewire.properties.show', compact('property','categories')); // Return edit view
     }
 
     public function edit($id)
     {
+        $categories = Category::get();
         $property = Property::findOrFail($id); // Fetch property by ID
-        return view('livewire.properties.edit', compact('property')); // Return edit view
+        return view('livewire.properties.edit', compact('property','categories')); // Return edit view
     }
     public function destroy($id)
     {
@@ -211,9 +220,10 @@ class PropertiesController extends Controller
             'unit_deposit' => 'nullable|numeric',
             'unit_fee' => 'nullable|numeric',
             'is_property_occupied' => 'required|boolean',
-            'utilities_inscluded' => 'nullable|required|boolean',
+            'utilities_inscluded' => 'nullable|boolean',
             'main_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'more_pictures.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category_id' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -269,11 +279,15 @@ class PropertiesController extends Controller
                 'is_property_occupied' => $request->is_property_occupied,
                 'utilities_inscluded' => $request->utilities_inscluded,
                 'status' => 1,
+                'is_feature' => $request->is_feature ?? 0,
+                'is_new' => $request->is_new ?? 0,
+                'category_id'=>$request->category_id,
+                'created_by' => Auth::user()->id,
                 'main_picture' => $mainPicturePath,
                 'more_pictures' => json_encode($morePictures), // Store as JSON if necessary
             ]);
             DB::commit(); // Commit the transaction if everything works
-
+        
             return redirect()->route('properties.index')->with('success', 'Property updated successfully.');
         } catch (\Exception $e) {
 
