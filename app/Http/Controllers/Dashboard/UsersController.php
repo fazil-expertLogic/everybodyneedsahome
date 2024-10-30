@@ -119,7 +119,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id); // Fetch property by ID
+        $roles = Role::active()->get();
+        return view('livewire.user.edit', compact('user','roles')); // Return edit view
     }
 
     /**

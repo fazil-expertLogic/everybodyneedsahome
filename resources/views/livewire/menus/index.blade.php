@@ -86,6 +86,11 @@
                                     <td>{{$menu->icon}}</td>
                                     <td>{{$menu->created_at}}</td>
                                     <td>
+                                        @if($allow_show)
+                                        <a href="{{ route('menus.show', $menu->id) }}" class="btn btn-warning" title="Show">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                        @endif
                                         @if($allow_edit)
                                         <a href="{{ route('menus.show', $menu->id) }}" class="btn btn-primary" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

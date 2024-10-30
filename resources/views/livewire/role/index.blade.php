@@ -78,8 +78,13 @@
                                     <td>{{$role->name}}</td>
                                     <td>{{$role->created_at}}</td>
                                     <td>
+                                        @if($allow_show)
+                                        <a href="{{ route('roles.show', $role->id) }}" class="btn btn-warning" title="Show">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                        @endif
                                         @if ($allow_edit)
-                                        <a href="{{ route('roles.show', $role->id) }}" class="btn btn-primary" title="Edit">
+                                        <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-primary" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                         @endif

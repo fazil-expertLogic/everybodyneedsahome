@@ -21,7 +21,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_name">
                                                     <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="name" class="form-control py-2" id="name" placeholder="Your name" value="{{ $user->name }}" required data-error="Please enter name" disabled>
+                                                    <input type="text" name="name" class="form-control py-2" id="name" placeholder="Your name" value="{{ $user->name }}" required data-error="Please enter name">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -30,17 +30,31 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_email">
                                                     <label for="email" class="form-label"> Email<span class="text-danger">*</span></label>
-                                                    <input type="email" name="email" class="form-control py-2" id="email" placeholder="example@email.com" value="{{ $user->email }}" required data-error="Please enter email" disabled>
+                                                    <input type="email" name="email" class="form-control py-2" id="email" placeholder="example@email.com" value="{{ $user->email }}" required data-error="Please enter email">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
 
-                                            
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_use_pass">
+                                                    <label for="pass" class="form-label">password<span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control py-2" id="pass" name="pass" placeholder="password" required data-error="Please enter password">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_use_cpass">
+                                                    <label for="pass_confirmation" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control py-2" id="pass_confirmation" name="pass_confirmation" placeholder="Confirm Password" required data-error="Please enter confirm password">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
 
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_role">
                                                     <label for="role" class="form-label">User Role <span class="text-danger">*</span></label>
-                                                    <select class="form-select" id="role" name="role" required data-error="Please user role" disabled>
+                                                    <select class="form-select" id="role" name="role" required data-error="Please user role">
                                                         <option value="">Please Select</option>
                                                         @foreach ( $roles as $role)
                                                             <option @if( $role->id == $user->role_id ) selected @endif  value="{{ $role->id }}">{{ $role->name }}</option>
@@ -50,7 +64,14 @@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
-            
+                                            
+                                        </div>
+                                        
+                                        <div class="form-group signUpForm-step-1" style="margin-top: 50px;">
+                                            <button class="btn btn-default disable" type="button">Are you
+                                                ready!</button>
+                                            <button id="Submit" class="btn btn-custom float-end"
+                                                    type="submit" onclick="nextStep2()">Submit </button>
                                         </div>
                                     </fieldset>
                                 </div>
