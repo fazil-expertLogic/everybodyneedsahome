@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -33,6 +35,43 @@ class CategoryController extends Controller
             'sortDirection' => $sortDirection,
         ]);
     }
+
+    public function edit($id)
+    {
+        $category = Category::find($id);
+        return view('livewire.categories.edit', compact('category'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'category_name' => 'required|string|max:255',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
+        DB::beginTransaction(); // Start the transaction
+
+        try {
+
+             // Create the property record
+            $category = Category::findOrFail($id);
+            $category->update([
+                'category_name' => $request->category_name ?? '',
+            ]);
+            DB::commit(); // Commit the transaction if everything works
+            return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
+
+        } catch (\Exception $e) {
+
+            DB::rollBack(); // Rollback if any operation fails
+            dd($e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'An error occurred while updating the clients. Please try again.']);
+        }
+    }
+
 
     // Function to delete a category by its ID
     public function destroy($id)
