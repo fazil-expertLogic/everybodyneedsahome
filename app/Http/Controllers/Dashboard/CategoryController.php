@@ -37,6 +37,12 @@ class CategoryController extends Controller
         return view('livewire.categories.index', compact('allow_show','allow_create','allow_edit','allow_delete','categories','totalCategories','search','sortDirection'));
     }
 
+    public function show($id)
+    {
+        $category = Category::find($id);
+        return view('livewire.categories.show', compact('category'));
+    }
+
     public function edit($id)
     {
         $category = Category::find($id);
