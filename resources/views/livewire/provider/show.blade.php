@@ -188,6 +188,11 @@
                                                             <input class="form-check-input area-served" type="radio" value="7" id="other-area-served-option" name="area_served" @if($provider->area_served == 7) checked @endif onchange="toggleDiv()" disabled>
                                                             <label class="form-check-label1" for="other-area-served-option">Suggest A Category/Subcategory</label>
                                                         </div>
+
+                                                        <div class="col-md-12">
+                                                            <label for="cus_phone" class="form-label">Profile Image<span class="text-danger">*</span></label>
+                                                            <img src="{{ asset('storage/' . $provider->profile_image) }}" alt="Main Picture" width="400px" />
+                                                        </div>
                                                     </div>
                                                     <div class="help-block with-errors"></div>
                                                 </div>

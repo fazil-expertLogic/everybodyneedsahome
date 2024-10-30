@@ -52,6 +52,22 @@
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_use_pass">
+                                                    <label for="pass" class="form-label">password<span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control py-2" id="pass" name="pass" placeholder="password" required data-error="Please enter password">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_use_cpass">
+                                                    <label for="pass_confirmation" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control py-2" id="pass_confirmation" name="pass_confirmation" placeholder="Confirm Password" required data-error="Please enter confirm password">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_prov_type">
                                                     <label for="type" class="form-label">For Profit or Non-Profit?<span class="text-danger">*</span></label>
                                                     <select class="form-select" id="type" name="type" aria-label="Select Type" required data-error="Please select">
@@ -219,6 +235,13 @@
                                                 </div>
                                                 </div>
                                             </div>
+
+                                            <div class="mb-12">
+                                                <label for="main_picture" class="form-label">Main Picture*</label>
+                                                <input type="file" class="form-control" aria-label="file example" name="main_picture">
+                                                <div class="invalid-feedback">Example invalid form file feedback</div>
+                                            </div>
+
                                         </div>
                                         
                                         <div class="form-group signUpForm-step-1" style="margin-top: 50px;">

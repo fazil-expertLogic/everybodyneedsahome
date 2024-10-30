@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Provider;
 use App\Helpers\Helper;
+use App\Models\User;
 
 class ProvidersController extends Controller
 {
@@ -87,13 +89,24 @@ class ProvidersController extends Controller
                 'website' => 'required|string|max:100',
                 'area_served' => 'required|string|max:20',
                 'custom_area_served' => 'nullable|string|max:255',
+                'pass' => 'required|string|min:8|confirmed',
             ]);
 
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 422);
             }
             DB::beginTransaction();
-            
+            $mainPicturePath = '';
+            if ($request->hasFile('main_picture')) {
+                $mainPicture = $request->file('main_picture');
+                $mainPicturePath = $mainPicture->store('provider', 'public');
+            }
+            $user = User::create([
+                'name' => $request->provider_name,
+                'email' => $request->email,
+                'password' => Hash::make($request->pass), 
+                'role_id' => "4",
+            ]);
             Provider::create([
                 'provider_name' =>  $request->provider_name,
                 'comany_name' =>  $request->comany_name,
@@ -107,6 +120,8 @@ class ProvidersController extends Controller
                 'website' =>  $request->website,
                 'area_served' =>  $request->area_served,
                 'custom_area_served' =>  $request->custom_area_served,
+                'user_id' => $user->id,
+                'profile_image' => $mainPicturePath ?? '',
             ]);
 
             DB::commit();
@@ -165,14 +180,29 @@ class ProvidersController extends Controller
                 'email' => 'required|string|max:100',
                 'website' => 'required|string|max:100',
                 'area_served' => 'required|string|max:20',
-                'custom_area_served' => 'nullable|string|max:255',
+                'custom_area_served' => 'nullable|string|max:255',                
+                'pass' => 'nullable|string|min:8|confirmed',
             ]);
 
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 422);
             }
             DB::beginTransaction();
+            
+            if ($request->hasFile('main_picture')) {
+                $mainPicture = $request->file('main_picture');
+                $mainPicturePath = $mainPicture->store('provider', 'public');
+            }
+
             $provider = Provider::findOrFail($id);
+            $user = User::where('id',$provider->user_id)->first();
+            $user->update([
+                'name' => $request->provider_name,
+                'email' => $request->email,
+                'password' => $request->pass ? Hash::make($request->pass) : $user->password,
+                'role_id' => "4",
+            ]);
+
             $provider->update([
                'provider_name' =>  $request->provider_name,
                'comany_name' =>  $request->comany_name,
@@ -186,6 +216,7 @@ class ProvidersController extends Controller
                'website' =>  $request->website,
                'area_served' =>  $request->area_served,
                'custom_area_served' =>  $request->custom_area_served,
+               'profile_image' => $mainPicturePath ?? $provider->profile_image,
             ]);  
 
            DB::commit();
