@@ -11,12 +11,18 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Pagination\Paginator;
+use App\Helpers\Helper;
 
 class PropertiesController extends Controller
 {
   
     public function index(Request $request)
     {
+        $allow_show = Helper::check_rights(2)->is_show;
+        $allow_create = Helper::check_rights(2)->is_create;
+        $allow_edit = Helper::check_rights(2)->is_edit;
+        $allow_delete = Helper::check_rights(2)->is_delete;
+        
         // Get the search parameters from the request
         $query = Property::query();
         
@@ -47,7 +53,7 @@ class PropertiesController extends Controller
         $properties = $query->paginate(10);
     
         // Return the view with properties
-        return view('livewire.properties.index', compact('properties'));
+        return view('livewire.properties.index', compact('properties','allow_show','allow_create','allow_edit','allow_delete'));
     }
     
     public function add()

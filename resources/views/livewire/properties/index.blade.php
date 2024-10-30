@@ -45,10 +45,11 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Properties</h3>
-
+                @if($allow_create)
                 <a href="{{ route('properties.add') }}" class="btn bg-primary  ms-auto" data-bs-toggle="tooltip" title="Add New">
                     <span><i class="fa fa-plus"></i> </span>
                 </a>
+                @endif
             </div>
 
             <form action="{{ route('properties.index') }}" method="GET">
@@ -97,16 +98,23 @@
                                     <td>{{$property->state}}</td>
                                     <td>{{$property->created_at}}</td>
                                     <td>
-                                        <a href="{{ route('properties.show', $property->id) }}" class="btn btn-warning" title="Edit">
+                                        @if($allow_show)
+                                        <a href="{{ route('properties.show', $property->id) }}" class="btn btn-warning" title="Show">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
+                                        @endif
+                                        
+                                        @if($allow_edit)
                                         <a href="{{ route('properties.edit', $property->id) }}" class="btn btn-primary" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
+                                        @endif
 
+                                        @if($allow_delete)
                                         <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('properties.destroy', $property->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
