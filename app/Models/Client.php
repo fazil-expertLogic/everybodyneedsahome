@@ -23,6 +23,7 @@ class Client extends Model
         'zipcode',
         'phone',
         'email',
+        'user_id'
     ];
     // Optionally, you can specify timestamps if you want to handle created_at and updated_at
     public $timestamps = true;

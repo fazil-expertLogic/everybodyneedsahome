@@ -79,6 +79,22 @@
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_use_pass">
+                                                    <label for="pass" class="form-label">password<span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control py-2" id="pass" name="pass" placeholder="password" required data-error="Please enter password">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_use_cpass">
+                                                    <label for="pass_confirmation" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control py-2" id="pass_confirmation" name="pass_confirmation" placeholder="Confirm Password" required data-error="Please enter confirm password">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_dob">
                                                     <label for="cus_dob" class="form-label"> Date of Birth<span class="text-danger">*</span></label>
                                                     <input type="date" name="cus_dob" class="form-control py-2"id="cus_dob" placeholder="" value="" required data-error="Please enter Date of Birth">
