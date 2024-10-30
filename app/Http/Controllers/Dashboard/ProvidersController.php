@@ -7,8 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Models\Provider;
-
-
+use App\Helpers\Helper;
 
 class ProvidersController extends Controller
 {
@@ -19,6 +18,11 @@ class ProvidersController extends Controller
      */
     public function index(Request $request)
     {
+        $allow_show = Helper::check_rights(4)->is_show;
+        $allow_create = Helper::check_rights(4)->is_create;
+        $allow_edit = Helper::check_rights(4)->is_edit;
+        $allow_delete = Helper::check_rights(4)->is_delete;
+
         $query = Provider::query();
         
         if ($request->filled('provider_name')) {
@@ -46,7 +50,7 @@ class ProvidersController extends Controller
     
         // Pagination
         $providers = $query->active()->paginate(10);
-        return view('livewire.provider.index', compact('providers'));
+        return view('livewire.provider.index', compact('providers','allow_show','allow_create','allow_edit','allow_delete'));
     }
     
 

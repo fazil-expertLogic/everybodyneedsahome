@@ -43,10 +43,12 @@
                 <div class="card-header">
                     <h3 class="card-title">User Data</h3>
                 </div>
-                <div class="mb-3 text-end">  <!-- Add text-end class here -->
+                <div class="mb-3 text-end">
+                    @if($allow_create)
                     <a href="{{ route('users.create') }}" class="btn bg-primary" data-bs-toggle="tooltip" title="Add New">
                         <span><i class="fa fa-plus"></i> Add User</span>
                     </a>
+                    @endif
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -66,13 +68,16 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->created_at}}</td>
                                     <td>
-                                        
+                                        @if($allow_edit)
                                         <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
+                                        @endif
+                                        @if($allow_delete)
                                         <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('users.destroy', $user->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach 

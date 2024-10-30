@@ -12,6 +12,7 @@ use App\Models\ClientCriminalHistory;
 use App\Models\ClientInfo;
 use App\Models\ClientSurvey;
 use App\Models\ClientsHealthIns;
+use App\Helpers\Helper;
 class ClientController extends Controller
 {
     /**
@@ -21,8 +22,13 @@ class ClientController extends Controller
      */
     public function index()
     {
+        $allow_show = Helper::check_rights(3)->is_show;
+        $allow_create = Helper::check_rights(3)->is_create;
+        $allow_edit = Helper::check_rights(3)->is_edit;
+        $allow_delete = Helper::check_rights(3)->is_delete;
+
         $clients = Client::active()->paginate(10);
-        return view('livewire.client.index', compact('clients'));
+        return view('livewire.client.index', compact('clients','allow_show','allow_create','allow_edit','allow_delete'));
     }
 
     /**

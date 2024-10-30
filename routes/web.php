@@ -19,11 +19,7 @@ use App\Http\Livewire\Index;
 //Dashbaord
 Route::get('dashboard', Index::class)->name('dashboard');
 
-Route::get('chat', [ChatController::class, 'index'])->name('chat');
 
-Route::get('fetchChat/{userId}', [ChatController::class, 'fetchChat']);
-
-Route::post('sendMessage', [ChatController::class, 'sendMessage']);
 
 Route::get('login', [RegistrationsController::class, 'showLogin'])->name('login');
 Route::post('loginPerform', [RegistrationsController::class, 'loginPerform'])->name('login.perform');
@@ -42,12 +38,30 @@ Route::group(['middleware' => 'auth'], function () {
     });
   
     // Route::get('properties/delete/{id}', [PropertiesController::class, 'destroy'])->name('organization.destroy');
-    Route::resource('clients', ClientController::class);
-    Route::resource('providers', ProvidersController::class);
-    Route::resource('users', UsersController::class);
-    Route::resource('roles', RolesController::class);
-    Route::resource('menus', MenusController::class);
-    Route::resource('permissions', permissionsController::class);
+    Route::group(['middleware' => ['permission:3']], function () {
+        Route::resource('clients', ClientController::class);
+    });
+    Route::group(['middleware' => ['permission:4']], function () {
+        Route::resource('providers', ProvidersController::class);
+    });
+    Route::group(['middleware' => ['permission:5']], function () {
+        Route::resource('users', UsersController::class);
+    });
+    Route::group(['middleware' => ['permission:6']], function () {
+        Route::resource('roles', RolesController::class);
+    });
+
+    // Route::group(['middleware' => ['permission:7']], function () {
+        Route::get('chat', [ChatController::class, 'index'])->name('chat');
+        Route::get('fetchChat/{userId}', [ChatController::class, 'fetchChat']);
+        Route::post('sendMessage', [ChatController::class, 'sendMessage']);
+    // });
+
+    Route::group(['middleware' => ['permission:8']], function () {
+        Route::resource('menus', MenusController::class);
+    });
+
+    // Route::resource('permissions', permissionsController::class);
 });
 
 // Route::get('index', [CustomAuthController::class, 'dashboard']);
