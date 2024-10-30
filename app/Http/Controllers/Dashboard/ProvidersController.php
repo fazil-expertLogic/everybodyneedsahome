@@ -127,7 +127,6 @@ class ProvidersController extends Controller
     public function show($id)
     {
         $provider = Provider::findOrFail($id); // Fetch property by ID
-        
         return view('livewire.provider.show', compact('provider')); // Return edit view
     }
 
@@ -139,7 +138,8 @@ class ProvidersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $provider = Provider::findOrFail($id); // Fetch property by ID
+        return view('livewire.provider.edit', compact('provider')); // Return edit view
     }
 
     /**
