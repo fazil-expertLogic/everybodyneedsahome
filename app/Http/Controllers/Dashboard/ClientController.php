@@ -20,14 +20,38 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $allow_show = Helper::check_rights(3)->is_show;
         $allow_create = Helper::check_rights(3)->is_create;
         $allow_edit = Helper::check_rights(3)->is_edit;
         $allow_delete = Helper::check_rights(3)->is_delete;
 
-        $clients = Client::active()->paginate(10);
+        // $clients = Client::active()->paginate(10);
+
+        $query = Client::query();
+                
+        if ($request->filled('cus_name')) {
+            $query->where('cus_name', 'like', '%' . $request->cus_name . '%');
+        }
+
+        if ($request->filled('city')) {
+            $query->where('city', 'like', '%' . $request->city . '%');
+        }
+
+        if ($request->filled('state')) {
+            $query->where('state', 'like', '%' . $request->state . '%');
+        }
+
+        if ($request->filled('search')) {
+            $query->where(function($subquery) use ($request) {
+                $subquery->where('cus_name', 'like', '%' . $request->search . '%')
+                        ->orWhere('address', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        $clients = $query->active()->paginate(10);
+
         return view('livewire.client.index', compact('clients','allow_show','allow_create','allow_edit','allow_delete'));
     }
 

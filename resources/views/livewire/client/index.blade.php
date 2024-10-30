@@ -50,6 +50,26 @@
                     </a>
                     @endif
                 </div>
+                <form action="{{ route('clients.index') }}" method="GET">
+                    <div class="mb-3 text-end">
+                        <div class="input-group w-100">
+                            <div class="col">
+                                <input type="text" name="cus_name" class="form-control" placeholder="Client Name" value="{{ request('cus_name') }}">
+                            </div>
+                            <div class="col">
+                                <input type="text" name="city" class="form-control" placeholder="City" value="{{ request('city') }}">
+                            </div>
+                            <div class="col">
+                                <input type="text" name="state" class="form-control" placeholder="State" value="{{ request('state') }}">
+                            </div>
+                            
+                            <input type="text" name="search" class="form-control bg-white" placeholder="Search here..." value="{{ request('search') }}">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">

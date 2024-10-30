@@ -25,16 +25,28 @@ class UsersController extends Controller
         $allow_edit = Helper::check_rights(5)->is_edit;
         $allow_delete = Helper::check_rights(5)->is_delete;
 
-        $query = User::active();
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $query->where(function ($q) use ($search) {
-                $q->where('provider_name', 'LIKE', '%' . $search . '%')
-                  ->orWhere('comany_name', 'LIKE', '%' . $search . '%')
-                  ->orWhere('email', 'LIKE', '%' . $search . '%');
+        // $query = User::active();
+        $query = User::query();
+        
+        if ($request->filled('property_type')) {
+            $query->where('property_type', 'like', '%' . $request->property_type . '%');
+        }
+        
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+        
+        if ($request->filled('email')) {
+            $query->where('email', 'like', '%' . $request->email . '%');
+        }
+    
+        if ($request->filled('search')) {
+            $query->where(function($subquery) use ($request) {
+                $subquery->where('name', 'like', '%' . $request->search . '%')
+                         ->orWhere('email', 'like', '%' . $request->search . '%');
             });
         }
-        $users = $query->paginate(10);    
+        $users = $query->active()->paginate(10);    
         return view('livewire.user.index', compact('users','allow_show','allow_create','allow_edit','allow_delete'));
     }
 
