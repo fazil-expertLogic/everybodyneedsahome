@@ -16,13 +16,34 @@ class MenusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $allow_show = Helper::check_rights(8)->is_show;
         $allow_create = Helper::check_rights(8)->is_create;
         $allow_edit = Helper::check_rights(8)->is_edit;
         $allow_delete = Helper::check_rights(8)->is_delete;
-        $menus = Menu::active()->paginate(10);
+        // $menus = Menu::active()->paginate(10);
+
+
+        $query = Menu::query();
+                
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+
+        if ($request->filled('icon')) {
+            $query->where('icon', 'like', '%' . $request->icon . '%');
+        }
+
+        if ($request->filled('search')) {
+            $query->where(function($subquery) use ($request) {
+                $subquery->where('name', 'like', '%' . $request->search . '%')
+                        ->orWhere('icon', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        $menus = $query->active()->paginate(10);
+
         return view('livewire.menus.index', compact('menus','allow_show','allow_create','allow_edit','allow_delete'));
     }
 
