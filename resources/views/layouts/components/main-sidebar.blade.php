@@ -53,11 +53,12 @@
 								</li>
 								<li class="slide">
 									@foreach ( $menus as $menu)
-									
+									@if(\App\Helpers\Helper::check_rights($menu->id)->is_listing)
 									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route($menu->route) }}">
 										<i class="{{$menu->icon}}"></i>
 										<span class="side-menu__label">{{$menu->name}}</span>
 									</a>
+									@endif
 									@endforeach
 								</li>
 							</ul>
