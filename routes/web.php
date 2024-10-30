@@ -30,7 +30,7 @@ Route::post('logout', [RegistrationsController::class, 'logout'])->name('logout'
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', Index::class)->name('dashboard');
-    Route::resource('categories', CategoryController::class);
+    
 
     Route::group(['middleware' => ['permission:2']], function () {
         Route::get('properties', [PropertiesController::class, 'index'])->name('properties.index');
@@ -65,7 +65,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['permission:8']], function () {
         Route::resource('menus', MenusController::class);
     });
-
+    
+    Route::group(['middleware' => ['permission:10']], function () {
+        Route::resource('categories', CategoryController::class);
+    });
     // Route::resource('permissions', permissionsController::class);
 });
 
