@@ -162,7 +162,7 @@ class ProvidersController extends Controller
                 'state' => 'required|string|max:100',
                 'zipcode' => 'required|string|max:20',
                 'phone' => 'required|string|max:255',
-                'email' => 'required|unique:users|string|max:100',
+                'email' => 'required|string|max:100',
                 'website' => 'required|string|max:100',
                 'area_served' => 'required|string|max:20',
                 'custom_area_served' => 'nullable|string|max:255',
