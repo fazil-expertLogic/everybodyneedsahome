@@ -59,7 +59,7 @@
                             </div>
                             
                             <div class="col">
-                                <input type="text" name="icon" class="form-control" placeholder="icon" value="{{ request('icon') }}">
+                                <input type="text" name="price" class="form-control" placeholder="price" value="{{ request('price') }}">
                             </div>
                             
                             <input type="text" name="search" class="form-control bg-white" placeholder="Search here..." value="{{ request('search') }}">
@@ -85,7 +85,7 @@
                         
                                 <tr>
                                     <td>{{$membership->name}}</td>
-                                    <td>{{$membership->features}}</td>
+                                    <td>{{$membership->price}}</td>
                                     <td>{{$membership->created_at}}</td>
                                     <td>
                                         @if($allow_show)

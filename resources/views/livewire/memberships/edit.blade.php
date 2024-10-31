@@ -28,7 +28,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_name">
                                                     <label for="price" class="form-label">price<span class="text-danger">*</span></label>
-                                                    <input type="text" name="price" class="form-control py-2" id="price" placeholder="price" value="{{$membership->price}}" required data-error="Please enter price">
+                                                    <input type="number" name="price" class="form-control py-2" id="price" placeholder="price" value="{{$membership->price}}" required data-error="Please enter price">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>

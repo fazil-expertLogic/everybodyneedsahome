@@ -28,14 +28,14 @@ class MembershipController extends Controller
             $query->where('name', 'like', '%' . $request->name . '%');
         }
 
-        if ($request->filled('icon')) {
-            $query->where('icon', 'like', '%' . $request->icon . '%');
+        if ($request->filled('price')) {
+            $query->where('price', 'like', '%' . $request->price . '%');
         }
 
         if ($request->filled('search')) {
             $query->where(function($subquery) use ($request) {
                 $subquery->where('name', 'like', '%' . $request->search . '%')
-                        ->orWhere('icon', 'like', '%' . $request->search . '%');
+                        ->orWhere('price', 'like', '%' . $request->search . '%');
             });
         }
 
