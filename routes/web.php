@@ -21,7 +21,9 @@ use App\Http\Livewire\Index;
 Route::get('/', function () {
     return view('site.index');
 })->name('index');
-
+Route::get('/rent-details', function () {
+    return view('site.rent-details');
+})->name('rent-details');
 
 
 Route::get('login', [RegistrationsController::class, 'showLogin'])->name('login');
