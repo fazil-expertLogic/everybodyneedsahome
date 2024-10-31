@@ -1,5 +1,5 @@
 <?php $page = 'rental-order-step3'; ?>
-@extends('layout.mainlayout')
+@extends('site.layout.mainlayout')
 @section('content')
     @component('components.breadcrumb')
         @slot('title')

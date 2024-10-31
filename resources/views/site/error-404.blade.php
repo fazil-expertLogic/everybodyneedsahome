@@ -1,5 +1,5 @@
 <?php $page = 'error-404'; ?>
-@extends('layout.mainlayout')
+@extends('site.layout.mainlayout')
 @section('content')
     <div class="error-box">
         <img src="{{ URL::asset('/assets/img/404.png') }}" class="img-fluid" alt="Page not found">

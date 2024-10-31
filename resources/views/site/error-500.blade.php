@@ -1,5 +1,5 @@
 <?php $page = 'error-500'; ?>
-@extends('layout.mainlayout')
+@extends('site.layout.mainlayout')
 @section('content')
     <div class="error-box">
         <img src="{{ URL::asset('/assets/img/500.png') }}" class="img-fluid" alt="Unexpected error">

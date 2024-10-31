@@ -1,5 +1,5 @@
 <?php $page = 'coming-soon'; ?>
-@extends('layout.mainlayout')
+@extends('site.layout.mainlayout')
 @section('content')
     <div class="error-box come-box">
         <h1>Coming Soon</h1>
