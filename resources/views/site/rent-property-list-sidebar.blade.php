@@ -1,5 +1,5 @@
 <?php $page = 'rent-property-list-sidebar'; ?>
-@extends('layout.mainlayout')
+@extends('site.layout.mainlayout')
 @section('content')
     @component('components.breadcrumb')
         @slot('title')

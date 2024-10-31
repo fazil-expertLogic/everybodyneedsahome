@@ -18,12 +18,6 @@ use App\Http\Controllers\Site\CustomAuthController;
 use App\Http\Livewire\Index;
 
 //Dashbaord
-Route::get('/', function () {
-    return view('site.index');
-})->name('index');
-Route::get('/rent-details', function () {
-    return view('site.rent-details');
-})->name('rent-details');
 
 
 Route::get('login', [RegistrationsController::class, 'showLogin'])->name('login');
@@ -74,4 +68,4 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::resource('permissions', permissionsController::class);
 });
 
-// Route::get('index', [CustomAuthController::class, 'dashboard']);
+require __DIR__ . '/web2.php';

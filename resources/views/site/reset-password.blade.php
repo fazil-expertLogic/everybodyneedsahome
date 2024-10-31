@@ -1,5 +1,5 @@
 <?php $page = 'reset-password'; ?>
-@extends('layout.mainlayout')
+@extends('site.layout.mainlayout')
 @section('content')
     <div class="login-wrapper">
         <div class="loginbox">
