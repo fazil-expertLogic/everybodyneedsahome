@@ -14,6 +14,8 @@ use App\Models\ClientInfo;
 use App\Models\ClientChild;
 use App\Models\ClientSurvey;
 use App\Models\ClientsHealthIns;
+use App\Models\Mail;
+use App\Models\Role;
 
 class ClientController extends Controller
 {
