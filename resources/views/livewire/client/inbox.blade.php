@@ -76,12 +76,15 @@
             <div class="card-body p-0">
                 <div class="inbox p-0">
                     <ul class="mail_list list-group list-unstyled">
+                        @foreach($emails as $mail)
                         <li class="list-group-item">
                             <div class="media">
-                                @foreach($emails as $mail)
-                                <div class="media-body mail-item" data-url="{{ route('mail.read', [$mail->id]) }}"> <!-- Store URL in data attribute -->
+
+                                <div class="media-body mail-item"> <!-- Store URL in data attribute -->
                                     <div class="media-heading">
+
                                         <span class="me-2">{{$mail->subject ?? ''}}</span>
+
                                         <small class="float-end text-muted-dark fw-semibold mt-1">
                                             <time class="hidden-sm-down" datetime="2017">12:35 AM</time>
                                             <i class="fa fa-paperclip ms-2"></i>
@@ -89,9 +92,10 @@
                                     </div>
                                     <p class="msg">{{$mail->message ?? ''}}</p>
                                 </div>
-                                @endforeach
+
                             </div>
                         </li>
+                        @endforeach
 
                     </ul>
                 </div>
@@ -107,11 +111,5 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
-$(document).ready(function() {
-    $('.mail-item').on('click', function() {
-        var url = $(this).data('url'); // Get the URL from the data attribute
-        window.location.href = url; // Redirect to the URL
-    });
-});
-</script>
 
+</script>
