@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Helpers\Helper;
 use App\Models\User;
 use App\Models\Client;
@@ -14,6 +15,7 @@ use App\Models\ClientInfo;
 use App\Models\ClientChild;
 use App\Models\ClientSurvey;
 use App\Models\ClientsHealthIns;
+use App\Models\ClientCriminalHistory;
 use App\Models\Mail;
 use App\Models\Role;
 
@@ -34,7 +36,7 @@ class ClientController extends Controller
         // $clients = Client::active()->paginate(10);
 
         $query = Client::query();
-
+                
         if ($request->filled('cus_name')) {
             $query->where('cus_name', 'like', '%' . $request->cus_name . '%');
         }
@@ -127,16 +129,29 @@ class ClientController extends Controller
             'cus_comments' => 'nullable|string|max:255',
             'pass' => 'required|string|min:8|confirmed',
         ]);
-
+        
         if ($validator->fails()) {
             dd($validator->errors());
             return response()->json($validator->errors(), 422);
         }
-
+        
         DB::beginTransaction(); // Start the transaction
-
+        
         try {
+            $mainPicturePath = '';
+            if ($request->hasFile('main_picture')) {
+                $mainPicture = $request->file('main_picture');
+                $mainPicturePath = $mainPicture->store('client', 'public');
+            }
+
             // Create the property record
+            $user = User::create([
+                'name' => $request->cus_name,
+                'email' => $request->cus_email,
+                'password' => Hash::make($request->pass), 
+                'role_id' => "3",
+            ]);
+
             $client = Client::create([
                 'cus_name' => $request->cus_name ?? '',
                 'email' => $request->cus_email ?? '',
@@ -153,25 +168,25 @@ class ClientController extends Controller
                 'profile_image' => $mainPicturePath ?? '',
             ]);
 
-            foreach ($request->child_name as $child) {
+            foreach($request->child_name as $child){
                 ClientChild::create([
                     'gl_ID' => $client->id ?? '',
                     'child_name' => $child->child_name ?? '',
                     'child_age' => $child->child_age ?? '',
                 ]);
             }
-
+            
             ClientCriminalHistory::create([
                 'gl_ID' => $client->id ?? '',
                 'role' => $request->role ?? '',
                 'date_of_con' => $request->cus_dfc ?? '',
-                'conviction' => $request->cus_con ?? '',
+                'conviction'=> $request->cus_con ?? '',
                 'conq' => $request->cus_conq ?? '',
                 'is_sex_off' => $request->cus_sex_off ?? '',
                 'is_offend_minor' => $request->cus_is_offend_minor ?? '',
             ]);
 
-
+        
             ClientSurvey::create([
                 'gl_ID'  => $client->id ?? '',
                 'is_food' => $request->cus_food ?? '',
@@ -194,22 +209,22 @@ class ClientController extends Controller
 
             ClientsHealthIns::create([
                 'gl_ID' => $client->id ?? '',
-                'is_health' => $request->cus_insurace ?? '',
-                'carrier' => $request->cus_carrier ?? '',
-                'mem_id' => $request->cus_mem_id ?? '',
-                'grp_no' => $request->cus_grp_no ?? '',
+                'is_health'=> $request->cus_insurace ?? '',
+                'carrier'=> $request->cus_carrier ?? '',
+                'mem_id'=> $request->cus_mem_id ?? '',
+                'grp_no'=> $request->cus_grp_no ?? '',
             ]);
-
+            
             ClientInfo::create([
                 'gl_ID' => $client->id ?? '',
-                'more_friends' => $request->cus_more_friends,
-                'counselor' => $request->cus_counselor,
-                'is_inv_rom' => $request->cus_is_inv_rom,
-                'is_mental_ill' => $request->cus_is_mental_ill,
-                'phy_dis' => $request->cus_phy_dis,
-                'comments' => $request->cus_comments,
+                'more_friends'=> $request->cus_more_friends,
+                'counselor'=> $request->cus_counselor,
+                'is_inv_rom'=> $request->cus_is_inv_rom,
+                'is_mental_ill'=> $request->cus_is_mental_ill,
+                'phy_dis'=> $request->cus_phy_dis,
+                'comments'=> $request->cus_comments,
             ]);
-
+            
             DB::commit(); // Commit the transaction if everything works
             return redirect()->route('clients.index')->with('success', 'client updated successfully.');
         } catch (\Exception $e) {
@@ -229,7 +244,7 @@ class ClientController extends Controller
     public function show($id)
     {
         $client = Client::WithAllRelations()->findOrFail($id); // Fetch property by ID
-
+        
         return view('livewire.client.show', compact('client')); // Return edit view
     }
 
@@ -304,18 +319,23 @@ class ClientController extends Controller
             'cus_comments' => 'nullable|string|max:255',
             'pass' => 'nullable|string|min:8|confirmed',
         ]);
-
+        
         if ($validator->fails()) {
             dd($validator->errors());
             return response()->json($validator->errors(), 422);
         }
-
+        
         DB::beginTransaction(); // Start the transaction
 
         try {
-            // Create the property record
+          
+            if ($request->hasFile('main_picture')) {
+                $mainPicture = $request->file('main_picture');
+                $mainPicturePath = $mainPicture->store('client', 'public');
+            }
+             // Create the property record
             $client = Client::findOrFail($id);
-            $user = User::where('id', $client->user_id)->first();
+            $user = User::where('id',$client->user_id)->first();
             $user->update([
                 'name' => $request->cus_name,
                 'email' => $request->cus_email,
@@ -334,32 +354,32 @@ class ClientController extends Controller
                 'state' => $request->cus_state ?? '',
                 'zipcode' => $request->cus_zip ?? '',
                 'phone' => $request->cus_phone ?? '',
-                'user_id' => $user->id,
+                'user_id'=>$user->id,
                 'profile_image' => $mainPicturePath ?? $client->profile_image,
             ]);
 
-            ClientChild::where('gl_ID', $id)->delete();
+            ClientChild::where('gl_ID',$id)->delete();
 
-            foreach ($request->child_name as $c_key => $child) {
+            foreach($request->child_name as $c_key => $child){
                 ClientChild::create([
                     'gl_ID' => $client->id ?? '',
                     'child_name' => $request->child_name[$c_key] ?? '',
                     'child_age' => $request->child_age[$c_key] ?? '',
                 ]);
             }
-
-            $client_criminal_history = ClientCriminalHistory::where('gl_ID', $id)->first();
+            
+            $client_criminal_history = ClientCriminalHistory::where('gl_ID',$id)->first();
             $client_criminal_history->update([
                 'gl_ID' => $client->id ?? '',
                 'role' => $request->role ?? '',
                 'date_of_con' => $request->cus_dfc ?? '',
-                'conviction' => $request->cus_con ?? '',
+                'conviction'=> $request->cus_con ?? '',
                 'conq' => $request->cus_conq ?? '',
                 'is_sex_off' => $request->cus_sex_off ?? '',
                 'is_offend_minor' => $request->cus_is_offend_minor ?? '',
             ]);
-
-            $client_survey = ClientSurvey::where('gl_ID', $id)->first();
+    
+            $client_survey = ClientSurvey::where('gl_ID',$id)->first();
             $client_survey->update([
                 'gl_ID'  => $client->id ?? '',
                 'is_food' => $request->cus_food ?? '',
@@ -381,26 +401,26 @@ class ClientController extends Controller
             ]);
 
 
-            $clients_health_ins = ClientsHealthIns::where('gl_ID', $id)->first();
+            $clients_health_ins = ClientsHealthIns::where('gl_ID',$id)->first();
             $clients_health_ins->update([
                 'gl_ID' => $client->id ?? '',
-                'is_health' => $request->cus_insurace ?? '',
-                'carrier' => $request->cus_carrier ?? '',
-                'mem_id' => $request->cus_mem_id ?? '',
-                'grp_no' => $request->cus_grp_no ?? '',
+                'is_health'=> $request->cus_insurace ?? '',
+                'carrier'=> $request->cus_carrier ?? '',
+                'mem_id'=> $request->cus_mem_id ?? '',
+                'grp_no'=> $request->cus_grp_no ?? '',
             ]);
 
-            $client_info = ClientInfo::where('gl_ID', $id)->first();
+            $client_info = ClientInfo::where('gl_ID',$id)->first();
             $client_info->update([
                 'gl_ID' => $client->id ?? '',
-                'more_friends' => $request->cus_more_friends,
-                'counselor' => $request->cus_counselor,
-                'is_inv_rom' => $request->cus_is_inv_rom,
-                'is_mental_ill' => $request->cus_is_mental_ill,
-                'phy_dis' => $request->cus_phy_dis,
-                'comments' => $request->cus_comments,
+                'more_friends'=> $request->cus_more_friends,
+                'counselor'=> $request->cus_counselor,
+                'is_inv_rom'=> $request->cus_is_inv_rom,
+                'is_mental_ill'=> $request->cus_is_mental_ill,
+                'phy_dis'=> $request->cus_phy_dis,
+                'comments'=> $request->cus_comments,
             ]);
-
+            
             DB::commit(); // Commit the transaction if everything works
             return redirect()->route('clients.index')->with('success', 'clients updated successfully.');
         } catch (\Exception $e) {
@@ -424,6 +444,9 @@ class ClientController extends Controller
         return redirect()->route('clients.index')->with('success', 'Client and related records have been soft deleted successfully');
     }
 
+    public function client_registration_website(){
+        return view('site.client-registration');
+    }
 
     public function composeMail($id)
     {
@@ -443,7 +466,7 @@ class ClientController extends Controller
         ]);
 
         // Get the logged-in user's ID
-        $loggedIn = \Auth::user()->id;
+        $loggedIn = Auth::user()->id;
 
         // Create the mail entry
         Mail::create([
@@ -460,7 +483,7 @@ class ClientController extends Controller
 
     public function inbox($id)
     {
-        $loggedIn = \Auth::user()->id;
+        $loggedIn = Auth::user()->id;
         $emails = Mail::where('receiver_id', $loggedIn)->get();
         return view('livewire.client.inbox', compact('emails', 'id')); // Return edit view
 
