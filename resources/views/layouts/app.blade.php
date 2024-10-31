@@ -95,7 +95,7 @@
 
         <!-- RIGHT SIDEBAR JS -->
         <script src="{{asset('build/assets/plugins/sidebar/sidebar.js')}}"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js"></script>
         <!-- APP JS -->
 		@vite('resources/js/app.js')
         
