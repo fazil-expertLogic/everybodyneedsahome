@@ -63,227 +63,171 @@
                         <div class="col">
                             <input type="text" name="state" class="form-control" placeholder="State" value="{{ request('state') }}">
                         </div>
-<<<<<<< HEAD
-=======
                     </div>
-                </form>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
-                            <thead>
-                                <tr>
-                                    <th class="wd-15p border-bottom-0">Client Name</th>
-                                    <th class="wd-15p border-bottom-0">Client Date of birth</th>
-                                    <th class="wd-20p border-bottom-0">Client Address</th>
-                                    <th class="wd-15p border-bottom-0">City</th>
-                                    <th class="wd-10p border-bottom-0">State</th>
-                                    <th class="wd-25p border-bottom-0">Created ON</th>
-                                    <th class="wd-25p border-bottom-0">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($clients as $client)   
-                                <tr>
-                                    <td>{{$client->cus_name}}</td>
-                                    <td>{{$client->cus_dob}}</td>
-                                    <td>{{$client->address}}</td>
-                                    <td>{{$client->city}}</td>
-                                    <td>{{$client->state}}</td>
-                                    <td>{{$client->created_at}}</td>
-                                    <td>
-                                        @if($allow_show)
-                                        <a href="{{ route('clients.show', $client->id) }}" class="btn btn-warning" title="Show">
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                        </a>
-                                        @endif
-                                        @if($allow_edit)
-                                        <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-primary" title="Edit">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </a>
-                                        @endif
-                                        @if($allow_delete)
-                                        <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('clients.destroy', $client->id) }}');">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                        @endif
-                                    </td>
-                                    
-                                </tr>
-                                @endforeach
-                                
-                            </tbody>
-                        </table>
-                        <!-- Pagination Links -->
-                        <div class="card">
-                            <div class="card-header">
-                                <h2 class="card-title">Pagination Center Alignment</h2>
-                            </div>
-                            <div class="card-body">
-                                <!-- Display total entry count -->
-                                <p>Total Entries: {{ $clients->total() }}</p>
->>>>>>> 10e29eaaf7765f02610a4f71fe3c0be7babe9d1b
-
-                        <input type="text" name="search" class="form-control bg-white" placeholder="Search here..." value="{{ request('search') }}">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
             </form>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
-                        <thead>
-                            <tr>
-                                <th class="wd-15p border-bottom-0">Client Name</th>
-                                <th class="wd-15p border-bottom-0">Client Date of birth</th>
-                                <th class="wd-20p border-bottom-0">Client Address</th>
-                                <th class="wd-15p border-bottom-0">City</th>
-                                <th class="wd-10p border-bottom-0">State</th>
-                                <th class="wd-25p border-bottom-0">Created ON</th>
-                                <th class="wd-25p border-bottom-0">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($clients as $client)
-                            <tr>
-                                <td>{{$client->cus_name}}</td>
-                                <td>{{$client->cus_dob}}</td>
-                                <td>{{$client->address}}</td>
-                                <td>{{$client->city}}</td>
-                                <td>{{$client->state}}</td>
-                                <td>{{$client->created_at}}</td>
-                                <td>
-                                    <a href="{{ route('clients.mail', $client->id) }}"
-                                        class="btn btn-sm btn-success badge" type="button">
-                                        <i class="fa fa-envelope" title="Email"></i></a>
 
-
-                                    @if($allow_edit)
-                                    <a href="{{ route('clients.show', $client->id) }}" class="btn btn-sm btn-primary badge" type="button" title="Edit">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </a>
-                                    @endif
-                                    @if($allow_delete)
-                                    <button class="btn btn-sm btn-danger badge" title="Delete" onclick="confirmDelete('{{ route('clients.destroy', $client->id) }}');">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </button>
-                                    @endif
-                                </td>
-
-                            </tr>
-                            @endforeach
-
-                        </tbody>
-                    </table>
                     <!-- Pagination Links -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h2 class="card-title">Pagination Center Alignment</h2>
-                        </div>
-                        <div class="card-body">
-                            <!-- Display total entry count -->
-                            <p>Total Entries: {{ $clients->total() }}</p>
 
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-center mb-0">
-                                    {{-- Previous Button --}}
-                                    @if ($clients->onFirstPage())
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="javascript:void(0);" tabindex="-1">
-                                            <i class="fa fa-angle-left"></i>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                    </li>
-                                    @else
-                                    <li class="page-item">
-                                        <a class="page-link" href="{{ $clients->previousPageUrl() }}">
-                                            <i class="fa fa-angle-left"></i>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                    </li>
-                                    @endif
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
+                                <thead>
+                                    <tr>
+                                        <th class="wd-15p border-bottom-0">Client Name</th>
+                                        <th class="wd-15p border-bottom-0">Client Date of birth</th>
+                                        <th class="wd-20p border-bottom-0">Client Address</th>
+                                        <th class="wd-15p border-bottom-0">City</th>
+                                        <th class="wd-10p border-bottom-0">State</th>
+                                        <th class="wd-25p border-bottom-0">Created ON</th>
+                                        <th class="wd-25p border-bottom-0">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($clients as $client)
+                                    <tr>
+                                        <td>{{$client->cus_name}}</td>
+                                        <td>{{$client->cus_dob}}</td>
+                                        <td>{{$client->address}}</td>
+                                        <td>{{$client->city}}</td>
+                                        <td>{{$client->state}}</td>
+                                        <td>{{$client->created_at}}</td>
+                                        <td>
+                                            <a href="{{ route('clients.mail', $client->id) }}"
+                                                class="btn btn-sm btn-success badge" type="button">
+                                                <i class="fa fa-envelope" title="Email"></i></a>
 
-                                    {{-- Page Links --}}
-                                    @for ($i = 1; $i <= $clients->lastPage(); $i++)
-                                        <li class="page-item {{ ($clients->currentPage() == $i) ? 'active' : '' }}">
-                                            <a class="page-link" href="{{ $clients->url($i) }}">{{ $i }}</a>
-                                        </li>
-                                        @endfor
-
-                                        {{-- Next Button --}}
-                                        @if ($clients->hasMorePages())
-                                        <li class="page-item">
-                                            <a class="page-link" href="{{ $clients->nextPageUrl() }}">
-                                                <i class="fa fa-angle-right"></i>
-                                                <span class="sr-only">Next</span>
+                                            @if($allow_show)
+                                            <a href="{{ route('clients.show', $client->id) }}" class="btn btn-warning badge btn-sm" title="Show">
+                                                <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
-                                        </li>
-                                        @else
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="javascript:void(0);">
-                                                <i class="fa fa-angle-right"></i>
-                                                <span class="sr-only">Next</span>
+                                            @endif
+                                            @if($allow_edit)
+                                            <a href="{{ route('clients.show', $client->id) }}" class="btn btn-sm btn-primary badge" type="button" title="Edit">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
-                                        </li>
-                                        @endif
-                                </ul>
-                            </nav>
+                                            @endif
+                                            @if($allow_delete)
+                                            <button class="btn btn-sm btn-danger badge" title="Delete" onclick="confirmDelete('{{ route('clients.destroy', $client->id) }}');">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                            @endif
+                                        </td>
+
+                                    </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                            <!-- Pagination Links -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2 class="card-title">Pagination Center Alignment</h2>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Display total entry count -->
+                                    <p>Total Entries: {{ $clients->total() }}</p>
+
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination justify-content-center mb-0">
+                                            {{-- Previous Button --}}
+                                            @if ($clients->onFirstPage())
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="javascript:void(0);" tabindex="-1">
+                                                    <i class="fa fa-angle-left"></i>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                            </li>
+                                            @else
+                                            <li class="page-item">
+                                                <a class="page-link" href="{{ $clients->previousPageUrl() }}">
+                                                    <i class="fa fa-angle-left"></i>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                            </li>
+                                            @endif
+
+                                            {{-- Page Links --}}
+                                            @for ($i = 1; $i <= $clients->lastPage(); $i++)
+                                                <li class="page-item {{ ($clients->currentPage() == $i) ? 'active' : '' }}">
+                                                    <a class="page-link" href="{{ $clients->url($i) }}">{{ $i }}</a>
+                                                </li>
+                                                @endfor
+
+                                                {{-- Next Button --}}
+                                                @if ($clients->hasMorePages())
+                                                <li class="page-item">
+                                                    <a class="page-link" href="{{ $clients->nextPageUrl() }}">
+                                                        <i class="fa fa-angle-right"></i>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                </li>
+                                                @else
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="javascript:void(0);">
+                                                        <i class="fa fa-angle-right"></i>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                </li>
+                                                @endif
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- END ROW -->
-<!-- Delete Confirmation Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete this property?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form id="deleteForm" method="POST" style="display:inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+        <!-- END ROW -->
+        <!-- Delete Confirmation Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this property?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <form id="deleteForm" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-@endsection
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- SELECT2 JS -->
-<script src="{{ asset('build/assets/plugins/select2/select2.full.min.js') }}"></script>
-<script>
-    function confirmDelete(url) {
-        document.getElementById('deleteForm').action = url; // Set the action of the form
-        var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal')); // Initialize the modal
-        deleteModal.show(); // Show the modal
-    }
-</script>
-@vite('resources/assets/js/select2.js')
+        @endsection
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- SELECT2 JS -->
+        <script src="{{ asset('build/assets/plugins/select2/select2.full.min.js') }}"></script>
+        <script>
+            function confirmDelete(url) {
+                document.getElementById('deleteForm').action = url; // Set the action of the form
+                var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal')); // Initialize the modal
+                deleteModal.show(); // Show the modal
+            }
+        </script>
+        @vite('resources/assets/js/select2.js')
 
-<!-- DATA TABLE JS -->
-<script src="{{ asset('build/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('build/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
-<script src="{{ asset('build/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('build/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
-<script src="{{ asset('build/assets/plugins/datatable/js/jszip.min.js') }}"></script>
-<script src="{{ asset('build/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('build/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
-<script src="{{ asset('build/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('build/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('build/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
-<script src="{{ asset('build/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('build/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
-@vite('resources/assets/js/table-data.js')
+        <!-- DATA TABLE JS -->
+        <script src="{{ asset('build/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('build/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
+        <script src="{{ asset('build/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('build/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+        <script src="{{ asset('build/assets/plugins/datatable/js/jszip.min.js') }}"></script>
+        <script src="{{ asset('build/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
+        <script src="{{ asset('build/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
+        <script src="{{ asset('build/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('build/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+        <script src="{{ asset('build/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+        <script src="{{ asset('build/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ asset('build/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
+        @vite('resources/assets/js/table-data.js')
