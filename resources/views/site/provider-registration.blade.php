@@ -1,16 +1,34 @@
-@extends('layouts.wizard-form')
+<?php $page = 'register'; ?>
+@extends('site.layout.mainlayout')
 
 @section('content')
+    <link rel="icon" href="{{ asset('build/assets/images/brand/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('build/assets/images/brand/favicon.ico') }}" type="image/x-icon">
+    <link id="style" href="{{ asset('build/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    {{-- @vite(['resources/sass/app.scss']) --}}
+    <link href="{{ asset('build/assets/iconfonts/icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/assets/iconfonts/animated.css') }}" rel="stylesheet">
+    @vite(['resources/css/app.css'])
+    <!-- Bootstrap Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('wizard-form/css/bootstrap.min.css') }}">
+    <!-- Font Awesome Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('wizard-form/css/fontawesome/all.min.css') }}">
+    <!-- bootstrap-datepicker Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('wizard-form/css/bootstrap-datepicker3.min.css') }}">
+    <!-- sweetalert Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('wizard-form/css/sweetalert.css') }}" type="text/css">
+    <!-- Template Main Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('wizard-form/css/reg-form.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('wizard-form/css/reg-form-modern.css') }}" type="text/css">
+
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-wrap clearfix">
                     <div class="col-md-12">
-                        <form method="post" action="{{ route('providers.update', $provider->id) }}" id="signUpForm" class="signUpForm"
+                        <form method="post" action="{{ route('providers.provider_registration_post') }}" id="signUpForm" class="signUpForm"
                             enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" value="1" id="is_edit"/>
-                            @method('PUT')
                             <div class="signUpForm-step-holder">
 
                                 <div id="section-1" class="signUpForm-step-wrap">
@@ -33,14 +51,14 @@
                                             </div>
                                         </div>
 
-                                        <h3 class="section-form-title">Edit Provider</h3>
+                                        <h3 class="section-form-title">Create New Provider</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_prov_name">
                                                     <label for="provider_name" class="form-label">Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="provider_name" class="form-control py-2" id="provider_name" placeholder="Your name" value="{{$provider->provider_name}}" required data-error="Please enter name">
+                                                    <input type="text" name="provider_name" class="form-control py-2" id="provider_name" placeholder="Your name" value="" required data-error="Please enter name">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -48,7 +66,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_prov_company_name">
                                                     <label for="company_name" class="form-label">Company/Organization Name<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="company_name" value="{{$provider->comany_name}}" name="comany_name" placeholder="Company Name"  required data-error="Please enter company name">
+                                                    <input type="text" class="form-control py-2" id="company_name" name="comany_name" placeholder="Company Name"  required data-error="Please enter company name">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -56,7 +74,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_pass">
                                                     <label for="pass" class="form-label">password<span class="text-danger">*</span></label>
-                                                    <input type="password" class="form-control py-2" id="pass" name="pass" placeholder="password"  data-error="Please enter password">
+                                                    <input type="password" class="form-control py-2" id="pass" name="pass" placeholder="password" required data-error="Please enter password">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -64,7 +82,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_cpass">
                                                     <label for="pass_confirmation" class="form-label">Confirm Password <span class="text-danger">*</span></label>
-                                                    <input type="password" class="form-control py-2" id="pass_confirmation" name="pass_confirmation" placeholder="Confirm Password"  data-error="Please enter confirm password">
+                                                    <input type="password" class="form-control py-2" id="pass_confirmation" name="pass_confirmation" placeholder="Confirm Password" required data-error="Please enter confirm password">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -74,8 +92,8 @@
                                                     <label for="type" class="form-label">For Profit or Non-Profit?<span class="text-danger">*</span></label>
                                                     <select class="form-select" id="type" name="type" aria-label="Select Type" required data-error="Please select">
                                                         <option value="">Please Select</option>
-                                                        <option @if( $provider->type == 1 ) selected @endif value="1">Profit</option>
-                                                        <option @if( $provider->type == 0 ) selected @endif value="0">Non-Profit</option>
+                                                        <option value="1">Profit</option>
+                                                        <option value="0">Non-Profit</option>
                                                     </select>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
@@ -84,7 +102,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_prov_address">
                                                     <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="address" value="{{$provider->address}}" name="address" placeholder="Address" required data-error="Please enter address">
+                                                    <input type="text" class="form-control py-2" id="address" name="address" placeholder="Address" required data-error="Please enter address">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -92,7 +110,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_prov_city">
                                                     <label for="city" class="form-label">City<span class="text-danger">*</span></label>
-                                                    <input type="text" name="city" class="form-control py-2" id="city" placeholder="City" value="{{$provider->city}}" required data-error="Please enter city">
+                                                    <input type="text" name="city" class="form-control py-2" id="city" placeholder="City" value="" required data-error="Please enter city">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -102,56 +120,56 @@
                                                     <label for="state" class="form-label">State<span class="text-danger">*</span></label>
                                                     <select class="form-select py-2" name="state" id="state" aria-label="" required data-error="Please enter state">
                                                         <option value="">Please Select</option>
-                                                        <option  @if( $provider->state == "AL" ) selected @endif value="AL">Alabama</option>
-                                                        <option  @if( $provider->state == "AK" ) selected @endif value="AK">Alaska</option>
-                                                        <option  @if( $provider->state == "AZ" ) selected @endif value="AZ">Arizona</option>
-                                                        <option  @if( $provider->state == "AR" ) selected @endif value="AR">Arkansas</option>
-                                                        <option  @if( $provider->state == "CA" ) selected @endif value="CA">California</option>
-                                                        <option  @if( $provider->state == "CO" ) selected @endif value="CO">Colorado</option>
-                                                        <option  @if( $provider->state == "CT" ) selected @endif value="CT">Connecticut</option>
-                                                        <option  @if( $provider->state == "DE" ) selected @endif value="DE">Delaware</option>
-                                                        <option  @if( $provider->state == "FL" ) selected @endif value="FL">Florida</option>
-                                                        <option  @if( $provider->state == "GA" ) selected @endif value="GA">Georgia</option>
-                                                        <option  @if( $provider->state == "HI" ) selected @endif value="HI">Hawaii</option>
-                                                        <option  @if( $provider->state == "ID" ) selected @endif value="ID">Idaho</option>
-                                                        <option  @if( $provider->state == "IL" ) selected @endif value="IL">Illinois</option>
-                                                        <option  @if( $provider->state == "IN" ) selected @endif value="IN">Indiana</option>
-                                                        <option  @if( $provider->state == "IA" ) selected @endif value="IA">Iowa</option>
-                                                        <option  @if( $provider->state == "KS" ) selected @endif value="KS">Kansas</option>
-                                                        <option  @if( $provider->state == "KY" ) selected @endif value="KY">Kentucky</option>
-                                                        <option  @if( $provider->state == "LA" ) selected @endif value="LA">Louisiana</option>
-                                                        <option  @if( $provider->state == "ME" ) selected @endif value="ME">Maine</option>
-                                                        <option  @if( $provider->state == "MD" ) selected @endif value="MD">Maryland</option>
-                                                        <option  @if( $provider->state == "MA" ) selected @endif value="MA">Massachusetts</option>
-                                                        <option  @if( $provider->state == "MI" ) selected @endif value="MI">Michigan</option>
-                                                        <option  @if( $provider->state == "MN" ) selected @endif value="MN">Minnesota</option>
-                                                        <option  @if( $provider->state == "MS" ) selected @endif value="MS">Mississippi</option>
-                                                        <option  @if( $provider->state == "MO" ) selected @endif value="MO">Missouri</option>
-                                                        <option  @if( $provider->state == "MT" ) selected @endif value="MT">Montana</option>
-                                                        <option  @if( $provider->state == "NE" ) selected @endif value="NE">Nebraska</option>
-                                                        <option  @if( $provider->state == "NV" ) selected @endif value="NV">Nevada</option>
-                                                        <option  @if( $provider->state == "NH" ) selected @endif value="NH">New Hampshire</option>
-                                                        <option  @if( $provider->state == "NJ" ) selected @endif value="NJ">New Jersey</option>
-                                                        <option  @if( $provider->state == "NM" ) selected @endif value="NM">New Mexico</option>
-                                                        <option  @if( $provider->state == "NY" ) selected @endif value="NY">New York</option>
-                                                        <option  @if( $provider->state == "NC" ) selected @endif value="NC">North Carolina</option>
-                                                        <option  @if( $provider->state == "ND" ) selected @endif value="ND">North Dakota</option>
-                                                        <option  @if( $provider->state == "OH" ) selected @endif value="OH">Ohio</option>
-                                                        <option  @if( $provider->state == "OK" ) selected @endif value="OK">Oklahoma</option>
-                                                        <option  @if( $provider->state == "OR" ) selected @endif value="OR">Oregon</option>
-                                                        <option  @if( $provider->state == "PA" ) selected @endif value="PA">Pennsylvania</option>
-                                                        <option  @if( $provider->state == "RI" ) selected @endif value="RI">Rhode Island</option>
-                                                        <option  @if( $provider->state == "SC" ) selected @endif value="SC">South Carolina</option>
-                                                        <option  @if( $provider->state == "SD" ) selected @endif value="SD">South Dakota</option>
-                                                        <option  @if( $provider->state == "TN" ) selected @endif value="TN">Tennessee</option>
-                                                        <option  @if( $provider->state == "TX" ) selected @endif value="TX">Texas</option>
-                                                        <option  @if( $provider->state == "UT" ) selected @endif value="UT">Utah</option>
-                                                        <option  @if( $provider->state == "VT" ) selected @endif value="VT">Vermont</option>
-                                                        <option  @if( $provider->state == "VA" ) selected @endif value="VA">Virginia</option>
-                                                        <option  @if( $provider->state == "WA" ) selected @endif value="WA">Washington</option>
-                                                        <option  @if( $provider->state == "WV" ) selected @endif value="WV">West Virginia</option>
-                                                        <option  @if( $provider->state == "WI" ) selected @endif value="WI">Wisconsin</option>
-                                                        <option  @if( $provider->state == "WY" ) selected @endif value="WY">Wyoming</option>
+                                                        <option value="AL">Alabama</option>
+                                                        <option value="AK">Alaska</option>
+                                                        <option value="AZ">Arizona</option>
+                                                        <option value="AR">Arkansas</option>
+                                                        <option value="CA">California</option>
+                                                        <option value="CO">Colorado</option>
+                                                        <option value="CT">Connecticut</option>
+                                                        <option value="DE">Delaware</option>
+                                                        <option value="FL">Florida</option>
+                                                        <option value="GA">Georgia</option>
+                                                        <option value="HI">Hawaii</option>
+                                                        <option value="ID">Idaho</option>
+                                                        <option value="IL">Illinois</option>
+                                                        <option value="IN">Indiana</option>
+                                                        <option value="IA">Iowa</option>
+                                                        <option value="KS">Kansas</option>
+                                                        <option value="KY">Kentucky</option>
+                                                        <option value="LA">Louisiana</option>
+                                                        <option value="ME">Maine</option>
+                                                        <option value="MD">Maryland</option>
+                                                        <option value="MA">Massachusetts</option>
+                                                        <option value="MI">Michigan</option>
+                                                        <option value="MN">Minnesota</option>
+                                                        <option value="MS">Mississippi</option>
+                                                        <option value="MO">Missouri</option>
+                                                        <option value="MT">Montana</option>
+                                                        <option value="NE">Nebraska</option>
+                                                        <option value="NV">Nevada</option>
+                                                        <option value="NH">New Hampshire</option>
+                                                        <option value="NJ">New Jersey</option>
+                                                        <option value="NM">New Mexico</option>
+                                                        <option value="NY">New York</option>
+                                                        <option value="NC">North Carolina</option>
+                                                        <option value="ND">North Dakota</option>
+                                                        <option value="OH">Ohio</option>
+                                                        <option value="OK">Oklahoma</option>
+                                                        <option value="OR">Oregon</option>
+                                                        <option value="PA">Pennsylvania</option>
+                                                        <option value="RI">Rhode Island</option>
+                                                        <option value="SC">South Carolina</option>
+                                                        <option value="SD">South Dakota</option>
+                                                        <option value="TN">Tennessee</option>
+                                                        <option value="TX">Texas</option>
+                                                        <option value="UT">Utah</option>
+                                                        <option value="VT">Vermont</option>
+                                                        <option value="VA">Virginia</option>
+                                                        <option value="WA">Washington</option>
+                                                        <option value="WV">West Virginia</option>
+                                                        <option value="WI">Wisconsin</option>
+                                                        <option value="WY">Wyoming</option>
                                                     </select>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
@@ -160,7 +178,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_prov_zip">
                                                     <label for="zip" class="form-label">Zip<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2 zip-input-mask" value="{{ $provider->zipcode }}" id="zip" name="zipcode" placeholder="zipcode" required data-error="Please enter zipcode">
+                                                    <input type="text" class="form-control py-2 zip-input-mask" id="zip" name="zipcode" placeholder="zipcode" required data-error="Please enter zipcode">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -168,7 +186,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_prov_phone">
                                                     <label for="phone" class="form-label">Phone<span class="text-danger">*</span></label>
-                                                    <input type="tel" class="form-control py-2 phone-input-mask" id="phone" value="{{ $provider->phone }}" name="phone" placeholder="Phone" required data-error="Please enter phone">
+                                                    <input type="tel" class="form-control py-2 phone-input-mask" id="phone" name="phone" placeholder="Phone" required data-error="Please enter phone">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -176,7 +194,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_prov_email">
                                                     <label for="email" class="form-label"> Email<span class="text-danger">*</span></label>
-                                                    <input type="email" name="email" class="form-control py-2" id="email" placeholder="example@email.com" value="{{ $provider->email }}" required data-error="Please enter email">
+                                                    <input type="email" name="email" class="form-control py-2" id="email" placeholder="example@email.com" value="" required data-error="Please enter email">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -184,43 +202,43 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_prov_website">
                                                     <label for="website" class="form-label">Website<span class="text-danger">*</span></label>
-                                                    <input type="url" class="form-control py-2" id="website" name="website" placeholder="website" value="{{ $provider->website }}" required data-error="Please enter website">
+                                                    <input type="url" class="form-control py-2" id="website" name="website" placeholder="website" required data-error="Please enter website">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-sm-12 col-lg-12">
                                                 <div class="form-group">
                                                     <label class="form-label text-dark roboto-medium">Area Served<span class="text-danger">*</span></label>
                                                     <div class="d-flex flex-wrap">
                                                                                                 
                                                         <div class="form-check me-3 mb-3">
-                                                            <input class="form-check-input area-served" type="radio" value="1" id="Food" name="area_served" @if($provider->area_served == 1) checked @endif onchange="toggleDiv()">
+                                                            <input class="form-check-input area-served" type="radio" value="1" id="Food" name="area_served" checked onchange="toggleDiv()">
                                                             <label class="form-check-label" for="Food">Food</label>
                                                         </div>
                                                                                                 
                                                         <div class="form-check me-3 mb-3">
-                                                            <input class="form-check-input area-served" type="radio" value="2" id="Clothing" name="area_served" @if($provider->area_served == 2) checked @endif onchange="toggleDiv()">
+                                                            <input class="form-check-input area-served" type="radio" value="2" id="Clothing" name="area_served" onchange="toggleDiv()">
                                                             <label class="form-check-label" for="Clothing">Clothing</label>
                                                         </div>
                                                                                                 
                                                         <div class="form-check me-3 mb-3">
-                                                            <input class="form-check-input area-served" type="radio" value="3" id="Shelter" name="area_served" @if($provider->area_served == 3) checked @endif onchange="toggleDiv()">
+                                                            <input class="form-check-input area-served" type="radio" value="3" id="Shelter" name="area_served" onchange="toggleDiv()">
                                                             <label class="form-check-label" for="Shelter">Shelter</label>
                                                         </div>
                                                                                                 
                                                         <div class="form-check me-3 mb-3">
-                                                            <input class="form-check-input area-served" type="radio" value="5" id="Extra Income" name="area_served" @if($provider->area_served == 5) checked @endif onchange="toggleDiv()">
+                                                            <input class="form-check-input area-served" type="radio" value="5" id="Extra Income" name="area_served" onchange="toggleDiv()">
                                                             <label class="form-check-label" for="Extra Income">Extra Income</label>
                                                         </div>
                                                                                                 
                                                         <div class="form-check me-3 mb-3">
-                                                            <input class="form-check-input area-served" type="radio" value="6" id="Main" name="area_served" @if($provider->area_served == 6) checked @endif onchange="toggleDiv()">
+                                                            <input class="form-check-input area-served" type="radio" value="6" id="Main" name="area_served" onchange="toggleDiv()">
                                                             <label class="form-check-label" for="Main">Main</label>
                                                         </div>
                                                         
                                                         <div class="form-check me-3 mb-3">
-                                                            <input class="form-check-input area-served" type="radio" value="7" id="other-area-served-option" name="area_served" @if($provider->area_served == 7) checked @endif onchange="toggleDiv()">
+                                                            <input class="form-check-input area-served" type="radio" value="7" id="other-area-served-option" name="area_served" onchange="toggleDiv()">
                                                             <label class="form-check-label" for="other-area-served-option">Suggest A Category/Subcategory</label>
                                                         </div>
                                                     </div>
@@ -232,19 +250,18 @@
                                                 <div class="col-sm-6 col-lg-6">
                                                 <div class="custom-area-served" >
                                                     <label for="custom-area-served" class="form-label">Category<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="custom-area-served" name="custom_area_served" placeholder="Enter Other Category" value="{{ $provider->custom_area_served }}"  data-error="Please enter custom area served">
+                                                    <input type="text" class="form-control" id="custom-area-served" name="custom_area_served" placeholder="Enter Other Category" value=""  data-error="Please enter custom area served">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
-                                                <img src="{{ asset('storage/' . $provider->profile_image) }}" alt="Main Picture" width="400px" />
-                                            </div>
-                                            <div class="col-md-12">
+
+                                            <div class="mb-12">
                                                 <label for="main_picture" class="form-label">Main Picture*</label>
                                                 <input type="file" class="form-control" aria-label="file example" name="main_picture">
                                                 <div class="invalid-feedback">Example invalid form file feedback</div>
                                             </div>
+
                                         </div>
                                         
                                         <div class="form-group signUpForm-step-1" style="margin-top: 50px;">
@@ -265,7 +282,26 @@
             </div>
         </div>
     </div>
-@endsection
-@section('js')
-<script src="{{asset('wizard-form/js/provider-form.js')}}"></script>
+
+
+    <script src="{{ asset('build/assets/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('build/assets/plugins/bootstrap/popper.min.js') }}"></script>
+    <script src="{{ asset('build/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    {{-- <script src="{{ asset('build/assets/plugins/p-scroll/perfect-scrollbar.js') }}"></script> --}}
+    {{-- <script src="{{ asset('build/assets/plugins/p-scroll/pscroll.js') }}"></script> --}}
+    {{-- <script src="{{ asset('build/assets/plugins/sidemenu/sidemenu.js') }}"></script> --}}
+    {{-- <script src="{{ asset('build/assets/plugins/sidebar/sidebar.js') }}"></script> --}}
+    @vite('resources/js/app.js')
+
+
+
+    <script src="{{ asset('wizard-form/js/jquery-3.5.1.min.js') }}"></script>
+    <!-- bootstrap-datepicker Js -->
+    <script src="{{ asset('wizard-form/js/bootstrap-datepicker.min.js') }}"></script>
+    <!-- Form validator Js -->
+    <script src="{{ asset('wizard-form/js/validator.min.js') }}"></script>
+    <!-- sweetalert Js -->
+    <script src="{{ asset('wizard-form/js/sweetalert.min.js') }}"></script>
+
+    <script src="{{ asset('wizard-form/js/provider-form.js') }}"></script>
 @endsection

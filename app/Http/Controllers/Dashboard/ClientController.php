@@ -439,4 +439,8 @@ class ClientController extends Controller
         $client->softDeleteRelations();
         return redirect()->route('clients.index')->with('success', 'Client and related records have been soft deleted successfully');
     }
+
+    public function client_registration_website(){
+        return view('site.client-registration');
+    }
 }
