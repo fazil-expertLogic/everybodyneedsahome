@@ -14,6 +14,7 @@ use App\Models\ClientInfo;
 use App\Models\ClientChild;
 use App\Models\ClientSurvey;
 use App\Models\ClientsHealthIns;
+
 class ClientController extends Controller
 {
     /**
@@ -131,9 +132,9 @@ class ClientController extends Controller
         }
 
         DB::beginTransaction(); // Start the transaction
-        
+
         try {
-             // Create the property record
+            // Create the property record
             $client = Client::create([
                 'cus_name' => $request->cus_name ?? '',
                 'email' => $request->cus_email ?? '',
@@ -310,9 +311,9 @@ class ClientController extends Controller
         DB::beginTransaction(); // Start the transaction
 
         try {
-             // Create the property record
+            // Create the property record
             $client = Client::findOrFail($id);
-            $user = User::where('id',$client->user_id)->first();
+            $user = User::where('id', $client->user_id)->first();
             $user->update([
                 'name' => $request->cus_name,
                 'email' => $request->cus_email,
@@ -331,7 +332,7 @@ class ClientController extends Controller
                 'state' => $request->cus_state ?? '',
                 'zipcode' => $request->cus_zip ?? '',
                 'phone' => $request->cus_phone ?? '',
-                'user_id'=>$user->id,
+                'user_id' => $user->id,
                 'profile_image' => $mainPicturePath ?? $client->profile_image,
             ]);
 
@@ -419,5 +420,55 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
         $client->softDeleteRelations();
         return redirect()->route('clients.index')->with('success', 'Client and related records have been soft deleted successfully');
+    }
+
+
+    public function composeMail($id)
+    {
+        $role = Role::where('name', 'Client')->first();
+        $user = User::where('role_id', $role->id)->get();
+        $clients = $user;
+        return view('livewire.client.mail', compact('clients', 'id')); // Return edit view
+    }
+
+    public function sendMail(Request $request)
+    {
+        // Validate the incoming request
+        $request->validate([
+            'receiver_id' => 'required|exists:users,id', // Assuming 'users' is the table with user information
+            'message' => 'required|string|max:5000', // Adjust max length as needed
+            'subject' => 'required|string|max:255', // Adjust max length as needed
+        ]);
+
+        // Get the logged-in user's ID
+        $loggedIn = \Auth::user()->id;
+
+        // Create the mail entry
+        Mail::create([
+            'sender_id' => $loggedIn,
+            'receiver_id' => $request->receiver_id,
+            'message' => $request->message,
+            'subject' => $request->subject,
+        ]);
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Mail sent to client successfully.');
+    }
+
+
+    public function inbox($id)
+    {
+        $loggedIn = \Auth::user()->id;
+        $emails = Mail::where('receiver_id', $loggedIn)->get();
+        return view('livewire.client.inbox', compact('emails', 'id')); // Return edit view
+
+    }
+
+    public function mailReadView($id)
+    {
+        $mail = Mail::find($id);
+        $getClient = $mail->receiver_id;
+        dd($getClient);
+        return view('livewire.client.mail-read', compact('mail'));
     }
 }
