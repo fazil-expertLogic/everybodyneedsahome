@@ -268,7 +268,7 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <label for="main_picture" class="form-label">Main Picture*</label>
-                                                <input type="file" class="form-control" aria-label="file example" name="main_picture" required>
+                                                <input type="file" class="form-control" aria-label="file example" name="main_picture">
                                                 <div class="invalid-feedback">Example invalid form file feedback</div>
                                             </div>
             

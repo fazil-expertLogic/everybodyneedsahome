@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
-
+use App\Http\Controllers\Dashboard\ClientController;
+use App\Http\Controllers\Dashboard\ProvidersController;
 use App\Http\Livewire\Index;
 
 //Dashbaord
@@ -234,3 +235,9 @@ Route::get('/add-new-property-rental', function () {
 Route::get('/add-new-property', function () {
     return view('site.add-new-property');
 })->name('add-new-property');
+
+Route::get('client-registration', [ClientController::class, 'client_registration_website'])->name('clients.client_registration');
+Route::post('client-registration_post', [ClientController::class, 'store'])->name('clients.client_registration_post');
+
+Route::get('provider-registration', [ProvidersController::class, 'provider_registration_website'])->name('providers.provider_registration');
+Route::post('provider-registration-post', [ProvidersController::class, 'store'])->name('providers.provider_registration_post');

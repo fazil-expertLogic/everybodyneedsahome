@@ -240,4 +240,8 @@ class ProvidersController extends Controller
         $provider->softDeleteRelations();
         return redirect()->route('providers.index')->with('success', 'provider have been soft deleted successfully');
     }
+    
+    public function provider_registration_website(){
+        return view('site.provider-registration');
+    }
 }

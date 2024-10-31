@@ -230,7 +230,7 @@
                                                 <div class="col-sm-6 col-lg-6">
                                                 <div class="custom-area-served" >
                                                     <label for="custom-area-served" class="form-label">Category<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="custom-area-served" name="custom_area_served" placeholder="Enter Other Category" value=""  required data-error="Please enter custom area served">
+                                                    <input type="text" class="form-control" id="custom-area-served" name="custom_area_served" placeholder="Enter Other Category" value=""  data-error="Please enter custom area served">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                                 </div>
