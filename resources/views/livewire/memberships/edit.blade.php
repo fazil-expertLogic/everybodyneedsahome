@@ -19,24 +19,33 @@
 
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_use_name">
+                                                <div class="form-group valid_use_name @if ($errors->has('name')) has-error has-danger @endif">
                                                     <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                                     <input type="text" name="name" class="form-control py-2" id="name" placeholder="name" value="{{$membership->name}}" required data-error="Please enter name">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('name'))
+                                                    <div class="help-block with-errors">{{ $errors->first('name') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_use_name">
+                                                <div class="form-group valid_use_name @if ($errors->has('price')) has-error has-danger @endif">
                                                     <label for="price" class="form-label">price<span class="text-danger">*</span></label>
                                                     <input type="number" name="price" class="form-control py-2" id="price" placeholder="price" value="{{$membership->price}}" required data-error="Please enter price">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('price'))
+                                                    <div class="help-block with-errors">{{ $errors->first('price') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_use_name">
+                                                <div class="form-group valid_use_name @if ($errors->has('features')) has-error has-danger @endif">
                                                     <label for="features" class="form-label">Features<span class="text-danger">*</span></label>
                                                     <input type="text" name="features" class="form-control py-2" id="features" placeholder="features" value="{{$membership->features}}" required data-error="Please enter features">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('features'))
+                                                    <div class="help-block with-errors">{{ $errors->first('features') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-lg-6">

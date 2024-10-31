@@ -65,12 +65,12 @@ class MembershipController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name'  => 'required|string|max:255',
-                'price'  => 'required|string|max:255',
+                'price'  => 'required|integer|min:0',
                 'features'  => 'required|string|max:255',
                 'description'  => 'required|string|max:255',
             ]);
             if ($validator->fails()) {
-                return response()->json($validator->errors(), 422);
+                return redirect()->back()->withErrors($validator)->withInput();
             }
             DB::beginTransaction();
             Membership::create([
@@ -124,7 +124,7 @@ class MembershipController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name'  => 'required|string|max:255',
-                'price'  => 'required|string|max:255',
+                'price'  => 'required|integer|min:0',
                 'features'  => 'required|string|max:255',
                 'description'  => 'required|string|max:255',
             ]);
