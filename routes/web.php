@@ -19,6 +19,7 @@ use App\Http\Livewire\Index;
 
 //Dashbaord
 
+require __DIR__ . '/frontend.php';
 
 Route::get('login', [RegistrationsController::class, 'showLogin'])->name('login');
 Route::post('loginPerform', [RegistrationsController::class, 'loginPerform'])->name('login.perform');
@@ -68,4 +69,4 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::resource('permissions', permissionsController::class);
 });
 
-require __DIR__ . '/web2.php';
+
