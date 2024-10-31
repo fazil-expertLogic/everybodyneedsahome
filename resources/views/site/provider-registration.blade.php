@@ -1,12 +1,32 @@
-@extends('layouts.wizard-form')
+<?php $page = 'register'; ?>
+@extends('site.layout.mainlayout')
 
 @section('content')
+    <link rel="icon" href="{{ asset('build/assets/images/brand/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('build/assets/images/brand/favicon.ico') }}" type="image/x-icon">
+    <link id="style" href="{{ asset('build/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    {{-- @vite(['resources/sass/app.scss']) --}}
+    <link href="{{ asset('build/assets/iconfonts/icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/assets/iconfonts/animated.css') }}" rel="stylesheet">
+    @vite(['resources/css/app.css'])
+    <!-- Bootstrap Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('wizard-form/css/bootstrap.min.css') }}">
+    <!-- Font Awesome Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('wizard-form/css/fontawesome/all.min.css') }}">
+    <!-- bootstrap-datepicker Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('wizard-form/css/bootstrap-datepicker3.min.css') }}">
+    <!-- sweetalert Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('wizard-form/css/sweetalert.css') }}" type="text/css">
+    <!-- Template Main Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('wizard-form/css/reg-form.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('wizard-form/css/reg-form-modern.css') }}" type="text/css">
+
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-wrap clearfix">
                     <div class="col-md-12">
-                        <form method="post" action="{{ route('providers.store') }}" id="signUpForm" class="signUpForm"
+                        <form method="post" action="{{ route('providers.provider_registration_post') }}" id="signUpForm" class="signUpForm"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="signUpForm-step-holder">
@@ -262,7 +282,26 @@
             </div>
         </div>
     </div>
-@endsection
-@section('js')
-<script src="{{asset('wizard-form/js/provider-form.js')}}"></script>
+
+
+    <script src="{{ asset('build/assets/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('build/assets/plugins/bootstrap/popper.min.js') }}"></script>
+    <script src="{{ asset('build/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    {{-- <script src="{{ asset('build/assets/plugins/p-scroll/perfect-scrollbar.js') }}"></script> --}}
+    {{-- <script src="{{ asset('build/assets/plugins/p-scroll/pscroll.js') }}"></script> --}}
+    {{-- <script src="{{ asset('build/assets/plugins/sidemenu/sidemenu.js') }}"></script> --}}
+    {{-- <script src="{{ asset('build/assets/plugins/sidebar/sidebar.js') }}"></script> --}}
+    @vite('resources/js/app.js')
+
+
+
+    <script src="{{ asset('wizard-form/js/jquery-3.5.1.min.js') }}"></script>
+    <!-- bootstrap-datepicker Js -->
+    <script src="{{ asset('wizard-form/js/bootstrap-datepicker.min.js') }}"></script>
+    <!-- Form validator Js -->
+    <script src="{{ asset('wizard-form/js/validator.min.js') }}"></script>
+    <!-- sweetalert Js -->
+    <script src="{{ asset('wizard-form/js/sweetalert.min.js') }}"></script>
+
+    <script src="{{ asset('wizard-form/js/provider-form.js') }}"></script>
 @endsection

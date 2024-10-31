@@ -109,7 +109,8 @@ class MenusController extends Controller
      */
     public function edit($id)
     {
-        //
+        $menu = Menu::findOrFail($id);
+        return view('livewire.menus.edit', compact('menu'));
     }
 
     /**

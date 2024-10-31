@@ -7,12 +7,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Helpers\Helper;
 
 class CategoryController extends Controller
 {
     // Function to display the list of categories with search, sorting, and pagination
     public function index(Request $request)
     {
+        $allow_show = Helper::check_rights(10)->is_show;
+        $allow_create = Helper::check_rights(10)->is_create;
+        $allow_edit = Helper::check_rights(10)->is_edit;
+        $allow_delete = Helper::check_rights(10)->is_delete;
+
         // Get the search query from the request, if any
         $search = $request->input('search', '');
 
@@ -28,12 +34,13 @@ class CategoryController extends Controller
         $totalCategories = Category::count();
 
         // Return the view with categories data
-        return view('livewire.categories.index', [
-            'categories' => $categories,
-            'totalCategories' => $totalCategories,
-            'search' => $search,
-            'sortDirection' => $sortDirection,
-        ]);
+        return view('livewire.categories.index', compact('allow_show','allow_create','allow_edit','allow_delete','categories','totalCategories','search','sortDirection'));
+    }
+
+    public function show($id)
+    {
+        $category = Category::find($id);
+        return view('livewire.categories.show', compact('category'));
     }
 
     public function edit($id)

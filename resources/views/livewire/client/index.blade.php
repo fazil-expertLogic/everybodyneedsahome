@@ -63,6 +63,65 @@
                         <div class="col">
                             <input type="text" name="state" class="form-control" placeholder="State" value="{{ request('state') }}">
                         </div>
+<<<<<<< HEAD
+=======
+                    </div>
+                </form>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
+                            <thead>
+                                <tr>
+                                    <th class="wd-15p border-bottom-0">Client Name</th>
+                                    <th class="wd-15p border-bottom-0">Client Date of birth</th>
+                                    <th class="wd-20p border-bottom-0">Client Address</th>
+                                    <th class="wd-15p border-bottom-0">City</th>
+                                    <th class="wd-10p border-bottom-0">State</th>
+                                    <th class="wd-25p border-bottom-0">Created ON</th>
+                                    <th class="wd-25p border-bottom-0">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($clients as $client)   
+                                <tr>
+                                    <td>{{$client->cus_name}}</td>
+                                    <td>{{$client->cus_dob}}</td>
+                                    <td>{{$client->address}}</td>
+                                    <td>{{$client->city}}</td>
+                                    <td>{{$client->state}}</td>
+                                    <td>{{$client->created_at}}</td>
+                                    <td>
+                                        @if($allow_show)
+                                        <a href="{{ route('clients.show', $client->id) }}" class="btn btn-warning" title="Show">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                        @endif
+                                        @if($allow_edit)
+                                        <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-primary" title="Edit">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </a>
+                                        @endif
+                                        @if($allow_delete)
+                                        <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('clients.destroy', $client->id) }}');">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                        @endif
+                                    </td>
+                                    
+                                </tr>
+                                @endforeach
+                                
+                            </tbody>
+                        </table>
+                        <!-- Pagination Links -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Pagination Center Alignment</h2>
+                            </div>
+                            <div class="card-body">
+                                <!-- Display total entry count -->
+                                <p>Total Entries: {{ $clients->total() }}</p>
+>>>>>>> 10e29eaaf7765f02610a4f71fe3c0be7babe9d1b
 
                         <input type="text" name="search" class="form-control bg-white" placeholder="Search here..." value="{{ request('search') }}">
                         <button type="submit" class="btn btn-primary">

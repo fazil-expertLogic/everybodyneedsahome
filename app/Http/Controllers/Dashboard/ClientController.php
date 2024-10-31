@@ -6,17 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use App\Helpers\Helper;
+use App\Models\User;
 use App\Models\Client;
-use App\Models\ClientChild;
-use App\Models\ClientCriminalHistory;
 use App\Models\ClientInfo;
+use App\Models\ClientChild;
 use App\Models\ClientSurvey;
 use App\Models\ClientsHealthIns;
-use App\Helpers\Helper;
-use App\Models\Mail;
-use App\Models\Role;
-use App\Models\User;
-
 class ClientController extends Controller
 {
     /**
@@ -82,8 +79,8 @@ class ClientController extends Controller
             'cus_email' => 'required|email|max:255',
             'cus_dob' => 'required|date',
             'cus_ss' => 'required|string',
-            'martial_status' => 'required|in:1,2,3', // Adjust options based on possible statuses
-            'cus_is_child' => 'required|in:1,2',
+            'martial_status' => 'required',
+            'cus_is_child' => 'required',
             // 'child_name' => 'array',
             // 'child_name.*' => 'string|max:255',
             // 'child_age' => 'array',
@@ -93,38 +90,39 @@ class ClientController extends Controller
             'cus_state' => 'required|string|max:255',
             'cus_zip' => 'required|string|max:255',
             'cus_phone' => 'required|string|max:255',
-            'role' => 'required|in:1,2,3', // Adjust options based on possible roles
+            'role' => 'required',
             'cus_dfc' => 'required|date',
             'cus_con' => 'required|string|max:255',
-            'cus_conq' => 'required|in:1,2',
-            'cus_sex_off' => 'required|in:1,2',
-            'cus_is_offend_minor' => 'required|in:1,2',
-            'cus_food' => 'required|in:1,2',
-            'cus_cloth' => 'required|in:1,2',
-            'cus_shelter' => 'required|in:1,2',
-            'cus_tra' => 'required|in:1,2',
-            'cus_emp' => 'required|in:1,2',
-            'cus_extra_income' => 'required|in:1,2',
+            'cus_conq' => 'required',
+            'cus_sex_off' => 'required',
+            'cus_is_offend_minor' => 'required',
+            'cus_food' => 'required',
+            'cus_cloth' => 'required',
+            'cus_shelter' => 'required',
+            'cus_tra' => 'required',
+            'cus_emp' => 'required',
+            'cus_extra_income' => 'required',
             'cus_church' => 'required|string|max:255',
             'cus_other_church' => 'nullable|string|max:255',
-            'cus_bcert' => 'required|in:1,2',
+            'cus_bcert' => 'required',
             'cus_born_state' => 'nullable|string|max:255',
-            'cus_state_id' => 'required|in:1,2',
+            'cus_state_id' => 'required',
             'cus_state_no' => 'nullable|string|max:255',
-            'cus_d_lice' => 'required|in:1,2',
+            'cus_d_lice' => 'required',
             'cus_lice_no' => 'nullable|string|max:255',
-            'cus_ss_card' => 'required|in:1,2',
+            'cus_ss_card' => 'required',
             'cus_ssc_no' => 'nullable|string|max:255',
-            'cus_insurace' => 'required|in:1,2',
+            'cus_insurace' => 'required',
             'cus_carrier' => 'nullable|string|max:255',
             'cus_mem_id' => 'nullable|string|max:255',
             'cus_grp_no' => 'nullable|string|max:255',
-            'cus_more_friends' => 'required|in:1,2',
+            'cus_more_friends' => 'required',
             'cus_counselor' => 'nullable|string|max:255',
-            'cus_is_inv_rom' => 'required|in:1,2',
-            'cus_is_mental_ill' => 'required|in:1,2',
+            'cus_is_inv_rom' => 'required',
+            'cus_is_mental_ill' => 'required',
             'cus_phy_dis' => 'nullable|string|max:255',
             'cus_comments' => 'nullable|string|max:255',
+            'pass' => 'required|string|min:8|confirmed',
         ]);
 
         if ($validator->fails()) {
@@ -133,9 +131,9 @@ class ClientController extends Controller
         }
 
         DB::beginTransaction(); // Start the transaction
-
+        
         try {
-            // Create the property record
+             // Create the property record
             $client = Client::create([
                 'cus_name' => $request->cus_name ?? '',
                 'email' => $request->cus_email ?? '',
@@ -148,6 +146,8 @@ class ClientController extends Controller
                 'state' => $request->cus_state ?? '',
                 'zipcode' => $request->cus_zip ?? '',
                 'phone' => $request->cus_phone ?? '',
+                'user_id' => $user->id,
+                'profile_image' => $mainPicturePath ?? '',
             ]);
 
             foreach ($request->child_name as $child) {
@@ -238,7 +238,8 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = Client::WithAllRelations()->findOrFail($id);
+        return view('livewire.client.edit', compact('client'));
     }
 
     /**
@@ -298,6 +299,7 @@ class ClientController extends Controller
             'cus_is_mental_ill' => 'required|in:1,2',
             'cus_phy_dis' => 'nullable|string|max:255',
             'cus_comments' => 'nullable|string|max:255',
+            'pass' => 'nullable|string|min:8|confirmed',
         ]);
 
         if ($validator->fails()) {
@@ -308,8 +310,15 @@ class ClientController extends Controller
         DB::beginTransaction(); // Start the transaction
 
         try {
-            // Create the property record
+             // Create the property record
             $client = Client::findOrFail($id);
+            $user = User::where('id',$client->user_id)->first();
+            $user->update([
+                'name' => $request->cus_name,
+                'email' => $request->cus_email,
+                'password' => $request->pass ? Hash::make($request->pass) : $user->password,
+                'role_id' => "3",
+            ]);
             $client->update([
                 'cus_name' => $request->cus_name ?? '',
                 'email' => $request->cus_email ?? '',
@@ -322,6 +331,8 @@ class ClientController extends Controller
                 'state' => $request->cus_state ?? '',
                 'zipcode' => $request->cus_zip ?? '',
                 'phone' => $request->cus_phone ?? '',
+                'user_id'=>$user->id,
+                'profile_image' => $mainPicturePath ?? $client->profile_image,
             ]);
 
             ClientChild::where('gl_ID', $id)->delete();
@@ -408,54 +419,5 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
         $client->softDeleteRelations();
         return redirect()->route('clients.index')->with('success', 'Client and related records have been soft deleted successfully');
-    }
-
-    public function composeMail($id)
-    {
-        $role = Role::where('name', 'Client')->first();
-        $user = User::where('role_id', $role->id)->get();
-        $clients = $user;
-        return view('livewire.client.mail', compact('clients', 'id')); // Return edit view
-    }
-
-    public function sendMail(Request $request)
-    {
-        // Validate the incoming request
-        $request->validate([
-            'receiver_id' => 'required|exists:users,id', // Assuming 'users' is the table with user information
-            'message' => 'required|string|max:5000', // Adjust max length as needed
-            'subject' => 'required|string|max:255', // Adjust max length as needed
-        ]);
-
-        // Get the logged-in user's ID
-        $loggedIn = \Auth::user()->id;
-
-        // Create the mail entry
-        Mail::create([
-            'sender_id' => $loggedIn,
-            'receiver_id' => $request->receiver_id,
-            'message' => $request->message,
-            'subject' => $request->subject,
-        ]);
-
-        // Redirect back with a success message
-        return redirect()->back()->with('success', 'Mail sent to client successfully.');
-    }
-
-
-    public function inbox($id)
-    {
-        $loggedIn = \Auth::user()->id;
-        $emails = Mail::where('receiver_id', $loggedIn)->get();
-        return view('livewire.client.inbox', compact('emails', 'id')); // Return edit view
-
-    }
-
-    public function mailReadView($id)
-    {
-        $mail = Mail::find($id);
-        $getClient=$mail->receiver_id;
-        dd($getClient);
-        return view('livewire.client.mail-read', compact('mail'));
     }
 }

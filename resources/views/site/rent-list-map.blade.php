@@ -1,5 +1,5 @@
 <?php $page = 'rent-list-map'; ?>
-@extends('layout.mainlayout')
+@extends('site.layout.mainlayout')
 @section('content')
     @component('components.breadcrumb')
         @slot('title')

@@ -1,5 +1,5 @@
 <?php $page = 'maintenance'; ?>
-@extends('layout.mainlayout')
+@extends('site.layout.mainlayout')
 @section('content')
     <div class="error-box">
         <img src="{{ URL::asset('/assets/img/maintenance.png') }}" class="img-fluid" alt="Maintenance">

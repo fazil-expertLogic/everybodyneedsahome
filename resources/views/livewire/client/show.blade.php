@@ -67,7 +67,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_name">
                                                     <label for="cus_name" class="form-label">Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="cus_name" class="form-control py-2" value="{{ $client->cus_name }}" id="cus_name" placeholder="Your name" required data-error="Please enter name">
+                                                    <input type="text" name="cus_name" class="form-control py-2" value="{{ $client->cus_name }}" id="cus_name" placeholder="Your name" required data-error="Please enter name" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -75,7 +75,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_email">
                                                     <label for="cus_email" class="form-label"> Email<span class="text-danger">*</span></label>
-                                                    <input type="email" name="cus_email" class="form-control py-2" id="cus_email" placeholder="example@email.com" value="{{ $client->email }}" required data-error="Please enter email">
+                                                    <input type="email" name="cus_email" class="form-control py-2" id="cus_email" placeholder="example@email.com" value="{{ $client->email }}" required data-error="Please enter email" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -83,7 +83,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_dob">
                                                     <label for="cus_dob" class="form-label"> Date of Birth<span class="text-danger">*</span></label>
-                                                    <input type="date" name="cus_dob" class="form-control py-2"id="cus_dob" placeholder="" value="{{ $client->cus_dob }}" required data-error="Please enter Date of Birth">
+                                                    <input type="date" name="cus_dob" class="form-control py-2"id="cus_dob" placeholder="" value="{{ $client->cus_dob }}" required data-error="Please enter Date of Birth" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -91,7 +91,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_ss">
                                                     <label for="cus_ss" class="form-label">Social Security Number<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2 ssn-input-mask" value="{{ $client->cus_ss }}" name="cus_ss" id="cus_ss" placeholder="*****" required data-error="Please enter Social Security Number">
+                                                    <input type="text" class="form-control py-2 ssn-input-mask" value="{{ $client->cus_ss }}" name="cus_ss" id="cus_ss" placeholder="*****" required data-error="Please enter Social Security Number" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -99,7 +99,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_ms">
                                                     <label for="cus_ms" class="form-label">Marital Status<span class="text-danger">*</span></label>
-                                                    <select name="martial_status" class="form-select" id="cus_ms" aria-label="" required data-error="Please select marital status">
+                                                    <select name="martial_status" class="form-select" id="cus_ms" aria-label="" required data-error="Please select marital status" disabled>
                                                         <option value="">Please Select</option>
                                                         <option @if( $client->martial_status  == 1) selected @endif value="1">Single</option>
                                                         <option @if( $client->martial_status  == 2) selected @endif value="2">Married</option>
@@ -114,7 +114,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_is_child">
                                                     <label for="cus_is_child" class="form-label">Children<span class="text-danger">*</span></label>
-                                                    <select name="cus_is_child" class="form-select" id="cus_is_child" aria-label="" required data-error="Please select Children" onchange="toggleDiv()">
+                                                    <select name="cus_is_child" class="form-select" id="cus_is_child" aria-label="" required data-error="Please select Children" onchange="toggleDiv()" disabled>
                                                       <option value="">Please Select</option>
                                                       <option @if( $client->is_child  == 1) selected @endif value="1">Yes</option>
                                                       <option @if( $client->is_child  == 2) selected @endif value="2">No</option>
@@ -131,13 +131,13 @@
                                                         <div class="col-sm-6 col-lg-6">
                                                             <fieldset class="mb-3">
                                                                 <label for="child_name_{{$key}}" class="form-label">Child Name<span class="text-danger">*</span></label>
-                                                                <input type="text" class="form-control py-2" value="{{$clientChild->child_name}}" name="child_name[]" id="child_name_{{$key}}" >
+                                                                <input type="text" class="form-control py-2" value="{{$clientChild->child_name}}" name="child_name[]" id="child_name_{{$key}}" disabled>
                                                             </fieldset>
                                                         </div>
                                                         <div class="col-sm-6 col-lg-6">
                                                             <fieldset class="">
                                                                 <label for="child_age_{{$key}}" class="form-label">Child Age<span class="text-danger">*</span></label>
-                                                                <select name="child_age[]" class="form-select" id="child_age_{{$key}}" aria-label="" >
+                                                                <select name="child_age[]" class="form-select" id="child_age_{{$key}}" aria-label="" disabled>
                                                                     <option @if( $clientChild->child_age == '0') selected @endif value="0" selected="">0+</option>
                                                                     <option @if( $clientChild->child_age == '1') selected @endif value="1">1</option>
                                                                     <option @if( $clientChild->child_age == '2') selected @endif value="2">2</option>
@@ -175,7 +175,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_address">
                                                     <label for="cus_address" class="form-label">Address<span class="text-danger">*</span></label>
-                                                    <input type="text" name="cus_address" class="form-control py-2" id="cus_address" placeholder="Address" value="{{$client->address}}" required data-error="Please enter address">
+                                                    <input type="text" name="cus_address" class="form-control py-2" id="cus_address" placeholder="Address" value="{{$client->address}}" required data-error="Please enter address" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -183,7 +183,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_city">
                                                     <label for="cus_city" class="form-label">City<span class="text-danger">*</span></label>
-                                                    <input type="text" name="cus_city" class="form-control py-2" id="cus_city" placeholder="City" value="{{$client->city}}" required data-error="Please enter city">
+                                                    <input type="text" name="cus_city" class="form-control py-2" id="cus_city" placeholder="City" value="{{$client->city}}" required data-error="Please enter city" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -191,7 +191,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_state">
                                                     <label for="cus_state" class="form-label">State<span class="text-danger">*</span></label>
-                                                    <select class="form-select py-2" name="cus_state" id="cus_state" aria-label="" required data-error="Please enter state">
+                                                    <select class="form-select py-2" name="cus_state" id="cus_state" aria-label="" required data-error="Please enter state" disabled>
                                                         <option value="">Please Select</option>
                                                         <option @if ($client->state == 'AL') selected @endif value="AL">Alabama</option>
                                                         <option @if ($client->state == 'AK') selected @endif value="AK">Alaska</option>
@@ -251,7 +251,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_zip">
                                                     <label for="cus_zip" class="form-label">Zip<span class="text-danger">*</span></label>
-                                                    <input type="text" name="cus_zip" class="form-control py-2 zip-input-mask" id="cus_zip" placeholder="Zip" value="{{$client->zipcode}}" required data-error="Please enter zipcode">
+                                                    <input type="text" name="cus_zip" class="form-control py-2 zip-input-mask" id="cus_zip" placeholder="Zip" value="{{$client->zipcode}}" required data-error="Please enter zipcode" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -259,16 +259,19 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_phone">
                                                     <label for="cus_phone" class="form-label">Phone<span class="text-danger">*</span></label>
-                                                    <input type="text" name="cus_phone" class="form-control py-2 phone-input-mask" id="cus_phone" placeholder="Phone" value="{{$client->phone}}" required data-error="Please enter phone">
+                                                    <input type="text" name="cus_phone" class="form-control py-2 phone-input-mask" id="cus_phone" placeholder="Phone" value="{{$client->phone}}" required data-error="Please enter phone" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
-            
+                                            <div class="col-md-12">
+                                                <label for="cus_phone" class="form-label">Profile Image<span class="text-danger">*</span></label>
+                                                <img src="{{ asset('storage/' . $client->profile_image) }}" alt="Main Picture" width="400px" />
+                                            </div>
                                         </div>
                                         
                                         <div class="form-group signUpForm-step-1">
-                                            <button class="btn btn-default disable" type="button">Are you
-                                                ready!</button>
+                                            {{-- <button class="btn btn-default disable" type="button">Are you
+                                                ready!</button> --}}
                                             <button class="btn btn-custom float-end" onclick="nextStep2()"
                                                 type="button">Next <span class="fas fa-arrow-right"></span></button>
                                         </div>
@@ -329,7 +332,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_pp">
                                                     <label for="cus_pp" class="form-label">Are you currently on probation or parole?<span class="text-danger">*</span></label>
-                                                    <select class="form-select" name="role" id="cus_pp" required data-error="Please select">
+                                                    <select class="form-select" name="role" id="cus_pp" required data-error="Please select" disabled>
                                                         <option value="">Please select</option>
                                                         <option @if( $client->criminalHistories->role == 1) selected @endif value="1">Probation</option>
                                                         <option @if( $client->criminalHistories->role == 2) selected @endif value="2">Parole</option>
@@ -342,19 +345,19 @@
                                             </div>
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_dfc">
                                                 <label for="cus_dfc" class="form-label">Date of Conviction<span class="text-danger">*</span></label>
-                                                <input type="date" class="form-control" id="cus_dfc" name="cus_dfc" value="{{ $client->criminalHistories->date_of_con }}" required data-error="Please enter date of conviction">
+                                                <input type="date" class="form-control" id="cus_dfc" name="cus_dfc" value="{{ $client->criminalHistories->date_of_con }}" required data-error="Please enter date of conviction" disabled>
                                                 <div class="help-block with-errors"></div>
                                             </div>
             
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_con">
                                                 <label for="cus_con" class="form-label">Conviction<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="cus_con" name="cus_con" value="{{ $client->criminalHistories->conviction }}" required data-error="Please enter conviction">
+                                                <input type="text" class="form-control" id="cus_con" name="cus_con" value="{{ $client->criminalHistories->conviction }}" required data-error="Please enter conviction" disabled>
                                                 <div class="help-block with-errors"></div>
                                             </div>
             
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_conq">
                                                 <label for="cus_conq" class="form-label">Consequence<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_conq" id="cus_conq" required data-error="Please select">
+                                                <select class="form-select" name="cus_conq" id="cus_conq" required data-error="Please select" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if( $client->criminalHistories->conq == 1) selected @endif value="1">Probation</option>
                                                     <option @if( $client->criminalHistories->conq == 2) selected @endif value="2">Incarceration</option>
@@ -364,7 +367,7 @@
             
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_sex_off">
                                                 <label for="cus_sex_off" class="form-label">Are you a registered sex offender?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_sex_off" id="cus_sex_off" required data-error="Please select">
+                                                <select class="form-select" name="cus_sex_off" id="cus_sex_off" required data-error="Please select" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if( $client->criminalHistories->is_sex_off == 1) selected @endif value="1">Yes</option>
                                                     <option @if( $client->criminalHistories->is_sex_off == 2) selected @endif value="2">No</option>
@@ -374,7 +377,7 @@
             
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_is_offend_minor">
                                                 <label for="cus_is_offend_minor" class="form-label">Did your crime involve a minor?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_is_offend_minor" id="cus_is_offend_minor" required data-error="Please select">
+                                                <select class="form-select" name="cus_is_offend_minor" id="cus_is_offend_minor" required data-error="Please select" disabled>
                                                     <option value="">Please select</option>
                                                     <option  @if( $client->criminalHistories->is_offend_minor == 1) selected @endif value="1">Yes</option>
                                                     <option  @if( $client->criminalHistories->is_offend_minor == 2) selected @endif value="2">No</option>
@@ -446,7 +449,7 @@
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_food">
                                                 <label for="cus_food" class="form-label">Do you need food?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_food" name="cus_food" aria-label="Food" required data-error="Please select">
+                                                <select class="form-select py-2" id="cus_food" name="cus_food" aria-label="Food" required data-error="Please select" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if( $client->surveys->is_food == 1) selected @endif value="1">Yes</option>
                                                     <option @if( $client->surveys->is_food == 2) selected @endif value="2">No</option>
@@ -456,7 +459,7 @@
 
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_cloth">
                                                 <label for="cus_cloth" class="form-label">Do you need clothing?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_cloth" name="cus_cloth" aria-label="Clothing" required data-error="Please select">
+                                                <select class="form-select py-2" id="cus_cloth" name="cus_cloth" aria-label="Clothing" required data-error="Please select" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if( $client->surveys->is_cloth == 1) selected @endif value="1">Yes</option>
                                                     <option @if( $client->surveys->is_cloth == 2) selected @endif value="2">No</option>
@@ -465,7 +468,7 @@
                                             </div>
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_shelter">
                                                 <label for="cus_shelter" class="form-label">Do you need shelter/housing?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_shelter" name="cus_shelter" aria-label="Shelter" required data-error="Please select">
+                                                <select class="form-select py-2" id="cus_shelter" name="cus_shelter" aria-label="Shelter" required data-error="Please select" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if( $client->surveys->is_shelter == 1) selected @endif value="1">Yes</option>
                                                     <option @if( $client->surveys->is_shelter == 2) selected @endif value="2">No</option>
@@ -474,7 +477,7 @@
                                             </div>
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_tra">
                                                 <label for="cus_tra" class="form-label">Do you need transportation?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_tra" name="cus_tra" aria-label="Transportation" required data-error="Please select">
+                                                <select class="form-select py-2" id="cus_tra" name="cus_tra" aria-label="Transportation" required data-error="Please select" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if( $client->surveys->is_transport == 1) selected @endif value="1">Yes</option>
                                                     <option @if( $client->surveys->is_transport == 2) selected @endif value="2">No</option>
@@ -484,7 +487,7 @@
 
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_emp">
                                                 <label for="cus_emp" class="form-label">Do you need employment?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_emp" name="cus_emp" aria-label="Employment" required data-error="Please select">
+                                                <select class="form-select py-2" id="cus_emp" name="cus_emp" aria-label="Employment" required data-error="Please select" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if( $client->surveys->is_emp == 1) selected @endif value="1">Yes</option>
                                                     <option @if( $client->surveys->is_emp == 2) selected @endif value="2">No</option>
@@ -494,7 +497,7 @@
 
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_extra_income">
                                                 <label for="cus_extra_income" class="form-label">Do you need extra income (Gigs, Plasma, etc)?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_extra_income" name="cus_extra_income" aria-label="Extra Income" required data-error="Please select">
+                                                <select class="form-select py-2" id="cus_extra_income" name="cus_extra_income" aria-label="Extra Income" required data-error="Please select" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if( $client->surveys->extra_incom == 1) selected @endif value="1">Yes</option>
                                                     <option @if( $client->surveys->extra_incom == 2) selected @endif value="2">No</option>
@@ -503,7 +506,7 @@
                                             </div>
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_church">
                                                 <label for="cus_church" class="form-label">Which church did you attend?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_church" name="cus_church" aria-label="Church" required data-error="Please select">
+                                                <select class="form-select py-2" id="cus_church" name="cus_church" aria-label="Church" required data-error="Please select" disabled>
                                                     <option value="">Choose one</option>
                                                     <option @if( $client->surveys->church == "First Baptist Church") selected @endif  value="First Baptist Church">First Baptist Church</option>
                                                     <option @if( $client->surveys->church == "Second Presbyterian Church") selected @endif  value="Second Presbyterian Church">Second Presbyterian Church</option>
@@ -532,14 +535,14 @@
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_other_church">
                                                 <div id="custom-church-container" style="display: none;">
                                                     <label for="cus_other_church" class="form-label">Other Church Name<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="cus_other_church" name="cus_other_church" placeholder="Enter other church name" value="{{ $client->surveys->custom_church }}">
+                                                    <input type="text" class="form-control" id="cus_other_church" name="cus_other_church" placeholder="Enter other church name" value="{{ $client->surveys->custom_church }}" disabled>
                                                 </div>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                             <!-- Hidden input for custom church name -->
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_bcert">
                                                 <label for="cus_bcert" class="form-label">Do you have your birth certificate?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_bcert" name="cus_bcert" aria-label="Birth Certificate" required data-error="Please select" onchange="birthDiv()">
+                                                <select class="form-select py-2" id="cus_bcert" name="cus_bcert" aria-label="Birth Certificate" required data-error="Please select" onchange="birthDiv()" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if( $client->surveys->is_bcert == 1) selected @endif value="1">Yes</option>
                                                     <option @if( $client->surveys->is_bcert == 2) selected @endif value="2">No</option>
@@ -550,7 +553,7 @@
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_born_state">
                                                 <div id="birthDiv">
                                                     <label for="cus_born_state" class="form-label">What state were you born?<span class="text-danger">*</span></label>
-                                                    <select class="form-select py-2" id="cus_born_state" name="cus_born_state" aria-label="State"  data-error="Please select">
+                                                    <select class="form-select py-2" id="cus_born_state" name="cus_born_state" aria-label="State"  data-error="Please select" disabled>
                                                         <option value="">Please select</option>
                                                         <option @if ($client->surveys->state_name == 'AL') selected @endif value="AL">Alabama</option>
                                                         <option @if ($client->surveys->state_name == 'AK') selected @endif value="AK">Alaska</option>
@@ -609,7 +612,7 @@
 
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_state_id">
                                                 <label for="cus_state_id" class="form-label">Do you have state ID?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_state_id" name="cus_state_id" aria-label="is_state_id" required data-error="Please select"  onchange="stateDiv()">
+                                                <select class="form-select py-2" id="cus_state_id" name="cus_state_id" aria-label="is_state_id" required data-error="Please select"  onchange="stateDiv()" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if ($client->surveys->is_state_id == '1') selected @endif value="1">Yes</option>
                                                     <option @if ($client->surveys->is_state_id == '2') selected @endif value="2">No</option>
@@ -620,14 +623,14 @@
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_state_no">
                                                 <div id="stateDiv">
                                                     <label for="cus_state_no" class="form-label">Please enter the state number<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="cus_state_no" value="{{ $client->surveys->stateIDno }}" name="cus_state_no"  data-error="Please enter state no">
+                                                    <input type="text" class="form-control py-2" id="cus_state_no" value="{{ $client->surveys->stateIDno }}" name="cus_state_no"  data-error="Please enter state no" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
             
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_d_lice">
                                                 <label for="cus_d_lice" class="form-label">Do you have driving license?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_d_lice" name="cus_d_lice" aria-label="DL" required data-error="Please select"  onchange="licenseDiv()">
+                                                <select class="form-select py-2" id="cus_d_lice" name="cus_d_lice" aria-label="DL" required data-error="Please select"  onchange="licenseDiv()" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if ($client->surveys->is_DL == 1) selected @endif value="1">Yes</option>
                                                     <option @if ($client->surveys->is_DL == 2) selected @endif value="2">No</option>
@@ -638,14 +641,14 @@
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_lice_no">
                                                 <div id="licenseDiv">
                                                     <label for="cus_lice_no" class="form-label">Please enter the driving license number<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="cus_lice_no" value="{{ $client->surveys->DlicenseNo }}" name="cus_lice_no" data-error="Please enter license number">
+                                                    <input type="text" class="form-control py-2" id="cus_lice_no" value="{{ $client->surveys->DlicenseNo }}" name="cus_lice_no" data-error="Please enter license number" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_ss_card">
                                                 <label for="cus_ss_card" class="form-label">Do you have a social security card?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_ss_card" name="cus_ss_card" aria-label="Social Security Card" required data-error="Please select" onchange="securityDiv()">
+                                                <select class="form-select py-2" id="cus_ss_card" name="cus_ss_card" aria-label="Social Security Card" required data-error="Please select" onchange="securityDiv()" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if ($client->surveys->is_ss_card == 1) selected @endif  value="1">Yes</option>
                                                     <option @if ($client->surveys->is_ss_card == 2) selected @endif  value="2">No</option>
@@ -656,7 +659,7 @@
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_ssc_no">
                                                 <div id="securityDiv">
                                                     <label for="cus_ssc_no" class="form-label">Please enter the SSN<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="cus_ssc_no" value="{{ $client->surveys->ss_number }}" name="cus_ssc_no" placeholder="******" data-error="Please enter the SSN">
+                                                    <input type="text" class="form-control py-2" id="cus_ssc_no" value="{{ $client->surveys->ss_number }}" name="cus_ssc_no" placeholder="******" data-error="Please enter the SSN" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -735,17 +738,17 @@
                                             <div id="insuranceDiv">
                                                 <div class="col-sm-6 col-lg-6 form-group valid_cus_carrier">
                                                     <label for="cus_carrier">Carrier<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" value="{{ $client->healthIns->carrier }}" id="cus_carrier" name="cus_carrier"  data-error="Please select">
+                                                    <input type="text" class="form-control" value="{{ $client->healthIns->carrier }}" id="cus_carrier" name="cus_carrier"  data-error="Please select" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                                 <div class="col-sm-6 col-lg-6 form-group valid_cus_mem_id">
                                                     <label for="cus_mem_id">Member ID<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" value="{{ $client->healthIns->mem_id }}" id="cus_mem_id" name="cus_mem_id"  data-error="Please select">
+                                                    <input type="text" class="form-control" value="{{ $client->healthIns->mem_id }}" id="cus_mem_id" name="cus_mem_id"  data-error="Please select" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                                 <div class="col-sm-6 col-lg-6 form-group valid_cus_grp_no">
                                                     <label for="cus_grp_no">Group No<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" value="{{ $client->healthIns->grp_no }}" id="cus_grp_no" name="cus_grp_no"  data-error="Please select">
+                                                    <input type="text" class="form-control" value="{{ $client->healthIns->grp_no }}" id="cus_grp_no" name="cus_grp_no"  data-error="Please select" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -812,7 +815,7 @@
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_more_friends">
                                                 <label for="cus_more_friends">Could you use more friends?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_more_friends" id="cus_more_friends" required data-error="Please select" onchange="friendsDiv()">                                    
+                                                <select class="form-select" name="cus_more_friends" id="cus_more_friends" required data-error="Please select" onchange="friendsDiv()" disabled>                                    
                                                     <option value="">Please select</option>
                                                     <option @if ($client->info->more_friends == 1) selected @endif value="1">Yes</option>
                                                     <option @if ($client->info->more_friends == 2) selected @endif value="2">No</option>
@@ -823,7 +826,7 @@
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_counselor">
                                                 <div id="friendsDiv">
                                                     <label for="cus_counselor">Do you believe you could benefit from having a mentor or counselor?<span class="text-danger">*</span></label>
-                                                    <select class="form-select" name="cus_counselor" id="cus_counselor"   data-error="Please select">
+                                                    <select class="form-select" name="cus_counselor" id="cus_counselor"   data-error="Please select" disabled>
                                                         <option value="">Please select</option>
                                                         <option @if ($client->info->counselor == 1) selected @endif value="1">Yes</option>
                                                         <option @if ($client->info->counselor == 2) selected @endif value="2">No</option>
@@ -834,7 +837,7 @@
                                     
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_is_inv_rom">
                                                 <label for="cus_is_inv_rom">Are you looking for someone with whom you could be involved romantically?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_is_inv_rom" id="cus_is_inv_rom" required data-error="Please select">
+                                                <select class="form-select" name="cus_is_inv_rom" id="cus_is_inv_rom" required data-error="Please select" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if ($client->info->is_inv_rom == 1) selected @endif value="1">Yes</option>
                                                     <option @if ($client->info->is_inv_rom == 2) selected @endif value="2">No</option>
@@ -844,7 +847,7 @@
 
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_is_mental_ill">
                                                 <label for="cus_is_mental_ill">Have you ever been diagnosed with a mental illness?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_is_mental_ill" id="cus_is_mental_ill" required data-error="Please select">
+                                                <select class="form-select" name="cus_is_mental_ill" id="cus_is_mental_ill" required data-error="Please select" disabled>
                                                     <option value="">Please select</option>
                                                     <option @if ($client->info->is_mental_ill == 1) selected @endif value="1">Yes</option>
                                                     <option @if ($client->info->is_mental_ill == 2) selected @endif value="2">No</option>
@@ -854,13 +857,13 @@
 
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_phy_dis">
                                                 <label for="cus_phy_dis">Do you have any known physical disabilities<span class="text-danger">*</span></label>
-                                                <textarea class="form-control" id="cus_phy_dis" name="cus_phy_dis"  required data-error="Please select">{{ $client->info->phy_dis }}</textarea>
+                                                <textarea class="form-control" id="cus_phy_dis" name="cus_phy_dis"  required data-error="Please select" disabled>{{ $client->info->phy_dis }}</textarea>
                                                 <div class="help-block with-errors"></div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_comments">
                                                 <label for="cus_comments">Please enter anything else you would like for us to know?</label><br>
-                                                <textarea class="form-control" id="cus_comments" name="cus_comments">{{ $client->info->comments }}</textarea>
+                                                <textarea class="form-control" id="cus_comments" name="cus_comments" disabled>{{ $client->info->comments }}</textarea>
                                                 
                                             </div>
                                         
@@ -869,8 +872,7 @@
                                                 <button class="btn btn-custom" type="button"
                                                     onclick="previousStep4()"><span class="fas fa-arrow-left"></span>
                                                     Back</button>
-                                                <button id="Submit" class="btn btn-custom float-end"
-                                                    type="submit" onclick="nextStep6()">Submit </button>
+                                                
                                             </div>
                                         </div>
                                     </fieldset>

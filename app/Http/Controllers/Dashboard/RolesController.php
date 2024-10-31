@@ -135,7 +135,10 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::findOrFail($id);
+        $permissions = Permission::where('role_id',$id)->get();
+        $menus = Menu::active()->get();
+        return view('livewire.role.edit', compact('role','menus','permissions'));
     }
 
     /**

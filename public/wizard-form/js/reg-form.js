@@ -67,6 +67,16 @@ document.addEventListener("touchstart", function() {},false);
 */	
 	$("#signUpForm").validator().on("submit", function (event) {
 		if (event.isDefaultPrevented()) {
+
+			$(this).find(":input[required]").each(function() {
+				if (!this.checkValidity()) {
+					console.log("Invalid field name:", $(this).attr("name"));
+					$(this).addClass("is-invalid");  // Optionally add an error class
+				} else {
+					$(this).removeClass("is-invalid");  // Optionally remove error class
+				}
+			});
+			
 			//handle the invalid form...
 			formError();
 			submitMSG(false, "Please fill in the form properly!");

@@ -75,16 +75,20 @@
                                     </td>
                                     <td class="text-center align-middle">
                                         <div class="btn-group align-top br-7">
-                                            <button class="btn btn-sm btn-warning badge" type="button"> <i class="fa fa-eye"></i></button>
-                                            <a href="{{route('categories.edit',[$category->id])}}" class="btn btn-sm btn-primary badge" type="button"> <i class="fa fa-pencil"></i></a>
-
+                                            @if($allow_show)
+                                            
+                                            <a href="{{route('categories.show',[$category->id])}}" class="btn btn-sm btn-warning btn-sm badge" type="button"> <i class="fa fa-eye"></i></a>
+                                            @endif
+                                            @if($allow_edit)
+                                            <a href="{{route('categories.edit',[$category->id])}}" class="btn btn-primary btn-sm badge" type="button"> <i class="fa fa-pencil"></i></a>
+                                            @endif
                                             <!-- Button to open the modal -->
-                                          
-                                        <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('categories.destroy', $category->id) }}');">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                       
-
+                                            @if($allow_delete)
+                                            <button class="btn btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('categories.destroy', $category->id) }}');">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                            @endif
+                                            
                                         </div>
                                     </td>
                                 </tr>
