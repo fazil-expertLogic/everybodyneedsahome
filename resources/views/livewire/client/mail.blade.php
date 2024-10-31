@@ -30,14 +30,14 @@
 </div>
 @endif
 @if($errors->any())
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <ul class="mb-0">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <ul class="mb-0">
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
 @endif
 
 <div class="row">
@@ -67,15 +67,9 @@
                     <div class="form-row mb-4">
                         <label class="col-3 col-sm-2 col-md-3 col-lg-2 col-form-label"> Clients</label>
                         <div class="col-9 col-sm-10 col-md-9 col-lg-10">
-                            <select class="form-control select2-show-search" name="receiver_id">
-                                @foreach ($clients as $client )
+                            <input value="{{$client->email}}" disabled class="form-control">
+                            <input type="hidden" name="receiver_id" value="{{$client->id}}"  class="form-control">
 
-
-
-                                <option value="{{$client->id}}">{{$client->name}}</option>
-
-                                @endforeach
-                            </select>
                         </div>
                     </div>
                     <div class="form-row mb-4">
