@@ -31,6 +31,11 @@ Route::post('logout', [RegistrationsController::class, 'logout'])->name('logout'
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', Index::class)->name('dashboard');
     Route::resource('categories', CategoryController::class);
+    Route::get('clients/mail/{id}', [ClientController::class, 'composeMail'])->name('clients.mail');
+    Route::post('clients/message', [ClientController::class, 'sendMail'])->name('clients.send-mail');
+    Route::get('clients/inbox/{id}', [ClientController::class, 'inbox'])->name('clients.inbox');
+    Route::get('mail/read/{id}', [ClientController::class, 'mailReadView'])->name('mail.read');
+
 
     Route::group(['middleware' => ['permission:2']], function () {
         Route::get('properties', [PropertiesController::class, 'index'])->name('properties.index');
