@@ -29,13 +29,13 @@
                 </span>
             </a>
             <a href="{{ url(path: 'index') }}" class="navbar-brand logo">
-                <img src="{{ URL::asset('/assets/img/logo.svg') }}" class="img-fluid" alt="Logo">
+                <img src="{{ URL::asset('/assets/img/logo.png') }}" class="img-fluid" alt="Logo">
             </a>
         </div>
         <div class="main-menu-wrapper">
             <div class="menu-header">
                 <a href="{{ url('index') }}" class="menu-logo">
-                    <img src="{{ URL::asset('/assets/img/logo.svg') }}" class="img-fluid" alt="Logo">
+                    <img src="{{ URL::asset('/assets/img/logo.png') }}" class="img-fluid" alt="Logo">
                 </a>
 
                 <a id="menu_close" class="menu-close" href="javascript:void(0);">
@@ -73,6 +73,11 @@
                     class="{{ Request::is('add-new-property') ? 'active' : '' }}">
                     <i class="bx bxs-plus-circle"></i> Add New Property
                 </a>
+            </li>
+            <li class="{{ Request::is('register') ? 'active' : '' }}">
+                <a href="{{ url('register') }}" class="btn btn-primary"><i class="feather-user-plus"></i>Sign
+                    Up</a>
+            </li>
             </li>
             <li class="{{ Request::is('register') ? 'active' : '' }}">
                 <a href="{{ url('register') }}" class="btn btn-primary"><i class="feather-user-plus"></i>Sign

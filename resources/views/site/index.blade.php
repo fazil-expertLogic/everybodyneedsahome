@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="banner-content" data-aos="fade-down">
-                        <h1>Find Your Best Dream House for <span>Rental, Buy & Sell...</span></h1>
+                        <h1>We help you find <span>  Second Chance Housing</span></h1>
                         <p>Properties for buy / rent in your location. We have more than 3000+ listings for you to choose
                         </p>
                     </div>

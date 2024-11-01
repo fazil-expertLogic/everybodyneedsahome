@@ -1,10 +1,10 @@
 @extends('site.layout.mainlayout')
 @section('content')
-<div class="login-wrapper">
+<div class="login-wrapper" >
     <div class="loginbox">
         <div class="login-auth">
             <div class="login-auth-wrap">
-                <h1>Hey There!!! Welcome Back.</h1>
+                <!-- <h1>Login</h1> -->
                
                 <form method="POST" action="{{ route('login.perform') }}">
                     @csrf
@@ -50,24 +50,24 @@
                     <div>
                         <button class="btn btn-outline-light w-100 btn-size" type="submit">Sign In</button>
                     </div>
-                    <div class="login-or">
+                    <!-- <div class="login-or">
                         <span class="span-or-log">Or, Sign in with your email</span>
-                    </div>
+                    </div> -->
                     <!-- Social Login -->
-                    <div class="social-login">
+                    <!-- <div class="social-login">
                         <a href="javascript:void(0);"
                             class="d-flex align-items-center justify-content-center form-group btn google-login w-100"><span><img
                                     src="{{ URL::asset('/assets/img/icons/google.svg') }}" class="img-fluid"
                                     alt="Google"></span>Sign in
                             with Google</a>
-                    </div>
-                    <div class="social-login">
+                    </div> -->
+                    <!-- <div class="social-login">
                         <a href="javascript:void(0);"
                             class="mb-0 d-flex align-items-center justify-content-center form-group btn google-login w-100"><span><img
                                     src="{{ URL::asset('/assets/img/icons/facebook.svg') }}" class="img-fluid"
                                     alt="Facebook"></span>Sign in
                             with Facebook</a>
-                    </div>
+                    </div> -->
                     <!-- /Social Login -->
                     <div class="text-center dont-have">Don't have an account ? <a href="{{ url('register') }}">Sign
                             Up</a></div>

@@ -23,7 +23,7 @@ require __DIR__ . '/frontend.php';
 
 Route::get('login', [RegistrationsController::class, 'showLogin'])->name('login');
 Route::post('loginPerform', [RegistrationsController::class, 'loginPerform'])->name('login.perform');
-Route::post('logout', [RegistrationsController::class, 'logout'])->name('logout');
+Route::get('logout', [RegistrationsController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', Index::class)->name('dashboard');
