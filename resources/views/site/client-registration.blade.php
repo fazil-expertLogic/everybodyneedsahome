@@ -30,7 +30,7 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="signUpForm-step-holder">
-
+                                <h3 class="">Client Registration</h3>
                                 <div id="section-1" class="signUpForm-step-wrap">
                                     <h3 class="section-title">Step 1 of 5</h3>
                                     <fieldset>
