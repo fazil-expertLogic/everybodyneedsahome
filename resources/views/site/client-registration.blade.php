@@ -30,8 +30,8 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="signUpForm-step-holder">
-                                <h3 class="">Client Registration</h3>
                                 <div id="section-1" class="signUpForm-step-wrap">
+                                    <h3 class="section-form-title mt-3">Client Registration</h3>
                                     <h3 class="section-title">Step 1 of 5</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
@@ -79,7 +79,7 @@
                                             </div>
                                         </div>
 
-                                        <h3 class="section-form-title">Basic Information</h3>
+                                        {{-- <h3 class="section-form-title">Basic Information</h3> --}}
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
@@ -353,8 +353,8 @@
                                         </div>
 
                                         <div class="form-group signUpForm-step-1">
-                                            <button class="btn btn-default disable" type="button">Are you
-                                                ready!</button>
+                                            {{-- <button class="btn btn-default disable" type="button">Are you
+                                                ready!</button> --}}
                                             <button class="btn btn-custom float-end" onclick="nextStep2()"
                                                 type="button">Next <span class="fas fa-arrow-right"></span></button>
                                         </div>
@@ -411,7 +411,7 @@
                                             </div>
                                         </div>
 
-                                        <h3 class="section-form-title">Criminal History</h3>
+                                        {{-- <h3 class="section-form-title">Criminal History</h3> --}}
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
@@ -543,7 +543,7 @@
                                             </div>
                                         </div>
 
-                                        <h3 class="section-form-title">Needs Survey</h3>
+                                        {{-- <h3 class="section-form-title">Needs Survey</h3> --}}
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
@@ -875,7 +875,7 @@
                                             </div>
                                         </div>
 
-                                        <h3 class="section-form-title">Health Insurance</h3>
+                                        {{-- <h3 class="section-form-title">Health Insurance</h3> --}}
 
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_insurace">
@@ -975,7 +975,7 @@
                                             </div>
                                         </div>
 
-                                        <h3 class="section-form-title">Others info</h3>
+                                        {{-- <h3 class="section-form-title">Others info</h3> --}}
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_more_friends">
                                                 <label for="cus_more_friends">Could you use more friends?<span
