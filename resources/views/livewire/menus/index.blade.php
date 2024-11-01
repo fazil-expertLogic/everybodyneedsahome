@@ -92,7 +92,7 @@
                                         </a>
                                         @endif
                                         @if($allow_edit)
-                                        <a href="{{ route('menus.show', $menu->id) }}" class="btn btn-primary" title="Edit">
+                                        <a href="{{ route('menus.edit', $menu->id) }}" class="btn btn-primary" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                         @endif

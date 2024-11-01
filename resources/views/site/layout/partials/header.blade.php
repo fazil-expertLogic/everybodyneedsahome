@@ -1,3 +1,9 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 @if (
 !Route::is([
 'reset-password',
@@ -9,6 +15,7 @@
 'error-500',
 'maintenance',
 ]))
+
 <!-- Header -->
 <header class="header header-fix">
     @if (Route::is(['index']))
@@ -74,15 +81,22 @@
                     <i class="bx bxs-plus-circle"></i> Add New Property
                 </a>
             </li>
-            <li class="{{ Request::is('register') ? 'active' : '' }}">
+            {{-- <li class="{{ Request::is('register') ? 'active' : '' }}">
                 <a href="{{ url('register') }}" class="btn btn-primary"><i class="feather-user-plus"></i>Sign
                     Up</a>
+            </li> --}}
+
+            <li class="nav-item dropdown {{ Request::is('register/client', 'register/provider') ? 'active' : '' }}">
+                <a class="nav-link dropdown-toggle btn btn-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="feather-user-plus"></i> Sign Up
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('clients.client_registration') }}">Client</a>
+                    <a class="dropdown-item" href="{{ route('providers.provider_registration') }}">Provider</a>
+                </div>
             </li>
             </li>
-            <li class="{{ Request::is('register') ? 'active' : '' }}">
-                <a href="{{ url('register') }}" class="btn btn-primary"><i class="feather-user-plus"></i>Sign
-                    Up</a>
-            </li>
+          
             <li class="{{ Request::is('login') ? 'active' : '' }}">
                 <a href="{{ url('login') }}" class="btn sign-btn"><i class="feather-unlock"></i>Sign In</a>
             </li>
@@ -90,6 +104,17 @@
     </nav>
 </header>
 <!-- /Header -->
+<style>
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0; /* Optional: remove space between the button and dropdown */
+    }
+
+    /* Optional: Remove caret (dropdown arrow) if not needed */
+    .dropdown-toggle::after {
+        display: none;
+    }
+</style>
 @endif
 
 @if (Route::is([

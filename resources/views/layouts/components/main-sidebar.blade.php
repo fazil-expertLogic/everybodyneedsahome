@@ -31,7 +31,7 @@
 								<li class="sub-category">
 									<h3>Main</h3>
 								</li>
-								<li class="slide">
+								{{-- <li class="slide">
 									<a class="side-menu__item has-link" data-bs-toggle="slide" href="javascript:void(0)"><i
 											class="side-menu__icon ri-home-4-line"></i><span
 											class="side-menu__label">Dashboard</span><i
@@ -42,16 +42,20 @@
 												<div class="tab-content">
 													<div class="tab-pane active" id="side1">
 														<ul class="sidemenu-list">
-															<li class="side-menu-label1"><a href="javascript:void(0)">Dashboard</a></li>
-															<li><a class="slide-item" href="{{route('dashboard')}}">index</a></li>
+															<li ><a href="{{route('dashboard')}}">Dashboard</a></li>
+															<li><a class="slide-item" href="">index</a></li>
 														</ul>
 													</div>
 												</div>
 											</div>
 										</li>
-									</ul>
-								</li>
+									</ul> 
+								</li>--}}
 								<li class="slide">
+									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('dashboard') }}">
+										<i class="side-menu__icon ri-home-4-line"></i>
+										<span class="side-menu__label">Dashboard</span>
+									</a>
 									@foreach ( $menus as $menu)
 									@if(\App\Helpers\Helper::check_rights($menu->id)->is_listing)
 									<a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route($menu->route) }}">
