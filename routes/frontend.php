@@ -28,8 +28,9 @@ Route::get('/about-us', function () {
 // })->name('buy-property-grid');
 
 Route::get('buy-property-grid', [FrontendController::class, 'buyPropertyGrid'])->name('buy_property_grid');
-
 Route::get('pricing', [FrontendController::class, 'pricing'])->name('pricing');
+Route::get('property-list', [FrontendController::class, 'propertyList'])->name('property-list');
+
 
 Route::get('/login', function () {
     return view('site.login');
