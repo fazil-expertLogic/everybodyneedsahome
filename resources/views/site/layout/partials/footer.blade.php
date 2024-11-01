@@ -76,9 +76,9 @@
                         <ul>
                             <li><a href="javascript:void(0);">United States</a></li>
                             <li><a href="javascript:void(0);">Canada</a></li>
-                            <li><a href="javascript:void(0);">India</a></li>
+                            <!-- <li><a href="javascript:void(0);">India</a></li>
                             <li><a href="javascript:void(0);">UK</a></li>
-                            <li><a href="javascript:void(0);">Australia</a></li>
+                            <li><a href="javascript:void(0);">Australia</a></li> -->
                         </ul>
                     </div>
                 </div>
@@ -90,9 +90,10 @@
                         <ul>
                             <li><a href="{{ url('about-us') }}">About</a></li>
                             <li><a href="{{ url('faq') }}">Faq</a></li>
+                            <li><a href="{{ url('gallery') }}">Gallery</a></li>
                             <li><a href="{{ url('terms-condition') }}">Terms & Conditions</a></li>
                             <li><a href="{{ url('privacy-policy') }}">Privacy Policy</a></li>
-                            <li><a href="{{ url('gallery') }}">Gallery</a></li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -109,12 +110,12 @@
                     <p>Copyright <script>
                         document.write(new Date().getFullYear())
                   
-                        </script> - All right reserved DreamsEstate</p>
+                        </script> - Hope For Everybody, LLC. All Rights Reserved</p>
                 </div>
                 <div class="company-logo">
-                    <p>a product of</p>
-                    <a href="https://dreamstechnologies.com/" target="_blank"><img
-                            src="{{ URL::asset('/assets/img/company-logo.png') }}" alt="Logo"></a>
+                    <p>Report Violations | Terms of Sale | CCPA/CPRA</p>
+                    <!-- <a href="https://dreamstechnologies.com/" target="_blank"><img
+                            src="{{ URL::asset('/assets/img/company-logo.png') }}" alt="Logo"></a> -->
                 </div>
             </div>
         </div>

@@ -36,13 +36,13 @@
                 </span>
             </a>
             <a href="{{ url(path: 'index') }}" class="navbar-brand logo">
-                <img src="{{ URL::asset('/assets/img/logo.svg') }}" class="img-fluid" alt="Logo">
+                <img src="{{ URL::asset('/assets/img/logo.png') }}" class="img-fluid" alt="Logo">
             </a>
         </div>
         <div class="main-menu-wrapper">
             <div class="menu-header">
                 <a href="{{ url('index') }}" class="menu-logo">
-                    <img src="{{ URL::asset('/assets/img/logo.svg') }}" class="img-fluid" alt="Logo">
+                    <img src="{{ URL::asset('/assets/img/logo.png') }}" class="img-fluid" alt="Logo">
                 </a>
 
                 <a id="menu_close" class="menu-close" href="javascript:void(0);">
@@ -95,7 +95,8 @@
                     <a class="dropdown-item" href="{{ route('providers.provider_registration') }}">Provider</a>
                 </div>
             </li>
-            
+            </li>
+          
             <li class="{{ Request::is('login') ? 'active' : '' }}">
                 <a href="{{ url('login') }}" class="btn sign-btn"><i class="feather-unlock"></i>Sign In</a>
             </li>
