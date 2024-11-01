@@ -33,6 +33,6 @@ class Membership extends Model
 
     public function scopeYearlyPlan($query)
     {
-        return $query->where('play_type', 'Yearl');
+        return $query->where('plan_type', 'Yearly');
     }
 }
