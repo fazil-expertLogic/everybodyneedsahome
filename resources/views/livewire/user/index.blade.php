@@ -106,9 +106,7 @@
                         </table>
                         <!-- Pagination Links -->
                         <div class="card">
-                            <div class="card-header">
-                                <h2 class="card-title">Pagination Center Alignment</h2>
-                            </div>
+                           
                             <div class="card-body">
                                 <!-- Display total entry count -->
                                 <p>Total Entries: {{ $users->total() }}</p>

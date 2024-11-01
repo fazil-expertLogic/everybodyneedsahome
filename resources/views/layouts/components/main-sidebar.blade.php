@@ -11,13 +11,13 @@
 					<div class="app-sidebar">
 						<div class="side-header">
 							<a class="header-brand1" href="{{route('dashboard')}}">
-								<img src="{{asset('build/assets/images/brand/logo1.png')}}" class="header-brand-img main-logo"
+								<img src="{{asset('build/assets/images/brand/logo.svg')}}" class="header-brand-img main-logo"
 									alt="Sparic logo">
-								<img src="{{asset('build/assets/images/brand/logo-light.png')}}" class="header-brand-img darklogo"
+								<img src="{{asset('build/assets/images/brand/logo.svg')}}" class="header-brand-img darklogo"
 									alt="Sparic logo">
 								<img src="{{asset('build/assets/images/brand/icon.png')}}" class="header-brand-img icon-logo"
 									alt="Sparic logo">
-								<img src="{{asset('build/assets/images/brand/icon2.png')}}" class="header-brand-img icon-logo2"
+								<img src="{{asset('build/assets/images/brand/icon.png')}}" class="header-brand-img icon-logo2"
 									alt="Sparic logo">
 							</a>
 						</div>

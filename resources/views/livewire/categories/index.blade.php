@@ -52,7 +52,7 @@
                         <table class="table table-bordered text-dark">
                             <thead>
                                 <tr>
-                                    <th class="text-center text-dark fw-semibold">All</th>
+                                   
                                     <th class="text-dark fw-semibold w-25">Person</th>
                                     <th class="text-dark fw-semibold">Date</th>
                                     <th class="text-center fw-semibold">Actions</th>
@@ -61,12 +61,7 @@
                             <tbody>
                                 @foreach ($categories as $category)
                                 <tr>
-                                    <td class="align-middle text-center">
-                                        <div class="custom-control custom-control-inline custom-checkbox">
-                                            <input class="custom-control-input" id="item-{{ $category->id }}" type="checkbox">
-                                            <label class="custom-control-label" for="item-{{ $category->id }}"></label>
-                                        </div>
-                                    </td>
+                                   
                                     <td>
                                         <h6 class="mb-0 fw-semibold mx-2">{{ $category->category_name }}</h6>
                                     </td>
