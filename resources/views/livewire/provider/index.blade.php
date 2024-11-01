@@ -42,17 +42,19 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Provider Data</h3>
-                    @if ($allow_create)
-                    <a href="{{ route('providers.create') }}" class="btn bg-primary  ms-auto" data-bs-toggle="tooltip" title="Add New">
+                    
+                    {{-- <a href="{{ route('providers.create') }}" class="btn bg-primary btn-sm badge" data-bs-toggle="tooltip" title="Add New">
                         <span><i class="fa fa-plus"></i> </span>
+                    </a> --}}
+                    
+                </div>
+                <div class="mb-3 text-end">  <!-- Add text-end class here -->
+                    @if ($allow_create)
+                    <a href="{{ route('providers.create') }}" class="btn bg-primary btn-sm badge" data-bs-toggle="tooltip" title="Add New">
+                        <span><i class="fa fa-plus"></i></span>
                     </a>
                     @endif
                 </div>
-                {{-- <div class="mb-3 text-end">  <!-- Add text-end class here -->
-                    <a href="{{ route('providers.create') }}" class="btn bg-primary" data-bs-toggle="tooltip" title="Add New">
-                        <span><i class="fa fa-plus"></i> Add Provider</span>
-                    </a>
-                </div> --}}
                 <form action="{{ route('providers.index') }}" method="GET">
                     <div class="mb-3 text-end">
                         <div class="input-group w-100">
@@ -96,17 +98,17 @@
                                     <td>{{$provider->created_at}}</td>
                                     <td>
                                         @if($allow_show)
-                                        <a href="{{ route('providers.show', $provider->id) }}" class="btn btn-warning" title="Show">
+                                        <a href="{{ route('providers.show', $provider->id) }}" class="btn btn-warning btn-sm badge" title="Show">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                         @endif
                                         @if ($allow_edit)
-                                        <a href="{{ route('providers.edit', $provider->id) }}" class="btn btn-primary" title="Edit">
+                                        <a href="{{ route('providers.edit', $provider->id) }}" class="btn btn-primary btn-sm badge" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                         @endif
                                         @if ($allow_delete)
-                                        <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('providers.destroy', $provider->id) }}');">
+                                        <button class="btn btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('providers.destroy', $provider->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                         @endif

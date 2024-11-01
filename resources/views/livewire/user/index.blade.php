@@ -45,8 +45,8 @@
                 </div>
                 <div class="mb-3 text-end">
                     @if($allow_create)
-                    <a href="{{ route('users.create') }}" class="btn bg-primary" data-bs-toggle="tooltip" title="Add New">
-                        <span><i class="fa fa-plus"></i> Add User</span>
+                    <a href="{{ route('users.create') }}" class="btn bg-primary btn-sm badge" data-bs-toggle="tooltip" title="Add New">
+                        <span><i class="fa fa-plus"></i></span>
                     </a>
                     @endif
                 </div>
@@ -85,17 +85,17 @@
                                     <td>{{$user->created_at}}</td>
                                     <td>
                                         @if($allow_show)
-                                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning" title="Show">
+                                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning btn-sm badge" title="Show">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                         @endif
                                         @if($allow_edit)
-                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary" title="Edit">
+                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm badge" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                         @endif
                                         @if($allow_delete)
-                                        <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('users.destroy', $user->id) }}');">
+                                        <button class="btn btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('users.destroy', $user->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                         @endif
