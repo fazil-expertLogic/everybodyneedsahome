@@ -245,10 +245,7 @@
                                         </div>
                                         
                                         <div class="form-group signUpForm-step-1" style="margin-top: 50px;">
-                                            <button class="btn btn-default disable" type="button">Are you
-                                                ready!</button>
-                                            {{-- <button class="btn btn-custom float-end" onclick="nextStep2()"
-                                                type="button">Next <span class="fas fa-arrow-right"></span></button> --}}
+                                            
                                             <button id="Submit" class="btn btn-custom float-end"
                                                     type="submit" onclick="nextStep2()">Submit </button>
                                         </div>

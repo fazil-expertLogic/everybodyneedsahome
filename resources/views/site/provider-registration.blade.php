@@ -30,11 +30,11 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="signUpForm-step-holder">
-                                <h3 class="">Provider Registration</h3>
+                                {{-- <h3 class="">Provider Registration</h3> --}}
                                 <div id="section-1" class="signUpForm-step-wrap">
-                                    <h3 class="section-title">Step 1 of 1</h3>
+                                    {{-- <h3 class="section-title">Step 1 of 1</h3> --}}
                                     <fieldset>
-                                        <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
+                                        {{-- <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
                                                 <div class="form-layer-progress-line" style="width: 0%;"></div>
                                             </div>
@@ -49,7 +49,7 @@
                                                 </div>
                                                 <div class="col-md-1"></div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <h3 class="section-form-title">Create New Provider</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
@@ -265,10 +265,7 @@
                                         </div>
                                         
                                         <div class="form-group signUpForm-step-1" style="margin-top: 50px;">
-                                            <button class="btn btn-default disable" type="button">Are you
-                                                ready!</button>
-                                            {{-- <button class="btn btn-custom float-end" onclick="nextStep2()"
-                                                type="button">Next <span class="fas fa-arrow-right"></span></button> --}}
+                                           
                                             <button id="Submit" class="btn btn-custom float-end"
                                                     type="submit" onclick="nextStep2()">Submit </button>
                                         </div>
