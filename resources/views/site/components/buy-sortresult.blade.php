@@ -39,9 +39,7 @@
                             <li><a href="{{ url('buy-property-list') }}"
                                     class="{{ Request::is('buy-property-list') ? 'active' : '' }}"><i
                                         class="bx bx-list-ul"></i></a></li>
-                            <li><a href="{{ url('buy-list-map') }}"
-                                    class="{{ Request::is('buy-list-map') ? 'active' : '' }}"><i
-                                        class="bx bxs-map"></i></a></li>
+                            
                         </ul>
                     @endif
                     @if (!Route::is(['buy-property-grid', 'buy-property-list', 'buy-list-map']))
@@ -52,9 +50,7 @@
                             <li><a href="{{ url('buy-property-list-sidebar') }}"
                                     class="{{ Request::is('buy-property-list-sidebar') ? 'active' : '' }}"><i
                                         class="bx bx-list-ul"></i></a></li>
-                            <li><a href="{{ url('buy-list-map') }}"
-                                    class="{{ Request::is('buy-list-map') ? 'active' : '' }}"><i
-                                        class="bx bxs-map"></i></a></li>
+                          
                         </ul>
                     @endif
                 </div>
