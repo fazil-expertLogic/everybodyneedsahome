@@ -28,11 +28,10 @@ class FrontendController extends Controller
         return view('site.pricing', compact('membershipsMonthly', 'membershipsYearly'));
     }
 
-    public function propertyGrid()
-    {
+    
+
+    public function propertyList() {
         $propertyGrids = Property::active()->get();
         return view('site.property-grid', compact('propertyGrids'));
     }
-
-    public function propertyList() {}
 }
