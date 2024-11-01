@@ -25,5 +25,14 @@ class Membership extends Model
         $this->status = 0;
         $this->save();
     }
-}
 
+    public function scopeMonthlyPlan($query)
+    {
+        return $query->where('plan_type', 'Monthly');
+    }
+
+    public function scopeYearlyPlan($query)
+    {
+        return $query->where('play_type', 'Yearl');
+    }
+}

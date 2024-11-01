@@ -59,65 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="price-card" data-aos="flip-right" data-aos-easing="ease-out-cubic"
-                                data-aos-duration="1000">
-                                <div class="price-sticker">
-                                    <img src="{{ URL::asset('/assets/img/icons/pricing-icon.svg') }}" alt="price-sticker">
-                                </div>
-                                <div class="price-title">
-                                    <h3>Professional</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
-                                        ullamcorper mattis, pulvinar dapibus leo.</p>
-                                </div>
-                                <div class="price-features professional bg-white">
-                                    <h5>Key Features</h5>
-                                    <ul>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>10 Listing Per Login</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>100+ Users</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>Enquiry On Listing</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>24 Hrs Support</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>Custom Review</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>Impact Reporting</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>Onboarding & Account</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>API Access</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>Transaction Tracking</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>Branding</li>
-                                    </ul>
-                                </div>
-                                <div class="price-btn">
-                                    <a href="javascript:void(0);" class="btn-primary">Get Quote</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="price-card" data-aos="flip-right" data-aos-easing="ease-out-cubic"
-                                data-aos-duration="2000">
-                                <div class="price-title">
-                                    <h3>Enterprise</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
-                                        ullamcorper mattis, pulvinar dapibus leo.</p>
-                                </div>
-                                <div class="price-features bg-white enterprise">
-                                    <h5>Key Features</h5>
-                                    <ul>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>10 Listing Per Login</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>100+ Users</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>Enquiry On Listing</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>24 Hrs Support</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>Custom Review</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>Impact Reporting</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>Onboarding & Account</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>API Access</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>Transaction Tracking</li>
-                                        <li><span><i class="fa-regular fa-square-check"></i></span>Branding</li>
-                                    </ul>
-                                </div>
-                                <div class="price-btn">
-                                    <a href="javascript:void(0);" class="btn-primary">Get Quote</a>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">

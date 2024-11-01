@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('clients/inbox/{id}', [ClientController::class, 'inbox'])->name('clients.inbox');
     Route::get('mail/read/{id}', [ClientController::class, 'mailReadView'])->name('mail.read');
 
-    
+
 
     Route::group(['middleware' => ['permission:2']], function () {
         Route::get('properties', [PropertiesController::class, 'index'])->name('properties.index');
@@ -68,15 +68,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['permission:8']], function () {
         Route::resource('menus', MenusController::class);
     });
-    
+
     Route::group(['middleware' => ['permission:10']], function () {
         Route::resource('categories', CategoryController::class);
     });
-    
+
     Route::group(['middleware' => ['permission:11']], function () {
         Route::resource('memberships', MembershipController::class);
     });
-
 });
-
-
