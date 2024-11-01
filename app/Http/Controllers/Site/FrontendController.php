@@ -22,8 +22,9 @@ class FrontendController extends Controller
     }
 
     public function pricing() {
-        $memberships=Membership::monthlyPlan()->get();
-        return view('site.pricing', compact('memberships'));
+        $membershipsMonthly=Membership::monthlyPlan()->get();
+        $membershipsYearly=Membership::yearlyPlan()->get();
+        return view('site.pricing', compact('membershipsMonthly','membershipsYearly'));
 
     }
 }
