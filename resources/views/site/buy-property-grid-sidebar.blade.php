@@ -1,5 +1,5 @@
 <?php $page = 'Buy Property Grid Sidebar'; ?>
-@extends('site.layout.mainlayout')
+@extends('layout.mainlayout')
 @section('content')
     @component('components.breadcrumb')
         @slot('title')

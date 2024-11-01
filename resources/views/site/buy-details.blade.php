@@ -1,7 +1,7 @@
 <?php $page = 'buy-details'; ?>
-@extends('site.layout.mainlayout')
+@extends('layout.mainlayout')
 @section('content')
-    @component('site.components.breadcrumb')
+    @component('components.breadcrumb')
         @slot('title')
             Buy Details - Single (Request Info)
         @endslot

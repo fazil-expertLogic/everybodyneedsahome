@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\Dashboard\ClientController;
 use App\Http\Controllers\Dashboard\ProvidersController;
-use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\Site\FrontendController;
 use App\Http\Livewire\Index;
 
 //Dashbaord
@@ -29,9 +29,7 @@ Route::get('/about-us', function () {
 
 Route::get('buy-property-grid', [FrontendController::class, 'buyPropertyGrid'])->name('buy_property_grid');
 
-Route::get('/pricing', function () {
-    return view('site.pricing');
-})->name('pricing');
+Route::get('pricing', [FrontendController::class, 'pricing'])->name('pricing');
 
 Route::get('/login', function () {
     return view('site.login');

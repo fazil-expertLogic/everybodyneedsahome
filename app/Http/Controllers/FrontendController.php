@@ -14,4 +14,12 @@ class FrontendController extends Controller
         $properties = Property::with('category')->active()->get();
         return view('site.buy-property-grid',compact('properties'));
     }
+
+    public function home(Request $request)
+    {
+        $properties = Property::all();
+        return view('site.index');
+        // return view('site.index',compact('properties'));
+    }
+    
 }

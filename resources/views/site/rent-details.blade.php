@@ -1,7 +1,7 @@
 <?php $page = 'rent-details'; ?>
-@extends('site.layout.mainlayout')
+@extends('layout.mainlayout')
 @section('content')
-    @component('site.components.breadcrumb')
+    @component('components.breadcrumb')
         @slot('title')
             Rent Details
         @endslot

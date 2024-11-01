@@ -1,5 +1,5 @@
 <?php $page = 'agency-list-sidebar'; ?>
-@extends('site.layout.mainlayout')
+@extends('layout.mainlayout')
 @section('content')
     @component('components.breadcrumb')
         @slot('title')
