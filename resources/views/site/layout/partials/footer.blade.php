@@ -46,11 +46,10 @@
                             <h4>Explore</h4>
                         </div>
                         <ul>
-                            <li><a href="{{ url('rent-property-list') }}">Listings</a></li>
+                            <li><a href="{{ url('rent-property-list') }}">Properties</a></li>
                             <li><a href="{{ url('register') }}">Register</a></li>
                             <li><a href="{{ url('login') }}">Login</a></li>
-                            <li><a href="{{ url('blog-grid') }}">Blogs</a></li>
-                            <li><a href="{{ url('agency-grid') }}">Agency</a></li>
+                           
                         </ul>
                     </div>
                 </div>
@@ -89,8 +88,7 @@
                         </div>
                         <ul>
                             <li><a href="{{ url('about-us') }}">About</a></li>
-                            <li><a href="{{ url('faq') }}">Faq</a></li>
-                            <li><a href="{{ url('gallery') }}">Gallery</a></li>
+                           
                             <li><a href="{{ url('terms-condition') }}">Terms & Conditions</a></li>
                             <li><a href="{{ url('privacy-policy') }}">Privacy Policy</a></li>
                             
