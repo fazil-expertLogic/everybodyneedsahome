@@ -17,14 +17,14 @@
 ]))
 
 <!-- Header -->
-<header class="header header-fix">
+<header class="header">
     @if (Route::is(['index']))
-    <div class="header-top">
+    <!-- <div class="header-top">
         <div class="template-ad">
             <img src="{{ URL::asset('/assets/img/icons/badge-icon.svg') }}" alt="icon">
             <h5>No 1, Realestate Website to Buy / Sell Your Place <span>First Listing Free!!!</span></h5>
         </div>
-    </div>
+    </div> -->
     @endif
     <nav class="navbar navbar-expand-lg header-nav">
         <div class="navbar-header">
