@@ -44,4 +44,19 @@ class Property extends Model
         'created_by',
         'category_id'
     ];
+    public function softDeleteRelations()
+    {
+        $this->status = 0;
+        $this->save();
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id')->where('status', 1);
+    }
 }
