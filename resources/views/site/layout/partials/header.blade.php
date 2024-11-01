@@ -35,7 +35,7 @@
                     <span></span>
                 </span>
             </a>
-            <a href="{{ url(path: 'index') }}" class="navbar-brand logo">
+            <a href="{{ url('/') }}" class="navbar-brand logo">
                 <img src="{{ URL::asset('/assets/img/logo.svg') }}" class="img-fluid" alt="Logo">
             </a>
         </div>
