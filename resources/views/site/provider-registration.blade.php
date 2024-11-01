@@ -1,4 +1,4 @@
-<?php $page = 'register'; ?>
+
 @extends('site.layout.mainlayout')
 
 @section('content')
