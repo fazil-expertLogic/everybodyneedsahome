@@ -17,9 +17,9 @@ Route::get('register', [CustomAuthController::class, 'registration'])->name('reg
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
-Route::get('/', function () {
-    return view('site.index');
-})->name('index');
+// Route::get('/', function () {
+//     return view('site.index');
+// })->name('index');
 Route::get('/about-us', function () {
     return view('site.about-us');
 })->name('about-us');
@@ -27,6 +27,7 @@ Route::get('/about-us', function () {
 //     return view('site.buy-property-grid');
 // })->name('buy-property-grid');
 
+Route::get('/', [FrontendController::class, 'home'])->name('index');
 Route::get('buy-property-grid', [FrontendController::class, 'buyPropertyGrid'])->name('buy_property_grid');
 Route::get('pricing', [FrontendController::class, 'pricing'])->name('pricing');
 Route::get('property-list', [FrontendController::class, 'propertyList'])->name('property-list');
