@@ -21,10 +21,18 @@ class FrontendController extends Controller
         return $query->where('status', 1);
     }
 
-    public function pricing() {
-        $membershipsMonthly=Membership::monthlyPlan()->get();
-        $membershipsYearly=Membership::yearlyPlan()->get();
-        return view('site.pricing', compact('membershipsMonthly','membershipsYearly'));
-
+    public function pricing()
+    {
+        $membershipsMonthly = Membership::monthlyPlan()->get();
+        $membershipsYearly = Membership::yearlyPlan()->get();
+        return view('site.pricing', compact('membershipsMonthly', 'membershipsYearly'));
     }
+
+    public function propertyGrid()
+    {
+        $propertyGrids = Property::active()->get();
+        return view('site.property-grid', compact('propertyGrids'));
+    }
+
+    public function propertyList() {}
 }
