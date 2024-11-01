@@ -35,4 +35,12 @@ class FrontendController extends Controller
     }
 
     public function propertyList() {}
+
+    
+
+    public function home()
+    {
+        $properties = Property::all();
+        return view('site.index',compact('properties'));
+    }
 }
