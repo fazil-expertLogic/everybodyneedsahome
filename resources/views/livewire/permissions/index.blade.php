@@ -44,8 +44,8 @@
                     <h3 class="card-title">Menu Data</h3>
                 </div>
                 <div class="mb-3 text-end">  <!-- Add text-end class here -->
-                    <a href="{{ route('menus.create') }}" class="btn bg-primary" data-bs-toggle="tooltip" title="Add New">
-                        <span><i class="fa fa-plus"></i> Add Menu</span>
+                    <a href="{{ route('menus.create') }}" class="btn bg-primary btn-sm badge" data-bs-toggle="tooltip" title="Add New">
+                        <span><i class="fa fa-plus"></i></span>
                     </a>
                 </div>
                 <div class="card-body">
@@ -66,10 +66,10 @@
                                     <td>{{$menu->icon}}</td>
                                     <td>{{$menu->created_at}}</td>
                                     <td>
-                                        <a href="{{ route('menus.show', $menu->id) }}" class="btn btn-primary" title="Edit">
+                                        <a href="{{ route('menus.show', $menu->id) }}" class="btn btn-primary btn-sm badge" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
-                                        <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('menus.destroy', $menu->id) }}');">
+                                        <button class="btn btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('menus.destroy', $menu->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                     </td>

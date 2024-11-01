@@ -46,7 +46,7 @@
             <div class="card-header">
                 <h3 class="card-title">Properties</h3>
                 @if($allow_create)
-                <a href="{{ route('properties.add') }}" class="btn bg-primary  ms-auto" data-bs-toggle="tooltip" title="Add New">
+                <a href="{{ route('properties.add') }}" class="btn bg-primary btn-sm badge" data-bs-toggle="tooltip" title="Add New">
                     <span><i class="fa fa-plus"></i> </span>
                 </a>
                 @endif
@@ -99,19 +99,19 @@
                                     <td>{{$property->created_at}}</td>
                                     <td>
                                         @if($allow_show)
-                                        <a href="{{ route('properties.show', $property->id) }}" class="btn btn-warning" title="Show">
+                                        <a href="{{ route('properties.show', $property->id) }}" class="btn btn-warning btn-sm badge" title="Show">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                         @endif
                                         
                                         @if($allow_edit)
-                                        <a href="{{ route('properties.edit', $property->id) }}" class="btn btn-primary" title="Edit">
+                                        <a href="{{ route('properties.edit', $property->id) }}" class="btn btn-primary btn-sm badge" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                         @endif
 
                                         @if($allow_delete)
-                                        <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('properties.destroy', $property->id) }}');">
+                                        <button class="btn btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('properties.destroy', $property->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                         @endif

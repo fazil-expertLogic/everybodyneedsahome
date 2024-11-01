@@ -95,21 +95,21 @@
                                         <td>{{$client->created_at}}</td>
                                         <td>
                                             <a href="{{ route('clients.mail', $client->id) }}"
-                                                class="btn btn-sm btn-success badge" type="button">
+                                                class="btn btn-success btn-sm badge" type="button">
                                                 <i class="fa fa-envelope" title="Email"></i></a>
 
                                             @if($allow_show)
-                                            <a href="{{ route('clients.show', $client->id) }}" class="btn btn-warning badge btn-sm" title="Show">
+                                            <a href="{{ route('clients.show', $client->id) }}" class="btn btn-warning  btn-sm badge" title="Show">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
                                             @endif
                                             @if($allow_edit)
-                                            <a href="{{ route('clients.show', $client->id) }}" class="btn btn-sm btn-primary badge" type="button" title="Edit">
+                                            <a href="{{ route('clients.show', $client->id) }}" class="btn  btn-primary btn-sm badge" type="button" title="Edit">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
                                             @endif
                                             @if($allow_delete)
-                                            <button class="btn btn-sm btn-danger badge" title="Delete" onclick="confirmDelete('{{ route('clients.destroy', $client->id) }}');">
+                                            <button class="btn  btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('clients.destroy', $client->id) }}');">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </button>
                                             @endif

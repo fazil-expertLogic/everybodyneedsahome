@@ -89,17 +89,17 @@
                                     <td>{{$membership->created_at}}</td>
                                     <td>
                                         @if($allow_show)
-                                        <a href="{{ route('memberships.show', $membership->id) }}" class="btn btn-warning" title="Show">
+                                        <a href="{{ route('memberships.show', $membership->id) }}" class="btn btn-warning btn-sm badge" title="Show">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                         @endif
                                         @if($allow_edit)
-                                        <a href="{{ route('memberships.edit', $membership->id) }}" class="btn btn-primary" title="Edit">
+                                        <a href="{{ route('memberships.edit', $membership->id) }}" class="btn btn-primary btn-sm badge" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                         @endif
                                         @if($allow_delete)
-                                        <button class="btn btn-danger" title="Delete" onclick="confirmDelete('{{ route('memberships.destroy', $membership->id) }}');">
+                                        <button class="btn btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('memberships.destroy', $membership->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                         @endif
