@@ -31,7 +31,7 @@ class FrontendController extends Controller
     
 
     public function propertyList() {
-        $propertyGrids = Property::active()->get();
-        return view('site.property-grid', compact('propertyGrids'));
+        $propertyList = Property::active()->get();
+        return view('site.property-list', compact('propertyList'));
     }
 }
