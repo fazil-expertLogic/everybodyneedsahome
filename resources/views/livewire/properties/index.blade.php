@@ -45,11 +45,13 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Properties</h3>
-                @if($allow_create)
-                <a href="{{ route('properties.add') }}" class="btn bg-primary btn-sm badge" data-bs-toggle="tooltip" title="Add New">
-                    <span><i class="fa fa-plus"></i> </span>
-                </a>
-                @endif
+            </div>
+            <div class="mb-3 text-end">
+            @if($allow_create)
+            <a href="{{ route('properties.add') }}" class="btn bg-primary btn-sm badge" data-bs-toggle="tooltip" title="Add New">
+                <span><i class="fa fa-plus"></i> </span>
+            </a>
+            @endif
             </div>
 
             <form action="{{ route('properties.index') }}" method="GET">
