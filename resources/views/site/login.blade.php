@@ -12,7 +12,7 @@
                     <div class="form-group">
                         <label class="form-label">Email <span>*</span></label>
                         <input type="email" class="form-control" placeholder="Enter Email" name="email" id="email"
-                            value="admin@example.com">
+                            value="">
                         <div class="text-danger pt-2">
                             @error('0')
                             {{ $message }}
@@ -26,7 +26,7 @@
                         <label class="form-label">Password <span>*</span></label>
                         <div class="pass-group">
                             <input type="password" class="form-control pass-input" placeholder="Enter Password"
-                                name="password" id="password" value="123456">
+                                name="password" id="password" value="">
                             <span class="fas fa-eye toggle-password feather-eye-off"></span>
                         </div>
                         <div class="text-danger pt-2">
