@@ -359,8 +359,8 @@
                         <img src="{{ asset('storage/' . $property->main_picture) }}" alt="Main Picture" width="400px" />
                     </div>
                     <div class="col-md-12">
-                        <label for="main_picture" class="form-label">Main Picture*</label>
-                        <input type="file" class="form-control" aria-label="file example" name="main_picture" required>
+                        <label for="main_picture" class="form-label invalid">Main Picture*</label>
+                        <input type="file" class="form-control" aria-label="file example" name="main_picture">
                         <div class="invalid-feedback">Example invalid form file feedback</div>
                     </div>
                     <div class="col-md-12">
@@ -372,7 +372,7 @@
                     </div>
                     <div class="col-md-12">
                         <label for="more_picture" class="form-label">More Pictures*</label>
-                        <input type="file" class="form-control" aria-label="file example" name="more_picture[]" multiple required>
+                        <input type="file" class="form-control" aria-label="file example" name="more_picture[]" multiple>
                         <div class="invalid-feedback">Example invalid form file feedback</div>
                     </div>
 

@@ -47,11 +47,11 @@
 									data-bs-popper="none">
 									<div class="drop-heading">
 										<div class="text-center">
-											<h5 class="text-dark mb-0 fw-semibold">Alison</h5>
-											<span class="text-muted fs-12">Administrator</span>
+											<h5 class="text-dark mb-0 fw-semibold">{{Auth::user()->name}}</h5>
+											<span class="text-muted fs-12">{{Auth::user()->role->name}}</span>
 										</div>
 									</div>
-									<a class="dropdown-item text-dark fw-semibold border-top" href="javascript:void(0)">
+									{{-- <a class="dropdown-item text-dark fw-semibold border-top" href="javascript:void(0)">
 										<i class="dropdown-icon fe fe-user"></i> Profile
 									</a>
 									<a class="dropdown-item text-dark fw-semibold" href="javascript:void(0)">
@@ -64,12 +64,10 @@
 									<a class="dropdown-item text-dark fw-semibold" href="javascript:void(0)">
 										<i class="dropdown-icon fe fe-alert-triangle"></i>
 										Support ?
-									</a>
+									</a> --}}
 									<a class="dropdown-item text-dark fw-semibold" href="{{ route('logout') }}">
 										<i class="dropdown-icon fe fe-log-out"></i> Sign out
 									</a>
-
-
 								</div>
 							</div>
 						</div>
