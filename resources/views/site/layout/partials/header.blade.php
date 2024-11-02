@@ -49,21 +49,21 @@
                 </li>
                 <li><a href="{{ url('about-us') }}"
                         class="{{ Request::is('about-us') ? 'active' : '' }}">About Us</a></li>
-                <li><a href="{{ url('buy-property-grid') }}"
+                <li><a href="{{ url('#') }}"
                         class="{{ Request::is('buy-property-grid') ? 'active' : '' }}">Property</a></li>
                 <li><a href="{{ url('#') }}"
                         class="{{ Request::is('pricing') ? 'active' : '' }}">Pricing</a></li>
                 <li><a href="{{ url('#') }}"
-                        class="{{ Request::is('buy-details') ? 'active' : '' }}">Buy Details</a>
+                        class="{{ Request::is('buy-details') ? 'active' : '' }}">Rent Property</a>
                 </li>
                
                 <li class="{{ Request::is('contact-us') ? 'active' : '' }}"><a
                         href="{{ url('#') }}">Contact Us</a></li>
-                <li class="searchbar">
+                <!-- <li class="searchbar">
                     <a href="javascript:void(0);">
                         <img src="{{ URL::asset('/assets/img/icons/search-icon.svg') }}" alt="img">
                     </a>
-                </li>
+                </li> -->
                 <li class="login-link"><a href="{{ url('login') }}">Sign Up</a></li>
                 <li class="login-link"><a href="{{ url('register') }}">Sign In</a></li>
             </ul>

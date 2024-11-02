@@ -15,7 +15,7 @@
             <li class="breadcrumb-item active" aria-current="page">Chat</li>
         </ol>
         <div class="ms-auto">
-            <div>
+            <!-- <div>
                 <a href="javascript:void(0);" class="btn bg-secondary-transparent text-secondary btn-sm"
                     data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Rating">
                     <span><i class="fa fa-star"></i></span>
@@ -28,7 +28,7 @@
                     data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Add New">
                     <span><i class="fa fa-plus"></i></span>
                 </a>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- END PAGE HEADER -->

@@ -13,7 +13,7 @@
                                     <li class="breadcrumb-item"><a href="{{url('index')}}">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Index</li>
                                 </ol><!-- End breadcrumb -->
-                                <div class="ms-auto">
+                                <!-- <div class="ms-auto">
                                     <div>
                                         <a href="javascript:void(0);" class="btn bg-secondary-transparent text-secondary btn-sm"
                                             data-bs-toggle="tooltip" title="" data-bs-placement="bottom"
@@ -36,7 +36,7 @@
                                             </span>
                                         </a>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <!-- END PAGE HEADER -->
 
@@ -45,7 +45,7 @@
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <p>Thank you for choosing our template.. if you want to create your own customised project take a refrence of our project and you can implement here.</p>
+                                        <p>Welcome To EverybodyNeedsAHome.com </p>
                                         </div>
                                     </div>
                                 </div>
