@@ -59,4 +59,9 @@ class Property extends Model
     {
         return $this->belongsTo(Category::class, 'category_id', 'id')->where('status', 1);
     }
+
+    public function scopeFeature($query)
+    {
+        return $query->where('status', 1)->where('is_feature',1);
+    }
 }
