@@ -283,9 +283,19 @@ class PropertiesController extends Controller
                 'is_new' => $request->is_new ?? 0,
                 'category_id'=>$request->category_id,
                 'created_by' => Auth::user()->id,
-                'main_picture' => $mainPicturePath ?? $morePictures->main_picture,
-                'more_pictures' => json_encode($morePictures) ?? $morePictures->main_picture, // Store as JSON if necessary
+                // 'main_picture' => $mainPicturePath,
+                // 'more_pictures' => json_encode($morePictures),
             ]);
+            if($request->file('more_picture')){
+                $property->update([
+                    'main_picture' => $mainPicturePath,
+                ]);
+            }
+            if($request->file('more_picture')){
+                $property->update([
+                    'more_pictures' => json_encode($morePictures),
+                ]);
+            }
             DB::commit(); // Commit the transaction if everything works
         
             return redirect()->route('properties.index')->with('success', 'Property updated successfully.');
