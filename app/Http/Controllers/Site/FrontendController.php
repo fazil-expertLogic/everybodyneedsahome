@@ -37,7 +37,7 @@ class FrontendController extends Controller
 
     public function home()
     {
-        $properties = Property::all();
+        $properties = Property::feature()->take(3)->get();
         return view('site.index',compact('properties'));
     }
 }

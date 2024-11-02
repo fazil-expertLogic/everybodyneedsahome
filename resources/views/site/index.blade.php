@@ -14,93 +14,90 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="banner-search" data-aos="fade-down">
-                        <div class="banner-tab">
-                            <ul class="nav nav-tabs" id="bannerTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link active" id="buy-property" data-bs-toggle="tab" href="#buy_property"
-                                        role="tab" aria-controls="buy_property" aria-selected="true">
-                                        <img src="{{ URL::asset('/assets/img/icons/buy-icon.svg') }}" alt="icon"> Buy a
-                                        Property
-                                    </a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="rent-property" data-bs-toggle="tab" href="#rent_property"
-                                        role="tab" aria-controls="rent_property" aria-selected="false">
-                                        <img src="{{ URL::asset('/assets/img/icons/rent-icon.svg') }}" alt="icon"> Rent
-                                        a Property
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-content" id="bannerTabContent">
-                            <div class="tab-pane fade show active" id="buy_property" role="tabpanel"
-                                aria-labelledby="buy-property">
-                                <div class="banner-tab-property">
-                                    <form action="#">
-                                        <div class="banner-property-info">
-                                            <div class="banner-property-grid">
-                                                <input type="text" class="form-control" placeholder="Enter Keyword">
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <select class="select">
-                                                    <option value="0">Property Type</option>
-                                                    <option value="1">Buy Property</option>
-                                                    <option value="2">Rent Property</option>
-                                                </select>
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <input type="email" class="form-control" placeholder="Enter Address">
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <input type="text" class="form-control" placeholder="Min Price">
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <input type="text" class="form-control" placeholder="Max Price">
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <a href="{{ url('buy-property-grid') }}" class="btn-primary"><span><i
-                                                            class='feather-search'></i></span></a>
-                                            </div>
+                
+                @foreach ($properties as $property)
+                <!-- Buy grid -->    
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-custom">
+                        <div class="profile-widget">
+                            <div class="doc-img">
+                                <a href="{{ url('buy-details') }}" class="property-img">
+                                    <img class="img-fluid" alt="Property Image"
+                                        src="{{ $property->main_picture ? asset('storage/' . $property->main_picture) : URL::asset('assets/img/product/product-1.jpg') }}">
+                                </a>
+                                <div class="product-amount">
+                                    <span>${{ number_format($property->bed_fee + $property->bedroom_fee + $property->unit_fee,2) }}</span>
+                                </div>
+                                <div class="feature-rating">
+                                    <div>
+                                        @if($property->is_feature)
+                                        <div class="featured">
+                                            <span>Featured</span>
                                         </div>
-                                    </form>
+                                        @endif
+                                        @if($property->is_feature)
+                                        <div class="new-featured">
+                                            <span>New</span>
+                                        </div>
+                                        @endif
+                                    </div>
+                                    {{-- <a href="javascript:void(0)">
+                                        <div class="favourite">
+                                            <span><i class="fa-regular fa-heart"></i></span>
+                                        </div>
+                                    </a> --}}
+                                </div>
+                                <div class="user-avatar">
+                                    <img src="{{ URL::asset('assets/img/profiles/avatar-01.jpg') }}" alt="User">
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="rent_property" role="tabpanel" aria-labelledby="rent-property">
-                                <div class="banner-tab-property">
-                                    <form action="#">
-                                        <div class="banner-property-info">
-                                            <div class="banner-property-grid">
-                                                <input type="text" class="form-control" placeholder="Enter Keyword">
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <select class="select">
-                                                    <option value="0">Property Type</option>
-                                                    <option value="1">Buy Property</option>
-                                                    <option value="2">Rent Property</option>
-                                                </select>
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <input type="email" class="form-control" placeholder="Enter Address">
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <input type="text" class="form-control" placeholder="Min Price">
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <input type="text" class="form-control" placeholder="Max Price">
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <a href="{{ url('rent-property-grid') }}" class="btn-primary"><span><i
-                                                            class='feather-search'></i></span></a>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                            <div class="pro-content">
+                                {{-- <div class="rating">
+                                    <span class="rating-count">
+                                        <i class="fa-solid fa-star checked"></i>
+                                        <i class="fa-solid fa-star checked"></i>
+                                        <i class="fa-solid fa-star checked"></i>
+                                        <i class="fa-solid fa-star checked"></i>
+                                        <i class="fa-solid fa-star checked"></i>
+                                    </span>
+                                    <p class="rating-review"><span>5.0</span>(20 Reviews)</p>
+                                </div> --}}
+                                <h3 class="title">
+                                    <a href="{{ url('buy-details') }}" tabindex="-1">{{$property->property_name}}</a>
+                                </h3>
+                                <p><i class="feather-map-pin"></i>{{$property->property_address}}</p>
+                                <ul class="d-flex details">
+                                    <li>
+                                        <img src="{{ URL::asset('assets/img/icons/bed-icon.svg') }}" alt="bed-icon">
+                                        {{$property->number_of_beds}} Beds
+                                    </li>
+                                    <li>
+                                        <img src="{{ URL::asset('assets/img/icons/bath-icon.svg') }}" alt="bath-icon">
+                                        {{$property->number_of_bedrooms}} Baths
+                                    </li>
+                                    {{-- <li>
+                                        <img src="{{ URL::asset('assets/img/icons/building-icon.svg') }}"
+                                            alt="building-icon">
+                                        35000 Sqft
+                                    </li> --}}
+                                </ul>
+
+                                <ul class="property-category d-flex justify-content-between">
+                                    <li>
+                                        <span class="list">Listed on : </span>
+                                        <span class="date"> {{ \Carbon\Carbon::parse($property->created_at)->format('d M Y') }} </span>
+                                    </li>
+                                    <li>
+                                        <span class="category list">Category : </span>
+                                        <span class="category-value date">{{ $property->category ? $property->category->category_name : ''}}</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- /Buy grid -->
+                @endforeach
             </div>
         </div>
     </section>

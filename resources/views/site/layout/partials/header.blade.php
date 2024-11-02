@@ -17,16 +17,10 @@
 ]))
 
 <!-- Header -->
-<header class="header">
-    @if (Route::is(['index']))
-    <!-- <div class="header-top">
-        <div class="template-ad">
-            <img src="{{ URL::asset('/assets/img/icons/badge-icon.svg') }}" alt="icon">
-            <h5>No 1, Realestate Website to Buy / Sell Your Place <span>First Listing Free!!!</span></h5>
-        </div>
-    </div> -->
-    @endif
-    <nav class="navbar navbar-expand-lg header-nav">
+<header class="header ">
+				<div class="container">
+				<nav class="navbar navbar-expand-lg ">
+				    
         <div class="navbar-header">
             <a id="mobile_btn" href="javascript:void(0);">
                 <span class="bar-icon">
@@ -35,13 +29,13 @@
                     <span></span>
                 </span>
             </a>
-            <a href="{{ url('/') }}" class="navbar-brand logo">
+           <a href="{{ url('/') }}" class="navbar-brand logo">
                 <img src="{{ URL::asset('/assets/img/logo.svg') }}" class="img-fluid" alt="Logo">
             </a>
         </div>
         <div class="main-menu-wrapper">
             <div class="menu-header">
-                <a href="{{ url('index') }}" class="menu-logo">
+                <a href="{{ url('/') }}" class="navbar-brand logo">
                     <img src="{{ URL::asset('/assets/img/logo.svg') }}" class="img-fluid" alt="Logo">
                 </a>
 
@@ -57,14 +51,14 @@
                         class="{{ Request::is('about-us') ? 'active' : '' }}">About Us</a></li>
                 <li><a href="{{ url('buy-property-grid') }}"
                         class="{{ Request::is('buy-property-grid') ? 'active' : '' }}">Property</a></li>
-                <li><a href="{{ url('pricing') }}"
+                <li><a href="{{ url('#') }}"
                         class="{{ Request::is('pricing') ? 'active' : '' }}">Pricing</a></li>
-                <li><a href="{{ url('buy-details') }}"
+                <li><a href="{{ url('#') }}"
                         class="{{ Request::is('buy-details') ? 'active' : '' }}">Buy Details</a>
                 </li>
                
                 <li class="{{ Request::is('contact-us') ? 'active' : '' }}"><a
-                        href="{{ url('contact-us') }}">Contact Us</a></li>
+                        href="{{ url('#') }}">Contact Us</a></li>
                 <li class="searchbar">
                     <a href="javascript:void(0);">
                         <img src="{{ URL::asset('/assets/img/icons/search-icon.svg') }}" alt="img">
@@ -76,7 +70,7 @@
         </div>
         <ul class="nav header-navbar-rht">
             <li class="new-property-btn">
-                <a href="{{ url('add-new-property') }}"
+                <a href="{{ url('#') }}"
                     class="{{ Request::is('add-new-property') ? 'active' : '' }}">
                     <i class="bx bxs-plus-circle"></i> Add New Property
                 </a>
@@ -102,6 +96,7 @@
             </li>
         </ul>
     </nav>
+    </div>
 </header>
 <!-- /Header -->
 <style>
