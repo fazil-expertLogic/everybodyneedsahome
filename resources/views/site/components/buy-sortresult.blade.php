@@ -36,8 +36,8 @@
                             <li><a href="{{ url('buy-property-grid') }}"
                                     class="{{ Request::is('buy-property-grid') ? 'active' : '' }}"><i
                                         class="bx bx-grid"></i></a></li>
-                            <li><a href="{{ url('buy-property-list') }}"
-                                    class="{{ Request::is('buy-property-list') ? 'active' : '' }}"><i
+                            <li><a href="{{ url('property-list') }}"
+                                    class="{{ Request::is('property-list') ? 'active' : '' }}"><i
                                         class="bx bx-list-ul"></i></a></li>
                             
                         </ul>
@@ -47,8 +47,8 @@
                             <li><a href="{{ url('buy-property-grid-sidebar') }}"
                                     class="{{ Request::is('buy-property-grid-sidebar') ? 'active' : '' }}"><i
                                         class="bx bx-grid"></i></a></li>
-                            <li><a href="{{ url('buy-property-list-sidebar') }}"
-                                    class="{{ Request::is('buy-property-list-sidebar') ? 'active' : '' }}"><i
+                            <li><a href="{{ url('property-list') }}"
+                                    class="{{ Request::is('property-list') ? 'active' : '' }}"><i
                                         class="bx bx-list-ul"></i></a></li>
                           
                         </ul>

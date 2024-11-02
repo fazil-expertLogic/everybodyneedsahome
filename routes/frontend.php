@@ -107,9 +107,7 @@ Route::get('/buy-property-list', function () {
     return view('site.buy-property-list');
 })->name('buy-property-list');
 
-Route::get('/buy-property-list-sidebar', function () {
-    return view('site.buy-property-list-sidebar');
-})->name('buy-property-list-sidebar');
+
 
 Route::get('/buy-property-grid-sidebar', function () {
     return view('site.buy-property-grid-sidebar');
