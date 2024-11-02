@@ -12,7 +12,7 @@
             <li class="breadcrumb-item active" aria-current="page">Provider Tables</li>
         </ol><!-- End breadcrumb -->
         <div class="ms-auto">
-            <div>
+            <!-- <div>
                 <a href="javascript:void(0);" class="btn bg-secondary-transparent text-secondary btn-sm"
                     data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Rating">
                     <span>
@@ -31,7 +31,7 @@
                         <i class="fa fa-plus"></i>
                     </span>
                 </a>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- END PAGE-HEADER -->
@@ -187,7 +187,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this property?
+                Are you sure you want to delete this Provider?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

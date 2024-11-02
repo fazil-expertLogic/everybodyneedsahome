@@ -13,7 +13,7 @@
         <li class="breadcrumb-item active" aria-current="page">Inbox</li>
     </ol><!-- End breadcrumb -->
     <div class="ms-auto">
-        <div>
+        <!-- <div>
             <a href="javascript:void(0);" class="btn bg-secondary-transparent text-secondary btn-sm"
                 data-bs-toggle="tooltip" title="" data-bs-placement="bottom"
                 data-bs-original-title="Rating">
@@ -34,7 +34,7 @@
                     <i class="fa fa-plus"></i>
                 </span>
             </a>
-        </div>
+        </div> -->
     </div>
 </div>
 <!-- END PAGE HEADER -->

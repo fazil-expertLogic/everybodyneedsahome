@@ -11,7 +11,7 @@
         <li class="breadcrumb-item"><a href="javascript:void(0);">Apps</a></li>
         <li class="breadcrumb-item active" aria-current="page">User List</li>
     </ol>
-    <div class="ms-auto">
+    <!-- <div class="ms-auto">
         <a href="javascript:void(0);" class="btn bg-secondary-transparent text-secondary btn-sm">
             <span><i class="fa fa-star"></i></span>
         </a>
@@ -21,7 +21,7 @@
         <a href="javascript:void(0);" class="btn bg-warning-transparent text-warning btn-sm">
             <span><i class="fa fa-plus"></i></span>
         </a>
-    </div>
+    </div> -->
 </div>
 
 <!-- ROW -->

@@ -51,7 +51,7 @@ class PropertiesController extends Controller
         }
     
         // Pagination
-        $properties = $query->paginate(10);
+        $properties = $query->active()->paginate(10);
     
         // Return the view with properties
         return view('livewire.properties.index', compact('properties','allow_show','allow_create','allow_edit','allow_delete'));
@@ -221,8 +221,8 @@ class PropertiesController extends Controller
             'unit_fee' => 'nullable|numeric',
             'is_property_occupied' => 'required|boolean',
             'utilities_inscluded' => 'nullable|boolean',
-            'main_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'more_pictures.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'main_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'more_pictures.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'category_id' => 'required|integer',
         ]);
 
@@ -283,8 +283,8 @@ class PropertiesController extends Controller
                 'is_new' => $request->is_new ?? 0,
                 'category_id'=>$request->category_id,
                 'created_by' => Auth::user()->id,
-                'main_picture' => $mainPicturePath,
-                'more_pictures' => json_encode($morePictures), // Store as JSON if necessary
+                'main_picture' => $mainPicturePath ?? $morePictures->main_picture,
+                'more_pictures' => json_encode($morePictures) ?? $morePictures->main_picture, // Store as JSON if necessary
             ]);
             DB::commit(); // Commit the transaction if everything works
         

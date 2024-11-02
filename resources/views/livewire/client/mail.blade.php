@@ -10,7 +10,7 @@
     <ol class="breadcrumb mb-sm-0 mb-3">
         <li class="breadcrumb-item active" aria-current="page">Mail Compose</li>
     </ol>
-    <div class="ms-auto">
+    <!-- <div class="ms-auto">
         <a href="javascript:void(0);" class="btn bg-secondary-transparent text-secondary btn-sm" title="Rating">
             <span><i class="fa fa-star"></i></span>
         </a>
@@ -20,7 +20,7 @@
         <a href="javascript:void(0);" class="btn bg-warning-transparent text-warning btn-sm" title="Add New">
             <span><i class="fa fa-plus"></i></span>
         </a>
-    </div>
+    </div> -->
 </div>
 @if(session('success'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">

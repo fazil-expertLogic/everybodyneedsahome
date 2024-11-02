@@ -275,7 +275,7 @@
                             <div class="product-custom">
                                 <div class="profile-widget">
                                     <div class="doc-img">
-                                        <a href="{{ url('buy-details') }}" class="property-img">
+                                        <a href="{{ url('#') }}" class="property-img">
                                             <img class="img-fluid" alt="Property Image"
                                                 src="{{ $property->main_picture ? asset('storage/' . $property->main_picture) : URL::asset('assets/img/product/product-1.jpg') }}">
                                         </a>
