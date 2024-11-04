@@ -104,7 +104,7 @@
                                             </a>
                                             @endif
                                             @if($allow_edit)
-                                            <a href="{{ route('clients.show', $client->id) }}" class="btn  btn-primary btn-sm badge" type="button" title="Edit">
+                                            <a href="{{ route('clients.edit', $client->id) }}" class="btn  btn-primary btn-sm badge" type="button" title="Edit">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
                                             @endif
