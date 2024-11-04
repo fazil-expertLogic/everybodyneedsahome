@@ -16,56 +16,56 @@ use App\Models\Category;
 
 class PropertiesController extends Controller
 {
-  
+
     public function index(Request $request)
     {
         $allow_show = Helper::check_rights(2)->is_show;
         $allow_create = Helper::check_rights(2)->is_create;
         $allow_edit = Helper::check_rights(2)->is_edit;
         $allow_delete = Helper::check_rights(2)->is_delete;
-        
+
         // Get the search parameters from the request
         $query = Property::query();
-        
+
         if ($request->filled('property_type')) {
             $query->where('property_type', 'like', '%' . $request->property_type . '%');
         }
-        
+
         if ($request->filled('city')) {
             $query->where('city', 'like', '%' . $request->city . '%');
         }
-        
+
         if ($request->filled('state')) {
             $query->where('state', 'like', '%' . $request->state . '%');
         }
-        
+
         if ($request->filled('zipcode')) {
             $query->where('zipcode', 'like', '%' . $request->zipcode . '%');
         }
-    
+
         if ($request->filled('search')) {
-            $query->where(function($subquery) use ($request) {
+            $query->where(function ($subquery) use ($request) {
                 $subquery->where('property_name', 'like', '%' . $request->search . '%')
-                         ->orWhere('property_address', 'like', '%' . $request->search . '%');
+                    ->orWhere('property_address', 'like', '%' . $request->search . '%');
             });
         }
-    
+
         // Pagination
         $properties = $query->active()->paginate(10);
-    
+
         // Return the view with properties
-        return view('livewire.properties.index', compact('properties','allow_show','allow_create','allow_edit','allow_delete'));
+        return view('livewire.properties.index', compact('properties', 'allow_show', 'allow_create', 'allow_edit', 'allow_delete'));
     }
-    
+
     public function add()
     {
         $categories = Category::get();
-        return view('livewire.properties.add',compact('categories'));
+        return view('livewire.properties.add', compact('categories'));
     }
 
     public function store(Request $request)
     {
-        
+
         // Validate the incoming request
         $validator = Validator::make($request->all(), [
             'property_name' => 'required|string|max:255',
@@ -152,7 +152,7 @@ class PropertiesController extends Controller
                 'status' => 1,
                 'is_feature' => $request->is_feature ?? 0,
                 'is_new' => $request->is_new ?? 0,
-                'category_id'=>$request->category_id,
+                'category_id' => $request->category_id,
                 'created_by' => Auth::user()->id,
                 'main_picture' => $mainPicturePath,
                 'more_pictures' => json_encode($morePictures), // Store as JSON if necessary
@@ -174,14 +174,14 @@ class PropertiesController extends Controller
     {
         $categories = Category::get();
         $property = Property::findOrFail($id); // Fetch property by ID
-        return view('livewire.properties.show', compact('property','categories')); // Return edit view
+        return view('livewire.properties.show', compact('property', 'categories')); // Return edit view
     }
 
     public function edit($id)
     {
         $categories = Category::get();
         $property = Property::findOrFail($id); // Fetch property by ID
-        return view('livewire.properties.edit', compact('property','categories')); // Return edit view
+        return view('livewire.properties.edit', compact('property', 'categories')); // Return edit view
     }
     public function destroy($id)
     {
@@ -283,23 +283,23 @@ class PropertiesController extends Controller
                 'status' => 1,
                 'is_feature' => $request->is_feature ?? 0,
                 'is_new' => $request->is_new ?? 0,
-                'category_id'=>$request->category_id,
+                'category_id' => $request->category_id,
                 'created_by' => Auth::user()->id,
                 // 'main_picture' => $mainPicturePath,
                 // 'more_pictures' => json_encode($morePictures),
             ]);
-            if($request->file('more_picture')){
+            if ($request->file('more_picture')) {
                 $property->update([
                     'main_picture' => $mainPicturePath,
                 ]);
             }
-            if($request->file('more_picture')){
+            if ($request->file('more_picture')) {
                 $property->update([
                     'more_pictures' => json_encode($morePictures),
                 ]);
             }
             DB::commit(); // Commit the transaction if everything works
-        
+
             return redirect()->route('properties.index')->with('success', 'Property updated successfully.');
         } catch (\Exception $e) {
 
@@ -310,4 +310,6 @@ class PropertiesController extends Controller
         // Redirect or return a response
         return redirect()->route('properties.index')->with('success', 'Property created successfully!');
     }
+
+    
 }

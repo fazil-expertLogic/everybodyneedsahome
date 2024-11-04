@@ -28,16 +28,45 @@ class FrontendController extends Controller
         return view('site.pricing', compact('membershipsMonthly', 'membershipsYearly'));
     }
 
-    
 
-    public function propertyList() {
+
+    public function propertyList()
+    {
         $properties = Property::active()->get();
-        return view('site.property-list', compact('properties'));
+        $categories = Category::all();
+
+        return view('site.property-list', compact('properties', 'categories'));
     }
 
     public function home()
     {
         $properties = Property::feature()->take(3)->get();
-        return view('site.index',compact('properties'));
+
+        return view('site.index', compact('properties'));
+    }
+
+    public function searchProperties(Request $request)
+    {
+        $query = Property::query();
+
+        if ($request->keywords) {
+            $query->where('property_name', 'LIKE', '%' . $request->keywords . '%');
+        }
+        if ($request->state && $request->state !== 'Select States') {
+            $query->where('state', $request->state);
+        }
+        if ($request->bedrooms && $request->bedrooms !== 'No of Bedrooms') {
+            $query->where('number_of_bedrooms', $request->bedrooms);
+        }
+        if ($request->bathrooms && $request->bathrooms !== 'No of Bathrooms') {
+            $query->where('number_of_bath_house', $request->bathrooms);
+        }
+        if ($request->minSqft) {
+            $query->where('sqft', '>=', $request->minSqft);
+        }
+
+        $properties = $query->with('category')->active()->get();
+
+        return response()->json(['properties' => $properties]);
     }
 }

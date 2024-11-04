@@ -3,13 +3,13 @@
 @section('content')
     @component('site.components.breadcrumb')
         @slot('title')
-            Buy property Grid without Sidebar
+            Buy property Grid 
         @endslot
         @slot('li_1')
             Home
         @endslot
         @slot('li_2')
-            Buy property Grid without Sidebar
+            Buy property Grid 
         @endslot
     @endcomponent
 
@@ -76,11 +76,11 @@
                                     <ul class="d-flex details">
                                         <li>
                                             <img src="{{ URL::asset('assets/img/icons/bed-icon.svg') }}" alt="bed-icon">
-                                            {{$property->number_of_beds}} Beds
+                                            {{$property->number_of_bedrooms_house}} Beds
                                         </li>
                                         <li>
                                             <img src="{{ URL::asset('assets/img/icons/bath-icon.svg') }}" alt="bath-icon">
-                                            {{$property->number_of_bedrooms}} Baths
+                                            {{$property->number_of_bath_house} Baths
                                         </li>
                                         {{-- <li>
                                             <img src="{{ URL::asset('assets/img/icons/building-icon.svg') }}"
