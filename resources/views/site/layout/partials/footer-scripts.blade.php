@@ -101,3 +101,4 @@
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6adZVdzTvBpE2yBRK8cDfsss8QXChK0I"></script>
       <script src="{{ URL::asset('/assets/js/map-grid.js') }}"></script>
   @endif
+  
