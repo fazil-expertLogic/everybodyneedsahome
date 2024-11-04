@@ -6,7 +6,7 @@
             <div class="col-sm-12">
                 <div class="form-wrap clearfix">
                     <div class="col-md-12">
-                        <form method="post" action="{{ route('properties.add') }}" id="signUpForm" class="signUpForm"
+                        <form method="post" action="{{ route('properties.store') }}" id="signUpForm" class="signUpForm"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="signUpForm-step-holder">
@@ -19,7 +19,7 @@
                                                 <div class="form-layer-progress-line" style="width: 0%;"></div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step currentstep">
                                                         <div class="form-layer-step-icon activestep"><i
@@ -31,30 +31,24 @@
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="fas fa-user"></i>
                                                         </div>
-                                                        <p class="steptitle">2- Criminal History</p>
+                                                        <p class="steptitle">2- Management Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="far fa-credit-card"></i></div>
-                                                        <p class="steptitle">3- Needs Survey</p>
+                                                        <p class="steptitle">3- Bed, Bath Or Unit Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">4- Health Insurance</p>
+                                                        <p class="steptitle">4- Images</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-layer-step">
-                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
-                                                        </div>
-                                                        <p class="steptitle">5- Others info</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1"></div>
+                                               
+                                                <div class="col-md-2"></div>
                                             </div>
                                         </div>
 
@@ -135,7 +129,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_category @if ($errors->has('category')) has-error has-danger @endif">
                                                     <label for="category" class="form-label">Category<span class="text-danger">*</span></label>
-                                                    <select name="category" class="form-select" id="category" aria-label="" required data-error="Please select category">
+                                                    <select name="category_id" class="form-select" id="category" aria-label="" required data-error="Please select category">
                                                         <option value="">Please Select</option>
                                                         @foreach ($categories as $category)
                                                             <option value="{{$category->id}}">{{$category->category_name}}</option>
@@ -178,7 +172,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i class="fas fa-unlock-alt"></i></div>
@@ -189,30 +183,24 @@
                                                     <div class="form-layer-step currentstep">
                                                         <div class="form-layer-step-icon activestep"><i class="fas fa-user"></i>
                                                         </div>
-                                                        <p class="steptitle">2- Criminal History</p>
+                                                        <p class="steptitle">2- Management Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="far fa-credit-card"></i></div>
-                                                        <p class="steptitle">3- Needs Survey</p>
+                                                        <p class="steptitle">3- Bed, Bath Or Unit Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">4- Health Insurance</p>
+                                                        <p class="steptitle">4- Images</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-layer-step">
-                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
-                                                        </div>
-                                                        <p class="steptitle">5- Others info</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1"></div>
+                                               
+                                                <div class="col-md-2"></div>
                                             </div>
                                         </div>
                                         {{-- <h3 class="section-form-title">Criminal History</h3> --}}
@@ -290,7 +278,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i class="fas fa-unlock-alt"></i></div>
@@ -301,31 +289,25 @@
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i class="fas fa-user"></i>
                                                         </div>
-                                                        <p class="steptitle">2- Criminal History</p>
+                                                        <p class="steptitle">2- Management Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step currentstep">
-                                                        <div class="form-layer-step-icon activestep"><i
-                                                                class="far fa-credit-card"></i></div>
-                                                        <p class="steptitle">3- Needs Survey</p>
+                                                        <div class="form-layer-step-icon activestep"><i 
+                                                            class="far fa-credit-card"></i></div>
+                                                        <p class="steptitle">3- Bed, Bath Or Unit Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">4- Health Insurance</p>
+                                                        <p class="steptitle">4- Images</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-layer-step">
-                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
-                                                        </div>
-                                                        <p class="steptitle">5- Others info</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1"></div>
+                                               
+                                                <div class="col-md-2"></div>
                                             </div>
                                         </div>
                                         
@@ -539,7 +521,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i class="fas fa-unlock-alt"></i></div>
@@ -550,30 +532,24 @@
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i class="fas fa-user"></i>
                                                         </div>
-                                                        <p class="steptitle">2- Criminal History</p>
+                                                        <p class="steptitle">2- Management Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i class="far fa-credit-card"></i></div>
-                                                        <p class="steptitle">3- Needs Survey</p>
+                                                        <p class="steptitle">3- Bed, Bath Or Unit Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step currentstep">
                                                         <div class="form-layer-step-icon activestep"><i class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">4- Health Insurance</p>
+                                                        <p class="steptitle">4- Images</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-layer-step">
-                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
-                                                        </div>
-                                                        <p class="steptitle">5- Others info</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1"></div>
+                                               
+                                                <div class="col-md-2"></div>
                                             </div>
                                         </div>
 
