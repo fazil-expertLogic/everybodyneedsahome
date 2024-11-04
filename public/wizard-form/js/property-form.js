@@ -192,9 +192,10 @@ document.addEventListener("touchstart", function() {},false);
 		var property_address = $("#property_address").val();
 		var city = $("#city").val();
 		var state = $("#state").val();
+		var zipcode = $("#zipcode").val();
 		var category = $("#category").val();
-		var property_zipcode = $("#property_zipcode").val();
-		
+
+		console.log(property_name,property_description,property_address,city,state,zipcode,category);
 		if( property_name )
 			$( ".valid_property_name .help-block.with-errors" ).html( '' );
 		else
@@ -220,23 +221,18 @@ document.addEventListener("touchstart", function() {},false);
 		else	
 			$( ".valid_state .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select marital status</li></ul>' );
 
-		if( property_zipcode )
-			$( ".valid_property_zipcode .help-block.with-errors" ).html( '' );
+		if( zipcode )
+			$( ".zipcode .help-block.with-errors" ).html( '' );
 		else	
-			$( ".valid_property_zipcode .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select enter address</li></ul>' );	
+			$( ".zipcode .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select enter address</li></ul>' );	
 
 		if( category )
 			$( ".valid_category .help-block.with-errors" ).html( '' );
 		else	
 			$( ".valid_category .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select enter city</li></ul>' );
-
-		if( property_zipcode )
-			$( ".valid_property_zipcode .help-block.with-errors" ).html( '' );
-		else	
-			$( ".valid_property_zipcode .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select enter city</li></ul>' );
-
 		
-		if(property_name && property_description && property_address && city && state && property_zipcode&& category && property_zipcode) {
+		if(property_name && property_description && property_address && city && state && zipcode && category ) {
+			
 			$( "#section-1 .help-block.with-errors" ).html( '' );
 			$( "#section-1" ).removeClass( "open" );
 			$( "#section-1" ).addClass( "slide-left" );
@@ -244,6 +240,7 @@ document.addEventListener("touchstart", function() {},false);
 			$( "#section-2" ).addClass( "open" );
 		}
 		else {
+			console.log(property_name,property_description,property_address,city,state,zipcode,category);
 			$( "#section-1 .help-block.with-errors.mandatory-error" ).html( '<ul class="list-unstyled"><li>Please Fill the Form Properly</li></ul>' );
 			sweetAlert("Oops...", "Please Fill the Form Properly!", "error");
 		}
