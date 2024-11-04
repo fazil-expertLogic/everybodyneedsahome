@@ -66,6 +66,29 @@
                     <li class="login-link"><a href="{{ url('register') }}">Sign In</a></li>
                 </ul>
             </div>
+            @if(Auth::user())
+            <ul class="nav header-navbar-rht">
+                {{-- <li class="new-property-btn">
+                    <a href="{{ url('#') }}"
+                        class="{{ Request::is('add-new-property') ? 'active' : '' }}">
+                        <i class="bx bxs-plus-circle"></i> Add New Property
+                    </a>
+                </li> --}}
+                {{-- <li class="{{ Request::is('register') ? 'active' : '' }}">
+                <a href="{{ url('register') }}" class="btn btn-primary"><i class="feather-user-plus"></i>Sign
+                    Up</a>
+                </li> --}}
+
+                <li class="nav-item dropdown {{ Request::is('register/client', 'register/provider') ? 'active' : '' }}">
+                    <a class="nav-link btn btn-primary" href="{{ route('dashboard') }}" >
+                        <i class="feather-user-plus"></i> Dashboard
+                    </a>
+                </li>
+                <li class="{{ Request::is('logout') ? 'active' : '' }}">
+                    <a href="{{ url('logout') }}" class="btn sign-btn"><i class="feather-unlock"></i>Sign Out</a>
+                </li>
+            </ul>
+            @else
             <ul class="nav header-navbar-rht">
                 <li class="new-property-btn">
                     <a href="{{ url('#') }}"
@@ -93,6 +116,7 @@
                     <a href="{{ url('login') }}" class="btn sign-btn"><i class="feather-unlock"></i>Sign In</a>
                 </li>
             </ul>
+            @endif
         </nav>
     </div>
 </header>

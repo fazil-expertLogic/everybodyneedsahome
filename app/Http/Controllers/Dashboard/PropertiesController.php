@@ -78,7 +78,7 @@ class PropertiesController extends Controller
             'property_management_city' => 'required|string|max:100',
             'property_management_state' => 'required|string|max:100',
             'property_management_zipcode' => 'nullable|string|max:20', // Changed to nullable
-            'property_type' => 'required|string|max:50',
+            // 'property_type' => 'required|string|max:50',
             'number_of_beds' => 'nullable|integer',
             'rent_bed' => 'nullable|numeric',
             'bed_deposit' => 'nullable|numeric',
@@ -100,6 +100,7 @@ class PropertiesController extends Controller
         ]);
 
         if ($validator->fails()) {
+            dd($validator->errors());
             return response()->json($validator->errors(), 422);
         }
         DB::beginTransaction(); // Start the transaction
@@ -205,7 +206,7 @@ class PropertiesController extends Controller
             'property_management_city' => 'required|string|max:100',
             'property_management_state' => 'required|string|max:100',
             'property_management_zipcode' => 'nullable|string|max:20', // Changed to nullable
-            'property_type' => 'required|string|max:50',
+            // 'property_type' => 'required|string|max:50',
             'number_of_beds' => 'nullable|integer',
             'rent_bed' => 'nullable|numeric',
             'bed_deposit' => 'nullable|numeric',
@@ -227,6 +228,7 @@ class PropertiesController extends Controller
         ]);
 
         if ($validator->fails()) {
+            dd($validator->errors());
             return response()->json($validator->errors(), 422);
         }
         DB::beginTransaction(); // Start the transaction

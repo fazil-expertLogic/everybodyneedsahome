@@ -12,10 +12,10 @@
                             <div class="signUpForm-step-holder">
 
                                 <div id="section-1" class="signUpForm-step-wrap">
-                                    <h3 class="section-title">Step 1 of 1</h3>
+                                    {{-- <h3 class="section-title">Step 1 of 1</h3> --}}
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
-                                            <div class="form-layer-progress">
+                                            {{-- <div class="form-layer-progress">
                                                 <div class="form-layer-progress-line" style="width: 0%;"></div>
                                             </div>
                                             <div class="row">
@@ -29,7 +29,7 @@
                                                 </div>
                                                 <div class="col-md-1"></div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <h3 class="section-form-title">Create New Provider</h3>
                                         <div class="help-block with-errors mandatory-error"></div>

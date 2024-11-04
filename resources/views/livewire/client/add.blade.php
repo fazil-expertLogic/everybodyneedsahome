@@ -58,7 +58,7 @@
                                             </div>
                                         </div>
 
-                                        <h3 class="section-form-title">Basic Information</h3>
+                                        {{-- <h3 class="section-form-title">Basic Information</h3> --}}
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
@@ -338,7 +338,7 @@
                                             </div>
                                         </div>
 
-                                        <h3 class="section-form-title">Criminal History</h3>
+                                        {{-- <h3 class="section-form-title">Criminal History</h3> --}}
                                         <div class="help-block with-errors mandatory-error"></div>
                                         
                                         <div class="row">
@@ -457,7 +457,7 @@
                                             </div>
                                         </div>
                                         
-                                        <h3 class="section-form-title">Needs Survey</h3>
+                                        {{-- <h3 class="section-form-title">Needs Survey</h3> --}}
                                         <div class="help-block with-errors mandatory-error"></div>
                                        
                                         <div class="row">
@@ -736,7 +736,7 @@
                                             </div>
                                         </div>
 
-                                        <h3 class="section-form-title">Health Insurance</h3>
+                                        {{-- <h3 class="section-form-title">Health Insurance</h3> --}}
 
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_insurace">
@@ -825,7 +825,7 @@
                                             </div>
                                         </div>
 
-                                        <h3 class="section-form-title">Others info</h3>
+                                        {{-- <h3 class="section-form-title">Others info</h3> --}}
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_more_friends">
                                                 <label for="cus_more_friends">Could you use more friends?<span class="text-danger">*</span></label>

@@ -7,14 +7,30 @@
                 <div class="form-wrap clearfix">
                     <div class="col-md-12">
                         
-                            <input type="hidden" value="1" id="is_edit"/>
+                            <input type="hidden" value="1" id="is_edit"/>                          
                             <div class="signUpForm-step-holder">
 
                                 <div id="section-1" class="signUpForm-step-wrap">
-                                    
-                                    <fieldset class="mt-4">
+                                    {{-- <h3 class="section-title">Step 1 of 1</h3> --}}
+                                    <fieldset>
+                                        {{-- <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
+                                            <div class="form-layer-progress">
+                                                <div class="form-layer-progress-line" style="width: 0%;"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step currentstep">
+                                                        <div class="form-layer-step-icon activestep"><i
+                                                                class="fas fa-unlock-alt"></i></div>
+                                                        <p class="steptitle">1- Provider Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                            </div>
+                                        </div> --}}
 
-                                        <h3 class="section-form-title">Provider</h3>
+                                        <h3 class="section-form-title">View Provider Detail</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">

@@ -1,414 +1,604 @@
-@extends('layouts.app')
-
-@section('styles')
-@endsection
+@extends('layouts.wizard-form')
 
 @section('content')
-    <!-- PAGE HEADER -->
-    <div class="page-header d-sm-flex d-block">
-        <ol class="breadcrumb mb-sm-0 mb-3">
-            <!-- breadcrumb -->
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Property</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Add Property</li>
-        </ol><!-- End breadcrumb -->
-        <div class="ms-auto">
-            <!-- <div>
-                <a href="javascript:void(0);" class="btn bg-secondary-transparent text-secondary btn-sm"
-                    data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Rating">
-                    <span>
-                        <i class="fa fa-star"></i>
-                    </span>
-                </a>
-                <a href="{{ url('lockscreen') }}" class="btn bg-primary-transparent text-primary mx-2 btn-sm"
-                    data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="lock">
-                    <span>
-                        <i class="fa fa-lock"></i>
-                    </span>
-                </a>
-                <a href="javascript:void(0);" class="btn bg-warning-transparent text-warning btn-sm"
-                    data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Add New">
-                    <span>
-                        <i class="fa fa-plus"></i>
-                    </span>
-                </a>
-            </div> -->
-        </div>
-    </div>
-    <!-- END PAGE HEADER -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-wrap clearfix">
+                    <div class="col-md-12">
+                        <form method="post" action="{{ route('properties.store') }}" id="signUpForm" class="signUpForm"
+                            enctype="multipart/form-data">
+                            @csrf
+                            <div class="signUpForm-step-holder">
 
-    <!-- ROW -->
-    <div class="row">
-        <div class="col-lg-12 col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Create Property</h3>
-                </div>
-                <div class="card-body">
-                    <p>Please fill the form below to create property.</p>
+                                <div id="section-1" class="signUpForm-step-wrap">
+                                    <h3 class="section-title">Step 1 of 4</h3>
+                                    <fieldset>
+                                        <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
+                                            <div class="form-layer-progress">
+                                                <div class="form-layer-progress-line" style="width: 0%;"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step currentstep">
+                                                        <div class="form-layer-step-icon activestep"><i
+                                                                class="fas fa-unlock-alt"></i></div>
+                                                        <p class="steptitle">1- Basic Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i class="fas fa-user"></i>
+                                                        </div>
+                                                        <p class="steptitle">2- Management Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i class="far fa-credit-card"></i></div>
+                                                        <p class="steptitle">3- Bed, Bath Or Unit Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                        </div>
+                                                        <p class="steptitle">4- Images</p>
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="col-md-2"></div>
+                                            </div>
+                                        </div>
 
-                    <form method="POST" action="{{ route('properties.store') }}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="col-md-6">
-                            <label for="property_name" class="form-label">Property Name*</label>
-                            <input type="text" name="property_name" class="form-control" id="property_name" value="" required>
-                            <div class="valid-feedback">
-                                Please enter the Property Name.
-                            </div>
-                        </div>
+                                        {{-- <h3 class="section-form-title">Basic Information</h3> --}}
+                                        <div class="help-block with-errors mandatory-error"></div>
 
-                        <div class="col-md-6">
-                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_property_name @if ($errors->has('property_name')) has-error has-danger @endif">
+                                                    <label for="property_name" class="form-label">Property Name<span class="text-danger">*</span></label>
+                                                    <input type="text" name="property_name" class="form-control py-2" value="" id="property_name" placeholder="Enter Property Name" required data-error="Please enter the Property Name.">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('property_name'))
+                                                        <div class="help-block with-errors">{{ $errors->first('property_name') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-sm-6 col-lg-6 form-group valid_property_description @if ($errors->has('property_description')) has-error has-danger @endif">
+                                                <label for="property_description">Property Description<span class="text-danger">*</span></label>
+                                                <textarea class="form-control" id="property_description" name="property_description"  required data-error="Please enter the Property Description."></textarea>
+                                                <div class="help-block with-errors"></div>
+                                                @if ($errors->has('property_description'))
+                                                    <div class="help-block with-errors">{{ $errors->first('property_description') }}</div>
+                                                @endif
+                                            </div>
 
-                        <div class="col-md-12">
-                            <label for="property_description" class="form-label">Property Description*</label>
-                            <textarea name="property_description" class="form-control" id="property_description" placeholder="Property Description"
-                                required></textarea>
-                            <div class="invalid-feedback">
-                                Please enter the Property Description.
-                            </div>
-                        </div>
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_property_address @if ($errors->has('property_address')) has-error has-danger @endif">
+                                                    <label for="property_address" class="form-label">Property Address<span class="text-danger">*</span></label>
+                                                    <input type="text" name="property_address" class="form-control py-2" value="" id="property_address" placeholder="Enter Property Address" required data-error="Please enter the Property Address.">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('property_address'))
+                                                        <div class="help-block with-errors">{{ $errors->first('property_address') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
 
-                        <div class="col-md-6">
-                            <label for="property_address" class="form-label">Property Address</label>
-                            <input name="property_address" type="text" class="form-control" id="property_address" value=""
-                                required>
-                            <div class="valid-feedback">
-                                Please enter the Property address.
-                            </div>
-                        </div>
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_city @if ($errors->has('city')) has-error has-danger @endif">
+                                                    <label for="city" class="form-label">City<span class="text-danger">*</span></label>
+                                                    <input type="text" name="city" class="form-control py-2" value="" id="city" placeholder="Enter Property City" required data-error="Please enter the Property city.">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('city'))
+                                                        <div class="help-block with-errors">{{ $errors->first('city') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_state @if ($errors->has('state')) has-error has-danger @endif">
+                                                    <label for="state" class="form-label">State<span class="text-danger">*</span></label>
+                                                    <select name="state" class="form-select" id="state" aria-label="" required data-error="Please select state">
+                                                        <option value="">Please Select</option>
+                                                        <option value="USA">USA</option>
+                                                        <option value="Berlin">Berlin</option>
+                                                        <option value="Manchester">Manchester</option>
+                                                        <option value="Flynn">Flynn</option>
+                                                    </select>
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('state'))
+                                                        <div class="help-block with-errors">{{ $errors->first('state') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_zipcode @if ($errors->has('zipcode')) has-error has-danger @endif">
+                                                    <label for="zipcode" class="form-label">Property zipcode<span class="text-danger">*</span></label>
+                                                    <input type="text" name="zipcode" class="form-control py-2" value="" id="zipcode" placeholder="Enter Property zipcode" required data-error="Please enter the Property zipcode.">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('zipcode'))
+                                                        <div class="help-block with-errors">{{ $errors->first('zipcode') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
 
-                        <div class="col-md-6">
-                            <label for="city" class="form-label">city</label>
-                            <input name="city" type="text" class="form-control" id="city" value="" required>
-                            <div class="valid-feedback">
-                                Please enter the Property Address.
-                            </div>
-                        </div>
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_category @if ($errors->has('category')) has-error has-danger @endif">
+                                                    <label for="category" class="form-label">Category<span class="text-danger">*</span></label>
+                                                    <select name="category_id" class="form-select" id="category" aria-label="" required data-error="Please select category">
+                                                        <option value="">Please Select</option>
+                                                        @foreach ($categories as $category)
+                                                            <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('category'))
+                                                        <div class="help-block with-errors">{{ $errors->first('category') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
 
-                        <div class="col-md-6">
-                            <label for="state" class="form-label">State</label>
-                            <select name="state" class="form-select select2" id="state" required>
-                                <option selected disabled value="">Choose...</option>
-                                <option value="USA">USA</option>
-                                <option value="Berlin">Berlin</option>
-                                <option value="Manchester">Manchester</option>
-                                <option value="Flynn">Flynn</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid state.
-                            </div>
-                        </div>
 
-                        <div class="col-md-6">
-                            <label for="zipcode" class="form-label">zipcode</label>
-                            <input type="number" name="zipcode" class="form-control" id="zipcode" value="" required>
-                            <div class="valid-feedback">
-                                Please enter the zipcode.
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <label for="category_id" class="form-label">Category</label>
-                            <select name="category_id" class="form-select select2" id="category_id" required>
-                                <option selected disabled value="">Choose...</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->category_name}}</option>
-                                @endforeach
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid category.
-                            </div>
-                        </div>
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <input type="checkbox" name="is_feature" id="is_feature" value="1" {{ old('is_feature') ? 'checked' : '' }} >
+                                                    <label for="is_feature">Is Featured</label>
+                                                    &nbsp;&nbsp;
+                                                    <input type="checkbox" name="is_new" id="is_new" value="1" {{ old('is_new') ? 'checked' : '' }} >
+                                                    <label for="is_new">Is New</label>
+                                                </div>
+                                            </div>
 
-                        <div class="col-md-6">
-                            <input type="checkbox" name="is_feature" id="is_feature" value="1" {{ old('is_feature') ? 'checked' : '' }}>
-                            <label for="is_feature">Is Featured</label>
-                            <input type="checkbox" name="is_new" id="is_new" value="1" {{ old('is_new') ? 'checked' : '' }}>
-                            <label for="is_new">Is New</label>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="property_management_address" class="form-label">Property Management Address *</label>
-                            <input name="property_management_address" type="text" class="form-control" id="property_management_address"
-                                value="" required>
-                            <div class="valid-feedback">
-                                Please enter the Property Management Address.
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="property_management_city" class="form-label">Property Management city *</label>
-                            <input name="property_management_city" type="text" class="form-control" id="property_management_city"
-                                value="" required>
-                            <div class="valid-feedback">
-                                Please enter the Property Management city.
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="property_management_state" class="form-label">Property Management State</label>
-                            <select class="form-select select2" name="property_management_state" id="property_management_state" required>
-                                <option selected disabled value="">Choose...</option>
-                                <option value="USA">USA</option>
-                                <option value="Berlin">Berlin</option>
-                                <option value="Manchester">Manchester</option>
-                                <option value="Flynn">Flynn</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid state.
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="property_management_zipcode" class="form-label">Property Management Zipcode</label>
-                            <input type="number" class="form-control" name="property_management_zipcode" id="property_management_zipcode" value="" required>
-                            <div class="valid-feedback">
-                                Please enter the zipcode.
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <p>Do you charge by the bed, bedroom or entire unit/house? *</p>
-                        </div>
-
-                        <div class="col-md-2">
-                            <div class="form-check">
-                                <input type="radio" name="property_type" class="form-check-input" id="is_beds" value="bed">
-                                <label class="form-check-label" for="is_beds">By Bed</label>
-                            </div>
-                        </div>
-
-                        <div class="col-md-2">
-                            <div class="form-check">
-                                <input type="radio" name="property_type" class="form-check-input" id="is_bedroom" value="bedroom">
-                                <label class="form-check-label" for="is_bedroom">By Bedroom</label>
-                            </div>
-                        </div>
-
-                        <div class="col-md-2">
-                            <div class="form-check">
-                                <input type="radio" name="property_type" class="form-check-input" id="is_unit" value="unit">
-                                <label class="form-check-label" for="is_unit">By Unit/House</label>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                        </div>
-
-                        <div class="isBed">
-                            <div class="col-md-6">
-                                <label for="number_of_beds" class="form-label">How many beds are available to rent? *</label>
-                                <input type="number" class="form-control" name="number_of_beds" id="number_of_beds"
-                                    value="" >
-                                <div class="valid-feedback">
-                                    Please enter the number of Beds.
+                                        </div>
+                                        
+                                        <div class="form-group signUpForm-step-1">
+                                            
+                                            <button class="btn btn-custom float-end" onclick="nextStep2()"
+                                                type="button">Next <span class="fas fa-arrow-right"></span></button>
+                                        </div>
+                                    </fieldset>
                                 </div>
-                            </div>
 
-                            <div class="col-md-6">
-                            </div>
+                                <div id="section-2" class="signUpForm-step-wrap slide-right">
+                                    <h3 class="section-title">Step 2 of 4</h3>
+                                    <fieldset>
+                                        <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
+                                            <div class="form-layer-progress">
+                                                <div class="form-layer-progress-line" style="width: 37.25%;">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i class="fas fa-unlock-alt"></i></div>
+                                                        <p class="steptitle">1- Basic Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step currentstep">
+                                                        <div class="form-layer-step-icon activestep"><i class="fas fa-user"></i>
+                                                        </div>
+                                                        <p class="steptitle">2- Management Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i class="far fa-credit-card"></i></div>
+                                                        <p class="steptitle">3- Bed, Bath Or Unit Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                        </div>
+                                                        <p class="steptitle">4- Images</p>
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="col-md-2"></div>
+                                            </div>
+                                        </div>
+                                        {{-- <h3 class="section-form-title">Criminal History</h3> --}}
+                                        <div class="help-block with-errors mandatory-error"></div>
+                                        
+                                        <div class="row">
+                                            
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_property_management_address @if ($errors->has('property_management_address')) has-error has-danger @endif">
+                                                    <label for="property_management_address" class="form-label">Property Management Address<span class="text-danger">*</span></label>
+                                                    <input type="text" name="property_management_address" class="form-control py-2" value="" id="property_management_address" placeholder="Enter Property Management Address" required data-error="Please enter the Property Management Address.">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('property_management_address'))
+                                                        <div class="help-block with-errors">{{ $errors->first('property_management_address') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
 
-                            <div class="col-md-6">
-                                <label for="rent_bed" class="form-label">Rent by Bed</label>
-                                <input type="number" class="form-control" name="rent_bed" id="rent_bed"
-                                    value="" >
-                                <div class="valid-feedback">
-                                    Please enter the number of Beds.
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_property_management_city @if ($errors->has('property_management_city')) has-error has-danger @endif">
+                                                    <label for="property_management_city" class="form-label">Property Management City<span class="text-danger">*</span></label>
+                                                    <input type="text" name="property_management_city" class="form-control py-2" value="" id="property_management_city" placeholder="Enter Property property_management_city" required data-error="Please enter the Property Management City.">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('property_management_city'))
+                                                        <div class="help-block with-errors">{{ $errors->first('property_management_city') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_property_management_state  @if ($errors->has('property_management_state')) has-error has-danger @endif">
+                                                    <label for="property_management_state" class="form-label">Property Management State<span class="text-danger">*</span></label>
+                                                    <select name="property_management_state" class="form-select" id="property_management_state" aria-label="" required data-error="Please select property_management_state">
+                                                        <option value="">Please Select</option>
+                                                        <option value="USA">USA</option>
+                                                        <option value="Berlin">Berlin</option>
+                                                        <option value="Manchester">Manchester</option>
+                                                        <option value="Flynn">Flynn</option>
+                                                    </select>
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('property_management_state'))
+                                                        <div class="help-block with-errors">{{ $errors->first('property_management_state') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_property_management_zipcode @if ($errors->has('property_management_zipcode')) has-error has-danger @endif">
+                                                    <label for="property_management_zipcode" class="form-label">Property Management Zipcode<span class="text-danger">*</span></label>
+                                                    <input type="text" name="property_management_zipcode" class="form-control py-2" value="" id="property_management_zipcode" placeholder="Enter Property zipcode" required data-error="Please enter the Property zipcode.">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('property_management_zipcode'))
+                                                        <div class="help-block with-errors">{{ $errors->first('property_management_zipcode') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group signUpForm-step-2">
+                                            <button class="btn btn-custom" type="button" onclick="previousStep1()"><span
+                                                    class="fas fa-arrow-left"></span> Back</button>
+                                            <button class="btn btn-custom float-end" type="button"
+                                                onclick="nextStep3()">Next <span
+                                                    class="fas fa-arrow-right"></span></button>
+                                        </div>
+                                    </fieldset>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                            </div>
-                            <div class="col-md-12">
-                                <p>Add Bed Details</p>
-                            </div>
 
-                            <div class="col-md-6">
-                                <label for="bed_deposit" class="form-label">Deposit*</label>
-                                <input type="number" class="form-control" name="bed_deposit" id="bed_deposit"
-                                    value="" >
-                                <div class="valid-feedback">
-                                    Please enter the number of Beds.
+                                <div id="section-3" class="signUpForm-step-wrap slide-right">
+                                    <h3 class="section-title">Step 3 of 4</h3>
+                                    <fieldset>
+                                        <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
+                                            <div class="form-layer-progress">
+                                                <div class="form-layer-progress-line" style="width: 62.25%;">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i class="fas fa-unlock-alt"></i></div>
+                                                        <p class="steptitle">1- Basic Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i class="fas fa-user"></i>
+                                                        </div>
+                                                        <p class="steptitle">2- Management Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step currentstep">
+                                                        <div class="form-layer-step-icon activestep"><i 
+                                                            class="far fa-credit-card"></i></div>
+                                                        <p class="steptitle">3- Bed, Bath Or Unit Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                        </div>
+                                                        <p class="steptitle">4- Images</p>
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="col-md-2"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        {{-- <h3 class="section-form-title">Needs Survey</h3> --}}
+                                        <div class="help-block with-errors mandatory-error"></div>
+                                       
+                                        <div class="row">
+                                            
+                                            <p>Do you charge by the bed, bath Room or entire unit/house? *</p>
+                                            <p> By Bed</p>
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_number_of_beds @if ($errors->has('number_of_beds')) has-error has-danger @endif">
+                                                    <label for="number_of_beds" class="form-label">How many beds are available to rent?<span class="text-danger">*</span></label>
+                                                    <input type="number" name="number_of_beds" class="form-control py-2" value="" id="number_of_beds" placeholder="How many beds are available to rent" required data-error="Please enter How many beds are available to rent">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('number_of_beds'))
+                                                        <div class="help-block with-errors">{{ $errors->first('number_of_beds') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_rent_bed @if ($errors->has('rent_bed')) has-error has-danger @endif">
+                                                    <label for="rent_bed" class="form-label">Rent by Bed<span class="text-danger">*</span></label>
+                                                    <input type="number" name="rent_bed" class="form-control py-2" value="" id="rent_bed" placeholder="Please enter the number of Beds." required data-error="Please enter the number of Beds.">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('rent_bed'))
+                                                    <div class="help-block with-errors">{{ $errors->first('rent_bed') }}</div>
+                                                @endif
+                                                </div>
+                                            </div>
+
+                                            <p>Add Bed Details</p>
+                                            
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_bed_deposit @if ($errors->has('bed_deposit')) has-error has-danger @endif">
+                                                    <label for="bed_deposit" class="form-label">Deposit<span class="text-danger">*</span></label>
+                                                    <input type="number" name="bed_deposit" class="form-control py-2" value="" id="bed_deposit" placeholder="Please enter the Deposit." required data-error="Please enter the Deposit.">
+                                                    <div class="help-block with-errors"></div>
+                                                     @if ($errors->has('bed_deposit'))
+                                                        <div class="help-block with-errors">{{ $errors->first('bed_deposit') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_bed_fee @if ($errors->has('bed_fee')) has-error has-danger @endif">
+                                                    <label for="bed_fee" class="form-label">Fee<span class="text-danger">*</span></label>
+                                                    <input type="number" name="bed_fee" class="form-control py-2" value="" id="bed_fee" placeholder="Please enter the Fee." required data-error="Please enter the Fee.">
+                                                    <div class="help-block with-errors"></div>
+                                                     @if ($errors->has('bed_fee'))
+                                                        <div class="help-block with-errors">{{ $errors->first('bed_fee') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            
+                                            <p> By Bed Room</p>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_number_of_bedrooms @if ($errors->has('number_of_bedrooms')) has-error has-danger @endif">
+                                                    <label for="number_of_bedrooms" class="form-label">How many bedrooms are available to rent?<span class="text-danger">*</span></label>
+                                                    <input type="number" name="number_of_bedrooms" class="form-control py-2" value="" id="number_of_bedrooms" placeholder="How many bedrooms are available to rent" required data-error="Please enter How many bedrooms are available to rent">
+                                                    <div class="help-block with-errors"></div>
+                                                     @if ($errors->has('number_of_bedrooms'))
+                                                        <div class="help-block with-errors">{{ $errors->first('number_of_bedrooms') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_stay_one_bedroom @if ($errors->has('stay_one_bedroom')) has-error has-danger @endif">
+                                                    <label for="stay_one_bedroom" class="form-label">People allowed to stay in one bedroom?<span class="text-danger">*</span></label>
+                                                    <input type="number" name="stay_one_bedroom" class="form-control py-2" value="" id="stay_one_bedroom" placeholder=" Please enter the number Of People allowed to stay in one bedroom." required data-error=" Please enter the number Of People allowed to stay in one bedroom.">
+                                                    <div class="help-block with-errors"></div>
+                                                     @if ($errors->has('stay_one_bedroom'))
+                                                        <div class="help-block with-errors">{{ $errors->first('stay_one_bedroom') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            
+                    
+
+                                            <p>Add Bedroom Details</p>
+                                            
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_bedroom_deposit @if ($errors->has('bedroom_deposit')) has-error has-danger @endif">
+                                                    <label for="bedroom_deposit" class="form-label">Deposit<span class="text-danger">*</span></label>
+                                                    <input type="number" name="bedroom_deposit" class="form-control py-2" value="" id="bedroom_deposit" placeholder="Please enter the Deposit." required data-error="Please enter the Deposit.">
+                                                    <div class="help-block with-errors"></div>
+                                                     @if ($errors->has('bedroom_deposit'))
+                                                        <div class="help-block with-errors">{{ $errors->first('bedroom_deposit') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_bedroom_fee @if ($errors->has('bedroom_fee')) has-error has-danger @endif">
+                                                    <label for="bedroom_fee" class="form-label">Fee<span class="text-danger">*</span></label>
+                                                    <input type="number" name="bedroom_fee" class="form-control py-2" value="" id="bedroom_fee" placeholder="Please enter Fee." required data-error="Please enter fee.">
+                                                    <div class="help-block with-errors"></div>
+                                                     @if ($errors->has('bedroom_fee'))
+                                                        <div class="help-block with-errors">{{ $errors->first('bedroom_fee') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            {{-- -----------------------------------------------------------------------------------------------------------------------------}}
+                                            <p> By Unit/House</p>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_number_of_bedrooms_house @if ($errors->has('number_of_bedrooms_house')) has-error has-danger @endif">
+                                                    <label for="number_of_bedrooms_house" class="form-label">How many bedrooms are there in the house?<span class="text-danger">*</span></label>
+                                                    <input type="number" name="number_of_bedrooms_house" class="form-control py-2" value="" id="number_of_bedrooms_house" placeholder=" Please enter the number of bedrooms are there in the house." required data-error=" Please enter the number of bedrooms are there in the house.">
+                                                    <div class="help-block with-errors"></div>
+                                                     @if ($errors->has('number_of_bedrooms_house'))
+                                                        <div class="help-block with-errors">{{ $errors->first('number_of_bedrooms_house') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_number_of_bath_house @if ($errors->has('number_of_bath_house')) has-error has-danger @endif">
+                                                    <label for="number_of_bath_house" class="form-label">How many baths are there in the house? <span class="text-danger">*</span></label>
+                                                    <input type="number" name="number_of_bath_house" class="form-control py-2" value="" id="number_of_bath_house" placeholder="Please enter the number Of baths are there in the house." required data-error="Please enter the number Of baths are there in the house.">
+                                                    <div class="help-block with-errors"></div>
+                                                     @if ($errors->has('number_of_bath_house'))
+                                                        <div class="help-block with-errors">{{ $errors->first('number_of_bath_house') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_utilities_inscluded @if ($errors->has('utilities_inscluded')) has-error has-danger @endif">
+                                                <label for="utilities_inscluded" class="form-label">Are Utilities included?<span class="text-danger">*</span></label>
+                                                <select class="form-select mb-3" name="utilities_inscluded" id="utilities_inscluded" required data-error="Please select">
+                                                    <option value="">Please select</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
+                                                </select>
+                                                <div class="help-block with-errors"></div>
+                                                 @if ($errors->has('utilities_inscluded'))
+                                                        <div class="help-block with-errors">{{ $errors->first('utilities_inscluded') }}</div>
+                                                    @endif
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_rent_unit @if ($errors->has('rent_unit')) has-error has-danger @endif">
+                                                    <label for="rent_unit" class="form-label">Rent for the Unit/House<span class="text-danger">*</span></label>
+                                                    <input type="number" name="rent_unit" class="form-control py-2" value="" id="rent_unit" placeholder="Please enter Rent for the Unit/House." required data-error="Please enter Rent for the Unit/House.">
+                                                    <div class="help-block with-errors"></div>
+                                                     @if ($errors->has('rent_unit'))
+                                                        <div class="help-block with-errors">{{ $errors->first('rent_unit') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <p>Add Unit/House Details</p>
+                                            
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_unit_deposit @if ($errors->has('unit_deposit')) has-error has-danger @endif">
+                                                    <label for="unit_deposit" class="form-label">Deposit<span class="text-danger">*</span></label>
+                                                    <input type="number" name="unit_deposit" class="form-control py-2" value="" id="unit_deposit" placeholder="Please enter the Deposit." required data-error="Please enter the Deposit.">
+                                                    <div class="help-block with-errors"></div>
+                                                     @if ($errors->has('unit_deposit'))
+                                                        <div class="help-block with-errors">{{ $errors->first('unit_deposit') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_unit_fee @if ($errors->has('unit_fee')) has-error has-danger @endif">
+                                                    <label for="unit_fee" class="form-label">Fee<span class="text-danger">*</span></label>
+                                                    <input type="number" name="unit_fee" class="form-control py-2" value="" id="unit_fee" placeholder="Please enter Fee." required data-error="Please enter fee.">
+                                                    <div class="help-block with-errors"></div>
+                                                     @if ($errors->has('unit_fee'))
+                                                        <div class="help-block with-errors">{{ $errors->first('unit_fee') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_is_property_occupied @if ($errors->has('is_property_occupied')) has-error has-danger @endif">
+                                                <label for="is_property_occupied" class="form-label">Is property occupied?<span class="text-danger">*</span></label>
+                                                <select class="form-select mb-3" name="is_property_occupied" id="is_property_occupied" required data-error="Please select">
+                                                    <option value="">Please select</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
+                                                </select>
+                                                <div class="help-block with-errors"></div>
+                                                 @if ($errors->has('is_property_occupied'))
+                                                        <div class="help-block with-errors">{{ $errors->first('is_property_occupied') }}</div>
+                                                    @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group signUpForm-step-3">
+                                            <button class="btn btn-custom" type="button" onclick="previousStep2()"><span
+                                                    class="fas fa-arrow-left"></span> Back</button>
+                                            <button class="btn btn-custom float-end" type="button"
+                                                onclick="nextStep4()">Next <span
+                                                    class="fas fa-arrow-right"></span></button>
+                                        </div>
+                                    </fieldset>
                                 </div>
-                            </div>
 
-                            <div class="col-md-6">
-                                <label for="bed_fee" class="form-label">Fee*</label>
-                                <input type="number" class="form-control" name="bed_fee" id="bed_fee" value="">
-                                <div class="valid-feedback">
-                                    Please enter the number of Beds.
+                                <div id="section-4" class="signUpForm-step-wrap review-submit-section slide-right">
+                                    <h3 class="section-title">Step 4 of 4</h3>
+                                    <fieldset>
+                                        <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
+                                            <div class="form-layer-progress">
+                                                <div class="form-layer-progress-line" style="width: 100%;">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i class="fas fa-unlock-alt"></i></div>
+                                                        <p class="steptitle">1- Basic Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i class="fas fa-user"></i>
+                                                        </div>
+                                                        <p class="steptitle">2- Management Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i class="far fa-credit-card"></i></div>
+                                                        <p class="steptitle">3- Bed, Bath Or Unit Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step currentstep">
+                                                        <div class="form-layer-step-icon activestep"><i class="fas fa-check"></i>
+                                                        </div>
+                                                        <p class="steptitle">4- Images</p>
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="col-md-2"></div>
+                                            </div>
+                                        </div>
+
+                                        {{-- <h3 class="section-form-title">Health Insurance</h3> --}}
+
+                                        <div class="row">
+                                            
+                
+                                            {{-- -------------------- --}}
+
+                                            <div class="col-sm-12 col-md-12 col-lg-12 form-group valid_main_picture @if ($errors->has('main_picture')) has-error has-danger @endif">
+                                                <label for="main_picture" class="form-label invalid">Main Picture*</label>
+                                                <input type="file" class="form-control" aria-label="file example" name="main_picture" required data-error="Please select">
+                                                <div class="help-block with-errors"></div>
+                                                @if ($errors->has('main_picture'))
+                                                <div class="help-block with-errors">{{ $errors->first('main_picture') }}</div>
+                                            @endif
+                                            </div>
+
+
+                                            <div class="col-sm-12 col-md-12 col-lg-12 form-group valid_more_picture @if ($errors->has('more_picture')) has-error has-danger @endif">
+                                                <label for="more_picture" class="form-label">More Pictures*</label>
+                                                <input type="file" class="form-control" aria-label="file example" name="more_picture[]" multiple  required data-error="Please select">
+                                                <div class="help-block with-errors"></div>
+                                                @if ($errors->has('more_picture'))
+                                                <div class="help-block with-errors">{{ $errors->first('more_picture') }}</div>
+                                            @endif
+                                            </div>
+
+                                            <div class="form-group signUpForm-step-4">
+                                                <button class="btn btn-custom" type="button" 
+                                                    onclick="previousStep3()"><span class="fas fa-arrow-left"></span>
+                                                    Back</button>
+                                                    <button id="Submit" class="btn btn-custom float-end"
+                                                    type="submit" onclick="nextStep6()">Submit </button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
                                 </div>
+
+                                
                             </div>
-                        </div>
-
-                        <div class="isBedroom">
-                            <div class="col-md-6">
-                                <label for="number_of_bedrooms" class="form-label">How many bedrooms are available to rent? *</label>
-                                <input type="number" class="form-control" name="number_of_bedrooms" id="number_of_bedrooms"
-                                    value="" >
-                                <div class="valid-feedback">
-                                    Please enter the number of bedrooms.
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="stay_one_bedroom" class="form-label">People allowed to stay in one bedroom? *</label>
-                                <input type="number" class="form-control" name="stay_one_bedroom" id="stay_one_bedroom"
-                                    value="" >
-                                <div class="valid-feedback">
-                                    Please enter the number Of People allowed to stay in one bedroom.
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <p>Add Bedroom Details</p>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="bedroom_deposit" class="form-label">Deposit*</label>
-                                <input type="number" class="form-control" name="bedroom_deposit" id="bedroom_deposit"
-                                    value="" >
-                                <div class="valid-feedback">
-                                    Please enter the number of Beds.
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="bedroom_fee" class="form-label">Fee*</label>
-                                <input type="number" class="form-control" name="bedroom_fee" id="bedroom_fee" value="">
-                                <div class="valid-feedback">
-                                    Please enter the number of Beds.
-                                </div>
-                            </div>
-
-                        </div>
-
-                       
-                        <div class="isUnit">
-                            <div class="col-md-6">
-                                <label for="number_of_bedrooms_house" class="form-label">How many bedrooms are there in the house? *</label>
-                                <input type="number" class="form-control" name="number_of_bedrooms_house" id="number_of_bedrooms_house"
-                                    value="" >
-                                <div class="valid-feedback">
-                                    Please enter the number of bedrooms are there in the house.
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="number_of_bath_house" class="form-label">How many baths are there in the house? *</label>
-                                <input type="number" class="form-control" name="number_of_bath_house" id="number_of_bath_house"
-                                    value="">
-                                <div class="valid-feedback">
-                                    Please enter the number Of baths are there in the house.
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="utilities_inscluded" class="form-label">Are Utilities included? *</label>
-                                <select class="form-select select2" id="utilities_inscluded" name="utilities_inscluded" >
-                                    <option selected disabled value="">Choose...</option>
-                                    <option value="1">Yes</option>
-                                    <option value="0">No</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select If Utilities included.
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="rent_unit" class="form-label">Rent for the Unit/House *</label>
-                                <input type="number" class="form-control" name="rent_unit" id="rent_unit"
-                                value="">
-                                <div class="valid-feedback">
-                                    Please enter Rent for the Unit/House.
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <p>Add Unit/House Details</p>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="unit_deposit" class="form-label">Deposit*</label>
-                                <input type="number" class="form-control" name="unit_deposit" id="unit_deposit"
-                                    value="" >
-                                <div class="valid-feedback">
-                                    Please enter the number of Beds.
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="unit_fee" class="form-label">Fee*</label>
-                                <input type="number" class="form-control" name="unit_fee" id="unit_fee" value="">
-                                <div class="valid-feedback">
-                                    Please enter the number of Beds.
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <label for="is_property_occupied" class="form-label">Is property occupied? *</label>
-                            <select class="form-select select2" name="is_property_occupied" id="is_property_occupied" required>
-                                <option selected disabled value="">Choose...</option>
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select Is property occupied.
-                            </div>
-                        </div>
-
-                        <div class="mb-12">
-                            <label for="main_picture" class="form-label">Main Picture*</label>
-                            <input type="file" class="form-control" aria-label="file example" name="main_picture"
-                                required>
-                            <div class="invalid-feedback">Example invalid form file feedback</div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="more_picture" class="form-label">More Pictures*</label>
-                            <input type="file" class="form-control" aria-label="file example" name="more_picture[]" multiple required>
-                            <div class="invalid-feedback">Example invalid form file feedback</div>
-                        </div>
-
-                        <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Submit form</button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-    <!-- ROW CLOSED -->
 @endsection
-
-    <!-- SELECT2 JS -->
-    <script src="{{ asset('build/assets/plugins/select2/select2.full.min.js') }}"></script>
-
-    <!-- FORMVALIDATION JS -->
-    @vite('resources/assets/js/form-validation.js')
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        $('.isBed, .isBedroom, .isUnit').hide();
-        // When a radio button is selected
-        $('input[name="property_type"]').on('change', function() {
-            var selectedValue = $(this).val();  // Get the selected value
-
-            // Hide all sections initially
-            $('.isBed, .isBedroom, .isUnit').hide();
-
-            // Show the appropriate section based on the selected radio button
-            if (selectedValue === 'bed') {
-                $('.isBed').slideDown('slow');
-            } else if (selectedValue === 'bedroom') {
-                $('.isBedroom').slideDown('slow');
-            } else if (selectedValue === 'unit') {
-                $('.isUnit').slideDown('slow');
-            }
-        });
-    });
-</script>
+@section('js')
+<script src="{{asset('wizard-form/js/property-form.js')}}"></script>
+@endsection

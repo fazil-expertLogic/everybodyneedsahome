@@ -11,7 +11,7 @@
                             <div class="signUpForm-step-holder">
                                 <div id="section-1" class="signUpForm-step-wrap">
                                     <fieldset>
-                                        <h3 class="section-form-title">Membership</h3>
+                                        <h3 class="section-form-title">View Membership Detail</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
