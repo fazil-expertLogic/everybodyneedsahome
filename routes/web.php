@@ -14,7 +14,7 @@ use App\Http\Controllers\Dashboard\MenusController;
 use App\Http\Controllers\Dashboard\MembershipController;
 
 use App\Http\Controllers\Site\CustomAuthController;
-
+use App\Http\Controllers\Site\FrontendController;
 use App\Http\Livewire\Index;
 
 //Dashbaord
@@ -24,6 +24,8 @@ require __DIR__ . '/frontend.php';
 Route::get('login', [RegistrationsController::class, 'showLogin'])->name('login');
 Route::post('loginPerform', [RegistrationsController::class, 'loginPerform'])->name('login.perform');
 Route::get('logout', [RegistrationsController::class, 'logout'])->name('logout');
+Route::post('search-properties', [FrontendController::class, 'searchProperties'])->name('search-properties');
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', Index::class)->name('dashboard');
@@ -43,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('properties/update', [PropertiesController::class, 'update'])->name('properties.update');
         Route::get('properties/{id}', [PropertiesController::class, 'show'])->name('properties.show');
         Route::DELETE('properties/destroy/{id}', [PropertiesController::class, 'destroy'])->name('properties.destroy');
+        
     });
 
     // Route::get('properties/delete/{id}', [PropertiesController::class, 'destroy'])->name('organization.destroy');
