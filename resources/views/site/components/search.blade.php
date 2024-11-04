@@ -1,10 +1,10 @@
 <!-- Sidebar -->
 
-@if (Route::is(['buy-property-list-sidebar']))
+@if (Route::is(['property-list']))
     <div class="col-xl-3 theiaStickySidebar">
         <div class="left-sidebar-widget property-sidebar">
 @endif
-@if (!Route::is(['buy-property-list-sidebar']))
+@if (!Route::is(['property-list']))
     <div class="col-xl-4 theiaStickySidebar">
         <div class="left-sidebar-widget">
 @endif
