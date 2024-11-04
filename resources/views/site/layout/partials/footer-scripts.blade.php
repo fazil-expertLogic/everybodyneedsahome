@@ -24,7 +24,7 @@
   <script src="{{ URL::asset('/assets/js/owl.carousel.min.js') }}"></script>
   @endif
 
-  @if (Route::is(['rent-property-grid-sidebar', 'rent-property-list-sidebar','buy-property-grid-sidebar','buy-property-list-sidebar']))
+  @if (Route::is(['rent-property-grid-sidebar', 'rent-property-list-sidebar','buy-property-grid-sidebar','property-list']))
       <!-- Slider Rrange  JS -->
       <script src="assets/plugins/range-slider/slider-range.js"></script>
   @endif
@@ -66,7 +66,7 @@
           'rent-property-grid-sidebar',
           'rent-property-list-sidebar',
           'buy-property-grid-sidebar',
-          'buy-property-list-sidebar',
+          'property-list',
       ]))
       <!-- Slider Rrange  JS -->
       <script src="{{ URL::asset('/assets/plugins/range-slider/slider-range.js') }}"></script>
