@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Property;
 use App\Models\Client;
 use App\Models\Membership;
+use App\Models\Amenity;
 use App\Http\Controllers\Controller;
 
 class FrontendController extends Controller
@@ -71,7 +72,9 @@ class FrontendController extends Controller
     }
     
     public function propertyDetail($id){
-        $property = Property::findOrFail($id); 
-        return view('site.buy-details',compact('property'));
+        $property = Property::findOrFail($id);
+        $propertyAmenities = json_decode($property->property_amenities, true);
+        $amenities = Amenity::whereIn('id', $propertyAmenities)->active()->get();
+        return view('site.buy-details',compact('property', 'amenities'));
     }
 }
