@@ -258,6 +258,25 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
+                                        <div class="col-sm-6 col-lg-6">
+                                            <div class="form-group  valid_property_amenities @if ($errors->has('property_amenities')) has-error has-danger @endif">
+                                                <label for="property_amenities" class="form-label">Amenities <span class="text-danger">*</span></label>
+                                                <select name="property_amenities[]" class="form-select select2-show-search" id="property_amenities" aria-label="" required data-error="Please select" multiple>
+                                                    <option value="">Please Select</option>
+                                                    @foreach ($amenities as $amenity)
+                                                        <option value="{{ $amenity->id }}" >
+                                                            {{ $amenity->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                
+                                                <div class="help-block with-errors"></div>
+                                                @if ($errors->has('property_amenities'))
+                                                    <div class="help-block with-errors">{{ $errors->first('property_amenities') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
 
                                         <div class="form-group signUpForm-step-2">
                                             <button class="btn btn-custom" type="button" onclick="previousStep1()"><span

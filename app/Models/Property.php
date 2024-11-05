@@ -42,7 +42,8 @@ class Property extends Model
         'is_feature',
         'is_new',
         'created_by',
-        'category_id'
+        'category_id',
+        'property_amenities'
     ];
     public function softDeleteRelations()
     {
