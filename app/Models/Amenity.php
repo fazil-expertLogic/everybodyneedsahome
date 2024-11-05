@@ -14,9 +14,13 @@ class Amenity extends Model
         'icon',
     ];
     
-    public function softDeleteRelations()
-    {
+    public function softDeleteRelations(){
         $this->status = 0;
         $this->save();
+    }
+    
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
     }
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\RolesController;
 use App\Http\Controllers\Dashboard\MenusController;
 use App\Http\Controllers\Dashboard\MembershipController;
+use App\Http\Controllers\Dashboard\AmenitiesController;
 
 use App\Http\Controllers\Site\CustomAuthController;
 use App\Http\Controllers\Site\FrontendController;
@@ -78,5 +79,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => ['permission:11']], function () {
         Route::resource('memberships', MembershipController::class);
+    });
+
+    Route::group(['middleware' => ['permission:15']], function () {
+        Route::resource('amenities', AmenitiesController::class);
     });
 });
