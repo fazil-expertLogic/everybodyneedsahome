@@ -18,13 +18,7 @@
                     <div class="banner-search" data-aos="fade-down">
                         <div class="banner-tab">
                             <ul class="nav nav-tabs" id="bannerTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link active" id="buy-property" data-bs-toggle="tab" href="#buy_property"
-                                        role="tab" aria-controls="buy_property" aria-selected="true">
-                                        <img src="{{ URL::asset('/assets/img/icons/buy-icon.svg') }}" alt="icon"> Buy a
-                                        Property
-                                    </a>
-                                </li>
+                               
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="rent-property" data-bs-toggle="tab" href="#rent_property"
                                         role="tab" aria-controls="rent_property" aria-selected="false">
@@ -35,8 +29,8 @@
                             </ul>
                         </div>
                         <div class="tab-content" id="bannerTabContent">
-                            <div class="tab-pane fade show active" id="buy_property" role="tabpanel"
-                                aria-labelledby="buy-property">
+                           
+                            <div class="tab-pane fade show active" id="rent_property" role="tabpanel" aria-labelledby="rent-property">
                                 <div class="banner-tab-property">
                                     <form action="#">
                                         <div class="banner-property-info">
@@ -46,38 +40,7 @@
                                             <div class="banner-property-grid">
                                                 <select class="select">
                                                     <option value="0">Property Type</option>
-                                                    <option value="1">Buy Property</option>
-                                                    <option value="2">Rent Property</option>
-                                                </select>
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <input type="email" class="form-control" placeholder="Enter Address">
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <input type="text" class="form-control" placeholder="Min Price">
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <input type="text" class="form-control" placeholder="Max Price">
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <a href="{{ url('buy-property-grid') }}" class="btn-primary"><span><i
-                                                            class='feather-search'></i></span></a>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="rent_property" role="tabpanel" aria-labelledby="rent-property">
-                                <div class="banner-tab-property">
-                                    <form action="#">
-                                        <div class="banner-property-info">
-                                            <div class="banner-property-grid">
-                                                <input type="text" class="form-control" placeholder="Enter Keyword">
-                                            </div>
-                                            <div class="banner-property-grid">
-                                                <select class="select">
-                                                    <option value="0">Property Type</option>
-                                                    <option value="1">Buy Property</option>
+                                                   
                                                     <option value="2">Rent Property</option>
                                                 </select>
                                             </div>
@@ -110,54 +73,52 @@
     <section class="howit-work">
         <div class="container">
             <div class="section-heading text-center">
-                <h2>How It Works</h2>
+                <h2>Second Chance Housing for Everyone...</h2>
                 <div class="sec-line">
                     <span class="sec-line1"></span>
                     <span class="sec-line2"></span>
                 </div>
-                <p>Follow these 3 steps to book your place</p>
+ <p>We are different than any other website offering housing for rent or even a place to stay. We are specifically focused on offering Second Chance housing for individuals who may have trouble finding traditional housing solutions. If this is you, we invite you to sign up for free and apply with our network Providers.
+</p>
+<br />
+
+<div class="price-btn">
+ <a href="https://staging.everybodyneedsahome.com/client-registration" class="btn-primary">Applicant Sign Up </a>
+</div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="howit-work-card" data-aos="fade-down" data-aos-duration="1200" data-aos-delay="100">
-                        <div class="work-card-icon">
-                            <span>
-                                <img src="{{ URL::asset('/assets/img/icons/work-icon-1.svg') }}" alt="icon">
-                            </span>
-                        </div>
-                        <h4>01. Search for Location</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis et sem sed sollicitudin.
-                            Donec non odio…</p>
+        </div>
+    </section>
+    <section class="faq-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="faq-img">
+                        <img src="{{ URL::asset('/assets/img/faq-img.jpg') }}" alt="icon">
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="howit-work-card" data-aos="fade-down" data-aos-duration="1200" data-aos-delay="200">
-                        <div class="work-card-icon">
-                            <span class="bg-red">
-                                <img src="{{ URL::asset('/assets/img/icons/work-icon-2.svg') }}" alt="icon">
-                            </span>
+                <div class="col-lg-7">
+                    <div class="section-heading" data-aos="fade-down" data-aos-duration="2000">
+                        <h2>Are you a Landlord, Management Company, or Property Owner</h2>
+                        <div class="sec-line">
+                            <span class="sec-line1"></span>
+                            <span class="sec-line2"></span>
                         </div>
-                        <h4>02. Select Property Type</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis et sem sed sollicitudin.
-                            Donec non odio…</p>
+                        <p>Who is interested in marketing your house, building, room or even a single bed to someone seeking a Second Chance? We invite you to join our growing network of those willing to offer a Second Chance to those so often forgetten or written off by most of our society. You can create a fully customizable account that matches your budget and where you can set your standards of what you are willing to accept in an Applicant.
+
+</p>
+<br />
+
+<div class="price-btn">
+ <a href="https://staging.everybodyneedsahome.com/provider-registration" class="btn-primary">Sign up to become a Second Chance Provider  </a>
+</div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="howit-work-card" data-aos="fade-down" data-aos-duration="1200" data-aos-delay="300">
-                        <div class="work-card-icon">
-                            <span class="bg-green">
-                                <img src="{{ URL::asset('/assets/img/icons/work-icon-3.svg') }}" alt="icon">
-                            </span>
-                        </div>
-                        <h4>03. Rent Your Property</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis et sem sed sollicitudin.
-                            Donec non odio…</p>
-                    </div>
+                   
+                  
+    
                 </div>
             </div>
         </div>
     </section>
-    <!-- /How It Work -->
 
     <!-- Property Type -->
     <section class="property-type-sec">
@@ -501,7 +462,7 @@
     <section class="counter-sec">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
+                <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
                     <div class="counter-box flex-fill" data-aos="fade-down" data-aos-duration="2000">
                         <div class="counter-icon">
                             <img src="{{ URL::asset('/assets/img/icons/counter-icon-1.svg') }}" alt="icon">
@@ -512,29 +473,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
+                <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
                     <div class="counter-box flex-fill" data-aos="fade-down" data-aos-duration="2000">
                         <div class="counter-icon">
                             <img src="{{ URL::asset('/assets/img/icons/counter-icon-2.svg') }}" alt="icon">
                         </div>
                         <div class="counter-value">
                             <h3 class="dash-count"><span class="counter-up">3000</span>+</h3>
-                            <h5>Agents Listed </h5>
+                            <h5>Providers Listed </h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
-                    <div class="counter-box flex-fill" data-aos="fade-down" data-aos-duration="2000">
-                        <div class="counter-icon">
-                            <img src="{{ URL::asset('/assets/img/icons/counter-icon-3.svg') }}" alt="icon">
-                        </div>
-                        <div class="counter-value">
-                            <h3 class="dash-count"><span class="counter-up">2000</span>+</h3>
-                            <h5>Sales Completed </h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
+              
+                <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
                     <div class="counter-box flex-fill" data-aos="fade-down" data-aos-duration="2000">
                         <div class="counter-icon">
                             <img src="{{ URL::asset('/assets/img/icons/counter-icon-4.svg') }}" alt="icon">
@@ -553,7 +504,7 @@
  
 
     <!-- Pricing -->
-    <section class="price-section">
+    <section class="price-section" style="display: none">
         <div class="container">
             <div class="pricing-tab">
                 <div class="section-heading">
@@ -813,7 +764,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="faq-img">
-                        <img src="{{ URL::asset('/assets/img/faq-img.jpg') }}" alt="icon">
+                        <img src="{{ URL::asset('/assets/img/faq-img1.jpg') }}" alt="icon">
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -893,32 +844,7 @@
     <!-- /Faq -->
 
     <!-- Agent Register -->
-    <section class="agent-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <div class="section-heading" data-aos="fade-down" data-aos-duration="2000">
-                        <h2>Become a Real Estate Agent</h2>
-                        <div class="sec-line">
-                            <span class="sec-line1"></span>
-                            <span class="sec-line2"></span>
-                        </div>
-                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-                            magni dolores eos qui ratione voluptatem sequi nesciunt</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="register-btn" data-aos="fade-down" data-aos-duration="2000">
-                        <a href="{{ url('register') }}" class="btn-primary">Register Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="bg-imgs">
-            <img src="{{ URL::asset('/assets/img/icons/blue-circle.svg') }}" class="bg-06" alt="icon">
-            <img src="{{ URL::asset('/assets/img/icons/red-circle.svg') }}" class="bg-07" alt="icon">
-        </div>
-    </section>
+  
     <!-- /Agent Register -->
 
     <!-- Latest Blog -->
