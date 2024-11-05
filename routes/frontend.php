@@ -31,7 +31,12 @@ Route::get('/', [FrontendController::class, 'home'])->name('index');
 Route::get('buy-property-grid', [FrontendController::class, 'buyPropertyGrid'])->name('buy_property_grid');
 Route::get('pricing', [FrontendController::class, 'pricing'])->name('pricing');
 Route::get('property-list', [FrontendController::class, 'propertyList'])->name('property-list');
+Route::get('property-detail/{id}', [FrontendController::class, 'propertyDetail'])->name('property-detail');
 
+
+// Route::get('property-detail/{id}', function ($id) {
+//     return view('site.buy-details');
+// })->name('buy-details');
 
 Route::get('/login', function () {
     return view('site.login');
@@ -120,10 +125,6 @@ Route::get('/buy-grid-map', function () {
 Route::get('/buy-list-map', function () {
     return view('site.buy-list-map');
 })->name('buy-list-map');
-
-Route::get('/buy-details', function () {
-    return view('site.buy-details');
-})->name('buy-details');
 
 Route::get('/agent-grid', function () {
     return view('site.agent-grid');

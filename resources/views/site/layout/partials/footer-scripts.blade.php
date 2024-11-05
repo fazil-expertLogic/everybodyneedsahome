@@ -7,7 +7,7 @@
   <!-- Feather Icon JS -->
   <script src="{{ URL::asset('/assets/js/feather.min.js') }}"></script>
 
-  @if (Route::is(['index', 'rent-property-grid-sidebar', 'rent-property-list-sidebar', 'rent-details','buy-details','blog-details']))
+  @if (Route::is(['index','property-detail', 'rent-property-grid-sidebar', 'rent-property-list-sidebar', 'rent-details','buy-details','blog-details']))
       <!-- Owl Carousel JS -->
       <script src="{{ URL::asset('/assets/js/owl.carousel.min.js') }}"></script>
   @endif
@@ -26,19 +26,19 @@
 
   @if (Route::is(['rent-property-grid-sidebar', 'rent-property-list-sidebar','buy-property-grid-sidebar','property-list']))
       <!-- Slider Rrange  JS -->
-      <script src="assets/plugins/range-slider/slider-range.js"></script>
+      <script src="{{URL::asset('/assets/plugins/range-slider/slider-range.js')}}"></script>
   @endif
 
   <!-- Sticky Sidebar JS -->
-  <script src="assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
-  <script src="assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+  <script src="{{URL::asset('/assets/plugins/theia-sticky-sidebar/ResizeSensor.js')}}"></script>
+  <script src="{{URL::asset('/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js')}}"></script>
 
-  @if (Route::is(['rent-details','buy-details','buy-detail-view']))
+  @if (Route::is(['rent-details','buy-details','buy-detail-view','property-detail']))
       <!-- Slick JS -->
-      <script src="assets/plugins/slick/slick.js"></script>
+      <script src="{{URL::asset('assets/plugins/slick/slick.js')}}"></script>
 
       <!-- Fancybox JS -->
-      <script src="assets/plugins/fancybox/jquery.fancybox.min.js"></script>
+      <script src="{{URL::asset('/assets/plugins/fancybox/jquery.fancybox.min.js')}}"></script>
     @endif
   @if (Route::is([
           'index',
@@ -76,7 +76,7 @@
   <script src="{{ URL::asset('/assets/plugins/theia-sticky-sidebar/ResizeSensor.js') }}"></script>
   <script src="{{ URL::asset('/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
 
-  @if (Route::is(['rent-details', 'buy-details', 'gallery']))
+  @if (Route::is(['rent-details', 'buy-details', 'gallery','property-detail']))
       <!-- Slick JS -->
       <script src="{{ URL::asset('/assets/plugins/slick/slick.js') }}"></script>
 

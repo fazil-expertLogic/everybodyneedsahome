@@ -23,32 +23,22 @@
                         <div class="rental-card">
                             <div class="slider rental-slider">
                                 <div class="product-img">
-                                    <img src="{{ URL::asset('/assets/img/rent/rent-detail-01.jpg') }}" alt="Slider">
+                                    <img src="{{ asset('storage/' . $property->main_picture) }}" alt="Slider">
                                 </div>
+                                @foreach ( json_decode($property->more_pictures) as $more_picture)
                                 <div class="product-img">
-                                    <img src="{{ URL::asset('/assets/img/rent/rent-detail-02.jpg') }}" alt="Slider">
+                                    <img src="{{ asset('storage/' . $more_picture) }}" alt="Slider">
                                 </div>
-                                <div class="product-img">
-                                    <img src="{{ URL::asset('/assets/img/rent/rent-detail-03.jpg') }}" alt="Slider">
-                                </div>
-                                <div class="product-img">
-                                    <img src="{{ URL::asset('/assets/img/rent/rent-detail-04.jpg') }}" alt="Slider">
-                                </div>
-                                <div class="product-img">
-                                    <img src="{{ URL::asset('/assets/img/rent/rent-detail-05.jpg') }}" alt="Slider">
-                                </div>
+                                @endforeach
+                                
                             </div>
                             <div class="slider slider-nav-thumbnails">
-                                <div><img src="{{ URL::asset('/assets/img/rent/rent-detail-01.jpg') }}" alt="product image">
+                                <div><img src="{{ asset('storage/' . $property->main_picture) }}" alt="product image">
                                 </div>
-                                <div><img src="{{ URL::asset('/assets/img/rent/rent-detail-02.jpg') }}" alt="product image">
-                                </div>
-                                <div><img src="{{ URL::asset('/assets/img/rent/rent-detail-03.jpg') }}" alt="product image">
-                                </div>
-                                <div><img src="{{ URL::asset('/assets/img/rent/rent-detail-04.jpg') }}" alt="product image">
-                                </div>
-                                <div><img src="{{ URL::asset('/assets/img/rent/rent-detail-05.jpg') }}" alt="product image">
-                                </div>
+                                @foreach ( json_decode($property->more_pictures) as $more_picture)
+                                <div><img src="{{ asset('storage/' . $more_picture) }}" alt="product image">
+                                </div>    
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -64,11 +54,11 @@
                             <ul class="property-overview  collapse-view">
                                 <li>
                                     <img src="{{ URL::asset('/assets/img/icons/bed-icon.svg') }}" alt="Image">
-                                    <p>4 Beds</p>
+                                    <p>{{ $property->number_of_bedrooms_house }} Beds</p>
                                 </li>
                                 <li>
                                     <img src="{{ URL::asset('/assets/img/icons/bath-icon.svg') }}" alt="Image">
-                                    <p>4 Baths</p>
+                                    <p>{{ $property->number_of_bath_house }} Baths</p>
                                 </li>
                                 <li>
                                     <img src="{{ URL::asset('/assets/img/icons/building-icon.svg') }}" alt="Image">
@@ -95,17 +85,7 @@
                         </h4>
                         <div id="about" class="card-collapse collapse show">
                             <div class="about-agent collapse-view">
-                                <p> Good road frontage on a paved county road with utilities make it an amazing setting for
-                                    your dream country getaway! If you like views, you must see this property!, </p>
-                                <p>This property is mostly wooded and sits high on a hilltop overlooking the Mohawk River
-                                    Valley. Located right in the heart of Upstate NYs Amish farm Country, this land is
-                                    certified organic making it extremely rare! Good road frontage on a paved county road
-                                    with utilities make it an amazing setting for your dream country getaway! If you like
-                                    views, you must see this property!This property is mostly wooded and sits high on a
-                                    hilltop overlooking the Mohawk River Valley. Located right in the heart of Upstate NYs
-                                    Amish farm Country, this land is certified organic making it extremely rare! Good road
-                                    frontage on a paved county road with utilities make it an amazing setting for your dream
-                                    country getaway! If you like views, you must see this property!</p>
+                               {{ $property->property_description }}
                             </div>
                         </div>
                     </div>
@@ -119,11 +99,11 @@
                         </h4>
                         <div id="address" class="card-collapse collapse show">
                             <ul class="property-address  collapse-view">
-                                <li>Address : <span> Ferris Park</span></li>
-                                <li>City : <span> Jersey City </span></li>
-                                <li>State/County : <span> New Jersey State</span></li>
+                                <li>Address : <span> {{ $property->property_address }}</span></li>
+                                <li>City : <span> {{ $property->city }} </span></li>
+                                <li>State/County : <span> {{ $property->state }}</span></li>
                                 <li>Country : <span> United States</span></li>
-                                <li>Zip : <span> 07305</span></li>
+                                <li>Zip : <span> {{ $property->zipcode }}</span></li>
                                 <li>Area : <span> Greenville</span></li>
                             </ul>
                         </div>
@@ -171,6 +151,7 @@
                     <!-- /Property Details -->
 
                     <!-- Amenities -->
+                    @if($amenities)
                     <div class="collapse-card">
                         <h4 class="card-title">
                             <a class="collapsed" data-bs-toggle="collapse" href="#amenities"
@@ -180,47 +161,22 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <ul class="amenities-list">
-                                        <li><img src="{{ URL::asset('/assets/img/icons/amenities-icon-1.svg') }}"
-                                                alt="Image">Air Conditioning</li>
-                                        <li><img src="{{ URL::asset('/assets/img/icons/amenities-icon-2.svg') }}"
-                                                alt="Image">Swimming Pools</li>
-                                        <li><img src="{{ URL::asset('/assets/img/icons/amenities-icon-3.svg') }}"
-                                                alt="Image">Sporting Facilities</li>
-                                        <li><img src="{{ URL::asset('/assets/img/icons/amenities-icon-4.svg') }}"
-                                                alt="Image">Gym</li>
-                                        <li><img src="{{ URL::asset('/assets/img/icons/amenities-icon-5.svg') }}"
-                                                alt="Image">Clubhouse</li>
+                                        @foreach ($amenities as $amenity)
+                                           
+                                        <li><img src="{{ URL::asset($amenity->icon) }}"
+                                            alt="Image">{{$amenity->name}}</li>
+                                        @endforeach
                                     </ul>
                                 </div>
-                                <div class="col-md-4">
-                                    <ul class="amenities-list">
-                                        <li><img src="{{ URL::asset('/assets/img/icons/amenities-icon-6.svg') }}"
-                                                alt="Image">Landscaped Gardens</li>
-                                        <li><img src="{{ URL::asset('/assets/img/icons/amenities-icon-7.svg') }}"
-                                                alt="Image">Wide-Open Spaces</li>
-                                        <li><img src="{{ URL::asset('/assets/img/icons/amenities-icon-8.svg') }}"
-                                                alt="Image">Parks </li>
-                                        <li><img src="{{ URL::asset('/assets/img/icons/amenities-icon-9.svg') }}"
-                                                alt="Image">Package Lockers</li>
-                                        <li><img src="{{ URL::asset('/assets/img/icons/amenities-icon-10.svg') }}"
-                                                alt="Image">Spa</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <ul class="amenities-list">
-                                        <li><img src="{{ URL::asset('/assets/img/icons/amenities-icon-11.svg') }}"
-                                                alt="Image">Surveillance Cameras</li>
-                                        <li><img src="{{ URL::asset('/assets/img/icons/amenities-icon-12.svg') }}"
-                                                alt="Image">Billiards Table</li>
-                                    </ul>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
+                    @endif
                     <!-- /Amenities -->
 
                     <!-- Documents -->
-                    <div class="collapse-card">
+                    {{-- <div class="collapse-card">
                         <h4 class="card-title">
                             <a class="collapsed" data-bs-toggle="collapse" href="#Documents"
                                 aria-expanded="false">Documents</a>
@@ -237,11 +193,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- /Documents -->
 
                     <!-- Video -->
-                    <div class="collapse-card">
+                    {{-- <div class="collapse-card">
                         <h4 class="card-title">
                             <a class="collapsed" data-bs-toggle="collapse" href="#video"
                                 aria-expanded="false">Video</a>
@@ -253,11 +209,11 @@
                                         class="bx bx-play"></i></a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- /Video -->
 
                     <!-- Map -->
-                    <div class="collapse-card">
+                    {{-- <div class="collapse-card">
                         <h4 class="card-title">
                             <a class="collapsed" data-bs-toggle="collapse" href="#map" aria-expanded="false">Map</a>
                         </h4>
@@ -269,11 +225,11 @@
                                     referrerpolicy="no-referrer-when-downgrade" class="contact-map"></iframe>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- /Map -->
 
                     <!-- Floor Plan -->
-                    <div class="collapse-card sidebar-card">
+                    {{-- <div class="collapse-card sidebar-card">
                         <h4 class="card-title">
                             <a class="collapsed" data-bs-toggle="collapse" href="#FloorPlan" aria-expanded="false">Floor
                                 Plan</a>
@@ -338,7 +294,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- /Floor Plan -->
 
                     <!-- Reviews -->
@@ -577,7 +533,7 @@
                         <!-- /Mortarage Calculator -->
 
                         <!-- Slider -->
-                        <div class="sidebar-img-slider owl-carousel">
+                        {{-- <div class="sidebar-img-slider owl-carousel">
                             <div class="slide-img-card">
                                 <div class="slide-img">
                                     <img src="{{ URL::asset('/assets/img/sidebar-slide.jpg') }}" alt="Image">
@@ -626,8 +582,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- /Slider -->
+                        </div> --}}
+                        <!-- /Slider -->                       
 
                     </div>
                 </div>
@@ -636,7 +592,7 @@
             </div>
 
             <!-- Similar Listings -->
-            <div class="similar-list">
+            {{-- <div class="similar-list">
                 <div class="section-heading">
                     <h2>Similar Listings</h2>
                     <div class="sec-line">
@@ -1032,7 +988,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- /Similar Listings -->
 
         </div>

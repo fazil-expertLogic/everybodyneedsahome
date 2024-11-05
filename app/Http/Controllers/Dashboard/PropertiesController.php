@@ -13,6 +13,7 @@ use App\Helpers\Helper;
 use App\Models\User;
 use App\Models\Property;
 use App\Models\Category;
+use App\Models\Amenity;
 
 class PropertiesController extends Controller
 {
@@ -60,7 +61,8 @@ class PropertiesController extends Controller
     public function add()
     {
         $categories = Category::get();
-        return view('livewire.properties.add', compact('categories'));
+        $amenities = Amenity::active()->get();
+        return view('livewire.properties.add', compact('categories','amenities'));
     }
 
     public function store(Request $request)
@@ -122,7 +124,7 @@ class PropertiesController extends Controller
             }
 
             // Create the property record
-            Property::create([
+            $data = [
                 'property_name' => $request->property_name,
                 'property_description' => $request->property_description,
                 'property_address' => $request->property_address,
@@ -156,7 +158,14 @@ class PropertiesController extends Controller
                 'created_by' => Auth::user()->id,
                 'main_picture' => $mainPicturePath,
                 'more_pictures' => json_encode($morePictures), // Store as JSON if necessary
-            ]);
+            ];
+            
+            // Conditionally add 'property_amenities' if it exists in the request
+            if ($request->has('property_amenities')) {
+                $data['property_amenities'] = json_encode($request->property_amenities);
+            }
+            // Now create the property with the assembled data
+            Property::create($data);            
             DB::commit(); // Commit the transaction if everything works
 
             return redirect()->route('properties.index')->with('success', 'Property updated successfully.');
@@ -181,7 +190,8 @@ class PropertiesController extends Controller
     {
         $categories = Category::get();
         $property = Property::findOrFail($id); // Fetch property by ID
-        return view('livewire.properties.edit', compact('property', 'categories')); // Return edit view
+        $amenities = Amenity::active()->get();
+        return view('livewire.properties.edit', compact('property', 'categories','amenities')); // Return edit view
     }
     public function destroy($id)
     {
@@ -296,6 +306,12 @@ class PropertiesController extends Controller
             if ($request->file('more_picture')) {
                 $property->update([
                     'more_pictures' => json_encode($morePictures),
+                ]);
+            }
+
+            if ($request->Has('property_amenities')) {
+                $property->update([
+                    'property_amenities' => json_encode($request->property_amenities),
                 ]);
             }
             DB::commit(); // Commit the transaction if everything works
