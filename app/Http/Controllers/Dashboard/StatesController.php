@@ -1,8 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use App\Models\State;
+use App\Helpers\Helper;
 
 class StatesController extends Controller
 {
@@ -11,9 +16,28 @@ class StatesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $allow_show = Helper::check_rights(16)->is_show;
+        $allow_create = Helper::check_rights(16)->is_create;
+        $allow_edit = Helper::check_rights(16)->is_edit;
+        $allow_delete = Helper::check_rights(16)->is_delete;
+
+        $query = State::query();
+                
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+
+        if ($request->filled('search')) {
+            $query->where(function($subquery) use ($request) {
+                $subquery->where('name', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        $states = $query->active()->paginate(10);
+
+        return view('livewire.states.index', compact('states','allow_show','allow_create','allow_edit','allow_delete'));
     }
 
     /**
@@ -23,7 +47,7 @@ class StatesController extends Controller
      */
     public function create()
     {
-        //
+        return view('livewire.states.add');
     }
 
     /**
@@ -34,7 +58,24 @@ class StatesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|string|max:255'
+            ]);
+            if ($validator->fails()) {
+                return response()->json($validator->errors(), 422);
+            }
+            DB::beginTransaction();
+            State::create([
+                'name' =>  $request->name
+            ]);
+            DB::commit();
+            return redirect()->route('states.index')->with('success', 'State create successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'An error occurred while updating the State. Please try again.']);
+        }
     }
 
     /**
@@ -45,7 +86,8 @@ class StatesController extends Controller
      */
     public function show($id)
     {
-        //
+        $state = State::findOrFail($id);
+        return view('livewire.states.show', compact('state'));
     }
 
     /**
@@ -56,7 +98,8 @@ class StatesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $state = State::findOrFail($id);
+        return view('livewire.states.edit', compact('state'));
     }
 
     /**
@@ -68,7 +111,25 @@ class StatesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|string|max:255',
+            ]);
+            if ($validator->fails()) {
+                return response()->json($validator->errors(), 422);
+            }
+            DB::beginTransaction();
+            $state = State::findOrFail($id);
+            $state->update([
+                'name' =>  $request->name,
+            ]);
+            DB::commit();
+            return redirect()->route('states.index')->with('success', 'State create successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'An error occurred while updating the State. Please try again.']);
+        }
     }
 
     /**
@@ -79,6 +140,8 @@ class StatesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $state = State::findOrFail($id);
+        $state->softDeleteRelations();
+        return redirect()->route('states.index')->with('success', 'user have been soft deleted successfully');
     }
 }
