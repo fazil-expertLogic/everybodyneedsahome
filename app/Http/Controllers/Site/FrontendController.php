@@ -69,4 +69,9 @@ class FrontendController extends Controller
 
         return response()->json(['properties' => $properties]);
     }
+    
+    public function propertyDetail($id){
+        $property = Property::findOrFail($id); 
+        return view('site.buy-details',compact('property'));
+    }
 }
