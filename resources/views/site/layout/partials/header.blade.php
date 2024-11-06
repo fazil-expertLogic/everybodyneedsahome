@@ -12,6 +12,8 @@
 'error-404',
 'error-500',
 'maintenance',
+'clients.client_registration',
+'providers.provider_registration'
 ]))
 
 <!-- Header -->
@@ -145,6 +147,8 @@
 'error-404',
 'error-500',
 'maintenance',
+'clients.client_registration',
+'providers.provider_registration'
 ]))
 <!-- Header -->
 <header class="log-header">
