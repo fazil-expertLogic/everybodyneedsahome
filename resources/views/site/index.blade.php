@@ -764,7 +764,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="faq-img">
-                        <img src="{{ URL::asset('/assets/img/faq-img1.jpg') }}" alt="icon">
+                        <img src="{{ URL::asset('/assets/img/faq-img.jpg') }}" alt="icon">
                     </div>
                 </div>
                 <div class="col-lg-8">
