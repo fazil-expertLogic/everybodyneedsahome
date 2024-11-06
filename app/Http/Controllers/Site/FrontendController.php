@@ -80,8 +80,12 @@ class FrontendController extends Controller
     public function propertyDetail($id)
     {
         $property = Property::findOrFail($id);
-        $propertyAmenities = json_decode($property->property_amenities, true);
-        $amenities = Amenity::whereIn('id', $propertyAmenities)->active()->get();
+        if($property->property_amenities){
+            $propertyAmenities = json_decode($property->property_amenities, true);
+            $amenities = Amenity::whereIn('id', $propertyAmenities)->active()->get();
+        }else{
+            $amenities = null;
+        }
         $propertyReviewes = PropertyReview::where('property_id', $id)->active()->get();
         return view('site.buy-details', compact('property', 'amenities','propertyReviewes'));
     }

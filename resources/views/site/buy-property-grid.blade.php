@@ -70,7 +70,7 @@
                                         <p class="rating-review"><span>5.0</span>(20 Reviews)</p>
                                     </div> --}}
                                     <h3 class="title">
-                                        <a href="{{ url('buy-details') }}" tabindex="-1">{{$property->property_name}}</a>
+                                        <a href="{{ url('property-detail/'. $property->id) }}" tabindex="-1">{{$property->property_name}}</a>
                                     </h3>
                                     <p><i class="feather-map-pin"></i>{{$property->property_address}}</p>
                                     <ul class="d-flex details">

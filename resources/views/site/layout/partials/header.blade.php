@@ -41,19 +41,20 @@
                     <i class="fas fa-times"></i>
                 </a>
             </div>
-            <ul class="main-nav">
+            <ul class="main-nav" style="margin-left: 150px;">
                 <li class="{{ Request::is('index', '/') ? 'active' : '' }}">
                     <a href="{{ url('/') }}">Home</a>
                 </li>
+                <li><a href="{{ route('buy_property_grid') }}"
+                    class="{{ Request::is('buy-property-grid') ? 'active' : '' }}">Properties</a></li>
                 <li><a href="{{ url('about-us') }}"
                         class="{{ Request::is('about-us') ? 'active' : '' }}">About Us</a></li>
-                        <li><a href="{{ route('buy_property_grid') }}"
-                            class="{{ Request::is('buy-property-grid') ? 'active' : '' }}">Properties</a></li>
-                            {{-- <li><a href="{{ route('pricing') }}"
-                                class="{{ Request::is('pricing') ? 'active' : '' }}">Pricing</a></li> --}}
-                <li><a href="{{ url('#') }}"
+                        
+                {{-- <li><a href="{{ route('pricing') }}"
+                    class="{{ Request::is('pricing') ? 'active' : '' }}">Pricing</a></li> --}}
+                {{-- <li><a href="{{ url('#') }}"
                         class="{{ Request::is('buy-details') ? 'active' : '' }}">Rent Property</a>
-                </li>
+                </li> --}}
                
                 <li class="{{ Request::is('contact-us') ? 'active' : '' }}"><a
                         href="{{ url('contact-us') }}">Contact Us</a></li>
