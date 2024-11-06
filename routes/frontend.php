@@ -33,6 +33,8 @@ Route::get('pricing', [FrontendController::class, 'pricing'])->name('pricing');
 Route::get('property-list', [FrontendController::class, 'propertyList'])->name('property-list');
 Route::get('property-detail/{id}', [FrontendController::class, 'propertyDetail'])->name('property-detail');
 Route::post('property-reviews', [FrontendController::class, 'propertyReviews'])->name('property_reviews');
+// sendEmail
+Route::get('contact-us-send-email', [FrontendController::class, 'contactUsSendEmail'])->name('contactUsSendEmail');
 
 
 

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactUsMail;
 use App\Models\Category;
 use App\Models\Property;
 use App\Models\Membership;
@@ -113,4 +115,17 @@ class FrontendController extends Controller
             return redirect()->back()->withErrors(['error' => 'An error occurred while updating the property. Please try again.']);
         }
     }
+
+
+    public function contactUsSendEmail()
+    {
+        $data = [
+            'name' => 'Test',
+            'message' => 'Thank you for contact Us. We had recived your Email'
+        ];
+        Mail::to('fazil@expertlogicsol.com')->send(new ContactUsMail($data));
+
+        return "Email sent successfully!";
+    }
+    
 }

@@ -1,7 +1,7 @@
 <?php $page = 'contact-us'; ?>
 @extends('site.layout.mainlayout')
 @section('content')
-    @component('components.breadcrumb')
+    @component('site.components.breadcrumb')
         @slot('title')
             Contact Us
         @endslot

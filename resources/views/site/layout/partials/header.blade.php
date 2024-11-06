@@ -56,7 +56,7 @@
                 </li>
                
                 <li class="{{ Request::is('contact-us') ? 'active' : '' }}"><a
-                        href="{{ url('#') }}">Contact Us</a></li>
+                        href="{{ url('contact-us') }}">Contact Us</a></li>
                 <!-- <li class="searchbar">
                     <a href="javascript:void(0);">
                         <img src="{{ URL::asset('/assets/img/icons/search-icon.svg') }}" alt="img">
