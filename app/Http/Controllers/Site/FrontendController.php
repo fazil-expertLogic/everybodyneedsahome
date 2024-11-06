@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Property;
-use App\Models\Client;
 use App\Models\Membership;
 use App\Models\Amenity;
-use App\Http\Controllers\Controller;
+use App\Models\PropertyReview;
+
 
 class FrontendController extends Controller
 {
@@ -70,11 +73,44 @@ class FrontendController extends Controller
 
         return response()->json(['properties' => $properties]);
     }
-    
-    public function propertyDetail($id){
+
+    public function propertyDetail($id)
+    {
         $property = Property::findOrFail($id);
         $propertyAmenities = json_decode($property->property_amenities, true);
         $amenities = Amenity::whereIn('id', $propertyAmenities)->active()->get();
-        return view('site.buy-details',compact('property', 'amenities'));
+        $propertyReviewes = PropertyReview::where('property_id', $id)->active()->get();
+        return view('site.buy-details', compact('property', 'amenities','propertyReviewes'));
+    }
+
+    public function propertyReviews(Request $request)
+    {
+        // Validate the incoming request data
+        $validator = Validator::make($request->all(), [
+            'reviewer_name' => 'required|string|max:255',
+            'reviewer_email' => 'required|email|max:255',
+            'comment' => 'required|string',
+            'rating' => 'required|integer|min:1|max:5',
+        ]);
+        if ($validator->fails()) {
+            dd($validator->errors());
+            return response()->json($validator->errors(), 422);
+        }
+        DB::beginTransaction();
+        try {
+            PropertyReview::create([
+                'reviewer_name' => $request['reviewer_name'],
+                'reviewer_email' => $request['reviewer_email'],
+                'comment' => $request['comment'],
+                'rating' => $request['rating'],
+                'property_id'  => $request['property_id'],
+            ]);
+            DB::commit();
+            return redirect()->back()->with('success', 'Review submitted successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack(); // Rollback if any operation fails
+            dd($e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'An error occurred while updating the property. Please try again.']);
+        }
     }
 }
