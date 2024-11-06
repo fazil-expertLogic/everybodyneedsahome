@@ -150,7 +150,9 @@ class FrontendController extends Controller
             // Email
             $data = [
                 'name' => $request->name,
-                'message' => 'Thank you for contact Us. We had recived your Email'
+                'email' => $request->email,
+                // 'message' => '<h1>Thank You for Contacting Us</h1><p>We have received your email. One of our representatives will get back to you shortly.</p><p>Thank you for reaching out!</p>'
+                'message' => ''
             ];
             Mail::to($request->email)->send(new ContactUsMail($data));
             DB::commit();
