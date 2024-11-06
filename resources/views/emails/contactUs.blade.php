@@ -12,7 +12,7 @@
                         <div id="m_2264454269624268795wrapper" dir="ltr"
                             style="margin:0 auto;padding:10px 0;width:100%;max-width:600px" width="100%">
                             <a href="" class="logo"><img
-                                    src="{{ asset('build/assets/img/brand-logos/email-logo.png') }}"></a>
+                                    src="{{ URL::asset('/assets/img/login-logo.svg') }}"></a>
                             <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
                                 <tbody>
                                     <tr>
