@@ -14,18 +14,29 @@ class PropertyReview extends Model
         'reviewer_email',
         'comment',
         'rating',
-        'status'
+        'status',
+        'approved'
     ];
 
-    /**
-     * Relationship to the Property model
-     */
+    
     public function property()
     {
-        return $this->belongsTo(Property::class);
+        return $this->belongsTo(Property::class)->where('status', 1);
     }
+
     public function scopeActive($query)
     {
         return $query->where('status', 1);
+    }
+
+    public function scopeApproved($query)
+    {
+        return $query->where('approved', 1);
+    }
+
+    public function softDeleteRelations()
+    {
+        $this->status = 0;
+        $this->save();
     }
 }

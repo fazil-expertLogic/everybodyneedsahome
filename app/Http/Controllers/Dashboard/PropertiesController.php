@@ -52,7 +52,11 @@ class PropertiesController extends Controller
         }
 
         // Pagination
-        $properties = $query->active()->paginate(10);
+        if(Auth::user()->role->name == 'Provider'){
+            $properties = $query->active()->byUser()->paginate(10);
+        }else{
+            $properties = $query->active()->paginate(10);
+        }
 
         // Return the view with properties
         return view('livewire.properties.index', compact('properties', 'allow_show', 'allow_create', 'allow_edit', 'allow_delete'));

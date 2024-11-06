@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\Auth;
 class Property extends Model
 {
     use HasFactory;
@@ -64,5 +64,9 @@ class Property extends Model
     public function scopeFeature($query)
     {
         return $query->where('status', 1)->where('is_feature',1);
+    }
+    public function scopeByUser($query)
+    {
+        return $query->where('status', 1)->where('created_by',Auth::user()->id);
     }
 }

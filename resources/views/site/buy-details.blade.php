@@ -299,7 +299,8 @@
 
                     <!-- Reviews -->
                     <div class="collapse-card sidebar-card">
-                        @if($propertyReviewes->count() < 0)
+                        
+                        @if($propertyReviewes->count() > 0)
                         <h4 class="card-title">
                             <a class="collapsed" data-bs-toggle="collapse" href="#review" aria-expanded="false">Reviews
                                 ({{$propertyReviewes->count() ?? 0}})</a>

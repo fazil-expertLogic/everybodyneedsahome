@@ -14,6 +14,7 @@ use App\Http\Controllers\Dashboard\MenusController;
 use App\Http\Controllers\Dashboard\MembershipController;
 use App\Http\Controllers\Dashboard\AmenitiesController;
 use App\Http\Controllers\Dashboard\StatesController;
+use App\Http\Controllers\Dashboard\PropertyReviewController;
 
 use App\Http\Controllers\Site\CustomAuthController;
 use App\Http\Controllers\Site\FrontendController;
@@ -88,5 +89,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => ['permission:15']], function () {
         Route::resource('states', StatesController::class);
+    });
+
+    Route::group(['middleware' => ['permission:15']], function () {
+        Route::resource('states', StatesController::class);
+    });
+
+    Route::group(['middleware' => ['permission:15']], function () {
+        Route::resource('propertyReview', PropertyReviewController::class);
     });
 });
