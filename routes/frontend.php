@@ -34,7 +34,8 @@ Route::get('property-list', [FrontendController::class, 'propertyList'])->name('
 Route::get('property-detail/{id}', [FrontendController::class, 'propertyDetail'])->name('property-detail');
 Route::post('property-reviews', [FrontendController::class, 'propertyReviews'])->name('property_reviews');
 // sendEmail
-Route::get('contact-us-send-email', [FrontendController::class, 'contactUsSendEmail'])->name('contactUsSendEmail');
+Route::get('contact-us',[FrontendController::class, 'contactUs'])->name('contactUs');
+Route::post('contact-us-send-email', [FrontendController::class, 'contactUsSendEmail'])->name('contactUsSendEmail');
 
 
 
@@ -58,9 +59,9 @@ Route::get('/register', function () {
     return view('site.register');
 })->name('register');
 
-Route::get('/contact-us', function () {
-    return view('site.contact-us');
-})->name('contact-us');
+// Route::get('/contact-us', function () {
+//     return view('site.contact-us');
+// })->name('contact-us');
 
 
 

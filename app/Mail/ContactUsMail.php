@@ -28,7 +28,8 @@ class ContactUsMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Contact Us Mail')
+        return $this->from('fazil@expertlogicsol.com')
+                    ->subject('Contact Us Mail')
                     ->view('emails.contactUs') // Create this view in resources/views/emails/example.blade.php
                     ->with('data', $this->data); // Pass data to the view
     }
