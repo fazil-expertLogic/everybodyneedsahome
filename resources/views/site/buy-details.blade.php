@@ -351,7 +351,8 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="review-form">
-                                                    <input type="number" name="rating" placeholder="Rating (1-5)" required min="1" max="5">
+                                                    <input type="number" name="rating" placeholder="Rating (1-5)" required min="1" max="5" step="1" 
+                                                    oninput="if (this.value > 5) this.value = 5; else if (this.value < 1) this.value = 1;">
                                                 </div>
                                             </div>
                                             
