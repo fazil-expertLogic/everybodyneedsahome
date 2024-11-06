@@ -28,7 +28,7 @@ Buy Property List With Sidebar
                 <div class="col-xl-9">
 
                     <div class="row justify-content-center buy-list">
-
+                        
                         <!-- Buy List -->
                         @foreach ($properties as $property)
                         <div class="col-lg-12">
@@ -117,26 +117,45 @@ Buy Property List With Sidebar
                         <!-- Pagination -->
                         <div class="grid-pagination">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item prev">
-                                    <a class="page-link" href="javascript:void(0);"><i
-                                            class="fa-solid fa-arrow-left"></i> Prev</a>
+                                @if ($properties->onFirstPage())
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="javascript:void(0);" tabindex="-1">
+                                        <i class="fa fa-angle-left"></i>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
                                 </li>
+                                @else
                                 <li class="page-item">
-                                    <a class="page-link" href="javascript:void(0);">1</a>
+                                    <a class="page-link" href="{{ $properties->previousPageUrl() }}">
+                                        <i class="fa fa-angle-left"></i>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
                                 </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="javascript:void(0);">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="javascript:void(0);">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="javascript:void(0);">4</a>
-                                </li>
-                                <li class="page-item next">
-                                    <a class="page-link" href="javascript:void(0);">Next <i
-                                            class="fa-solid fa-arrow-right"></i></a>
-                                </li>
+                                @endif
+
+                                {{-- Page Links --}}
+                                @for ($i = 1; $i <= $properties->lastPage(); $i++)
+                                    <li class="page-item {{ ($properties->currentPage() == $i) ? 'active' : '' }}">
+                                        <a class="page-link" href="{{ $properties->url($i) }}">{{ $i }}</a>
+                                    </li>
+                                    @endfor
+
+                                    {{-- Next Button --}}
+                                    @if ($properties->hasMorePages())
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $properties->nextPageUrl() }}">
+                                            <i class="fa fa-angle-right"></i>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                    @else
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="javascript:void(0);">
+                                            <i class="fa fa-angle-right"></i>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                    @endif
                             </ul>
                         </div>
                         <!-- /Pagination -->
