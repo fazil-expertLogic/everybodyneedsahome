@@ -84,7 +84,7 @@ class FrontendController extends Controller
         }else{
             $amenities = null;
         }
-        $propertyReviewes = PropertyReview::where('property_id', $id)->active()->get();
+        $propertyReviewes = PropertyReview::where('property_id', $id)->active()->approved()->get();
         return view('site.buy-details', compact('property', 'amenities','propertyReviewes'));
     }
 
