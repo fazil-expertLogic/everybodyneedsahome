@@ -2,13 +2,13 @@
 <div class="showing-result-head">
     <div class="row align-items-center">
         <div class="col-lg-3">
-            <div class="result-show">
+            {{-- <div class="result-show">
                 <h5>Showing result <span>06</span> of <span>125</span></h5>
-            </div>
+            </div> --}}
         </div>
         <div class="col-lg-9">
             <div class="sort-result">
-                <div class="sort-by grid-head">
+                {{-- <div class="sort-by grid-head">
                     <div>
                         <p>Sort By</p>
                     </div>
@@ -29,7 +29,7 @@
                             <option>High to Low</option>
                         </select>
                     </div>
-                </div>
+                </div> --}}
                 <div class="grid-list-view">
                     @if (Route::is(['buy-property-grid', 'buy-property-list', 'buy-list-map']))
                         <ul>
