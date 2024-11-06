@@ -1,7 +1,7 @@
 <?php $page = 'contact-us'; ?>
 @extends('site.layout.mainlayout')
 @section('content')
-    @component('components.breadcrumb')
+    @component('site.components.breadcrumb')
         @slot('title')
             Contact Us
         @endslot
@@ -56,7 +56,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <form action="#">
+                    <form action="{{ route('contactUsSendEmail') }}" method="post">
+                        @csrf
                         <div class="card">
                             <div class="card-header">
                                 <h3>Get In Touch</h3>
@@ -66,22 +67,22 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="form-group">
                                             <label>Your Name</label>
-                                            <input type="text" class="form-control" placeholder="Your Name">
+                                            <input type="text" name="name" class="form-control" placeholder="Your Name">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
                                             <label>Phone Number</label>
-                                            <input type="text" class="form-control" placeholder="Enter Number">
+                                            <input type="text" name="phone" class="form-control" placeholder="Enter Number">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
                                             <label>Email Address</label>
-                                            <input type="email" class="form-control" placeholder="Enter Email">
+                                            <input type="email" name="email" class="form-control" placeholder="Enter Email">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-12">
+                                    {{-- <div class="col-lg-6 col-12">
                                         <div class="form-group">
                                             <label>Country</label>
                                             <select class="select">
@@ -93,17 +94,17 @@
                                                 <option value="Qatar">Qatar</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
                                             <label>Subject</label>
-                                            <input type="text" class="form-control" placeholder="Enter Subject">
+                                            <input type="text" name="subject" class="form-control" placeholder="Enter Subject">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea class="form-control" rows="14" placeholder="Comments"></textarea>
+                                            <textarea class="form-control" name="comment" rows="14" placeholder="Comments"></textarea>
                                         </div>
                                     </div>
                                 </div>

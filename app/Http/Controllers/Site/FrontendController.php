@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactUsMail;
 use App\Models\Category;
 use App\Models\Property;
 use App\Models\Membership;
 use App\Models\Amenity;
 use App\Models\PropertyReview;
+use App\Models\ContactUs;
 
 
 class FrontendController extends Controller
@@ -77,8 +80,12 @@ class FrontendController extends Controller
     public function propertyDetail($id)
     {
         $property = Property::findOrFail($id);
-        $propertyAmenities = json_decode($property->property_amenities, true);
-        $amenities = Amenity::whereIn('id', $propertyAmenities)->active()->get();
+        if($property->property_amenities){
+            $propertyAmenities = json_decode($property->property_amenities, true);
+            $amenities = Amenity::whereIn('id', $propertyAmenities)->active()->get();
+        }else{
+            $amenities = null;
+        }
         $propertyReviewes = PropertyReview::where('property_id', $id)->active()->get();
         return view('site.buy-details', compact('property', 'amenities','propertyReviewes'));
     }
@@ -107,6 +114,50 @@ class FrontendController extends Controller
             ]);
             DB::commit();
             return redirect()->back()->with('success', 'Review submitted successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack(); // Rollback if any operation fails
+            dd($e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'An error occurred while updating the property. Please try again.']);
+        }
+    }
+
+    public function contactUs(){
+        return view('site.contact-us');
+    }   
+
+    public function contactUsSendEmail(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|string|max:255',
+            'comment' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            dd($validator->errors());
+            return response()->json($validator->errors(), 422);
+        }
+
+        DB::beginTransaction();
+        try {
+            ContactUs::create([
+                "name" => $request->name,
+                "phone" => $request->phone,
+                "email" => $request->email,
+                "subject" => $request->subject,
+                "comment" => $request->comment,
+            ]);
+            // Email
+            $data = [
+                'name' => $request->name,
+                'message' => 'Thank you for contact Us. We had recived your Email'
+            ];
+            Mail::to($request->email)->send(new ContactUsMail($data));
+            DB::commit();
+            return redirect()->back()->with('success', 'Thank you for contacting us! We have received your message.');
+            // Email
         } catch (\Exception $e) {
             DB::rollBack(); // Rollback if any operation fails
             dd($e->getMessage());

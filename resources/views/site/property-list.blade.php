@@ -35,7 +35,7 @@ Buy Property List With Sidebar
                             <div class="product-custom">
                                 <div class="profile-widget rent-list-view">
                                     <div class="doc-img">
-                                        <a href="{{ url('buy-details') }}" class="property-img">
+                                        <a href="{{  url('property-detail/'. $property->id) }}" class="property-img">
                                             <img class="img-fluid" alt="Product image"
                                                 src="{{ $property->main_picture ? asset('storage/' . $property->main_picture) : URL::asset('assets/img/product/product-1.jpg') }}">
                                         </a>

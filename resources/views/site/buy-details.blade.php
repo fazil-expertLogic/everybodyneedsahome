@@ -299,10 +299,12 @@
 
                     <!-- Reviews -->
                     <div class="collapse-card sidebar-card">
+                        @if($propertyReviewes->count() < 0)
                         <h4 class="card-title">
                             <a class="collapsed" data-bs-toggle="collapse" href="#review" aria-expanded="false">Reviews
                                 ({{$propertyReviewes->count() ?? 0}})</a>
                         </h4>
+                        @endif
                         <div id="review" class="card-collapse collapse show  collapse-view">
                             <div class="review-card">
                                 @foreach ($propertyReviewes as $propertyReview)
