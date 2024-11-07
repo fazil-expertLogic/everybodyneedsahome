@@ -41,17 +41,16 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Menu Data</h3>
+                    <h3 class="card-title">Guest Data</h3>
                 </div>
                 <div class="mb-3 text-end">
                     @if($allow_create)
-                    <a href="{{ route('memberships.create') }}" class="btn bg-primary" data-bs-toggle="tooltip" title="Add New">
-                        <span><i class="fa fa-plus"></i></span>
+                    <a href="{{ route('guests.create') }}" class="btn bg-primary ms-auto" data-bs-toggle="tooltip" title="Add New">
+                        <span><i class="fa fa-plus"></i> </span>
                     </a>
-                  
                     @endif
                 </div>
-                <form action="{{ route('memberships.index') }}" method="GET">
+                <form action="{{ route('guests.index') }}" method="GET">
                     <div class="mb-3 text-end">
                         <div class="input-group w-100">
                             <div class="col">
@@ -59,10 +58,10 @@
                             </div>
                             
                             <div class="col">
-                                <input type="text" name="price" class="form-control" placeholder="price" value="{{ request('price') }}">
+                                <input type="text" name="email" class="form-control" placeholder="email" value="{{ request('email') }}">
                             </div>
                             
-                            <input type="text" name="search" class="form-control bg-white" placeholder="Search here..." value="{{ request('search') }}">
+                            <input type="text" name="search" class="form-control" placeholder="Search here..." value="{{ request('search') }}">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </button>
@@ -74,53 +73,60 @@
                         <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p border-bottom-0">Name</th>
-                                    <th class="wd-15p border-bottom-0">price</th>
+                                    <th class="wd-15p border-bottom-0">guest Name</th>
+                                    <th class="wd-15p border-bottom-0">guest Date of birth</th>
+                                    <th class="wd-20p border-bottom-0">guest Address</th>
+                                    <th class="wd-15p border-bottom-0">City</th>
+                                    <th class="wd-10p border-bottom-0">State</th>
                                     <th class="wd-25p border-bottom-0">Created ON</th>
                                     <th class="wd-25p border-bottom-0">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ( $memberships as $membership )   
-                        
+                                @foreach ($guests as $guest)
                                 <tr>
-                                    <td>{{$membership->name}}</td>
-                                    <td>{{$membership->price}}</td>
-                                    <td>{{$membership->created_at}}</td>
+                                    <td>{{$guest->name}}</td>
+                                    <td>{{$guest->dob}}</td>
+                                    <td>{{$guest->address}}</td>
+                                    <td>{{$guest->city}}</td>
+                                    <td>{{$guest->state}}</td>
+                                    <td>{{$guest->created_at}}</td>
                                     <td>
+                                      
+
                                         @if($allow_show)
-                                        <a href="{{ route('memberships.show', $membership->id) }}" class="btn btn-warning btn-sm badge" title="Show">
+                                        <a href="{{ route('guests.show', $guest->id) }}" class="btn btn-warning  btn-sm badge" title="Show">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                         @endif
                                         @if($allow_edit)
-                                        <a href="{{ route('memberships.edit', $membership->id) }}" class="btn btn-primary btn-sm badge" title="Edit">
+                                        <a href="{{ route('guests.edit', $guest->id) }}" class="btn  btn-primary btn-sm badge" type="button" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                         @endif
                                         @if($allow_delete)
-                                        <button class="btn btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('memberships.destroy', $membership->id) }}');">
+                                        <button class="btn  btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('guests.destroy', $guest->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                         @endif
                                     </td>
+
                                 </tr>
-                                @endforeach 
+                                @endforeach
+
                             </tbody>
                         </table>
                         <!-- Pagination Links -->
                         <div class="card">
-                            <div class="card-header">
-                                <h2 class="card-title">Pagination Center Alignment</h2>
-                            </div>
+                           
                             <div class="card-body">
                                 <!-- Display total entry count -->
-                                <p>Total Entries: {{ $memberships->total() }}</p>
+                                <p>Total Entries: {{ $guests->total() }}</p>
 
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination justify-content-center mb-0">
                                         {{-- Previous Button --}}
-                                        @if ($memberships->onFirstPage())
+                                        @if ($guests->onFirstPage())
                                         <li class="page-item disabled">
                                             <a class="page-link" href="javascript:void(0);" tabindex="-1">
                                                 <i class="fa fa-angle-left"></i>
@@ -129,7 +135,7 @@
                                         </li>
                                         @else
                                         <li class="page-item">
-                                            <a class="page-link" href="{{ $memberships->previousPageUrl() }}">
+                                            <a class="page-link" href="{{ $guests->previousPageUrl() }}">
                                                 <i class="fa fa-angle-left"></i>
                                                 <span class="sr-only">Previous</span>
                                             </a>
@@ -137,16 +143,16 @@
                                         @endif
 
                                         {{-- Page Links --}}
-                                        @for ($i = 1; $i <= $memberships->lastPage(); $i++)
-                                            <li class="page-item {{ ($memberships->currentPage() == $i) ? 'active' : '' }}">
-                                                <a class="page-link" href="{{ $memberships->url($i) }}">{{ $i }}</a>
+                                        @for ($i = 1; $i <= $guests->lastPage(); $i++)
+                                            <li class="page-item {{ ($guests->currentPage() == $i) ? 'active' : '' }}">
+                                                <a class="page-link" href="{{ $guests->url($i) }}">{{ $i }}</a>
                                             </li>
                                             @endfor
 
                                             {{-- Next Button --}}
-                                            @if ($memberships->hasMorePages())
+                                            @if ($guests->hasMorePages())
                                             <li class="page-item">
-                                                <a class="page-link" href="{{ $memberships->nextPageUrl() }}">
+                                                <a class="page-link" href="{{ $guests->nextPageUrl() }}">
                                                     <i class="fa fa-angle-right"></i>
                                                     <span class="sr-only">Next</span>
                                                 </a>
