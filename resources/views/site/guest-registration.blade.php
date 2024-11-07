@@ -44,42 +44,42 @@
                                                     <div class="form-layer-step currentstep">
                                                         <div class="form-layer-step-icon activestep"><i
                                                                 class="fas fa-unlock-alt"></i></div>
-                                                        <p class="steptitle">1- Basic Information</p>
+                                                        <p class="steptitle">1- Personal Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="fas fa-user"></i>
                                                         </div>
-                                                        <p class="steptitle">2- Criminal History</p>
+                                                        <p class="steptitle">2- Contact Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="far fa-credit-card"></i>
                                                         </div>
-                                                        <p class="steptitle">3- Needs Survey</p>
+                                                        <p class="steptitle">3- Housing and Legal History</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">4- Health Insurance</p>
+                                                        <p class="steptitle">4- References and Emergency Contact</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">5- Others info</p>
+                                                        <p class="steptitle">5- Employment and Financial Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1"></div>
                                             </div>
                                         </div>
 
-                                        {{-- <h3 class="section-form-title">Basic Information</h3> --}}
+
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
@@ -374,7 +374,7 @@
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
                                                                 class="fas fa-unlock-alt"></i></div>
-                                                        <p class="steptitle">1- Basic Information</p>
+                                                        <p class="steptitle">1- Personal Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
@@ -382,35 +382,35 @@
                                                         <div class="form-layer-step-icon activestep"><i
                                                                 class="fas fa-user"></i>
                                                         </div>
-                                                        <p class="steptitle">2- Criminal History</p>
+                                                        <p class="steptitle">2- Contact Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i
                                                                 class="far fa-credit-card"></i></div>
-                                                        <p class="steptitle">3- Needs Survey</p>
+                                                        <p class="steptitle">3- Housing and Legal History</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">4- Health Insurance</p>
+                                                        <p class="steptitle">4- References and Emergency Contac</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">5- Others info</p>
+                                                        <p class="steptitle">5- Employment and Financial Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1"></div>
                                             </div>
                                         </div>
 
-                                        {{-- <h3 class="section-form-title">Criminal History</h3> --}}
+
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
@@ -507,42 +507,42 @@
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
                                                                 class="fas fa-unlock-alt"></i></div>
-                                                        <p class="steptitle">1- Basic Information</p>
+                                                        <p class="steptitle">1- Personal Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i class="fas fa-user"></i>
                                                         </div>
-                                                        <p class="steptitle">2- Criminal History</p>
+                                                        <p class="steptitle">2- Contact Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step currentstep">
                                                         <div class="form-layer-step-icon activestep"><i
                                                                 class="far fa-credit-card"></i></div>
-                                                        <p class="steptitle">3- Needs Survey</p>
+                                                        <p class="steptitle">3- Housing and Legal History</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">4- Health Insurance</p>
+                                                        <p class="steptitle">4- References and Emergency Contac</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">5- Others info</p>
+                                                        <p class="steptitle">5- Employment and Financial Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1"></div>
                                             </div>
                                         </div>
 
-                                        {{-- <h3 class="section-form-title">Needs Survey</h3> --}}
+                                        
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
@@ -838,21 +838,21 @@
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
                                                                 class="fas fa-unlock-alt"></i></div>
-                                                        <p class="steptitle">1- Basic Information</p>
+                                                        <p class="steptitle">1- Personal Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i class="fas fa-user"></i>
                                                         </div>
-                                                        <p class="steptitle">2- Criminal History</p>
+                                                        <p class="steptitle">2- Contact Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
                                                                 class="far fa-credit-card"></i></div>
-                                                        <p class="steptitle">3- Needs Survey</p>
+                                                        <p class="steptitle">3- Housing and Legal History</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
@@ -860,21 +860,21 @@
                                                         <div class="form-layer-step-icon activestep"><i
                                                                 class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">4- Health Insurance</p>
+                                                        <p class="steptitle">4- References and Emergency Contac</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">5- Others info</p>
+                                                        <p class="steptitle">5- Employment and Financial Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1"></div>
                                             </div>
                                         </div>
 
-                                        {{-- <h3 class="section-form-title">Health Insurance</h3> --}}
+                                        
 
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_insurace">
@@ -938,28 +938,28 @@
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
                                                                 class="fas fa-unlock-alt"></i></div>
-                                                        <p class="steptitle">1- Basic Information</p>
+                                                        <p class="steptitle">1- Personal Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i class="fas fa-user"></i>
                                                         </div>
-                                                        <p class="steptitle">2- Criminal History</p>
+                                                        <p class="steptitle">2- Contact Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
                                                                 class="far fa-credit-card"></i></div>
-                                                        <p class="steptitle">3- Needs Survey</p>
+                                                        <p class="steptitle">3- Housing and Legal History</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">4- Health Insurance</p>
+                                                        <p class="steptitle">4- References and Emergency Contac</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
@@ -967,14 +967,14 @@
                                                         <div class="form-layer-step-icon  activestep"><i
                                                                 class="fas fa-check"></i>
                                                         </div>
-                                                        <p class="steptitle">5- Others info</p>
+                                                        <p class="steptitle">5- Employment and Financial Information</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1"></div>
                                             </div>
                                         </div>
 
-                                        {{-- <h3 class="section-form-title">Others info</h3> --}}
+                                        
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_more_friends">
                                                 <label for="cus_more_friends">Could you use more friends?<span
