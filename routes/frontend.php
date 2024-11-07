@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\Dashboard\ClientController;
 use App\Http\Controllers\Dashboard\ProvidersController;
+use App\Http\Controllers\Dashboard\GuestController;
 use App\Http\Controllers\Site\FrontendController;
 use App\Http\Livewire\Index;
 
@@ -250,3 +251,6 @@ Route::post('client-registration_post', [ClientController::class, 'store'])->nam
 
 Route::get('provider-registration', [ProvidersController::class, 'provider_registration_website'])->name('providers.provider_registration');
 Route::post('provider-registration-post', [ProvidersController::class, 'store'])->name('providers.provider_registration_post');
+
+Route::get('guest-registration', [GuestController::class, 'guest_registration_website'])->name('guests.guest_registration');
+Route::post('guest-registration-post', [GuestController::class, 'store'])->name('guests.guest_registration_post');

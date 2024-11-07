@@ -109,6 +109,7 @@
                     <i class="feather-user-plus"></i> Sign Up
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('guests.guest_registration') }}">Guest</a>
                     <a class="dropdown-item" href="{{ route('clients.client_registration') }}">Client</a>
                     <a class="dropdown-item" href="{{ route('providers.provider_registration') }}">Provider</a>
                 </div>
