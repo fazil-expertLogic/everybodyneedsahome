@@ -60,11 +60,6 @@ class Guest extends Model
     {
         // Update the status to 0 for each relation
         $this->status = 0;
-        $this->ClientChild()->update(['status' => 0]);
-        $this->criminalHistories()->update(['status' => 0]);
-        $this->info()->update(['status' => 0]);
-        $this->healthIns()->update(['status' => 0]);
-        $this->surveys()->update(['status' => 0]);
         $this->save();
     }
 
