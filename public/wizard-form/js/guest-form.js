@@ -194,6 +194,8 @@ document.addEventListener("touchstart", function() {},false);
 		var cpass = $("#pass_confirmation").val();
 		var ssn = $("#ssn").val();
 		var dob = $("#dob").val();
+		var is_edit = $("#is_edit").val();
+		console.log(is_edit);
 
 		if( name )
 			$( ".valid_name .help-block.with-errors" ).html( '' );
@@ -205,7 +207,7 @@ document.addEventListener("touchstart", function() {},false);
 		else	
 			$( ".valid_email .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter valid email</li></ul>' );
 
-		if(  pass != cpass ) {
+		if(  pass != cpass  || is_edit != 1) {
 			$( ".validpass .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Password and Confirm Password do not match</li></ul>' );
 			sweetAlert("Oops...", "Password and Confirm Password do not match!!!", "error");
 			return false;
@@ -223,17 +225,30 @@ document.addEventListener("touchstart", function() {},false);
 		else	
 			$( ".valid_dob .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter date of birth</li></ul>' );
 
-		
-		if(name && validemail && pass && ssn && dob) {
-			$( "#section-1 .help-block.with-errors" ).html( '' );
-			$( "#section-1" ).removeClass( "open" );
-			$( "#section-1" ).addClass( "slide-left" );
-			$( "#section-2" ).removeClass( "slide-right" );
-			$( "#section-2" ).addClass( "open" );
-		}
-		else {
-			$( "#section-1 .help-block.with-errors.mandatory-error" ).html( '<ul class="list-unstyled"><li>Please Fill the Form Properly</li></ul>' );
-			sweetAlert("Oops...", "Please Fill the Form Properly!", "error");
+		if(is_edit == 1){
+			if(name && validemail && ssn && dob) {
+				$( "#section-1 .help-block.with-errors" ).html( '' );
+				$( "#section-1" ).removeClass( "open" );
+				$( "#section-1" ).addClass( "slide-left" );
+				$( "#section-2" ).removeClass( "slide-right" );
+				$( "#section-2" ).addClass( "open" );
+			}
+			else {
+				$( "#section-1 .help-block.with-errors.mandatory-error" ).html( '<ul class="list-unstyled"><li>Please Fill the Form Properly</li></ul>' );
+				sweetAlert("Oops...", "Please Fill the Form Properly!", "error");
+			}
+		}else{
+			if(name && validemail && pass && ssn && dob) {
+				$( "#section-1 .help-block.with-errors" ).html( '' );
+				$( "#section-1" ).removeClass( "open" );
+				$( "#section-1" ).addClass( "slide-left" );
+				$( "#section-2" ).removeClass( "slide-right" );
+				$( "#section-2" ).addClass( "open" );
+			}
+			else {
+				$( "#section-1 .help-block.with-errors.mandatory-error" ).html( '<ul class="list-unstyled"><li>Please Fill the Form Properly</li></ul>' );
+				sweetAlert("Oops...", "Please Fill the Form Properly!", "error");
+			}
 		}
 	}
 	function previousStep1() {

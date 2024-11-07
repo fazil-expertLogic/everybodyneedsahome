@@ -39,6 +39,12 @@ class Guest extends Model
     'ref1_name',
     'ref1_phone',
     'ref1_email',
+    'ref2_name',
+    'ref2_phone',
+    'ref2_email',
+    'ref3_name',
+    'ref3_phone',
+    'ref3_email',
     'emergency_contact_name',
     'emergency_contact_phone',
     'emergency_contact_email',
@@ -49,4 +55,21 @@ class Guest extends Model
     'rental_budget',
     'user_id'
     ];
+
+    public function softDeleteRelations()
+    {
+        // Update the status to 0 for each relation
+        $this->status = 0;
+        $this->ClientChild()->update(['status' => 0]);
+        $this->criminalHistories()->update(['status' => 0]);
+        $this->info()->update(['status' => 0]);
+        $this->healthIns()->update(['status' => 0]);
+        $this->surveys()->update(['status' => 0]);
+        $this->save();
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
 }
