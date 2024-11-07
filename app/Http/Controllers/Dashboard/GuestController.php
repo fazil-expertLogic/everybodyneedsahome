@@ -46,14 +46,18 @@ class GuestController extends Controller
             'ssn' => 'required|string|max:11|unique:guests,ssn',
             'dob' => 'required|date',
             'address' => 'required|string|max:255',
+            'address2' => 'required|string|max:255',
             'city' => 'required|string|max:100',
             'state' => 'required|string|max:100',
             'zip' => 'required|string|max:10',
             'phone' => 'required|string|max:15',
-            'email' => 'required|email|unique:guests,email',
+            'email' => 'required|unique:users|string|max:100',
             'evicted' => 'required|boolean',
             'eviction_property_name' => 'nullable|string|max:255',
             'eviction_manager_name' => 'nullable|string|max:255',
+
+
+            
             'eviction_address' => 'nullable|string|max:255',
             'eviction_phone' => 'nullable|string|max:15',
             'eviction_date' => 'nullable|date',
