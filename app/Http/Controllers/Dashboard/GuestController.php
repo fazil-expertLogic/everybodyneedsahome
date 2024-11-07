@@ -43,42 +43,47 @@ class GuestController extends Controller
         // Validation Rules
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'ssn' => 'required|string|max:11|unique:guests,ssn',
+            'ssn' => 'required|string',
             'dob' => 'required|date',
             'address' => 'required|string|max:255',
             'address2' => 'required|string|max:255',
             'city' => 'required|string|max:100',
             'state' => 'required|string|max:100',
-            'zip' => 'required|string|max:10',
-            'phone' => 'required|string|max:15',
+            'zip_code' => 'required|string',
+            'phone' => 'required|string',
             'email' => 'required|unique:users|string|max:100',
-            'evicted' => 'required|boolean',
+            'evicted' => 'required',
             'eviction_property_name' => 'nullable|string|max:255',
             'eviction_manager_name' => 'nullable|string|max:255',
-
-
-            
             'eviction_address' => 'nullable|string|max:255',
-            'eviction_phone' => 'nullable|string|max:15',
+            'eviction_phone' => 'nullable|string',
             'eviction_date' => 'nullable|date',
             'eviction_comments' => 'nullable|string',
-            'convicted' => 'required|boolean',
-            'conviction_year' => 'nullable|string|max:4',
+            'convicted' => 'required',
+            'conviction_year' => 'nullable|string',
             'conviction_charge' => 'nullable|string|max:255',
             'conviction_sentence' => 'nullable|string|max:255',
-            'sex_offender' => 'required|boolean',
-            'probation' => 'required|boolean',
+            'sex_offender' => 'required',
+            'victim_minor' => 'nullable',
+            'age_difference' => 'nullable|string|max:255',
+            'probation' => 'required',
             'probation_officer_name' => 'nullable|string|max:255',
-            'probation_officer_phone' => 'nullable|string|max:15',
+            'probation_officer_phone' => 'nullable|string',
             'probation_officer_email' => 'nullable|email',
             'ref1_name' => 'nullable|string|max:255',
-            'ref1_phone' => 'nullable|string|max:15',
+            'ref1_phone' => 'nullable|string',
             'ref1_email' => 'nullable|email',
+            'ref2_name' => 'nullable|string|max:255',
+            'ref2_phone' => 'nullable|string',
+            'ref2_email' => 'nullable|email',
+            'ref3_name' => 'nullable|string|max:255',
+            'ref3_phone' => 'nullable|string',
+            'ref3_email' => 'nullable|email',
             'emergency_contact_name' => 'required|string|max:255',
-            'emergency_contact_phone' => 'required|string|max:15',
+            'emergency_contact_phone' => 'required|string',
             'emergency_contact_email' => 'required|email',
             'employer_name' => 'nullable|string|max:255',
-            'employer_phone' => 'nullable|string|max:15',
+            'employer_phone' => 'nullable|string',
             'income' => 'nullable|numeric',
             'expenses' => 'nullable|numeric',
             'rental_budget' => 'nullable|numeric',
@@ -87,9 +92,8 @@ class GuestController extends Controller
 
         // Check Validation
         if ($validator->fails()) {
-            return response()->json([
-                'errors' => $validator->errors(),
-            ], 422);
+
+            return back()->withErrors($validator)->withInput();
         }
 
         // Database Transaction
@@ -100,7 +104,7 @@ class GuestController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->pass),
-                'role_id' => "3",
+                'role_id' => "7",
             ]);
 
             $guest = Guest::create([
@@ -111,7 +115,7 @@ class GuestController extends Controller
                 'address2' => $request->address2,
                 'city' => $request->city,
                 'state' => $request->state,
-                'zip' => $request->zip,
+                'zip' => $request->zip_code,
                 'phone' => $request->phone,
                 'email' => $request->email,
                 'evicted' => $request->evicted,
@@ -146,11 +150,10 @@ class GuestController extends Controller
 
             // Commit Transaction
             DB::commit();
-
-            return response()->json([
-                'message' => 'Guest created successfully',
-                'guest' => $guest,
-            ], 201);
+            if($request->front){
+                return redirect()->route('index')->with('success', 'Gust Add successfully.');    
+            }
+            return redirect()->route('guests.index')->with('success', 'Gust Add successfully.');
 
         } catch (\Exception $e) {
             // Rollback Transaction

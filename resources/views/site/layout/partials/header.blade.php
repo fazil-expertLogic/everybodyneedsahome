@@ -13,7 +13,8 @@
 'error-500',
 'maintenance',
 'clients.client_registration',
-'providers.provider_registration'
+'providers.provider_registration',
+'guests.guest_registration'
 ]))
 
 <!-- Header -->
@@ -149,7 +150,8 @@
 'error-500',
 'maintenance',
 'clients.client_registration',
-'providers.provider_registration'
+'providers.provider_registration',
+'guests.guest_registration'
 ]))
 <!-- Header -->
 <header class="log-header">

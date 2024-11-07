@@ -84,270 +84,58 @@
 
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_name">
-                                                    <label for="cus_name" class="form-label">Name<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" name="cus_name" class="form-control py-2"
-                                                        value="" id="cus_name" placeholder="Your name" required
-                                                        data-error="Please enter name">
+                                                <input type="hidden" name="front" class="form-control py-2" value="front">
+                                                <div class="form-group valid_name @if($errors->has('name')) has-error has-danger @endif">
+                                                    <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
+                                                    <input type="text" name="name" class="form-control py-2" value="{{old('name')}}" id="name" placeholder="Your name" required data-error="Please enter name">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('name'))
+                                                        <div class="help-block with-errors">{{ $errors->first('name') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_email">
+                                                    <label for="email" class="form-label"> Email<span class="text-danger">*</span></label>
+                                                    <input type="email" name="email" class="form-control py-2" id="email" placeholder="example@email.com" value="{{old('email')}}" required data-error="Please enter email">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_email">
-                                                    <label for="cus_email" class="form-label"> Email<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="email" name="cus_email" class="form-control py-2"
-                                                        id="cus_email" placeholder="example@email.com" value=""
-                                                        required data-error="Please enter email">
+                                                <div class="form-group validpass">
+                                                    <label for="pass" class="form-label">Password<span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control py-2" id="pass" name="pass" placeholder="password" required data-error="Please enter password">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_use_pass">
-                                                    <label for="pass" class="form-label">password<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="password" class="form-control py-2" id="pass"
-                                                        name="pass" placeholder="password" required
-                                                        data-error="Please enter password">
+                                                <div class="form-group validpass">
+                                                    <label for="pass_confirmation" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control py-2" id="pass_confirmation" name="pass_confirmation" placeholder="Confirm Password" required data-error="Please enter confirm password">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_use_cpass">
-                                                    <label for="pass_confirmation" class="form-label">Confirm Password
-                                                        <span class="text-danger">*</span></label>
-                                                    <input type="password" class="form-control py-2"
-                                                        id="pass_confirmation" name="pass_confirmation"
-                                                        placeholder="Confirm Password" required
-                                                        data-error="Please enter confirm password">
+                                                <div class="form-group valid_ssn @if($errors->has('snn')) has-error has-danger @endif">
+                                                    <label for="ssn" class="form-label">Social Security Number<span  class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control py-2 ssn-input-mask"  value="{{old('snn')}}" name="ssn" id="ssn" placeholder="*****"  required data-error="Please enter Social Security Number">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('snn'))
+                                                        <div class="help-block with-errors">{{ $errors->first('snn') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_dob">
-                                                    <label for="cus_dob" class="form-label"> Date of Birth<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="date" name="cus_dob"
-                                                        class="form-control py-2"id="cus_dob" placeholder=""
-                                                        value="" required data-error="Please enter Date of Birth">
+                                                <div class="form-group valid_dob">
+                                                    <label for="dob" class="form-label"> Date of Birth<span class="text-danger">*</span></label>
+                                                    <input type="date" name="dob" class="form-control py-2"id="dob" placeholder="" value="{{old('dob')}}" required data-error="Please enter Date of Birth">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_ss">
-                                                    <label for="cus_ss" class="form-label">Social Security Number<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2 ssn-input-mask"
-                                                        value="" name="cus_ss" id="cus_ss" placeholder="*****"
-                                                        required data-error="Please enter Social Security Number">
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_ms">
-                                                    <label for="cus_ms" class="form-label">Marital Status<span
-                                                            class="text-danger">*</span></label>
-                                                    <select name="martial_status" class="form-select" id="cus_ms"
-                                                        aria-label="" required data-error="Please select marital status">
-                                                        <option value="">Please Select</option>
-                                                        <option value="1">Single</option>
-                                                        <option value="2">Married</option>
-                                                        <option value="3">Separated</option>
-                                                        <option value="4">Divorced</option>
-                                                        <option value="5">Widowed</option>
-                                                    </select>
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_is_child">
-                                                    <label for="cus_is_child" class="form-label">Children<span
-                                                            class="text-danger">*</span></label>
-                                                    <select name="cus_is_child" class="form-select" id="cus_is_child"
-                                                        aria-label="" required data-error="Please select Children"
-                                                        onchange="toggleDiv()">
-                                                        <option value="">Please Select</option>
-                                                        <option value="1">Yes</option>
-                                                        <option value="2">No</option>
-                                                    </select>
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-12 col-lg-12" id="childinfobox">
-                                                <div id="child-boxes-container">
-                                                    <div class="row childBOX">
-                                                        <div class="col-sm-6 col-lg-6">
-                                                            <fieldset class="mb-3">
-                                                                <label for="child_name_0" class="form-label">Child
-                                                                    Name<span class="text-danger">*</span></label>
-                                                                <input type="text" class="form-control py-2"
-                                                                    value="" name="child_name[]" id="child_name_0">
-                                                            </fieldset>
-                                                        </div>
-
-                                                        <div class="col-sm-6 col-lg-6">
-                                                            <fieldset class="">
-                                                                <label for="child_age_0" class="form-label">Child Age<span
-                                                                        class="text-danger">*</span></label>
-                                                                <select name="child_age[]" class="form-select"
-                                                                    id="child_age_0" aria-label="">
-                                                                    <option value="0" selected="">0+</option>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-                                                                    <option value="3">3</option>
-                                                                    <option value="4">4</option>
-                                                                    <option value="5">5</option>
-                                                                    <option value="6">6</option>
-                                                                    <option value="7">7</option>
-                                                                    <option value="8">8</option>
-                                                                    <option value="9">9</option>
-                                                                    <option value="10">10</option>
-                                                                    <option value="11">11</option>
-                                                                    <option value="12">12</option>
-                                                                    <option value="13">13</option>
-                                                                    <option value="14">14</option>
-                                                                    <option value="15">15</option>
-                                                                    <option value="16">16</option>
-                                                                    <option value="17">17</option>
-                                                                    <option value="18">18</option>
-                                                                </select>
-                                                            </fieldset>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-3 text-end">
-                                                    <a href="#" class="delete-child-box text-danger"
-                                                        style="display: none;">Delete</a> <span class="separator"
-                                                        style="display: none;">|</span>
-                                                    <a href="#" id="add-new-child" onclick="addchild()"
-                                                        class="text-blue">Add new</a>
-                                                </div>
-                                            </div>
-                                            <div id="child-info-container">
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_address">
-                                                    <label for="cus_address" class="form-label">Address<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" name="cus_address" class="form-control py-2"
-                                                        id="cus_address" placeholder="Address" value="" required
-                                                        data-error="Please enter address">
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_city">
-                                                    <label for="cus_city" class="form-label">City<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" name="cus_city" class="form-control py-2"
-                                                        id="cus_city" placeholder="City" value="" required
-                                                        data-error="Please enter city">
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_state">
-                                                    <label for="cus_state" class="form-label">State<span
-                                                            class="text-danger">*</span></label>
-                                                    <select class="form-select py-2" name="cus_state" id="cus_state"
-                                                        aria-label="" required data-error="Please enter state">
-                                                        <option value="">Please Select</option>
-                                                        <option value="AL">Alabama</option>
-                                                        <option value="AK">Alaska</option>
-                                                        <option value="AZ">Arizona</option>
-                                                        <option value="AR">Arkansas</option>
-                                                        <option value="CA">California</option>
-                                                        <option value="CO">Colorado</option>
-                                                        <option value="CT">Connecticut</option>
-                                                        <option value="DE">Delaware</option>
-                                                        <option value="FL">Florida</option>
-                                                        <option value="GA">Georgia</option>
-                                                        <option value="HI">Hawaii</option>
-                                                        <option value="ID">Idaho</option>
-                                                        <option value="IL">Illinois</option>
-                                                        <option value="IN">Indiana</option>
-                                                        <option value="IA">Iowa</option>
-                                                        <option value="KS">Kansas</option>
-                                                        <option value="KY">Kentucky</option>
-                                                        <option value="LA">Louisiana</option>
-                                                        <option value="ME">Maine</option>
-                                                        <option value="MD">Maryland</option>
-                                                        <option value="MA">Massachusetts</option>
-                                                        <option value="MI">Michigan</option>
-                                                        <option value="MN">Minnesota</option>
-                                                        <option value="MS">Mississippi</option>
-                                                        <option value="MO">Missouri</option>
-                                                        <option value="MT">Montana</option>
-                                                        <option value="NE">Nebraska</option>
-                                                        <option value="NV">Nevada</option>
-                                                        <option value="NH">New Hampshire</option>
-                                                        <option value="NJ">New Jersey</option>
-                                                        <option value="NM">New Mexico</option>
-                                                        <option value="NY">New York</option>
-                                                        <option value="NC">North Carolina</option>
-                                                        <option value="ND">North Dakota</option>
-                                                        <option value="OH">Ohio</option>
-                                                        <option value="OK">Oklahoma</option>
-                                                        <option value="OR">Oregon</option>
-                                                        <option value="PA">Pennsylvania</option>
-                                                        <option value="RI">Rhode Island</option>
-                                                        <option value="SC">South Carolina</option>
-                                                        <option value="SD">South Dakota</option>
-                                                        <option value="TN">Tennessee</option>
-                                                        <option value="TX">Texas</option>
-                                                        <option value="UT">Utah</option>
-                                                        <option value="VT">Vermont</option>
-                                                        <option value="VA">Virginia</option>
-                                                        <option value="WA">Washington</option>
-                                                        <option value="WV">West Virginia</option>
-                                                        <option value="WI">Wisconsin</option>
-                                                        <option value="WY">Wyoming</option>
-                                                    </select>
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_zip">
-                                                    <label for="cus_zip" class="form-label">Zip<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" name="cus_zip"
-                                                        class="form-control py-2 zip-input-mask" id="cus_zip"
-                                                        placeholder="Zip" value="" required
-                                                        data-error="Please enter zipcode">
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_phone">
-                                                    <label for="cus_phone" class="form-label">Phone<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" name="cus_phone"
-                                                        class="form-control py-2 phone-input-mask" id="cus_phone"
-                                                        placeholder="Phone" value="" required
-                                                        data-error="Please enter phone">
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-12">
-                                                <label for="main_picture" class="form-label">Main Picture*</label>
-                                                <input type="file" class="form-control" aria-label="file example"
-                                                    name="main_picture">
-                                                <div class="invalid-feedback">Example invalid form file feedback</div>
                                             </div>
 
                                         </div>
@@ -414,72 +202,97 @@
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_address">
+                                                <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}" required data-error="Please enter address">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_address2">
+                                                <label for="address2" class="form-label">Address2<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="address2" name="address2" value="{{old('address2')}}" required data-error="Please enter address">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_city">
+                                                <label for="city" class="form-label">City<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="city" name="city" value="{{old('city')}}" required data-error="Please enter city">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_state">
+                                                <label for="state" class="form-label"> State <span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="state" name="state" aria-label="State" data-error="Please select">
+                                                    <option value="">Please select</option>
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="AZ">Arizona</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="CA">California</option>
+                                                    <option value="CO">Colorado</option>
+                                                    <option value="CT">Connecticut</option>
+                                                    <option value="DE">Delaware</option>
+                                                    <option value="FL">Florida</option>
+                                                    <option value="GA">Georgia</option>
+                                                    <option value="HI">Hawaii</option>
+                                                    <option value="ID">Idaho</option>
+                                                    <option value="IL">Illinois</option>
+                                                    <option value="IN">Indiana</option>
+                                                    <option value="IA">Iowa</option>
+                                                    <option value="KS">Kansas</option>
+                                                    <option value="KY">Kentucky</option>
+                                                    <option value="LA">Louisiana</option>
+                                                    <option value="ME">Maine</option>
+                                                    <option value="MD">Maryland</option>
+                                                    <option value="MA">Massachusetts</option>
+                                                    <option value="MI">Michigan</option>
+                                                    <option value="MN">Minnesota</option>
+                                                    <option value="MS">Mississippi</option>
+                                                    <option value="MO">Missouri</option>
+                                                    <option value="MT">Montana</option>
+                                                    <option value="NE">Nebraska</option>
+                                                    <option value="NV">Nevada</option>
+                                                    <option value="NH">New Hampshire</option>
+                                                    <option value="NJ">New Jersey</option>
+                                                    <option value="NM">New Mexico</option>
+                                                    <option value="NY">New York</option>
+                                                    <option value="NC">North Carolina</option>
+                                                    <option value="ND">North Dakota</option>
+                                                    <option value="OH">Ohio</option>
+                                                    <option value="OK">Oklahoma</option>
+                                                    <option value="OR">Oregon</option>
+                                                    <option value="PA">Pennsylvania</option>
+                                                    <option value="RI">Rhode Island</option>
+                                                    <option value="SC">South Carolina</option>
+                                                    <option value="SD">South Dakota</option>
+                                                    <option value="TN">Tennessee</option>
+                                                    <option value="TX">Texas</option>
+                                                    <option value="UT">Utah</option>
+                                                    <option value="VT">Vermont</option>
+                                                    <option value="VA">Virginia</option>
+                                                    <option value="WA">Washington</option>
+                                                    <option value="WV">West Virginia</option>
+                                                    <option value="WI">Wisconsin</option>
+                                                    <option value="WY">Wyoming</option>
+                                                </select>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_pp">
-                                                    <label for="cus_pp" class="form-label">Are you currently on
-                                                        probation or parole?<span class="text-danger">*</span></label>
-                                                    <select class="form-select" name="role" id="cus_pp" required
-                                                        data-error="Please select">
-                                                        <option value="">Please select</option>
-                                                        <option value="1">Probation</option>
-                                                        <option value="2">Parole</option>
-                                                        <option value="3">Both</option>
-                                                        <option value="4">Fully Discharged</option>
-                                                        <option value="5">N/A</option>
-                                                    </select>
+                                                <div class="form-group valid_zip_code">
+                                                    <label for="zip_code" class="form-label">Zip<span class="text-danger">*</span></label>
+                                                    <input type="text" name="zip_code" class="form-control py-2 zip-input-mask" id="zip_code" placeholder="Zip Code" value="{{old('zip_code')}}" required data-error="Please enter Zip Code">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_dfc">
-                                                <label for="cus_dfc" class="form-label">Date of Conviction<span
-                                                        class="text-danger">*</span></label>
-                                                <input type="date" class="form-control" id="cus_dfc" name="cus_dfc"
-                                                    value="" required data-error="Please enter date of conviction">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_con">
-                                                <label for="cus_con" class="form-label">Conviction<span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="cus_con" name="cus_con"
-                                                    value="" required data-error="Please enter conviction">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_conq">
-                                                <label for="cus_conq" class="form-label">Consequence<span
-                                                        class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_conq" id="cus_conq" required
-                                                    data-error="Please select">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Probation</option>
-                                                    <option value="2">Incarceration</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_sex_off">
-                                                <label for="cus_sex_off" class="form-label">Are you a registered sex
-                                                    offender?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_sex_off" id="cus_sex_off" required
-                                                    data-error="Please select">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_offend_minor">
-                                                <label for="cus_is_offend_minor" class="form-label">Did your crime involve
-                                                    a minor?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_is_offend_minor"
-                                                    id="cus_is_offend_minor" required data-error="Please select">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_phone">
+                                                    <label for="phone" class="form-label">Phone<span class="text-danger">*</span></label>
+                                                    <input type="text" name="phone" class="form-control py-2 phone-input-mask" id="phone" placeholder="Phone" value="{{old('phone')}}" required data-error="Please enter phone">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -546,272 +359,176 @@
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_food">
-                                                <label for="cus_food" class="form-label">Do you need food?<span
-                                                        class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_food" name="cus_food"
-                                                    aria-label="Food" required data-error="Please select">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_cloth">
-                                                <label for="cus_cloth" class="form-label">Do you need clothing?<span
-                                                        class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_cloth" name="cus_cloth"
-                                                    aria-label="Clothing" required data-error="Please select">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_evicted">
+                                                <label for="evicted" class="form-label">Have you ever been evicted?<span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="evicted" name="evicted" aria-label="Evicted" required data-error="Please select evicted" onchange="evictedDiv()">
                                                     <option value="">Please select</option>
                                                     <option value="1">Yes</option>
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
                                             </div>
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_shelter">
-                                                <label for="cus_shelter" class="form-label">Do you need
-                                                    shelter/housing?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_shelter" name="cus_shelter"
-                                                    aria-label="Shelter" required data-error="Please select">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_tra">
-                                                <label for="cus_tra" class="form-label">Do you need transportation?<span
-                                                        class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_tra" name="cus_tra"
-                                                    aria-label="Transportation" required data-error="Please select">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
+                                            {{-- evicted --}}
+                                            <div id="evictedDiv">
+                                                <p>Eviction Details:</p>
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-lg-6">
+                                                        <div class="form-group valid_eviction_property_name">
+                                                            <label for="eviction_property_name" class="form-label">Eviction Property Name<span class="text-danger">*</span></label>
+                                                            <input type="text" name="eviction_property_name" class="form-control py-2 zip-input-mask" id="eviction_property_name" placeholder="Property Name" value="{{old('eviction_property_name')}}" data-error="Please enter Property Name">
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_emp">
-                                                <label for="cus_emp" class="form-label">Do you need employment?<span
-                                                        class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_emp" name="cus_emp"
-                                                    aria-label="Employment" required data-error="Please select">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
+                                                    <div class="col-sm-6 col-lg-6">
+                                                        <div class="form-group valid_eviction_manager_name">
+                                                            <label for="eviction_manager_name" class="form-label">Eviction Manager's Name<span class="text-danger">*</span></label>
+                                                            <input type="text" name="eviction_manager_name" class="form-control py-2 zip-input-mask" id="eviction_manager_name" placeholder="Manager Name" value="{{old('eviction_manager_name')}}" data-error="Please enter Manager Name">
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_extra_income">
-                                                <label for="cus_extra_income" class="form-label">Do you need extra income
-                                                    (Gigs, Plasma, etc)?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_extra_income"
-                                                    name="cus_extra_income" aria-label="Extra Income" required
-                                                    data-error="Please select">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_church">
-                                                <label for="cus_church" class="form-label">Which church did you
-                                                    attend?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_church" name="cus_church"
-                                                    aria-label="Church" required data-error="Please select">
-                                                    <option value="">Choose one</option>
-                                                    <option value="First Baptist Church">First Baptist Church</option>
-                                                    <option value="Second Presbyterian Church">Second Presbyterian Church
-                                                    </option>
-                                                    <option value="Grace Lutheran Church">Grace Lutheran Church</option>
-                                                    <option value="Saint Mary's Catholic Church">Saint Mary's Catholic
-                                                        Church</option>
-                                                    <option value="Community Church of Christ">Community Church of Christ
-                                                    </option>
-                                                    <option value="Zion United Methodist Church">Zion United Methodist
-                                                        Church</option>
-                                                    <option value="Faith Baptist Church">Faith Baptist Church</option>
-                                                    <option value="Emmanuel Episcopal Church">Emmanuel Episcopal Church
-                                                    </option>
-                                                    <option value="Mount Hope Church">Mount Hope Church</option>
-                                                    <option value="Hope Community Church">Hope Community Church</option>
-                                                    <option value="Trinity United Church of Christ">Trinity United Church
-                                                        of Christ</option>
-                                                    <option value="New Life Assembly">New Life Assembly</option>
-                                                    <option value="Cornerstone Church">Cornerstone Church</option>
-                                                    <option value="Calvary Baptist Church">Calvary Baptist Church</option>
-                                                    <option value="Crossroads Church">Crossroads Church</option>
-                                                    <option value="City Harvest Church">City Harvest Church</option>
-                                                    <option value="New Hope Christian Church">New Hope Christian Church
-                                                    </option>
-                                                    <option value="Abundant Life Church">Abundant Life Church</option>
-                                                    <option value="Victory Christian Church">Victory Christian Church
-                                                    </option>
-                                                    <option value="Praise Chapel">Praise Chapel</option>
-                                                    <option value="other">Other</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_other_church">
-                                                <div id="custom-church-container" style="display: none;">
-                                                    <label for="cus_other_church" class="form-label">Other Church
-                                                        Name<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="cus_other_church"
-                                                        name="cus_other_church" placeholder="Enter other church name"
-                                                        value=" ">
+                                                    <div class="col-sm-6 col-lg-6">
+                                                        <div class="form-group valid_eviction_address">
+                                                            <label for="eviction_address" class="form-label">Eviction Address<span class="text-danger">*</span></label>
+                                                            <input type="text" name="eviction_address" class="form-control py-2 zip-input-mask" id="eviction_address" placeholder="Eviction Address" value="{{old('eviction_address')}}" data-error="Please enter Property Name">
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6 col-lg-6">
+                                                        <div class="form-group valid_eviction_phone">
+                                                            <label for="eviction_phone" class="form-label">Eviction phone<span class="text-danger">*</span></label>
+                                                            <input type="text" name="eviction_phone" class="form-control py-2 eviction_phone-input-mask" id="eviction_phone" placeholder="eviction_phone" value="{{old('eviction_phone')}}" data-error="Please enter eviction_phone">
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6 col-lg-6">
+                                                        <div class="form-group valid_eviction_date">
+                                                            <label for="eviction_date" class="form-label"> Date of Eviction<span class="text-danger">*</span></label>
+                                                            <input type="date" name="eviction_date" class="form-control py-2"id="eviction_date" placeholder="" value="{{old('eviction_date')}}" data-error="Please enter Date of Eviction">
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6 col-lg-6 form-group valid_eviction_comments">
+                                                        <label for="eviction_comments">Comments<span
+                                                                class="text-danger">*</span></label>
+                                                        <textarea class="form-control" id="eviction_comments" name="eviction_comments"  data-error="Please select"></textarea>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+
                                                 </div>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                            <!-- Hidden input for custom church name -->
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_bcert">
-                                                <label for="cus_bcert" class="form-label">Do you have your birth
-                                                    certificate?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_bcert" name="cus_bcert"
-                                                    aria-label="Birth Certificate" required data-error="Please select"
-                                                    onchange="birthDiv()">
+                                            </div>  
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_convicted">
+                                                <label for="convicted" class="form-label">Have you ever been convicted of a crime?<span class="text-danger">*</span></label>
+                                                <select class="form-select py-2" id="convicted" name="convicted" aria-label="convicted" required data-error="Please select convicted" onchange="convictedDiv()">
                                                     <option value="">Please select</option>
                                                     <option value="1">Yes</option>
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
                                             </div>
+                                            {{-- convicted  --}}
+                                            <div id="convictedDiv">
+                                                <p>Conviction Details:</p>
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-lg-6">
+                                                        <div class="form-group valid_conviction_year">
+                                                            <label for="conviction_year" class="form-label">Year<span class="text-danger">*</span></label>
+                                                            <input type="text" name="conviction_year" class="form-control py-2" id="conviction_year" placeholder="Conviction Year" value="{{old('conviction_year')}}" data-error="Please enter Conviction Year">
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_born_state">
-                                                <div id="birthDiv">
-                                                    <label for="cus_born_state" class="form-label">What state were you
-                                                        born?<span class="text-danger">*</span></label>
-                                                    <select class="form-select py-2" id="cus_born_state"
-                                                        name="cus_born_state" aria-label="State"
-                                                        data-error="Please select">
-                                                        <option value="">Please select</option>
-                                                        <option value="AL">Alabama</option>
-                                                        <option value="AK">Alaska</option>
-                                                        <option value="AZ">Arizona</option>
-                                                        <option value="AR">Arkansas</option>
-                                                        <option value="CA">California</option>
-                                                        <option value="CO">Colorado</option>
-                                                        <option value="CT">Connecticut</option>
-                                                        <option value="DE">Delaware</option>
-                                                        <option value="FL">Florida</option>
-                                                        <option value="GA">Georgia</option>
-                                                        <option value="HI">Hawaii</option>
-                                                        <option value="ID">Idaho</option>
-                                                        <option value="IL">Illinois</option>
-                                                        <option value="IN">Indiana</option>
-                                                        <option value="IA">Iowa</option>
-                                                        <option value="KS">Kansas</option>
-                                                        <option value="KY">Kentucky</option>
-                                                        <option value="LA">Louisiana</option>
-                                                        <option value="ME">Maine</option>
-                                                        <option value="MD">Maryland</option>
-                                                        <option value="MA">Massachusetts</option>
-                                                        <option value="MI">Michigan</option>
-                                                        <option value="MN">Minnesota</option>
-                                                        <option value="MS">Mississippi</option>
-                                                        <option value="MO">Missouri</option>
-                                                        <option value="MT">Montana</option>
-                                                        <option value="NE">Nebraska</option>
-                                                        <option value="NV">Nevada</option>
-                                                        <option value="NH">New Hampshire</option>
-                                                        <option value="NJ">New Jersey</option>
-                                                        <option value="NM">New Mexico</option>
-                                                        <option value="NY">New York</option>
-                                                        <option value="NC">North Carolina</option>
-                                                        <option value="ND">North Dakota</option>
-                                                        <option value="OH">Ohio</option>
-                                                        <option value="OK">Oklahoma</option>
-                                                        <option value="OR">Oregon</option>
-                                                        <option value="PA">Pennsylvania</option>
-                                                        <option value="RI">Rhode Island</option>
-                                                        <option value="SC">South Carolina</option>
-                                                        <option value="SD">South Dakota</option>
-                                                        <option value="TN">Tennessee</option>
-                                                        <option value="TX">Texas</option>
-                                                        <option value="UT">Utah</option>
-                                                        <option value="VT">Vermont</option>
-                                                        <option value="VA">Virginia</option>
-                                                        <option value="WA">Washington</option>
-                                                        <option value="WV">West Virginia</option>
-                                                        <option value="WI">Wisconsin</option>
-                                                        <option value="WY">Wyoming</option>
-                                                    </select>
+                                                    <div class="col-sm-6 col-lg-6">
+                                                        <div class="form-group valid_conviction_charge">
+                                                            <label for="conviction_charge" class="form-label">Charge/Conviction<span class="text-danger">*</span></label>
+                                                            <input type="text" name="conviction_charge" class="form-control py-2" id="conviction_charge" placeholder="Charge/Conviction" value="{{old('conviction_charge')}}" data-error="Please enter Charge/Conviction">
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6 col-lg-6">
+                                                        <div class="form-group valid_conviction_sentence">
+                                                            <label for="conviction_sentence" class="form-label">Sentence<span class="text-danger">*</span></label>
+                                                            <input type="text" name="conviction_sentence" class="form-control py-2" id="conviction_sentence" placeholder="Sentence" value="{{old('conviction_sentence')}}" data-error="Please enter Sentence">
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6 col-lg-6 form-group valid_sex_offender">
+                                                        <label for="sex_offender" class="form-label">Are you a registered sex offender?<span class="text-danger">*</span></label>
+                                                        <select class="form-select py-2" id="sex_offender" name="sex_offender" aria-label="sex_offender"  data-error="Please select sex_offender" onchange="sexOffenderDiv()">
+                                                            <option value="1">Yes</option>
+                                                            <option value="2">No</option>
+                                                        </select>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                    {{-- sexOffenderDiv --}}
+                                                    <div id='sexOffenderDiv'>
+                                                        <div class="row">
+                                                            <div class="col-sm-6 col-lg-6 form-group valid_victim_minor">
+                                                                <label for="victim_minor" class="form-label">Was your victim a minor?<span class="text-danger">*</span></label>
+                                                                <select class="form-select py-2" id="victim_minor" name="victim_minor" aria-label="victim_minor"  data-error="Please select Victim Minor">
+                                                                    <option value="1">Yes</option>
+                                                                    <option value="2">No</option>
+                                                                </select>
+                                                                <div class="help-block with-errors"></div>
+                                                            </div>
+
+                                                            <div class="col-sm-6 col-lg-6">
+                                                                <div class="form-group valid_age_difference">
+                                                                    <label for="age_difference" class="form-label">How many years apart were you in age from your victim?<span class="text-danger">*</span></label>
+                                                                    <input type="text" name="age_difference" class="form-control py-2" id="age_difference" placeholder="Age Difference" value="{{old('age_difference')}}" data-error="Please enter Age Difference">
+                                                                    <div class="help-block with-errors"></div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    
+                                                    <div class="col-sm-6 col-lg-6 form-group valid_probation">
+                                                        <label for="probation" class="form-label">Are you currently on probation or parole?<span class="text-danger">*</span></label>
+                                                        <select class="form-select py-2" id="probation" name="probation" aria-label="probation" data-error="Please select probation" onchange="probationDiv()">
+                                                            <option value="1">Yes</option>
+                                                            <option value="2">No</option>
+                                                        </select>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                    {{-- sexOffenderDiv --}}
+                                                    <div id='probationDiv'>
+                                                        <div class="row">
+                                                            <div class="col-sm-6 col-lg-6">
+                                                                <div class="form-group valid_probation_officer_name">
+                                                                    <label for="probation_officer_name" class="form-label">Supervising Officer Name<span class="text-danger">*</span></label>
+                                                                    <input type="text" name="probation_officer_name" class="form-control py-2" id="probation_officer_name" placeholder="Supervising Officer Name" value="{{old('probation_officer_name')}}" data-error="Please enter Supervising Officer Name">
+                                                                    <div class="help-block with-errors"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-lg-6">
+                                                                <div class="form-group valid_probation_officer_phone">
+                                                                    <label for="probation_officer_phone" class="form-label">Supervising Officer Phone<span class="text-danger">*</span></label>
+                                                                    <input type="text" name="probation_officer_phone" class="form-control py-2" id="probation_officer_phone" placeholder="Supervising Officer Phone" value="{{old('probation_officer_phone')}}" data-error="Please enter Supervising Officer Phone">
+                                                                    <div class="help-block with-errors"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-lg-6">
+                                                                <div class="form-group valid_probation_officer_email">
+                                                                    <label for="probation_officer_email" class="form-label">Supervising Officer Email<span class="text-danger">*</span></label>
+                                                                    <input type="text" name="probation_officer_email" class="form-control py-2" id="probation_officer_email" placeholder="Supervising Officer Email" value="{{old('probation_officer_email')}}" data-error="Please enter Supervising Officer Email">
+                                                                    <div class="help-block with-errors"></div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_state_id">
-                                                <label for="cus_state_id" class="form-label">Do you have state ID?<span
-                                                        class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_state_id" name="cus_state_id"
-                                                    aria-label="is_state_id" required data-error="Please select"
-                                                    onchange="stateDiv()">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_state_no">
-                                                <div id="stateDiv">
-                                                    <label for="cus_state_no" class="form-label">Please enter the state
-                                                        number<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="cus_state_no"
-                                                        value="" name="cus_state_no"
-                                                        data-error="Please enter state no">
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_d_lice">
-                                                <label for="cus_d_lice" class="form-label">Do you have driving
-                                                    license?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_d_lice" name="cus_d_lice"
-                                                    aria-label="DL" required data-error="Please select"
-                                                    onchange="licenseDiv()">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_lice_no">
-                                                <div id="licenseDiv">
-                                                    <label for="cus_lice_no" class="form-label">Please enter the driving
-                                                        license number<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="cus_lice_no"
-                                                        value="" name="cus_lice_no"
-                                                        data-error="Please enter license number">
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_ss_card">
-                                                <label for="cus_ss_card" class="form-label">Do you have a social security
-                                                    card?<span class="text-danger">*</span></label>
-                                                <select class="form-select py-2" id="cus_ss_card" name="cus_ss_card"
-                                                    aria-label="Social Security Card" required data-error="Please select"
-                                                    onchange="securityDiv()">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_ssc_no">
-                                                <div id="securityDiv">
-                                                    <label for="cus_ssc_no" class="form-label">Please enter the SSN<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="cus_ssc_no"
-                                                        value="" name="cus_ssc_no" placeholder="******"
-                                                        data-error="Please enter the SSN">
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
+                                            </div> 
                                         </div>
 
                                         <div class="form-group signUpForm-step-3">
@@ -877,49 +594,91 @@
                                         
 
                                         <div class="row">
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_insurace">
-                                                <label for="cus_insurace" class="form-label">Do you have a health
-                                                    insurance?<span class="text-danger">*</span></label>
-                                                <select class="form-select mb-3" name="cus_insurace" id="cus_insurace"
-                                                    required data-error="Please select" onchange="insuranceDiv()">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
+                                            
+                                            <div class="col-sm-6 col-lg-6 form-group valid_ref1_name">
+                                                <label for="ref1_name">Reference 1 - Name<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('ref1_name')}}" id="ref1_name" name="ref1_name" data-error="Please enter Reference 1 - Name">
                                                 <div class="help-block with-errors"></div>
                                             </div>
 
-                                            <div id="insuranceDiv">
-                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_carrier">
-                                                    <label for="cus_carrier">Carrier<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" value=""
-                                                        id="cus_carrier" name="cus_carrier" data-error="Please select">
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_mem_id">
-                                                    <label for="cus_mem_id">Member ID<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" value=""
-                                                        id="cus_mem_id" name="cus_mem_id" data-error="Please select">
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_grp_no">
-                                                    <label for="cus_grp_no">Group No<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" value=""
-                                                        id="cus_grp_no" name="cus_grp_no" data-error="Please select">
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
+                                            <div class="col-sm-6 col-lg-6 form-group valid_ref1_phone">
+                                                <label for="ref1_phone">Reference 1 - Phone<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('ref1_phone')}}" id="ref1_phone" name="ref1_phone" data-error="Please enter Reference 1 - Phone">
+                                                <div class="help-block with-errors"></div>
                                             </div>
-                                            <div class="form-group signUpForm-step-4">
-                                                <button class="btn btn-custom" type="button"
-                                                    onclick="previousStep3()"><span class="fas fa-arrow-left"></span>
-                                                    Back</button>
-                                                <button class="btn btn-custom float-end" type="button"
-                                                    onclick="nextStep5()">Next <span
-                                                        class="fas fa-arrow-right"></span></button>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_ref1_email">
+                                                <label for="ref1_email">Reference 1 - Email<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('ref1_email')}}" id="ref1_email" name="ref1_email" data-error="Please enter Reference 1 - Email">
+                                                <div class="help-block with-errors"></div>
                                             </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_ref2_name">
+                                                <label for="ref2_name">Reference 2 - Name<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('ref2_name')}}" id="ref2_name" name="ref2_name" data-error="Please enter Reference 2 - Name">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_ref2_phone">
+                                                <label for="ref2_phone">Reference 2 - Phone<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('ref2_phone')}}" id="ref2_phone" name="ref2_phone" data-error="Please enter Reference 2 - Phone">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_ref2_email">
+                                                <label for="ref2_email">Reference 2 - Email<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('ref2_email')}}" id="ref2_email" name="ref2_email" data-error="Please enter Reference 2 - Email">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_ref3_name">
+                                                <label for="ref3_name">Reference 3 - Name<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('ref3_name')}}" id="ref3_name" name="ref3_name" data-error="Please enter Reference 3 - Name">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_ref3_phone">
+                                                <label for="ref3_phone">Reference 3 - Phone<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('ref3_phone')}}" id="ref3_phone" name="ref3_phone" data-error="Please enter Reference 3 - Phone">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_ref3_email">
+                                                <label for="ref3_email">Reference 3 - Email<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('ref3_email')}}" id="ref3_email" name="ref3_email" data-error="Please enter Reference 3 - Email">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                            <div class="col-sm-6 col-lg-6">
+                                            </div>
+
+                                            {{-- Emergency --}}
+                                            <div class="col-sm-6 col-lg-6 form-group valid_emergency_contact_name">
+                                                <label for="emergency_contact_name">Emergency Contact Name<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('emergency_contact_name')}}" id="emergency_contact_name" name="emergency_contact_name" data-error="Please enter Reference 3 - Name">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_emergency_contact_phone">
+                                                <label for="emergency_contact_phone">Emergency Contact Phone<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('emergency_contact_phone')}}" id="emergency_contact_phone" name="emergency_contact_phone" data-error="Please enter Reference 3 - Phone">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_emergency_contact_email">
+                                                <label for="emergency_contact_email">Emergency Contact Email<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('emergency_contact_email')}}" id="emergency_contact_email" name="emergency_contact_email" data-error="Please enter Reference 3 - Email">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group signUpForm-step-4">
+                                            <button class="btn btn-custom" type="button"
+                                                onclick="previousStep3()"><span class="fas fa-arrow-left"></span>
+                                                Back</button>
+                                            <button class="btn btn-custom float-end" type="button"
+                                                onclick="nextStep5()">Next <span
+                                                    class="fas fa-arrow-right"></span></button>
                                         </div>
                                     </fieldset>
                                 </div>
@@ -976,78 +735,44 @@
 
                                         
                                         <div class="row">
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_more_friends">
-                                                <label for="cus_more_friends">Could you use more friends?<span
-                                                        class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_more_friends" id="cus_more_friends"
-                                                    required data-error="Please select" onchange="friendsDiv()">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
+                                            <div class="col-sm-6 col-lg-6 form-group valid_employer_name">
+                                                <label for="employer_name">Employer Name<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('employer_name')}}" id="employer_name" name="employer_name" data-error="Please Enter Employer Name">
                                                 <div class="help-block with-errors"></div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_counselor">
-                                                <div id="friendsDiv">
-                                                    <label for="cus_counselor">Do you believe you could benefit from having
-                                                        a mentor or counselor?<span class="text-danger">*</span></label>
-                                                    <select class="form-select" name="cus_counselor" id="cus_counselor"
-                                                        data-error="Please select">
-                                                        <option value="">Please select</option>
-                                                        <option value="1">Yes</option>
-                                                        <option value="2">No</option>
-                                                    </select>
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_inv_rom">
-                                                <label for="cus_is_inv_rom">Are you looking for someone with whom you could
-                                                    be involved romantically?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_is_inv_rom" id="cus_is_inv_rom"
-                                                    required data-error="Please select">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
+                                            <div class="col-sm-6 col-lg-6 form-group valid_employer_phone">
+                                                <label for="employer_phone">Employer Phone<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="{{old('employer_phone')}}" id="employer_phone" name="employer_phone" data-error="Please Enter Employer Phone">
                                                 <div class="help-block with-errors"></div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_mental_ill">
-                                                <label for="cus_is_mental_ill">Have you ever been diagnosed with a mental
-                                                    illness?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_is_mental_ill"
-                                                    id="cus_is_mental_ill" required data-error="Please select">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
+                                            <div class="col-sm-6 col-lg-6 form-group valid_income">
+                                                <label for="income">Income<span class="text-danger">*</span></label>
+                                                <input type="number" class="form-control" value="{{old('income')}}" id="income" name="income" data-error="Please Enter Income">
                                                 <div class="help-block with-errors"></div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_phy_dis">
-                                                <label for="cus_phy_dis">Do you have any known physical disabilities<span
-                                                        class="text-danger">*</span></label>
-                                                <textarea class="form-control" id="cus_phy_dis" name="cus_phy_dis" required data-error="Please select"></textarea>
+                                            <div class="col-sm-6 col-lg-6 form-group valid_expenses">
+                                                <label for="expenses">Expenses<span class="text-danger">*</span></label>
+                                                <input type="number" class="form-control" value="{{old('expenses')}}" id="expenses" name="expenses" data-error="Please Enter expenses">
                                                 <div class="help-block with-errors"></div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_comments">
-                                                <label for="cus_comments">Please enter anything else you would like for us
-                                                    to know?</label><br>
-                                                <textarea class="form-control" id="cus_comments" name="cus_comments"></textarea>
-
+                                            <div class="col-sm-6 col-lg-6 form-group valid_rental_budget">
+                                                <label for="rental_budget">Rental Budget<span class="text-danger">*</span></label>
+                                                <input type="number" class="form-control" value="{{old('rental_budget')}}" id="rental_budget" name="rental_budget" data-error="Please Enter Rental Budget">
+                                                <div class="help-block with-errors"></div>
                                             </div>
+                                        </div>
 
-                                            <div id="mgsFormSubmit" class="hidden"></div>
-                                            <div id="final-step-buttons" class="form-group  signUpForm-step-5">
-                                                <button class="btn btn-custom" type="button"
-                                                    onclick="previousStep4()"><span class="fas fa-arrow-left"></span>
-                                                    Back</button>
-                                                <button id="Submit" class="btn btn-custom float-end" type="submit"
-                                                    onclick="nextStep6()">Submit </button>
-                                            </div>
+                                        <div id="mgsFormSubmit" class="hidden"></div>
+                                        <div id="final-step-buttons" class="form-group  signUpForm-step-5">
+                                            <button class="btn btn-custom" type="button"
+                                                onclick="previousStep4()"><span class="fas fa-arrow-left"></span>
+                                                Back</button>
+                                            <button id="Submit" class="btn btn-custom float-end" type="submit"
+                                                onclick="nextStep6()">Submit </button>
                                         </div>
                                     </fieldset>
                                 </div>
@@ -1078,5 +803,5 @@
     <script src="{{ asset('wizard-form/js/validator.min.js') }}"></script>
     <!-- sweetalert Js -->
     <script src="{{ asset('wizard-form/js/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('wizard-form/js/reg-form.js') }}"></script>
+    <script src="{{ asset('wizard-form/js/guest-form.js') }}"></script>
 @endsection

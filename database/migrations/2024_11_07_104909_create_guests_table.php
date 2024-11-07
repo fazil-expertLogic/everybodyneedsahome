@@ -46,6 +46,8 @@ class CreateGuestsTable extends Migration
             $table->string('conviction_charge')->nullable();
             $table->string('conviction_sentence')->nullable();
             $table->boolean('sex_offender')->default(false);
+            $table->boolean('victim_minor')->nullable();
+            $table->integer('age_difference')->nullable();
             $table->boolean('probation')->default(false);
             $table->string('probation_officer_name')->nullable();
             $table->string('probation_officer_phone')->nullable();
