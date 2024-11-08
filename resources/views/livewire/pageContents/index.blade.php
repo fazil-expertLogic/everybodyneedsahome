@@ -31,8 +31,13 @@
                 <form action="{{ route('pageContents.index') }}" method="GET">
                     <div class="mb-3 text-end">
                         <div class="input-group w-100">
+
                             <div class="col">
-                                <input type="text" name="name" class="form-control" placeholder="name" value="{{ request('name') }}">
+                                <input type="text" name="page_url" class="form-control" placeholder="Page Url" value="{{ request('page_url') }}">
+                            </div>
+
+                            <div class="col">
+                                <input type="text" name="variable" class="form-control" placeholder="Variable" value="{{ request('variable') }}">
                             </div>
                             
                             <input type="text" name="search" class="form-control bg-white" placeholder="Search here..." value="{{ request('search') }}">
@@ -47,16 +52,18 @@
                         <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p border-bottom-0">Page Content Name</th>
-                                    <th class="wd-25p border-bottom-0">Created ON</th>
-                                    <th class="wd-25p border-bottom-0">Action</th>
+                                    <th class="wd-10p border-bottom-0">Page Url</th>
+                                    <th class="wd-10p border-bottom-0">Variable</th>
+                                    <th class="wd-10p border-bottom-0">Text</th>
+                                    <th class="wd-10p border-bottom-0">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ( $pageContents as $pageContent )   
                                 <tr>
-                                    <td>{{$pageContent->name}}</td>
-                                    <td>{{$pageContent->created_at}}</td>
+                                    <td>{{$pageContent->page_url}}</td>
+                                    <td>{{$pageContent->variable}}</td>
+                                    <td>{{$pageContent->text}}</td>
                                     <td>
                                         @if($allow_show)
                                         <a href="{{ route('pageContents.show', $pageContent->id) }}" class="btn btn-warning btn-sm badge" title="Show">
@@ -68,11 +75,11 @@
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                         @endif
-                                        @if($allow_delete)
+                                        {{-- @if($allow_delete)
                                         <button class="btn btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('pageContents.destroy', $pageContent->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
-                                        @endif
+                                        @endif --}}
                                     </td>
                                 </tr>
                                 @endforeach 

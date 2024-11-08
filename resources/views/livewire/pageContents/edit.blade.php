@@ -10,7 +10,7 @@
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <input type="hidden" value="1" id="is_edit"/>
+
                             <div class="signUpForm-step-holder">
                                 <div id="section-1" class="signUpForm-step-wrap">
                                     <fieldset>
@@ -19,15 +19,36 @@
 
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_use_name  @if ($errors->has('name')) has-error has-danger @endif">
-                                                    <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="name" class="form-control py-2" id="name" placeholder="name" value="{{$state->name}}" required data-error="Please enter name">
+                                                <div class="form-group valid_page_url @if ($errors->has('page_url')) has-error has-danger @endif">
+                                                    <label for="page_url" class="form-label">Page Url<span class="text-danger">*</span></label>
+                                                    <input type="text" name="page_url" class="form-control py-2" id="page_url" placeholder="Page Url" value="{{old('page_url',$pageContent->page_url)}}" required data-error="Please enter page url">
                                                     <div class="help-block with-errors"></div>
-                                                    @if ($errors->has('name'))
-                                                        <div class="help-block with-errors">{{ $errors->first('name') }}</div>
+                                                    @if ($errors->has('page_url'))
+                                                        <div class="help-block with-errors">{{ $errors->first('page_url') }}</div>
                                                     @endif
                                                 </div>
-                                              
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_variable @if ($errors->has('variable')) has-error has-danger @endif">
+                                                    <label for="variable" class="form-label">Variable<span class="text-danger">*</span></label>
+                                                    <input type="text" name="variable" class="form-control py-2" id="variable" placeholder="Variable" value="{{old('variable',$pageContent->variable)}}" required data-error="Please enter Variable">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('variable'))
+                                                        <div class="help-block with-errors">{{ $errors->first('variable') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_text @if ($errors->has('text')) has-error has-danger @endif">
+                                                    <label for="text" class="form-label">Text<span class="text-danger">*</span></label>
+                                                    <input type="text" name="text" class="form-control py-2" id="text" placeholder="Text" value="{{old('text',$pageContent->text)}}" required data-error="Please enter text">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('text'))
+                                                        <div class="help-block with-errors">{{ $errors->first('text') }}</div>
+                                                    @endif
+                                                </div>
                                             </div>
                                             
                                         </div>

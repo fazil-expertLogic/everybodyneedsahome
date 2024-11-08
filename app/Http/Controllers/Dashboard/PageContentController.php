@@ -25,13 +25,18 @@ class PageContentController extends Controller
 
         $query = PageContent::query();
                 
-        if ($request->filled('name')) {
-            $query->where('name', 'like', '%' . $request->name . '%');
+        if ($request->filled('page_url')) {
+            $query->where('page_url', 'like', '%' . $request->page_url . '%');
+        }
+        
+        if ($request->filled('variable')) {
+            $query->where('variable', 'like', '%' . $request->variable . '%');
         }
 
         if ($request->filled('search')) {
             $query->where(function($subquery) use ($request) {
-                $subquery->where('name', 'like', '%' . $request->search . '%');
+                $subquery->where('page_url', 'like', '%' . $request->search . '%')
+                ->orWhere('variable', 'like', '%' . $request->search . '%');
             });
         }
 
@@ -60,21 +65,25 @@ class PageContentController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'name' => 'required|string|max:255'
+                'page_url' => 'required|string|max:255',
+                'variable' => 'required|string|max:255',
+                'text' => 'required|string|max:255',
             ]);
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 422);
             }
             DB::beginTransaction();
             PageContent::create([
-                'name' =>  $request->name
+                'page_url' =>  $request->page_url,
+                'variable' => $request->variable,
+                'text' => $request->text
             ]);
             DB::commit();
-            return redirect()->route('pageContents.index')->with('success', 'State create successfully.');
+            return redirect()->route('pageContents.index')->with('success', 'Page Content create successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
             dd($e->getMessage());
-            return redirect()->back()->withErrors(['error' => 'An error occurred while updating the State. Please try again.']);
+            return redirect()->back()->withErrors(['error' => 'An error occurred while updating the Page Content. Please try again.']);
         }
     }
 
@@ -86,8 +95,8 @@ class PageContentController extends Controller
      */
     public function show($id)
     {
-        $state = PageContent::findOrFail($id);
-        return view('livewire.pageContents.show', compact('state'));
+        $pageContent = PageContent::findOrFail($id);
+        return view('livewire.pageContents.show', compact('pageContent'));
     }
 
     /**
@@ -98,8 +107,8 @@ class PageContentController extends Controller
      */
     public function edit($id)
     {
-        $state = PageContent::findOrFail($id);
-        return view('livewire.pageContents.edit', compact('state'));
+        $pageContent = PageContent::findOrFail($id);
+        return view('livewire.pageContents.edit', compact('pageContent'));
     }
 
     /**
@@ -113,22 +122,26 @@ class PageContentController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'name' => 'required|string|max:255',
+                'page_url' => 'required|string|max:255',
+                'variable' => 'required|string|max:255',
+                'text' => 'required|string|max:255',
             ]);
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 422);
             }
             DB::beginTransaction();
-            $state = PageContent::findOrFail($id);
-            $state->update([
-                'name' =>  $request->name,
+            $pageContent = PageContent::findOrFail($id);
+            $pageContent->update([
+                'page_url' =>  $request->page_url,
+                'variable' => $request->variable,
+                'text' => $request->text
             ]);
             DB::commit();
-            return redirect()->route('pageContents.index')->with('success', 'State create successfully.');
+            return redirect()->route('pageContents.index')->with('success', 'Page Content create successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
             dd($e->getMessage());
-            return redirect()->back()->withErrors(['error' => 'An error occurred while updating the State. Please try again.']);
+            return redirect()->back()->withErrors(['error' => 'An error occurred while updating the Page Content. Please try again.']);
         }
     }
 
@@ -140,8 +153,8 @@ class PageContentController extends Controller
      */
     public function destroy($id)
     {
-        $state = PageContent::findOrFail($id);
-        $state->softDeleteRelations();
+        $pageContent = PageContent::findOrFail($id);
+        $pageContent->softDeleteRelations();
         return redirect()->route('pageContents.index')->with('success', 'user have been soft deleted successfully');
     }
 }
