@@ -7,7 +7,7 @@
             </div>
             <div class="breadcrumb-list">
                 <ul>
-                    <li><a href="{{url('index')}}">{{ $li_1 }} </a></li>
+                    <li><a href="{{url('/')}}">{{ $li_1 }} </a></li>
                     <li>{{ $li_2 }}</li>
                 </ul>
             </div>

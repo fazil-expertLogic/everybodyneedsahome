@@ -1,15 +1,17 @@
-<?php $page = 'about-us'; ?>
+<?php $page = 'about-us'; 
+use App\Helpers\Helper;
+?>
 @extends('site.layout.mainlayout')
 @section('content')
     @component('site.components.breadcrumb')
         @slot('title')
-            About Us
+            {!! Helper::pageContent('about-us','about-us title') !!}
         @endslot
         @slot('li_1')
-            Home
+            {!! Helper::pageContent('about-us','about-us li_1') !!}
         @endslot
         @slot('li_2')
-            About Us
+            {!! Helper::pageContent('about-us','about-us li_2') !!}
         @endslot
     @endcomponent
     <!-- About Us -->
@@ -17,14 +19,11 @@
         <div class="container">
             <!-- About Content -->
             <div class="about-content">
-                <h6>About DreamsEstate</h6>
-                <h1>We connect building with people</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis ligula eu lectus vulputate
-                    porttitor sed feugiat nunc. Mauris ac consectetur ante,</p>
+                <h6>{!! Helper::pageContent('about-us','aboutus-section about-content-h6') !!}</h6>
+                <h1>{!! Helper::pageContent('about-us','aboutus-section about-content-h1') !!}</h1>
+                <p>{!! Helper::pageContent('about-us','aboutus-section about-content-p') !!}</p>
 
-                <p class="mb-0">congue, sed luctus lectus congue. Integer convallis condimentum sem. Duis elementum tortor
-                    eget condimentum tempor. Praesent sollicitudin lectus ut pharetra pulvinar. Donec et libero ligula.
-                    Vivamus semper at orci at placerat.Placeat Lorem ipsum dolor sit amet.</p>
+                <p class="mb-0">{!! Helper::pageContent('about-us','aboutus-section about-content-p-mb-0') !!}</p>
             </div>
             <!-- /About Content -->
         </div>
@@ -66,7 +65,7 @@
                             </div>
                             <div class="counter-value">
                                 <h3 class="dash-count"><span class="counter-up">50</span>K</h3>
-                                <h5>Listings Added </h5>
+                                <h5>{!! Helper::pageContent('about-us','counter-sec icon-1') !!}</h5>
                             </div>
                         </div>
                     </div>
@@ -77,7 +76,7 @@
                             </div>
                             <div class="counter-value">
                                 <h3 class="dash-count"><span class="counter-up">3000</span>+</h3>
-                                <h5>Agents Listed </h5>
+                                <h5>{!! Helper::pageContent('about-us','counter-sec icon-2') !!}</h5>
                             </div>
                         </div>
                     </div>
@@ -88,7 +87,7 @@
                             </div>
                             <div class="counter-value">
                                 <h3 class="dash-count"><span class="counter-up">2000</span>+</h3>
-                                <h5>Sales Completed </h5>
+                                <h5>{!! Helper::pageContent('about-us','counter-sec icon-3') !!}</h5>
                             </div>
                         </div>
                     </div>
@@ -99,7 +98,7 @@
                             </div>
                             <div class="counter-value">
                                 <h3 class="dash-count"><span class="counter-up">5000</span>+</h3>
-                                <h5>Users</h5>
+                                <h5>{!! Helper::pageContent('about-us','counter-sec icon-4') !!}</h5>
                             </div>
                         </div>
                     </div>
@@ -116,29 +115,17 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                     <div class="book-listing">
-                        <h2>Ready to Book a Place?</h2>
+                        <h2>{!! Helper::pageContent('about-us','book-section book-listing-h2') !!}</h2>
                         <img src="{{ URL::asset('/assets/img/about-us/about-us-04.jpg') }}" alt="aboutus-03">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                     <div class="book-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis ligula eu lectus vulputate
-                            porttitor sed feugiat nunc. <span>Mauris ac consectetur ante,</span></p>
+                        <p>{!! Helper::pageContent('about-us','book-section book-content-p1') !!}<span>{!! Helper::pageContent('about-us','book-section book-content-span1') !!}</span></p>
 
-                        <p>congue, sed luctus lectus congue. Integer convallis condimentum sem. Duis elementum tortor eget
-                            condimentum tempor. Praesent sollicitudin lectus ut pharetra pulvinar. Donec et libero ligula.
-                            Vivamus semper at orci at placerat.Placeat Lorem ipsum dolor sit amet. congue, sed luctus lectus
-                            congue. Integer convallis condimentum sem. Duis elementum tortor eget condimentum tempor.
-                            Praesent sollicitudin lectus ut pharetra pulvinar. Done congue, sed luctus lectus congue.
-                            Integer convallis condimentum sem. Duis elementum tortor eget condimentum tempor. Praesent
-                            sollicitudin lectus ut pharetra pulvinar. Done Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit. Quisque quis ligula eu lectus vulputate porttitor sed feugiat nunc.
-                            <span>Mauris ac consectetur ante,</span>
-                        </p>
+                        <p>{!! Helper::pageContent('about-us','book-section book-content-p2') !!} <span>{!! Helper::pageContent('about-us','book-section book-content-span2') !!}</span> </p>
 
-                        <p class="mb-0">congue, sed luctus lectus congue. Integer convallis condimentum sem. Duis
-                            elementum tortor eget condimentum tempor. Praesent sollicitudin lectus ut pharetra pulvinar.
-                            Donec et libero ligula. Vivamus semper at orci at placerat.Placeat Lorem ipsum dolor sit amet.
+                        <p class="mb-0">{!! Helper::pageContent('about-us','book-section book-content-p3') !!}
                         </p>
                     </div>
                 </div>
@@ -151,12 +138,12 @@
     <section class="section partners-sec">
         <div class="container">
             <div class="section-heading text-center">
-                <h2>Hundreds of Partners Around the World</h2>
+                <h2>{!! Helper::pageContent('about-us','partners-sec section-heading-h2') !!}</h2>
                 <div class="sec-line">
                     <span class="sec-line1"></span>
                     <span class="sec-line2"></span>
                 </div>
-                <p> Every day, we build trust through communication, transparency, and results.</p>
+                <p>{!! Helper::pageContent('about-us','partners-sec section-heading-p') !!}</p>
             </div>
             <div class="row">
                 <div class="col-md-12">
