@@ -43,7 +43,7 @@ use App\Helpers\Helper;
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <img src="{{ URL::asset('/assets/img/contact.jpg') }}" alt="Image">
+                        <img src="{{ URL::asset(Helper::pageContent('contact-us','contact-img')) }}" alt="Image">
                     </div>
                 </div>
             </div>
@@ -119,7 +119,7 @@ use App\Helpers\Helper;
                         <div class="col-lg-12 d-flex">
                             <div class="flex-fill">
                                 <div class="contact-info-details d-flex align-items-center">
-                                    <span><img src="{{ URL::asset('/assets/img/icons/phone.svg') }}" alt="Image"></span>
+                                    <span><img src="{{ URL::asset(Helper::pageContent('contact-us','phone-img')) }}" alt="Image"></span>
                                     <div>
                                         <h4>{!! Helper::pageContent('contact-us','contact-info-sec contact-info-details-h4') !!}</h4>
                                         <a href="tel:{!! Helper::pageContent('contact-us','contact-info-sec contact-info-details-tel1') !!}">{!! Helper::pageContent('contact-us','contact-info-sec contact-info-details-tel1') !!}</a>,
@@ -131,7 +131,7 @@ use App\Helpers\Helper;
                         <div class="col-lg-12 d-flex">
                             <div class="flex-fill">
                                 <div class="contact-info-details d-flex align-items-center">
-                                    <span><img src="{{ URL::asset('/assets/img/icons/mail.svg') }}" alt="Image"></span>
+                                    <span><img src="{{ URL::asset(Helper::pageContent('contact-us','mail-img')) }}" alt="Image"></span>
                                     <div>
                                         <h4>{!! Helper::pageContent('contact-us','contact-info-sec contact-info-details-h4_1') !!}</h4>
                                         <a href="mailto:{!! Helper::pageContent('contact-us','contact-info-sec contact-info-details-a') !!}">{!! Helper::pageContent('contact-us','contact-info-sec contact-info-details-a') !!}</a>
@@ -142,7 +142,7 @@ use App\Helpers\Helper;
                         <div class="col-lg-12 d-flex">
                             <div class="flex-fill">
                                 <div class="contact-info-details d-flex align-items-center">
-                                    <span><img src="{{ URL::asset('/assets/img/icons/map-pin.svg') }}"
+                                    <span><img src="{{ URL::asset(Helper::pageContent('contact-us','map-pin-img')) }}"
                                             alt="Image"></span>
                                     <div>
                                         <h4>{!! Helper::pageContent('contact-us','contact-info-sec contact-info-details-h4_2') !!}</h4>

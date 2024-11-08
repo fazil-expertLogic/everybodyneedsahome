@@ -38,17 +38,17 @@ use App\Helpers\Helper;
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-12 col-sm-12">
                         <div class="about-listing">
-                            <img src="{{ URL::asset('/assets/img/about-us/about-us-01.jpg') }}" alt="aboutus-01">
+                            <img src="{{ URL::asset(Helper::pageContent('about-us','about-us-01')) }}" alt="aboutus-01">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-12 col-sm-12">
                         <div class="about-listing">
-                            <img src="{{ URL::asset('/assets/img/about-us/about-us-02.jpg') }}" alt="aboutus-02">
+                            <img src="{{ URL::asset(Helper::pageContent('about-us','about-us-02')) }}" alt="aboutus-02">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-12 col-sm-12">
                         <div class="about-listing">
-                            <img src="{{ URL::asset('/assets/img/about-us/about-us-03.jpg') }}" alt="aboutus-03">
+                            <img src="{{ URL::asset(Helper::pageContent('about-us','about-us-03')) }}" alt="aboutus-03">
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ use App\Helpers\Helper;
                     <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
                         <div class="counter-box flex-fill">
                             <div class="counter-icon">
-                                <img src="{{ URL::asset('/assets/img/icons/counter-icon-1.svg') }}" alt="icon">
+                                <img src="{{ URL::asset(Helper::pageContent('about-us','counter-icon-1')) }}" alt="icon">
                             </div>
                             <div class="counter-value">
                                 <h3 class="dash-count"><span class="counter-up">50</span>K</h3>
@@ -72,7 +72,7 @@ use App\Helpers\Helper;
                     <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
                         <div class="counter-box flex-fill">
                             <div class="counter-icon">
-                                <img src="{{ URL::asset('/assets/img/icons/counter-icon-2.svg') }}" alt="icon">
+                                <img src="{{ URL::asset(Helper::pageContent('about-us','counter-icon-2')) }}" alt="icon">
                             </div>
                             <div class="counter-value">
                                 <h3 class="dash-count"><span class="counter-up">3000</span>+</h3>
@@ -83,7 +83,7 @@ use App\Helpers\Helper;
                     <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
                         <div class="counter-box active flex-fill">
                             <div class="counter-icon">
-                                <img src="{{ URL::asset('/assets/img/icons/counter-icon-3.svg') }}" alt="icon">
+                                <img src="{{ URL::asset(Helper::pageContent('about-us','counter-icon-3')) }}" alt="icon">
                             </div>
                             <div class="counter-value">
                                 <h3 class="dash-count"><span class="counter-up">2000</span>+</h3>
@@ -94,7 +94,7 @@ use App\Helpers\Helper;
                     <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
                         <div class="counter-box flex-fill">
                             <div class="counter-icon">
-                                <img src="{{ URL::asset('/assets/img/icons/counter-icon-4.svg') }}" alt="icon">
+                                <img src="{{ URL::asset(Helper::pageContent('about-us','counter-sec-img_4')) }}" alt="icon">
                             </div>
                             <div class="counter-value">
                                 <h3 class="dash-count"><span class="counter-up">5000</span>+</h3>
@@ -116,7 +116,7 @@ use App\Helpers\Helper;
                 <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                     <div class="book-listing">
                         <h2>{!! Helper::pageContent('about-us','book-section book-listing-h2') !!}</h2>
-                        <img src="{{ URL::asset('/assets/img/about-us/about-us-04.jpg') }}" alt="aboutus-03">
+                        <img src="{{ URL::asset(Helper::pageContent('about-us','about-us-04')) }}" alt="aboutus-03">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 col-12">
@@ -149,22 +149,22 @@ use App\Helpers\Helper;
                 <div class="col-md-12">
                     <div class="partners-slider owl-carousel">
                         <div class="partner-icon">
-                            <img src="{{ URL::asset('/assets/img/icons/partner-icon-1.svg') }}" alt="Partners">
+                            <img src="{{ URL::asset(Helper::pageContent('about-us','partner-icon-1')) }}" alt="Partners">
                         </div>
                         <div class="partner-icon">
-                            <img src="{{ URL::asset('/assets/img/icons/partner-icon-2.svg') }}" alt="Partners">
+                            <img src="{{ URL::asset(Helper::pageContent('about-us','partner-icon-2')) }}" alt="Partners">
                         </div>
                         <div class="partner-icon">
-                            <img src="{{ URL::asset('/assets/img/icons/partner-icon-3.svg') }}" alt="Partners">
+                            <img src="{{ URL::asset(Helper::pageContent('about-us','partner-icon-3')) }}" alt="Partners">
                         </div>
                         <div class="partner-icon">
-                            <img src="{{ URL::asset('/assets/img/icons/partner-icon-4.svg') }}" alt="Partners">
+                            <img src="{{ URL::asset(Helper::pageContent('about-us','partner-icon-4')) }}" alt="Partners">
                         </div>
                         <div class="partner-icon">
-                            <img src="{{ URL::asset('/assets/img/icons/partner-icon-5.svg') }}" alt="Partners">
+                            <img src="{{ URL::asset(Helper::pageContent('about-us','partner-icon-5')) }}" alt="Partners">
                         </div>
                         <div class="partner-icon">
-                            <img src="{{ URL::asset('/assets/img/icons/partner-icon-6.svg') }}" alt="Partners">
+                            <img src="{{ URL::asset(Helper::pageContent('about-us','partner-icon-6')) }}" alt="Partners">
                         </div>
                     </div>
                 </div>
