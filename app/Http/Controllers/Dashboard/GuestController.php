@@ -20,10 +20,10 @@ class GuestController extends Controller
      */
     public function index(Request $request)
     {
-        $allow_show = Helper::check_rights(11)->is_show;
-        $allow_create = Helper::check_rights(11)->is_create;
-        $allow_edit = Helper::check_rights(11)->is_edit;
-        $allow_delete = Helper::check_rights(11)->is_delete;
+        $allow_show = Helper::check_rights(18)->is_show;
+        $allow_create = Helper::check_rights(18)->is_create;
+        $allow_edit = Helper::check_rights(18)->is_edit;
+        $allow_delete = Helper::check_rights(18)->is_delete;
 
         $query = Guest::query();
         if ($request->filled('name')) {

@@ -20,6 +20,6 @@ class PermissionMiddleware
         if (Helper::check_rights($right)->is_listing) {
             return $next($request);
         }
-        abort(401);
+        return redirect()->route('dashboard')->with('error', 'Unauthorized access.');
     }
 }
