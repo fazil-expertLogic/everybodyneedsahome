@@ -207,7 +207,8 @@ document.addEventListener("touchstart", function() {},false);
 		else	
 			$( ".valid_email .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter valid email</li></ul>' );
 
-		if(  pass != cpass  || is_edit != 1) {
+		if( pass != cpass && is_edit == 0) {
+			console.log(pass == cpass);
 			$( ".validpass .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Password and Confirm Password do not match</li></ul>' );
 			sweetAlert("Oops...", "Password and Confirm Password do not match!!!", "error");
 			return false;

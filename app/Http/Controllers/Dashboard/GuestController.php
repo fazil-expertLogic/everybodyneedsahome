@@ -53,7 +53,7 @@ class GuestController extends Controller
      */
     public function create()
     {
-        return view('livewire.guest.add');
+        return view('livewire.guests.add');
     }
 
     /**
@@ -67,7 +67,7 @@ class GuestController extends Controller
         // Validation Rules
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'ssn' => 'required|string|max:1',
+            'ssn' => 'required|string',
             'dob' => 'required|date',
             'address' => 'required|string|max:255',
             'address2' => 'required|string|max:255',
@@ -226,7 +226,7 @@ class GuestController extends Controller
         // Validate input
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'ssn' => "required|string|max:11|unique:guests,ssn,$id",
+            'ssn' => "required|string",
             'dob' => 'required|date',
             'address' => 'required|string|max:255',
             'address2' => 'nullable|string|max:255',

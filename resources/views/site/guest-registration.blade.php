@@ -83,6 +83,7 @@
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
+                                            <input type="hidden" value="0" id="is_edit"/>
                                             <div class="col-sm-6 col-lg-6">
                                                 <input type="hidden" name="front" class="form-control py-2" value="front">
                                                 <div class="form-group valid_name @if($errors->has('name')) has-error has-danger @endif">
