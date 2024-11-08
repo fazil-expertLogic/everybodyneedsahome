@@ -63,7 +63,7 @@
                                 <tr>
                                     <td>{{$pageContent->page_url}}</td>
                                     <td>{{$pageContent->variable}}</td>
-                                    <td>{{$pageContent->text}}</td>
+                                    <td class="text-wrap">{{$pageContent->text}}</td>
                                     <td>
                                         @if($allow_show)
                                         <a href="{{ route('pageContents.show', $pageContent->id) }}" class="btn btn-warning btn-sm badge" title="Show">

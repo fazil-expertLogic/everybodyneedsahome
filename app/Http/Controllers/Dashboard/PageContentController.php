@@ -36,7 +36,8 @@ class PageContentController extends Controller
         if ($request->filled('search')) {
             $query->where(function($subquery) use ($request) {
                 $subquery->where('page_url', 'like', '%' . $request->search . '%')
-                ->orWhere('variable', 'like', '%' . $request->search . '%');
+                ->orWhere('variable', 'like', '%' . $request->search . '%')
+                ->orWhere('text', 'like', '%' . $request->search . '%');
             });
         }
 

@@ -1,4 +1,6 @@
-<?php $page = 'index'; ?>
+<?php $page = 'index'; 
+use App\Helpers\Helper;
+?>
 @extends('site.layout.mainlayout')
 @section('content')
     <!-- Home Banner -->
@@ -7,9 +9,8 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="banner-content" data-aos="fade-down">
-                        <h1>We help you find <span>  Second Chance Housing</span></h1>
-                        <p>We are different than any other website offering housing for rent or even a place to stay. We have more than 3000+ listings for you to choose.
-                        </p>
+                        <h1>{!! Helper::pageContent('home','banner-section banner-content-h1') !!} <span>  {!! Helper::pageContent('home','banner-section banner-content-span') !!}</span></h1>
+                        <p>{!! Helper::pageContent('home','banner-section banner-content-p') !!}</p>
                     </div>
                 </div>
             </div>
@@ -22,8 +23,7 @@
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="rent-property" data-bs-toggle="tab" href="#rent_property"
                                         role="tab" aria-controls="rent_property" aria-selected="false">
-                                        <img src="{{ URL::asset('/assets/img/icons/rent-icon.svg') }}" alt="icon"> Rent
-                                        a Property
+                                        <img src="{{ URL::asset('/assets/img/icons/rent-icon.svg') }}" alt="icon"> {!! Helper::pageContent('home','banner-section nav-link') !!}
                                     </a>
                                 </li>
                             </ul>
@@ -73,17 +73,17 @@
     <section class="howit-work">
         <div class="container">
             <div class="section-heading text-center">
-                <h2>Second Chance Housing for Everyone...</h2>
+                <h2> {!! Helper::pageContent('home','howit-work section-heading-h2') !!}</h2>
                 <div class="sec-line">
                     <span class="sec-line1"></span>
                     <span class="sec-line2"></span>
                 </div>
- <p>We are different than any other website offering housing for rent or even a place to stay. We are specifically focused on offering Second Chance housing for individuals who may have trouble finding traditional housing solutions. If this is you, we invite you to sign up for free and apply with our network Providers.
+ <p> {!! Helper::pageContent('home','howit-work section-heading-p') !!}
 </p>
 <br />
 
 <div class="price-btn">
- <a href="https://staging.everybodyneedsahome.com/client-registration" class="btn-primary">Applicant Sign Up </a>
+ <a href="https://staging.everybodyneedsahome.com/client-registration" class="btn-primary">{!! Helper::pageContent('home','howit-work price-btn') !!}</a>
 </div>
             </div>
         </div>
@@ -98,18 +98,18 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="section-heading" data-aos="fade-down" data-aos-duration="2000">
-                        <h2>Are you a Landlord, Management Company, or Property Owner</h2>
+                        <h2>{!! Helper::pageContent('home','faq-section section-heading-h2') !!}</h2>
                         <div class="sec-line">
                             <span class="sec-line1"></span>
                             <span class="sec-line2"></span>
                         </div>
-                        <p>Who is interested in marketing your house, building, room or even a single bed to someone seeking a Second Chance? We invite you to join our growing network of those willing to offer a Second Chance to those so often forgetten or written off by most of our society. You can create a fully customizable account that matches your budget and where you can set your standards of what you are willing to accept in an Applicant.
+                        <p>{!! Helper::pageContent('home','faq-section section-heading-p') !!}
 
 </p>
 <br />
 
 <div class="price-btn">
- <a href="https://staging.everybodyneedsahome.com/provider-registration" class="btn-primary">Sign up to become a Second Chance Provider  </a>
+ <a href="https://staging.everybodyneedsahome.com/provider-registration" class="btn-primary"> {!! Helper::pageContent('home','faq-section price-btn') !!} </a>
 </div>
                     </div>
                    
@@ -133,12 +133,12 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="section-heading" data-aos="fade-down" data-aos-duration="1000">
-                        <h2>Explore by Property Type</h2>
+                        <h2>{!! Helper::pageContent('home','property-type-sec section-heading-h2') !!}</h2>
                         <div class="sec-line">
                             <span class="sec-line1"></span>
                             <span class="sec-line2"></span>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis et sem sed </p>
+                        <p>{!! Helper::pageContent('home','property-type-sec section-heading-p') !!}</p>
                     </div>
                     <div class="owl-navigation">
                         <div class="owl-nav mynav1 nav-control"></div>
@@ -220,12 +220,12 @@
     <section class="feature-property-sec">
         <div class="container">
             <div class="section-heading text-center">
-                <h2>Featured Properties for Rent</h2>
+                <h2>{!! Helper::pageContent('home','feature-property-sec section-heading-h2') !!}</h2>
                 <div class="sec-line">
                     <span class="sec-line1"></span>
                     <span class="sec-line2"></span>
                 </div>
-                <p>Hand-Picked selection of quality places</p>
+                <p>{!! Helper::pageContent('home','feature-property-sec section-heading-p') !!} </p>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -316,7 +316,7 @@
                     </div>
                     <div class="view-property-btn d-flex justify-content-center" data-aos="fade-down"
                         data-aos-duration="1000">
-                        <a href="{{ url('#') }}" class="btn-primary">View All Properties</a>
+                        <a href="{{ url('#') }}" class="btn-primary"> {!! Helper::pageContent('home','feature-property-sec view-property-btn') !!}</a>
                     </div>
                 </div>
             </div>
@@ -769,71 +769,61 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="section-heading" data-aos="fade-down" data-aos-duration="2000">
-                        <h2>Frequently Asked Questions</h2>
+                        <h2>{!! Helper::pageContent('home','faq-section1 section-heading-h2') !!}</h2>
                         <div class="sec-line">
                             <span class="sec-line1"></span>
                             <span class="sec-line2"></span>
                         </div>
-                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-                            magni dolores eos qui ratione voluptatem sequi nesciunt</p>
+                        <p>{!! Helper::pageContent('home','faq-section1 section-heading-p') !!}</p>
                     </div>
                     <div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
                         <h4 class="faq-title">
-                            <a class="collapsed" data-bs-toggle="collapse" href="#faqone" aria-expanded="false">1.
-                                What are the costs to buy a house?</a>
+                            <a class="collapsed" data-bs-toggle="collapse" href="#faqone" aria-expanded="false">{!! Helper::pageContent('home','faq-section1 faqone') !!}</a>
                         </h4>
                         <div id="faqone" class="card-collapse collapse">
                             <div class="faq-info">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                    has been the industry's standard dummy text ever since the 1500s</p>
+                                <p>{!! Helper::pageContent('home','faq-section1 faqone-p') !!}</p>
                             </div>
                         </div>
                     </div>
                     <div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
                         <h4 class="faq-title">
-                            <a class="collapsed" data-bs-toggle="collapse" href="#faqtwo" aria-expanded="false">2.
-                                What are the steps to sell a house?</a>
+                            <a class="collapsed" data-bs-toggle="collapse" href="#faqtwo" aria-expanded="false">{!! Helper::pageContent('home','faq-section1 faqtwo') !!}</a>
                         </h4>
                         <div id="faqtwo" class="card-collapse collapse">
                             <div class="faq-info">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                    has been the industry's standard dummy text ever since the 1500s</p>
+                                <p>{!! Helper::pageContent('home','faq-section1 faqtwo-p') !!}</p>
                             </div>
                         </div>
                     </div>
                     <div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
                         <h4 class="faq-title">
-                            <a class="" data-bs-toggle="collapse" href="#faqthree" aria-expanded="false">3. Do
-                                you have loan consultants?</a>
+                            <a class="" data-bs-toggle="collapse" href="#faqthree" aria-expanded="false">{!! Helper::pageContent('home','faq-section1 faqthree') !!}</a>
                         </h4>
                         <div id="faqthree" class="card-collapse collapse show">
                             <div class="faq-info">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                    has been the industry's standard dummy text ever since the 1500s</p>
+                                <p>{!! Helper::pageContent('home','faq-section1 faqthree-p') !!}</p>
                             </div>
                         </div>
                     </div>
                     <div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
                         <h4 class="faq-title">
-                            <a class="collapsed" data-bs-toggle="collapse" href="#faqfour" aria-expanded="false">4.
-                                When will the project be completed?</a>
+                            <a class="collapsed" data-bs-toggle="collapse" href="#faqfour" aria-expanded="false">{!! Helper::pageContent('home','faq-section1 faqfour') !!}</a>
                         </h4>
                         <div id="faqfour" class="card-collapse collapse">
                             <div class="faq-info">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                    has been the industry's standard dummy text ever since the 1500s</p>
+                                <p>{!! Helper::pageContent('home','faq-section1 faqfour-p') !!}</p>
                             </div>
                         </div>
                     </div>
                     <div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
                         <h4 class="faq-title">
                             <a class="collapsed" data-bs-toggle="collapse" href="#faqfive"
-                                aria-expanded="false">5.What are the steps to rent a house?</a>
+                                aria-expanded="false">{!! Helper::pageContent('home','faq-section1 faqfive') !!}</a>
                         </h4>
                         <div id="faqfive" class="card-collapse collapse">
                             <div class="faq-info">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                    has been the industry's standard dummy text ever since the 1500s</p>
+                                <p>{!! Helper::pageContent('home','faq-section1 faqfive-p') !!}</p>
                             </div>
                         </div>
                     </div>
@@ -853,12 +843,12 @@
             <div class="row">
                 <div class="col-md-8 mx-auto">
                     <div class="section-heading text-center">
-                        <h2>Latest Blog</h2>
+                        <h2>{!! Helper::pageContent('home','latest-blog-sec section-heading-h2') !!}</h2>
                         <div class="sec-line">
                             <span class="sec-line1"></span>
                             <span class="sec-line2"></span>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmodtempor incididunt</p>
+                        <p>{!! Helper::pageContent('home','latest-blog-sec section-heading-p') !!}</p>
                     </div>
                 </div>
             </div>
@@ -1050,15 +1040,15 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="news-heading" data-aos="fade-down" data-aos-duration="2000">
-                        <h2>Sign Up for Our Newsletter</h2>
-                        <p>Lorem ipsum dolor sit amet, consecte tur cing elit. Suspe ndisse suscipit sagittis</p>
+                        <h2>{!! Helper::pageContent('home','news-letter-sec news-heading-h2') !!}</h2>
+                        <p>{!! Helper::pageContent('home','news-letter-sec news-heading-p') !!} </p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="email-form" data-aos="fade-down" data-aos-duration="2000">
                         <form action="#">
                             <input type="email" class="form-control" placeholder="Enter Email Address">
-                            <button class="btn-primary">Subscribe</button>
+                            <button class="btn-primary">{!! Helper::pageContent('home','news-letter-sec news-heading-btn') !!}</button>
                         </form>
                     </div>
                 </div>
