@@ -12,7 +12,7 @@
                             <div class="signUpForm-step-holder">
                                 <div id="section-1" class="signUpForm-step-wrap">
                                     <fieldset>
-                                        <h3 class="section-form-title">Create New Page Content</h3>
+                                        <h3 class="section-form-title">Create Page Content</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
