@@ -38,10 +38,10 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6">
+                                            <div class="col-sm-12 col-lg-12">
                                                 <div class="form-group valid_text @if ($errors->has('text')) has-error has-danger @endif">
                                                     <label for="text" class="form-label">Text<span class="text-danger">*</span></label>
-                                                    <input type="text" name="text" class="form-control py-2" id="text" placeholder="Text" value="{{old('text')}}" required data-error="Please enter text">
+                                                    <textarea class="form-control" id="text" name="text"  required data-error="Please Enter Text"></textarea>
                                                     <div class="help-block with-errors"></div>
                                                     @if ($errors->has('text'))
                                                         <div class="help-block with-errors">{{ $errors->first('text') }}</div>
