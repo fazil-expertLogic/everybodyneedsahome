@@ -1,15 +1,17 @@
-<?php $page = 'buy-property-grid'; ?>
+<?php $page = 'buy-property-grid'; 
+    use App\Helpers\Helper;
+?>
 @extends('site.layout.mainlayout')
 @section('content')
     @component('site.components.breadcrumb')
         @slot('title')
-            Buy property Grid without Sidebar
+        {!! Helper::pageContent('buy-property-grid','buy-property-grid title') !!} 
         @endslot
         @slot('li_1')
-            Home
+        {!! Helper::pageContent('buy-property-grid','buy-property-grid li_1') !!} 
         @endslot
         @slot('li_2')
-            Buy property Grid without Sidebar
+        {!! Helper::pageContent('buy-property-grid','buy-property-grid li_2') !!}
         @endslot
     @endcomponent
 

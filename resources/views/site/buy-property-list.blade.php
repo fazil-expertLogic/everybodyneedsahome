@@ -1,15 +1,17 @@
-<?php $page = 'buy-property-list'; ?>
+<?php $page = 'buy-property-list'; 
+use App\Helpers\Helper;
+?>
 @extends('layout.mainlayout')
 @section('content')
     @component('components.breadcrumb')
         @slot('title')
-            Buy Property List Without Sidebar
+        {!! Helper::pageContent('buy-property-list','buy-property-list title') !!} 
         @endslot
         @slot('li_1')
-            Home
+        {!! Helper::pageContent('buy-property-list','buy-property-list li_1') !!} 
         @endslot
         @slot('li_2')
-            Buy property List without Sidebar
+        {!! Helper::pageContent('buy-property-list','buy-property-list li_2') !!}
         @endslot
     @endcomponent
 
