@@ -8,8 +8,8 @@
     <div class="page-header d-sm-flex d-block">
         <ol class="breadcrumb mb-sm-0 mb-3">
             <!-- breadcrumb -->
-            <li class="breadcrumb-item"><a href="javascript:void(0);">State</a></li>
-            <li class="breadcrumb-item active" aria-current="page">State Tables</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0);">Page Content</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Page Content Tables</li>
         </ol><!-- End breadcrumb -->
     </div>
     <!-- END PAGE-HEADER -->
@@ -19,26 +19,25 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">State Data</h3>
+                    <h3 class="card-title">Page Content Data</h3>
                 </div>
                 <div class="mb-3 text-end">
-                    {{-- @if($allow_create)
-                    <a href="{{ route('propertyReview.create') }}" class="btn bg-primary btn-sm badge" data-bs-toggle="tooltip" title="Add New">
+                    @if($allow_create)
+                    <a href="{{ route('pageContents.create') }}" class="btn bg-primary btn-sm badge" data-bs-toggle="tooltip" title="Add New">
                         <span><i class="fa fa-plus"></i></span>
                     </a>
-                    @endif --}}
+                    @endif
                 </div>
-                <form action="{{ route('propertyReview.index') }}" method="GET">
+                <form action="{{ route('pageContents.index') }}" method="GET">
                     <div class="mb-3 text-end">
                         <div class="input-group w-100">
+
                             <div class="col">
-                                <input type="text" name="reviewer_name" class="form-control" placeholder="Reviewer Name" value="{{ request('reviewer_name') }}">
+                                <input type="text" name="page_url" class="form-control" placeholder="Page Url" value="{{ request('page_url') }}">
                             </div>
+
                             <div class="col">
-                                <input type="text" name="reviewer_email" class="form-control" placeholder="Reviewer Email" value="{{ request('reviewer_email') }}">
-                            </div>
-                            <div class="col">
-                                <input type="text" name="comment" class="form-control" placeholder="Comment" value="{{ request('comment') }}">
+                                <input type="text" name="variable" class="form-control" placeholder="Variable" value="{{ request('variable') }}">
                             </div>
                             
                             <input type="text" name="search" class="form-control bg-white" placeholder="Search here..." value="{{ request('search') }}">
@@ -53,40 +52,34 @@
                         <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p border-bottom-0">Property Name</th>
-                                    <th class="wd-25p border-bottom-0">Reviewer Name</th>
-                                    <th class="wd-25p border-bottom-0">Reviewer Email</th>
-                                    <th class="wd-25p border-bottom-0">Comment</th>
-                                    <th class="wd-25p border-bottom-0">IS Approved</th>
-                                    <th class="wd-25p border-bottom-0">Created ON</th>
-                                    <th class="wd-25p border-bottom-0">Action</th>
+                                    <th class="wd-10p border-bottom-0">Page Url</th>
+                                    <th class="wd-10p border-bottom-0">Variable</th>
+                                    <th class="wd-10p border-bottom-0">Text</th>
+                                    <th class="wd-10p border-bottom-0">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ( $propertyReviewes as $propertyReview )   
+                                @foreach ( $pageContents as $pageContent )   
                                 <tr>
-                                    <td>{{$propertyReview->property ?  $propertyReview->property->property_name : ''}}</td>
-                                    <td>{{$propertyReview->reviewer_name}}</td>
-                                    <td>{{$propertyReview->reviewer_email}}</td>
-                                    <td>{{$propertyReview->comment}}</td>
-                                    <td>{{ $propertyReview->approved == 0 ? 'Not Approved' : 'Approved' }}</td>
-                                    <td>{{$propertyReview->created_at}}</td>
+                                    <td>{{$pageContent->page_url}}</td>
+                                    <td>{{$pageContent->variable}}</td>
+                                    <td class="text-wrap">{{$pageContent->text}}</td>
                                     <td>
                                         @if($allow_show)
-                                        <a href="{{ route('propertyReview.show', $propertyReview->id) }}" class="btn btn-warning btn-sm badge" title="Show">
+                                        <a href="{{ route('pageContents.show', $pageContent->id) }}" class="btn btn-warning btn-sm badge" title="Show">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                         @endif
                                         @if($allow_edit)
-                                        <a href="{{ route('propertyReview.edit', $propertyReview->id) }}" class="btn btn-primary btn-sm badge" title="Edit">
+                                        <a href="{{ route('pageContents.edit', $pageContent->id) }}" class="btn btn-primary btn-sm badge" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                         @endif
-                                        @if($allow_delete)
-                                        <button class="btn btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('propertyReview.destroy', $propertyReview->id) }}');">
+                                        {{-- @if($allow_delete)
+                                        <button class="btn btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('pageContents.destroy', $pageContent->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
-                                        @endif
+                                        @endif --}}
                                     </td>
                                 </tr>
                                 @endforeach 
@@ -97,12 +90,12 @@
                            
                             <div class="card-body">
                                 <!-- Display total entry count -->
-                                <p>Total Entries: {{ $propertyReviewes->total() }}</p>
+                                <p>Total Entries: {{ $pageContents->total() }}</p>
 
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination justify-content-center mb-0">
                                         {{-- Previous Button --}}
-                                        @if ($propertyReviewes->onFirstPage())
+                                        @if ($pageContents->onFirstPage())
                                         <li class="page-item disabled">
                                             <a class="page-link" href="javascript:void(0);" tabindex="-1">
                                                 <i class="fa fa-angle-left"></i>
@@ -111,7 +104,7 @@
                                         </li>
                                         @else
                                         <li class="page-item">
-                                            <a class="page-link" href="{{ $propertyReviewes->previousPageUrl() }}">
+                                            <a class="page-link" href="{{ $pageContents->previousPageUrl() }}">
                                                 <i class="fa fa-angle-left"></i>
                                                 <span class="sr-only">Previous</span>
                                             </a>
@@ -119,16 +112,16 @@
                                         @endif
 
                                         {{-- Page Links --}}
-                                        @for ($i = 1; $i <= $propertyReviewes->lastPage(); $i++)
-                                            <li class="page-item {{ ($propertyReviewes->currentPage() == $i) ? 'active' : '' }}">
-                                                <a class="page-link" href="{{ $propertyReviewes->url($i) }}">{{ $i }}</a>
+                                        @for ($i = 1; $i <= $pageContents->lastPage(); $i++)
+                                            <li class="page-item {{ ($pageContents->currentPage() == $i) ? 'active' : '' }}">
+                                                <a class="page-link" href="{{ $pageContents->url($i) }}">{{ $i }}</a>
                                             </li>
                                             @endfor
 
                                             {{-- Next Button --}}
-                                            @if ($propertyReviewes->hasMorePages())
+                                            @if ($pageContents->hasMorePages())
                                             <li class="page-item">
-                                                <a class="page-link" href="{{ $propertyReviewes->nextPageUrl() }}">
+                                                <a class="page-link" href="{{ $pageContents->nextPageUrl() }}">
                                                     <i class="fa fa-angle-right"></i>
                                                     <span class="sr-only">Next</span>
                                                 </a>
@@ -185,7 +178,7 @@
             deleteModal.show(); // Show the modal
         }
     </script>
-    
+
 
     <!-- DATA TABLE JS -->
     <script src="{{ asset('build/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>

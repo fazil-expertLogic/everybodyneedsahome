@@ -2,18 +2,9 @@
 
 namespace App\Helpers;
 
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
-use Intervention\Image\ImageManagerStatic as Image;
-use Carbon\Carbon;
 use App\Models\Permission;
+use App\Models\PageContent;
 
 
 // use App\BlogBookmark;
@@ -35,6 +26,15 @@ class Helper
             'is_edit' => false,
             'is_delete' => false,
         ];
+    }
+
+    public static function pageContent($page_url, $variable){
+        $page_content = PageContent::where('page_url', $page_url)
+            ->where('variable', $variable)
+            ->select('text')
+            ->first();
+            
+        return $page_content ? $page_content->text : null;
     }
 
 }
