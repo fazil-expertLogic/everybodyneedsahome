@@ -67,7 +67,7 @@ class PageContentController extends Controller
             $validator = Validator::make($request->all(), [
                 'page_url' => 'required|string|max:255',
                 'variable' => 'required|string|max:255',
-                'text' => 'required|string|max:255',
+                'text' => 'required|string',
             ]);
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 422);
@@ -124,7 +124,7 @@ class PageContentController extends Controller
             $validator = Validator::make($request->all(), [
                 'page_url' => 'required|string|max:255',
                 'variable' => 'required|string|max:255',
-                'text' => 'required|string|max:255',
+                'text' => 'required|string',
             ]);
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 422);
