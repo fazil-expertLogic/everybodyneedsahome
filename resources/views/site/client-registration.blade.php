@@ -84,40 +84,49 @@
 
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_name">
+                                                <div class="form-group valid_cus_name @if($errors->has('cus_name')) has-error has-danger @endif">
                                                     <label for="cus_name" class="form-label">Name<span
                                                             class="text-danger">*</span></label>
                                                     <input type="text" name="cus_name" class="form-control py-2"
-                                                        value="" id="cus_name" placeholder="Your name" required
+                                                        value="{{old('cus_name')}}" id="cus_name" placeholder="Your name" required
                                                         data-error="Please enter name">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_name'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_name') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_email">
+                                                <div class="form-group valid_cus_email @if($errors->has('cus_email')) has-error has-danger @endif">
                                                     <label for="cus_email" class="form-label"> Email<span
                                                             class="text-danger">*</span></label>
                                                     <input type="email" name="cus_email" class="form-control py-2"
-                                                        id="cus_email" placeholder="example@email.com" value=""
+                                                        id="cus_email" placeholder="example@email.com" value="{{old('cus_email')}}"
                                                         required data-error="Please enter email">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_email'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_email') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_use_pass">
+                                                <div class="form-group valid_use_pass @if($errors->has('pass')) has-error has-danger @endif">
                                                     <label for="pass" class="form-label">password<span
                                                             class="text-danger">*</span></label>
                                                     <input type="password" class="form-control py-2" id="pass"
                                                         name="pass" placeholder="password" required
                                                         data-error="Please enter password">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('pass'))
+                                                        <div class="help-block with-errors">{{ $errors->first('pass') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_use_cpass">
+                                                <div class="form-group valid_use_cpass @if($errors->has('pass_confirmation')) has-error has-danger @endif">
                                                     <label for="pass_confirmation" class="form-label">Confirm Password
                                                         <span class="text-danger">*</span></label>
                                                     <input type="password" class="form-control py-2"
@@ -125,33 +134,42 @@
                                                         placeholder="Confirm Password" required
                                                         data-error="Please enter confirm password">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('pass_confirmation'))
+                                                        <div class="help-block with-errors">{{ $errors->first('pass_confirmation') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_dob">
+                                                <div class="form-group valid_cus_dob @if($errors->has('cus_dob')) has-error has-danger @endif">
                                                     <label for="cus_dob" class="form-label"> Date of Birth<span
                                                             class="text-danger">*</span></label>
                                                     <input type="date" name="cus_dob"
                                                         class="form-control py-2"id="cus_dob" placeholder=""
-                                                        value="" required data-error="Please enter Date of Birth">
+                                                        value="{{old('cus_dob')}}" required data-error="Please enter Date of Birth">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_dob'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_dob') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_ss">
+                                                <div class="form-group valid_cus_ss @if($errors->has('cus_ss')) has-error has-danger @endif">
                                                     <label for="cus_ss" class="form-label">Social Security Number<span
                                                             class="text-danger">*</span></label>
                                                     <input type="text" class="form-control py-2 ssn-input-mask"
-                                                        value="" name="cus_ss" id="cus_ss" placeholder="*****"
+                                                        value="{{old('cus_ss')}}" name="cus_ss" id="cus_ss" placeholder="*****"
                                                         required data-error="Please enter Social Security Number">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_ss'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_ss') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_ms">
+                                                <div class="form-group valid_cus_ms @if($errors->has('martial_status')) has-error has-danger @endif">
                                                     <label for="cus_ms" class="form-label">Marital Status<span
                                                             class="text-danger">*</span></label>
                                                     <select name="martial_status" class="form-select" id="cus_ms"
@@ -164,11 +182,14 @@
                                                         <option value="5">Widowed</option>
                                                     </select>
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('martial_status'))
+                                                        <div class="help-block with-errors">{{ $errors->first('martial_status') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_is_child">
+                                                <div class="form-group valid_cus_is_child @if($errors->has('cus_is_child')) has-error has-danger @endif">
                                                     <label for="cus_is_child" class="form-label">Children<span
                                                             class="text-danger">*</span></label>
                                                     <select name="cus_is_child" class="form-select" id="cus_is_child"
@@ -179,6 +200,9 @@
                                                         <option value="2">No</option>
                                                     </select>
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_is_child'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_is_child') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
@@ -187,15 +211,21 @@
                                                     <div class="row childBOX">
                                                         <div class="col-sm-6 col-lg-6">
                                                             <fieldset class="mb-3">
+                                                                <div class="@if($errors->has('child_name')) has-error has-danger @endif">
                                                                 <label for="child_name_0" class="form-label">Child
                                                                     Name<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control py-2"
-                                                                    value="" name="child_name[]" id="child_name_0">
+                                                                    value="{{old('child_name')}}" name="child_name[]" id="child_name_0">
+                                                                    @if ($errors->has('child_name'))
+                                                                        <div class="help-block with-errors">{{ $errors->first('child_name') }}</div>
+                                                                    @endif
+                                                                </div>
                                                             </fieldset>
                                                         </div>
 
                                                         <div class="col-sm-6 col-lg-6">
                                                             <fieldset class="">
+                                                                <div class="@if($errors->has('child_age')) has-error has-danger @endif">
                                                                 <label for="child_age_0" class="form-label">Child Age<span
                                                                         class="text-danger">*</span></label>
                                                                 <select name="child_age[]" class="form-select"
@@ -220,6 +250,10 @@
                                                                     <option value="17">17</option>
                                                                     <option value="18">18</option>
                                                                 </select>
+                                                                @if ($errors->has('child_age'))
+                                                                    <div class="help-block with-errors">{{ $errors->first('child_age') }}</div>
+                                                                @endif
+                                                            </div>
                                                             </fieldset>
                                                         </div>
                                                     </div>
@@ -237,29 +271,35 @@
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_address">
+                                                <div class="form-group valid_cus_address @if($errors->has('cus_address')) has-error has-danger @endif">
                                                     <label for="cus_address" class="form-label">Address<span
                                                             class="text-danger">*</span></label>
                                                     <input type="text" name="cus_address" class="form-control py-2"
-                                                        id="cus_address" placeholder="Address" value="" required
+                                                        id="cus_address" placeholder="Address" value="{{old('cus_address')}}" required
                                                         data-error="Please enter address">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_address'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_address') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_city">
+                                                <div class="form-group valid_cus_city @if($errors->has('cus_city')) has-error has-danger @endif">
                                                     <label for="cus_city" class="form-label">City<span
                                                             class="text-danger">*</span></label>
                                                     <input type="text" name="cus_city" class="form-control py-2"
-                                                        id="cus_city" placeholder="City" value="" required
+                                                        id="cus_city" placeholder="City" value="{{old('cus_city')}}" required
                                                         data-error="Please enter city">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_city'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_city') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_state">
+                                                <div class="form-group valid_cus_state @if($errors->has('cus_state')) has-error has-danger @endif">
                                                     <label for="cus_state" class="form-label">State<span
                                                             class="text-danger">*</span></label>
                                                     <select class="form-select py-2" name="cus_state" id="cus_state"
@@ -317,37 +357,50 @@
                                                         <option value="WY">Wyoming</option>
                                                     </select>
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_state'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_state') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_zip">
+                                                <div class="form-group valid_cus_zip @if($errors->has('cus_zip')) has-error has-danger @endif">
                                                     <label for="cus_zip" class="form-label">Zip<span
                                                             class="text-danger">*</span></label>
                                                     <input type="text" name="cus_zip"
                                                         class="form-control py-2 zip-input-mask" id="cus_zip"
-                                                        placeholder="Zip" value="" required
+                                                        placeholder="Zip" value="{{old('cus_zip')}}" required
                                                         data-error="Please enter zipcode">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_zip'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_zip') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_cus_phone">
+                                                <div class="form-group valid_cus_phone @if($errors->has('cus_phone')) has-error has-danger @endif">
                                                     <label for="cus_phone" class="form-label">Phone<span
                                                             class="text-danger">*</span></label>
                                                     <input type="text" name="cus_phone"
                                                         class="form-control py-2 phone-input-mask" id="cus_phone"
-                                                        placeholder="Phone" value="" required
+                                                        placeholder="Phone" value="{{old('cus_phone')}}" required
                                                         data-error="Please enter phone">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_phone'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_phone') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="mb-12">
+                                                <div class="@if($errors->has('main_picture')) has-error has-danger @endif">
                                                 <label for="main_picture" class="form-label">Main Picture*</label>
                                                 <input type="file" class="form-control" aria-label="file example"
                                                     name="main_picture">
                                                 <div class="invalid-feedback">Example invalid form file feedback</div>
+                                                @if ($errors->has('main_picture'))
+                                                    <div class="help-block with-errors">{{ $errors->first('main_picture') }}</div>
+                                                @endif
                                             </div>
 
                                         </div>
@@ -416,6 +469,7 @@
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_pp">
+                                                    <div class="@if($errors->has('role')) has-error has-danger @endif">
                                                     <label for="cus_pp" class="form-label">Are you currently on
                                                         probation or parole?<span class="text-danger">*</span></label>
                                                     <select class="form-select" name="role" id="cus_pp" required
@@ -428,25 +482,35 @@
                                                         <option value="5">N/A</option>
                                                     </select>
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('role'))
+                                                        <div class="help-block with-errors">{{ $errors->first('role') }}</div>
+                                                    @endif
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_dfc">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_dfc @if($errors->has('cus_dfc')) has-error has-danger @endif">
                                                 <label for="cus_dfc" class="form-label">Date of Conviction<span
                                                         class="text-danger">*</span></label>
                                                 <input type="date" class="form-control" id="cus_dfc" name="cus_dfc"
-                                                    value="" required data-error="Please enter date of conviction">
+                                                    value="{{old('cus_dfc')}}" required data-error="Please enter date of conviction">
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_dfc'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_dfc') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_con">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_con @if($errors->has('cus_con')) has-error has-danger @endif">
                                                 <label for="cus_con" class="form-label">Conviction<span
                                                         class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" id="cus_con" name="cus_con"
-                                                    value="" required data-error="Please enter conviction">
+                                                    value="{{old('cus_con')}}" required data-error="Please enter conviction">
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_con'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_con') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_conq">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_conq @if($errors->has('cus_conq')) has-error has-danger @endif">
                                                 <label for="cus_conq" class="form-label">Consequence<span
                                                         class="text-danger">*</span></label>
                                                 <select class="form-select" name="cus_conq" id="cus_conq" required
@@ -456,9 +520,12 @@
                                                     <option value="2">Incarceration</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_conq'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_conq') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_sex_off">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_sex_off @if($errors->has('cus_sex_off')) has-error has-danger @endif">
                                                 <label for="cus_sex_off" class="form-label">Are you a registered sex
                                                     offender?<span class="text-danger">*</span></label>
                                                 <select class="form-select" name="cus_sex_off" id="cus_sex_off" required
@@ -468,9 +535,12 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_sex_off'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_sex_off') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_offend_minor">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_offend_minor @if($errors->has('cus_is_offend_minor')) has-error has-danger @endif">
                                                 <label for="cus_is_offend_minor" class="form-label">Did your crime involve
                                                     a minor?<span class="text-danger">*</span></label>
                                                 <select class="form-select" name="cus_is_offend_minor"
@@ -480,6 +550,9 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_is_offend_minor'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_is_offend_minor') }}</div>
+                                                @endif
                                             </div>
                                         </div>
 
@@ -546,7 +619,7 @@
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_food">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_food @if($errors->has('cus_food')) has-error has-danger @endif">
                                                 <label for="cus_food" class="form-label">Do you need food?<span
                                                         class="text-danger">*</span></label>
                                                 <select class="form-select py-2" id="cus_food" name="cus_food"
@@ -556,9 +629,12 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_food'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_food') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_cloth">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_cloth @if($errors->has('cus_cloth')) has-error has-danger @endif">
                                                 <label for="cus_cloth" class="form-label">Do you need clothing?<span
                                                         class="text-danger">*</span></label>
                                                 <select class="form-select py-2" id="cus_cloth" name="cus_cloth"
@@ -568,8 +644,11 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_cloth'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_cloth') }}</div>
+                                                @endif
                                             </div>
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_shelter">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_shelter @if($errors->has('cus_shelter')) has-error has-danger @endif">
                                                 <label for="cus_shelter" class="form-label">Do you need
                                                     shelter/housing?<span class="text-danger">*</span></label>
                                                 <select class="form-select py-2" id="cus_shelter" name="cus_shelter"
@@ -579,8 +658,11 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_shelter'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_shelter') }}</div>
+                                                @endif
                                             </div>
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_tra">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_tra @if($errors->has('cus_tra')) has-error has-danger @endif">
                                                 <label for="cus_tra" class="form-label">Do you need transportation?<span
                                                         class="text-danger">*</span></label>
                                                 <select class="form-select py-2" id="cus_tra" name="cus_tra"
@@ -590,9 +672,12 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_tra'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_tra') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_emp">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_emp  @if($errors->has('cus_emp')) has-error has-danger @endif">
                                                 <label for="cus_emp" class="form-label">Do you need employment?<span
                                                         class="text-danger">*</span></label>
                                                 <select class="form-select py-2" id="cus_emp" name="cus_emp"
@@ -602,9 +687,12 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_emp'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_emp') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_extra_income">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_extra_income @if($errors->has('cus_extra_income')) has-error has-danger @endif">
                                                 <label for="cus_extra_income" class="form-label">Do you need extra income
                                                     (Gigs, Plasma, etc)?<span class="text-danger">*</span></label>
                                                 <select class="form-select py-2" id="cus_extra_income"
@@ -615,8 +703,11 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_extra_income'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_extra_income') }}</div>
+                                                @endif
                                             </div>
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_church">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_church @if($errors->has('cus_church')) has-error has-danger @endif">
                                                 <label for="cus_church" class="form-label">Which church did you
                                                     attend?<span class="text-danger">*</span></label>
                                                 <select class="form-select py-2" id="cus_church" name="cus_church"
@@ -653,19 +744,25 @@
                                                     <option value="other">Other</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_church'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_church') }}</div>
+                                                @endif
                                             </div>
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_other_church">
-                                                <div id="custom-church-container" style="display: none;">
+                                                <div id="custom-church-container @if($errors->has('cus_other_church')) has-error has-danger @endif" style="display: none;">
                                                     <label for="cus_other_church" class="form-label">Other Church
                                                         Name<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" id="cus_other_church"
                                                         name="cus_other_church" placeholder="Enter other church name"
-                                                        value=" ">
+                                                        value="{{old('cus_other_church')}}">
+                                                        <div class="help-block with-errors"></div>
+                                                        @if ($errors->has('cus_other_church'))
+                                                            <div class="help-block with-errors">{{ $errors->first('cus_other_church') }}</div>
+                                                        @endif
                                                 </div>
-                                                <div class="help-block with-errors"></div>
                                             </div>
                                             <!-- Hidden input for custom church name -->
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_bcert">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_bcert @if($errors->has('cus_bcert')) has-error has-danger @endif">
                                                 <label for="cus_bcert" class="form-label">Do you have your birth
                                                     certificate?<span class="text-danger">*</span></label>
                                                 <select class="form-select py-2" id="cus_bcert" name="cus_bcert"
@@ -676,10 +773,14 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_bcert'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_bcert') }}</div>
+                                                @endif
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6 form-group valid_cus_born_state">
                                                 <div id="birthDiv">
+                                                    <div class="@if($errors->has('cus_born_state')) has-error has-danger @endif">
                                                     <label for="cus_born_state" class="form-label">What state were you
                                                         born?<span class="text-danger">*</span></label>
                                                     <select class="form-select py-2" id="cus_born_state"
@@ -739,9 +840,13 @@
                                                     </select>
                                                 </div>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_born_state'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_born_state') }}</div>
+                                                @endif
+                                                </div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_state_id">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_state_id @if($errors->has('cus_state_id')) has-error has-danger @endif">
                                                 <label for="cus_state_id" class="form-label">Do you have state ID?<span
                                                         class="text-danger">*</span></label>
                                                 <select class="form-select py-2" id="cus_state_id" name="cus_state_id"
@@ -752,20 +857,26 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_state_id'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_state_id') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_state_no">
-                                                <div id="stateDiv">
+                                            <div id="stateDiv">
+                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_state_no @if($errors->has('cus_state_no')) has-error has-danger @endif">
                                                     <label for="cus_state_no" class="form-label">Please enter the state
                                                         number<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control py-2" id="cus_state_no"
-                                                        value="" name="cus_state_no"
+                                                        value="{{old('cus_state_no')}}" name="cus_state_no"
                                                         data-error="Please enter state no">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_state_no'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_state_no') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_d_lice">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_d_lice @if($errors->has('cus_d_lice')) has-error has-danger @endif">
                                                 <label for="cus_d_lice" class="form-label">Do you have driving
                                                     license?<span class="text-danger">*</span></label>
                                                 <select class="form-select py-2" id="cus_d_lice" name="cus_d_lice"
@@ -776,20 +887,26 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_d_lice'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_d_lice') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_lice_no">
-                                                <div id="licenseDiv">
+                                            <div id="licenseDiv">
+                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_lice_no @if($errors->has('cus_lice_no')) has-error has-danger @endif">
                                                     <label for="cus_lice_no" class="form-label">Please enter the driving
                                                         license number<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control py-2" id="cus_lice_no"
-                                                        value="" name="cus_lice_no"
+                                                        value="{{old('cus_lice_no')}}" name="cus_lice_no"
                                                         data-error="Please enter license number">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_lice_no'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_lice_no') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_ss_card">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_ss_card  @if($errors->has('cus_ss_card')) has-error has-danger @endif">
                                                 <label for="cus_ss_card" class="form-label">Do you have a social security
                                                     card?<span class="text-danger">*</span></label>
                                                 <select class="form-select py-2" id="cus_ss_card" name="cus_ss_card"
@@ -800,16 +917,22 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_ss_card'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_ss_card') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_ssc_no">
-                                                <div id="securityDiv">
+                                            <div id="securityDiv">
+                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_ssc_no @if($errors->has('cus_ssc_no')) has-error has-danger @endif">
                                                     <label for="cus_ssc_no" class="form-label">Please enter the SSN<span
                                                             class="text-danger">*</span></label>
                                                     <input type="text" class="form-control py-2" id="cus_ssc_no"
-                                                        value="" name="cus_ssc_no" placeholder="******"
+                                                        value="{{old('cus_ssc_no')}}" name="cus_ssc_no" placeholder="******"
                                                         data-error="Please enter the SSN">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_ssc_no'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_ssc_no') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -877,7 +1000,7 @@
                                         {{-- <h3 class="section-form-title">Health Insurance</h3> --}}
 
                                         <div class="row">
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_insurace">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_insurace @if($errors->has('cus_insurace')) has-error has-danger @endif">
                                                 <label for="cus_insurace" class="form-label">Do you have a health
                                                     insurance?<span class="text-danger">*</span></label>
                                                 <select class="form-select mb-3" name="cus_insurace" id="cus_insurace"
@@ -887,29 +1010,41 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_insurace'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_insurace') }}</div>
+                                                @endif
                                             </div>
 
                                             <div id="insuranceDiv">
-                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_carrier">
+                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_carrier @if($errors->has('cus_carrier')) has-error has-danger @endif">
                                                     <label for="cus_carrier">Carrier<span
                                                             class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" value=""
+                                                    <input type="text" class="form-control" value="{{old('cus_carrier')}}"
                                                         id="cus_carrier" name="cus_carrier" data-error="Please select">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_carrier'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_carrier') }}</div>
+                                                    @endif
                                                 </div>
-                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_mem_id">
+                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_mem_id @if($errors->has('cus_mem_id')) has-error has-danger @endif">
                                                     <label for="cus_mem_id">Member ID<span
                                                             class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" value=""
+                                                    <input type="text" class="form-control" value="{{old('cus_mem_id')}}"
                                                         id="cus_mem_id" name="cus_mem_id" data-error="Please select">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_mem_id'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_mem_id') }}</div>
+                                                    @endif
                                                 </div>
-                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_grp_no">
+                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_grp_no @if($errors->has('cus_grp_no')) has-error has-danger @endif">
                                                     <label for="cus_grp_no">Group No<span
                                                             class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" value=""
+                                                    <input type="text" class="form-control" value="{{old('cus_grp_no')}}"
                                                         id="cus_grp_no" name="cus_grp_no" data-error="Please select">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_grp_no'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_grp_no') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group signUpForm-step-4">
@@ -976,7 +1111,7 @@
 
                                         {{-- <h3 class="section-form-title">Others info</h3> --}}
                                         <div class="row">
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_more_friends">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_more_friends @if($errors->has('cus_more_friends')) has-error has-danger @endif">
                                                 <label for="cus_more_friends">Could you use more friends?<span
                                                         class="text-danger">*</span></label>
                                                 <select class="form-select" name="cus_more_friends" id="cus_more_friends"
@@ -986,10 +1121,13 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_more_friends'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_more_friends') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_counselor">
-                                                <div id="friendsDiv">
+                                            <div id="friendsDiv">
+                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_counselor @if($errors->has('cus_counselor')) has-error has-danger @endif">
                                                     <label for="cus_counselor">Do you believe you could benefit from having
                                                         a mentor or counselor?<span class="text-danger">*</span></label>
                                                     <select class="form-select" name="cus_counselor" id="cus_counselor"
@@ -999,10 +1137,13 @@
                                                         <option value="2">No</option>
                                                     </select>
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_counselor'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_counselor') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_inv_rom">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_inv_rom @if($errors->has('cus_is_inv_rom')) has-error has-danger @endif">
                                                 <label for="cus_is_inv_rom">Are you looking for someone with whom you could
                                                     be involved romantically?<span class="text-danger">*</span></label>
                                                 <select class="form-select" name="cus_is_inv_rom" id="cus_is_inv_rom"
@@ -1012,9 +1153,12 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_is_inv_rom'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_is_inv_rom') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_mental_ill">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_mental_ill @if($errors->has('cus_is_mental_ill')) has-error has-danger @endif">
                                                 <label for="cus_is_mental_ill">Have you ever been diagnosed with a mental
                                                     illness?<span class="text-danger">*</span></label>
                                                 <select class="form-select" name="cus_is_mental_ill"
@@ -1024,20 +1168,28 @@
                                                     <option value="2">No</option>
                                                 </select>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_is_mental_ill'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_is_mental_ill') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_phy_dis">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_phy_dis @if($errors->has('cus_phy_dis')) has-error has-danger @endif">
                                                 <label for="cus_phy_dis">Do you have any known physical disabilities<span
                                                         class="text-danger">*</span></label>
                                                 <textarea class="form-control" id="cus_phy_dis" name="cus_phy_dis" required data-error="Please select"></textarea>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_phy_dis'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_phy_dis') }}</div>
+                                                @endif
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_comments">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_comments @if($errors->has('cus_comments')) has-error has-danger @endif">
                                                 <label for="cus_comments">Please enter anything else you would like for us
                                                     to know?</label><br>
                                                 <textarea class="form-control" id="cus_comments" name="cus_comments"></textarea>
-
+                                                @if ($errors->has('cus_comments'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_comments') }}</div>
+                                                @endif
                                             </div>
 
                                             <div id="mgsFormSubmit" class="hidden"></div>

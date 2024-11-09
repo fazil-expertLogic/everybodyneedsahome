@@ -55,39 +55,51 @@
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_prov_name">
+                                            <div class="col-sm-6 col-lg-6 @if($errors->has('provider_name')) has-error has-danger @endif">
+                                                <div class="form-group valid_prov_name  @if($errors->has('provider_name')) has-error has-danger @endif">
                                                     <label for="provider_name" class="form-label">Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="provider_name" class="form-control py-2" id="provider_name" placeholder="Your name" value="" required data-error="Please enter name">
+                                                    <input type="text" name="provider_name" class="form-control py-2" id="provider_name" placeholder="Your name" value="{{old('provider_name')}}" required data-error="Please enter name">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('provider_name'))
+                                                        <div class="help-block with-errors">{{ $errors->first('provider_name') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
                                             
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_prov_company_name">
+                                            <div class="col-sm-6 col-lg-6 @if($errors->has('company_name')) has-error has-danger @endif">
+                                                <div class="form-group valid_prov_company_name @if($errors->has('company_name')) has-error has-danger @endif">
                                                     <label for="company_name" class="form-label">Company/Organization Name<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="company_name" name="comany_name" placeholder="Company Name"  required data-error="Please enter company name">
+                                                    <input type="text" class="form-control py-2" id="company_name" name="comany_name" placeholder="Company Name" value="{{old('company_name')}}" required data-error="Please enter company name">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('company_name'))
+                                                        <div class="help-block with-errors">{{ $errors->first('company_name') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_use_pass">
+                                            <div class="col-sm-6 col-lg-6 @if($errors->has('pass')) has-error has-danger @endif">
+                                                <div class="form-group valid_use_pass  @if($errors->has('pass')) has-error has-danger @endif">
                                                     <label for="pass" class="form-label">password<span class="text-danger">*</span></label>
                                                     <input type="password" class="form-control py-2" id="pass" name="pass" placeholder="password" required data-error="Please enter password">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('pass'))
+                                                        <div class="help-block with-errors">{{ $errors->first('pass') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6">
+                                            <div class="col-sm-6 col-lg-6 @if($errors->has('pass_confirmation')) has-error has-danger @endif">
                                                 <div class="form-group valid_use_cpass">
                                                     <label for="pass_confirmation" class="form-label">Confirm Password <span class="text-danger">*</span></label>
                                                     <input type="password" class="form-control py-2" id="pass_confirmation" name="pass_confirmation" placeholder="Confirm Password" required data-error="Please enter confirm password">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('pass_confirmation'))
+                                                        <div class="help-block with-errors">{{ $errors->first('pass_confirmation') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6">
+                                            <div class="col-sm-6 col-lg-6 @if($errors->has('type')) has-error has-danger @endif">
                                                 <div class="form-group valid_prov_type">
                                                     <label for="type" class="form-label">For Profit or Non-Profit?<span class="text-danger">*</span></label>
                                                     <select class="form-select" id="type" name="type" aria-label="Select Type" required data-error="Please select">
@@ -96,27 +108,36 @@
                                                         <option value="0">Non-Profit</option>
                                                     </select>
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('type'))
+                                                        <div class="help-block with-errors">{{ $errors->first('type') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6">
+                                            <div class="col-sm-6 col-lg-6 @if($errors->has('address')) has-error has-danger @endif">
                                                 <div class="form-group valid_prov_address">
                                                     <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2" id="address" name="address" placeholder="Address" required data-error="Please enter address">
+                                                    <input type="text" class="form-control py-2" id="address" name="address" value="{{old('address')}}" placeholder="Address" required data-error="Please enter address">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('address'))
+                                                        <div class="help-block with-errors">{{ $errors->first('address') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6">
+                                            <div class="col-sm-6 col-lg-6 @if($errors->has('city')) has-error has-danger @endif">
                                                 <div class="form-group valid_prov_city">
                                                     <label for="city" class="form-label">City<span class="text-danger">*</span></label>
-                                                    <input type="text" name="city" class="form-control py-2" id="city" placeholder="City" value="" required data-error="Please enter city">
+                                                    <input type="text" name="city" class="form-control py-2" id="city" placeholder="City" value="{{old('city')}}" required data-error="Please enter city">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('city'))
+                                                        <div class="help-block with-errors">{{ $errors->first('city') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_prov_state">
+                                                <div class="form-group valid_prov_state @if($errors->has('state')) has-error has-danger @endif">
                                                     <label for="state" class="form-label">State<span class="text-danger">*</span></label>
                                                     <select class="form-select py-2" name="state" id="state" aria-label="" required data-error="Please enter state">
                                                         <option value="">Please Select</option>
@@ -172,38 +193,53 @@
                                                         <option value="WY">Wyoming</option>
                                                     </select>
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('state'))
+                                                        <div class="help-block with-errors">{{ $errors->first('state') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
                                             
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_prov_zip">
+                                                <div class="form-group valid_prov_zip @if($errors->has('zipcode')) has-error has-danger @endif">
                                                     <label for="zip" class="form-label">Zip<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control py-2 zip-input-mask" id="zip" name="zipcode" placeholder="zipcode" required data-error="Please enter zipcode">
+                                                    <input type="text" class="form-control py-2 zip-input-mask" value="{{old('zipcode')}}" id="zip" name="zipcode" placeholder="zipcode" required data-error="Please enter zipcode">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('zipcode'))
+                                                        <div class="help-block with-errors">{{ $errors->first('zipcode') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_prov_phone">
+                                                <div class="form-group valid_prov_phone @if($errors->has('phone')) has-error has-danger @endif">
                                                     <label for="phone" class="form-label">Phone<span class="text-danger">*</span></label>
-                                                    <input type="tel" class="form-control py-2 phone-input-mask" id="phone" name="phone" placeholder="Phone" required data-error="Please enter phone">
+                                                    <input type="tel" class="form-control py-2 phone-input-mask" id="phone"  value="{{old('phone')}}" name="phone" placeholder="Phone" required data-error="Please enter phone">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('phone'))
+                                                        <div class="help-block with-errors">{{ $errors->first('phone') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_prov_email">
+                                                <div class="form-group valid_prov_email @if($errors->has('email')) has-error has-danger @endif">
                                                     <label for="email" class="form-label"> Email<span class="text-danger">*</span></label>
-                                                    <input type="email" name="email" class="form-control py-2" id="email" placeholder="example@email.com" value="" required data-error="Please enter email">
+                                                    <input type="email" name="email" class="form-control py-2" id="email" placeholder="example@email.com" value="{{old('email')}}" required data-error="Please enter email">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('email'))
+                                                        <div class="help-block with-errors">{{ $errors->first('email') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_prov_website">
+                                                <div class="form-group valid_prov_website @if($errors->has('website')) has-error has-danger @endif">
                                                     <label for="website" class="form-label">Website<span class="text-danger">*</span></label>
-                                                    <input type="url" class="form-control py-2" id="website" name="website" placeholder="website" required data-error="Please enter website">
+                                                    <input type="url" class="form-control py-2" value="{{old('website')}}" id="website" name="website" placeholder="website" required data-error="Please enter website">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('website'))
+                                                        <div class="help-block with-errors">{{ $errors->first('website') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
@@ -248,18 +284,26 @@
 
                                             <div class="col-sm-12 col-lg-12" id="childinfobox">
                                                 <div class="col-sm-6 col-lg-6">
-                                                <div class="custom-area-served" >
+                                                <div class="custom-area-served @if($errors->has('custom_area_served')) has-error has-danger @endif">
                                                     <label for="custom-area-served" class="form-label">Category<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="custom-area-served" name="custom_area_served" placeholder="Enter Other Category" value=""  data-error="Please enter custom area served">
+                                                    <input type="text" class="form-control" id="custom-area-served" name="custom_area_served" placeholder="Enter Other Category" value="{{old('custom_area_served')}}"  data-error="Please enter custom area served">
                                                     <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('custom_area_served'))
+                                                        <div class="help-block with-errors">{{ $errors->first('custom_area_served') }}</div>
+                                                    @endif
                                                 </div>
                                                 </div>
                                             </div>
 
                                             <div class="mb-12">
+                                                <div class="@if($errors->has('main_picture')) has-error has-danger @endif">
                                                 <label for="main_picture" class="form-label">Main Picture*</label>
                                                 <input type="file" class="form-control" aria-label="file example" name="main_picture">
                                                 <div class="invalid-feedback">Example invalid form file feedback</div>
+                                                @if ($errors->has('main_picture'))
+                                                    <div class="help-block with-errors">{{ $errors->first('main_picture') }}</div>
+                                                @endif
+                                                </div>
                                             </div>
 
                                         </div>
