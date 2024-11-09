@@ -30,7 +30,7 @@ use App\Helpers\Helper;
                             <div class="doc-img">
                                 <a href="{{ url('buy-details') }}" class="property-img">
                                     <img class="img-fluid" alt="Property Image"
-                                        src="{{ URL::asset('/assets/img/rent/rent-list-01.jpg') }}">
+                                        src="{{ URL::asset(Helper::pageContent('buy-property-list','rent-list-01-img')) }}">
                                 </a>
                                 <div class="featured">
                                     <span>Featured</span>
@@ -44,7 +44,7 @@ use App\Helpers\Helper;
                                     </div>
                                 </a>
                                 <div class="user-avatar">
-                                    <img src="{{ URL::asset('/assets/img/profiles/avatar-02.jpg') }}" alt="User">
+                                    <img src="{{ URL::asset(Helper::pageContent('buy-property-list','avatar-02-img')) }}" alt="User">
                                 </div>
                             </div>
                             <div class="pro-content">
@@ -71,15 +71,15 @@ use App\Helpers\Helper;
                                 </div>
                                 <ul class="d-flex details">
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/bed-icon.svg') }}" alt="bed-icon">
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','bed-icon-img')) }}" alt="bed-icon">
                                         2 Beds
                                     </li>
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/bath-icon.svg') }}" alt="bath-icon">
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','bath-icon-img')) }}" alt="bath-icon">
                                         3 Baths
                                     </li>
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/building-icon.svg') }}"
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','building-icon-img')) }}"
                                             alt="building-icon">
                                         10000 Sqft
                                     </li>
@@ -107,7 +107,7 @@ use App\Helpers\Helper;
                             <div class="doc-img">
                                 <a href="{{ url('buy-details') }}" class="property-img">
                                     <img class="img-fluid" alt="Property Image"
-                                        src="{{ URL::asset('/assets/img/rent/rent-list-02.jpg') }}">
+                                        src="{{ URL::asset(Helper::pageContent('buy-property-list','rent-list-02-img')) }}">
                                 </a>
                                 <div class="featured">
                                     <span>Featured</span>
@@ -118,7 +118,7 @@ use App\Helpers\Helper;
                                     </div>
                                 </a>
                                 <div class="user-avatar">
-                                    <img src="{{ URL::asset('/assets/img/profiles/avatar-01.jpg') }}" alt="User">
+                                    <img src="{{ URL::asset(Helper::pageContent('buy-property-list','avatar-01-img')) }}" alt="User">
                                 </div>
                             </div>
                             <div class="pro-content">
@@ -143,15 +143,15 @@ use App\Helpers\Helper;
                                 </div>
                                 <ul class="d-flex details">
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/bed-icon.svg') }}" alt="bed-icon">
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','bed-icon-img')) }}" alt="bed-icon">
                                         3 Beds
                                     </li>
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/bath-icon.svg') }}" alt="bath-icon">
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','bath-icon-img')) }}" alt="bath-icon">
                                         2 Baths
                                     </li>
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/building-icon.svg') }}"
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','building-icon-img')) }}"
                                             alt="building-icon">
                                         14000 Sqft
                                     </li>
@@ -179,7 +179,7 @@ use App\Helpers\Helper;
                             <div class="doc-img">
                                 <a href="{{ url('buy-details') }}" class="property-img">
                                     <img class="img-fluid" alt="Property Image"
-                                        src="{{ URL::asset('/assets/img/rent/rent-list-03.jpg') }}">
+                                        src="{{ URL::asset(Helper::pageContent('buy-property-list','rent-list-03-img')) }}">
                                 </a>
                                 <div class="featured">
                                     <span>Featured</span>
@@ -190,7 +190,7 @@ use App\Helpers\Helper;
                                     </div>
                                 </a>
                                 <div class="user-avatar">
-                                    <img src="{{ URL::asset('/assets/img/profiles/avatar-03.jpg') }}" alt="User">
+                                    <img src="{{ URL::asset(Helper::pageContent('buy-property-list','avatar-03-img')) }}" alt="User">
                                 </div>
                             </div>
                             <div class="pro-content">
@@ -216,15 +216,15 @@ use App\Helpers\Helper;
                                 </div>
                                 <ul class="d-flex details">
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/bed-icon.svg') }}" alt="bed-icon">
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','bed-icon-img')) }}" alt="bed-icon">
                                         2 Beds
                                     </li>
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/bath-icon.svg') }}" alt="bath-icon">
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','bath-icon-img')) }}" alt="bath-icon">
                                         3 Baths
                                     </li>
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/building-icon.svg') }}"
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','building-icon-img')) }}"
                                             alt="building-icon">
                                         12000 Sqft
                                     </li>
@@ -252,7 +252,7 @@ use App\Helpers\Helper;
                             <div class="doc-img">
                                 <a href="{{ url('buy-details') }}" class="property-img">
                                     <img class="img-fluid" alt="Property Image"
-                                        src="{{ URL::asset('/assets/img/rent/rent-list-04.jpg') }}">
+                                        src="{{ URL::asset(Helper::pageContent('buy-property-list','rent-list-04-img')) }}">
                                 </a>
                                 <div class="featured">
                                     <span>Featured</span>
@@ -263,7 +263,7 @@ use App\Helpers\Helper;
                                     </div>
                                 </a>
                                 <div class="user-avatar">
-                                    <img src="{{ URL::asset('/assets/img/profiles/avatar-04.jpg') }}" alt="User">
+                                    <img src="{{ URL::asset(Helper::pageContent('buy-property-list','avatar-04-img')) }}" alt="User">
                                 </div>
                             </div>
                             <div class="pro-content">
@@ -290,15 +290,15 @@ use App\Helpers\Helper;
                                 </div>
                                 <ul class="d-flex details">
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/bed-icon.svg') }}" alt="bed-icon">
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','bed-icon-img')) }}" alt="bed-icon">
                                         2 Beds
                                     </li>
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/bath-icon.svg') }}" alt="bath-icon">
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','bath-icon-img')) }}" alt="bath-icon">
                                         2 Baths
                                     </li>
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/building-icon.svg') }}"
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','building-icon-img')) }}"
                                             alt="building-icon">
                                         18000 Sqft
                                     </li>
@@ -326,7 +326,7 @@ use App\Helpers\Helper;
                             <div class="doc-img">
                                 <a href="{{ url('buy-details') }}" class="property-img">
                                     <img class="img-fluid" alt="Property Image"
-                                        src="{{ URL::asset('/assets/img/rent/rent-list-01.jpg') }}">
+                                        src="{{ URL::asset(Helper::pageContent('buy-property-list','rent-list-01-img')) }}">
                                 </a>
                                 <div class="featured">
                                     <span>Featured</span>
@@ -337,7 +337,7 @@ use App\Helpers\Helper;
                                     </div>
                                 </a>
                                 <div class="user-avatar">
-                                    <img src="{{ URL::asset('/assets/img/profiles/avatar-05.jpg') }}" alt="User">
+                                    <img src="{{ URL::asset(Helper::pageContent('buy-property-list','avatar-05-img')) }}" alt="User">
                                 </div>
                             </div>
                             <div class="pro-content">
@@ -364,15 +364,15 @@ use App\Helpers\Helper;
                                 </div>
                                 <ul class="d-flex details">
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/bed-icon.svg') }}" alt="bed-icon">
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','bed-icon-img')) }}" alt="bed-icon">
                                         4 Beds
                                     </li>
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/bath-icon.svg') }}" alt="bath-icon">
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','bath-icon-img')) }}" alt="bath-icon">
                                         1 Bath
                                     </li>
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/building-icon.svg') }}"
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','building-icon-img')) }}"
                                             alt="building-icon">
                                         25000 Sqft
                                     </li>
@@ -400,7 +400,7 @@ use App\Helpers\Helper;
                             <div class="doc-img">
                                 <a href="{{ url('buy-details') }}" class="property-img">
                                     <img class="img-fluid" alt="Property Image"
-                                        src="{{ URL::asset('/assets/img/rent/rent-list-06.jpg') }}">
+                                        src="{{ URL::asset(Helper::pageContent('buy-property-list','rent-list-06-img')) }}">
                                 </a>
                                 <div class="featured">
                                     <span>Featured</span>
@@ -411,7 +411,7 @@ use App\Helpers\Helper;
                                     </div>
                                 </a>
                                 <div class="user-avatar">
-                                    <img src="{{ URL::asset('/assets/img/profiles/avatar-06.jpg') }}" alt="User">
+                                    <img src="{{ URL::asset(Helper::pageContent('buy-property-list','avatar-06-img')) }}" alt="User">
                                 </div>
                             </div>
                             <div class="pro-content">
@@ -436,15 +436,15 @@ use App\Helpers\Helper;
                                 </div>
                                 <ul class="d-flex details">
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/bed-icon.svg') }}" alt="bed-icon">
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','bed-icon-img')) }}" alt="bed-icon">
                                         4 Beds
                                     </li>
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/bath-icon.svg') }}" alt="bath-icon">
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','bath-icon-img')) }}" alt="bath-icon">
                                         2 Baths
                                     </li>
                                     <li>
-                                        <img src="{{ URL::asset('/assets/img/icons/building-icon.svg') }}"
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-list','building-icon-img')) }}"
                                             alt="building-icon">
                                         15000 Sqft
                                     </li>

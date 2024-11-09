@@ -23,7 +23,7 @@ use App\Helpers\Helper;
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="rent-property" data-bs-toggle="tab" href="#rent_property"
                                         role="tab" aria-controls="rent_property" aria-selected="false">
-                                        <img src="{{ URL::asset('/assets/img/icons/rent-icon.svg') }}" alt="icon"> {!! Helper::pageContent('home','banner-section nav-link') !!}
+                                        <img src="{{ URL::asset(Helper::pageContent('home','rent-icon-img')) }}" alt="icon"> {!! Helper::pageContent('home','banner-section nav-link') !!}
                                     </a>
                                 </li>
                             </ul>
@@ -93,7 +93,7 @@ use App\Helpers\Helper;
             <div class="row">
                 <div class="col-lg-5">
                     <div class="faq-img">
-                        <img src="{{ URL::asset('/assets/img/faq-img.jpg') }}" alt="icon">
+                        <img src="{{ URL::asset(Helper::pageContent('home','faq-img')) }}" alt="icon">
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -123,11 +123,11 @@ use App\Helpers\Helper;
     <!-- Property Type -->
     <section class="property-type-sec">
         <div class="section-shape-imgs">
-            <img src="{{ URL::asset('/assets/img/shapes/property-sec-bg-1.png') }}" class="rectangle-left"
+            <img src="{{ URL::asset(Helper::pageContent('home','property-sec-bg-1-img')) }}" class="rectangle-left"
                 alt="icon">
-            <img src="{{ URL::asset('/assets/img/shapes/property-sec-bg-2.png') }}" class="rectangle-right"
+            <img src="{{ URL::asset(Helper::pageContent('home','property-sec-bg-2-img')) }}" class="rectangle-right"
                 alt="icon">
-            <img src="{{ URL::asset('/assets/img/icons/red-circle.svg') }}" class="bg-09" alt="Image">
+            <img src="{{ URL::asset(Helper::pageContent('home','property-sec-bg-3-img')) }}" class="bg-09" alt="Image">
         </div>
         <div class="container">
             <div class="row">
@@ -148,7 +148,7 @@ use App\Helpers\Helper;
                     <div class="property-type-slider owl-carousel">
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset('/assets/img/icons/property-icon-1.svg') }}" alt="icon">
+                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-1-img')) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Houses</h4>
@@ -157,7 +157,7 @@ use App\Helpers\Helper;
                         </div>
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset('/assets/img/icons/property-icon-2.svg') }}" alt="icon">
+                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-2-img')) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Offices</h4>
@@ -166,7 +166,7 @@ use App\Helpers\Helper;
                         </div>
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset('/assets/img/icons/property-icon-3.svg') }}" alt="icon">
+                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-3-img')) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Villas</h4>
@@ -175,7 +175,7 @@ use App\Helpers\Helper;
                         </div>
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset('/assets/img/icons/property-icon-4.svg') }}" alt="icon">
+                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-4-img')) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Apartment</h4>
@@ -184,7 +184,7 @@ use App\Helpers\Helper;
                         </div>
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset('/assets/img/icons/property-icon-3.svg') }}" alt="icon">
+                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-3-img')) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Villas</h4>
@@ -193,7 +193,7 @@ use App\Helpers\Helper;
                         </div>
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset('/assets/img/icons/property-icon-1.svg') }}" alt="icon">
+                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-1-img')) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Houses</h4>
@@ -202,7 +202,7 @@ use App\Helpers\Helper;
                         </div>
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset('/assets/img/icons/property-icon-4.svg') }}" alt="icon">
+                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-4-img')) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Apartment</h4>
@@ -238,7 +238,7 @@ use App\Helpers\Helper;
                                     <div class="doc-img">
                                         <a href="{{ url('property-detail/'. $property->id) }}" class="property-img">
                                             <img class="img-fluid" alt="Property Image"
-                                                src="{{ $property->main_picture ? asset('storage/' . $property->main_picture) : URL::asset('assets/img/product/product-1.jpg') }}">
+                                                src="{{ $property->main_picture ? asset('storage/' . $property->main_picture) : URL::asset(Helper::pageContent('home','product-1-img')) }}">
                                         </a>
                                         <div class="product-amount">
                                             <span>${{ number_format($property->bed_fee + $property->bedroom_fee + $property->unit_fee,2) }}</span>
@@ -263,7 +263,7 @@ use App\Helpers\Helper;
                                             </a> --}}
                                         </div>
                                         <div class="user-avatar">
-                                            <img src="{{ URL::asset('assets/img/profiles/avatar-01.jpg') }}" alt="User">
+                                            <img src="{{ URL::asset(Helper::pageContent('home','avatar-01-img')) }}" alt="User">
                                         </div>
                                     </div>
                                     <div class="pro-content">
@@ -283,11 +283,11 @@ use App\Helpers\Helper;
                                         <p><i class="feather-map-pin"></i>{{$property->property_address}}</p>
                                         <ul class="d-flex details">
                                             <li>
-                                                <img src="{{ URL::asset('assets/img/icons/bed-icon.svg') }}" alt="bed-icon">
+                                                <img src="{{ URL::asset(Helper::pageContent('home','bed-icon-img')) }}" alt="bed-icon">
                                                 {{$property->number_of_beds}} Beds
                                             </li>
                                             <li>
-                                                <img src="{{ URL::asset('assets/img/icons/bath-icon.svg') }}" alt="bath-icon">
+                                                <img src="{{ URL::asset(Helper::pageContent('home','bath-icon-img')) }}" alt="bath-icon">
                                                 {{$property->number_of_bedrooms}} Baths
                                             </li>
                                             {{-- <li>
@@ -322,9 +322,9 @@ use App\Helpers\Helper;
             </div>
         </div>
         <div class="bg-imgs">
-            <img src="{{ URL::asset('/assets/img/bg/price-bg.png') }}" class="bg-01" alt="icon">
-            <img src="{{ URL::asset('/assets/img/icons/blue-circle.svg') }}" class="bg-02" alt="icon">
-            <img src="{{ URL::asset('/assets/img/icons/red-circle.svg') }}" class="bg-03" alt="icon">
+            <img src="{{ URL::asset(Helper::pageContent('home','price-bg-img')) }}" class="bg-01" alt="icon">
+            <img src="{{ URL::asset(Helper::pageContent('home','blue-circle-img')) }}" class="bg-02" alt="icon">
+            <img src="{{ URL::asset(Helper::pageContent('home','red-circle-img')) }}" class="bg-03" alt="icon">
         </div>
     </section>
     <!-- /Feature Properties For Sale -->
@@ -465,7 +465,7 @@ use App\Helpers\Helper;
                 <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
                     <div class="counter-box flex-fill" data-aos="fade-down" data-aos-duration="2000">
                         <div class="counter-icon">
-                            <img src="{{ URL::asset('/assets/img/icons/counter-icon-1.svg') }}" alt="icon">
+                            <img src="{{ URL::asset(Helper::pageContent('home','counter-icon-1-img')) }}" alt="icon">
                         </div>
                         <div class="counter-value">
                             <h3 class="dash-count"><span class="counter-up">50</span>K</h3>
@@ -476,7 +476,7 @@ use App\Helpers\Helper;
                 <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
                     <div class="counter-box flex-fill" data-aos="fade-down" data-aos-duration="2000">
                         <div class="counter-icon">
-                            <img src="{{ URL::asset('/assets/img/icons/counter-icon-2.svg') }}" alt="icon">
+                            <img src="{{ URL::asset(Helper::pageContent('home','counter-icon-2-img')) }}" alt="icon">
                         </div>
                         <div class="counter-value">
                             <h3 class="dash-count"><span class="counter-up">3000</span>+</h3>
@@ -488,7 +488,7 @@ use App\Helpers\Helper;
                 <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
                     <div class="counter-box flex-fill" data-aos="fade-down" data-aos-duration="2000">
                         <div class="counter-icon">
-                            <img src="{{ URL::asset('/assets/img/icons/counter-icon-4.svg') }}" alt="icon">
+                            <img src="{{ URL::asset(Helper::pageContent('home','counter-icon-4-img')) }}" alt="icon">
                         </div>
                         <div class="counter-value">
                             <h3 class="dash-count"><span class="counter-up">5000</span>+</h3>
@@ -574,7 +574,7 @@ use App\Helpers\Helper;
                             <div class="price-card" data-aos="flip-right" data-aos-easing="ease-out-cubic"
                                 data-aos-duration="1000">
                                 <div class="price-sticker">
-                                    <img src="{{ URL::asset('/assets/img/icons/pricing-icon.svg') }}"
+                                    <img src="{{ URL::asset(Helper::pageContent('home','pricing-icon-img')) }}"
                                         alt="price-sticker">
                                 </div>
                                 <div class="price-title">
@@ -753,7 +753,7 @@ use App\Helpers\Helper;
             </div>
         </div>
         <div class="bg-imgs">
-            <img src="{{ URL::asset('/assets/img/bg/price-bg.png') }}" class="bg-05" alt="icon">
+            <img src="{{ URL::asset(Helper::pageContent('home','price-bg-img')) }}" class="bg-05" alt="icon">
         </div>
     </section>
     <!-- /Pricing -->
@@ -764,7 +764,7 @@ use App\Helpers\Helper;
             <div class="row">
                 <div class="col-lg-4">
                     <div class="faq-img">
-                        <img src="{{ URL::asset('/assets/img/faq-img.jpg') }}" alt="icon">
+                        <img src="{{ URL::asset(Helper::pageContent('home','faq-img')) }}" alt="icon">
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -860,7 +860,7 @@ use App\Helpers\Helper;
                         <div class="blog-card" data-aos="fade-down" data-aos-duration="2000">
                             <div class="blog-img">
                                 <a href="{{ url('blog-details') }}"><img
-                                        src="{{ URL::asset('/assets/img/blog/blog-1.jpg') }}" alt="Blog Image"></a>
+                                        src="{{ URL::asset(Helper::pageContent('home','blog-1-img')) }}" alt="Blog Image"></a>
                             </div>
                             <div class="blog-content">
                                 <div class="blog-property">
@@ -874,7 +874,7 @@ use App\Helpers\Helper;
                                 <ul class="property-category d-flex justify-content-between align-items-center">
                                     <li class="user-info">
                                         <a href="javascript:void(0);"><img
-                                                src="{{ URL::asset('/assets/img/profiles/avatar-01.jpg') }}"
+                                                src="{{ URL::asset(Helper::pageContent('home','avatar-01-img')) }}"
                                                 class="img-fluid avatar" alt="User"></a>
                                         <div class="user-name">
                                             <h6><a href="javascript:void(0);">Doe John</a></h6>
@@ -894,7 +894,7 @@ use App\Helpers\Helper;
                         <div class="blog-card" data-aos="fade-down" data-aos-duration="2000">
                             <div class="blog-img">
                                 <a href="{{ url('blog-details') }}"><img
-                                        src="{{ URL::asset('/assets/img/blog/blog-2.jpg') }}" alt="Blog Image"></a>
+                                        src="{{ URL::asset(Helper::pageContent('home','blog-2-img')) }}" alt="Blog Image"></a>
                             </div>
                             <div class="blog-content">
                                 <div class="blog-property">
@@ -908,7 +908,7 @@ use App\Helpers\Helper;
                                 <ul class="property-category d-flex justify-content-between align-items-center">
                                     <li class="user-info">
                                         <a href="javascript:void(0);"><img
-                                                src="{{ URL::asset('/assets/img/profiles/avatar-03.jpg') }}"
+                                                src="{{ URL::asset(Helper::pageContent('home','avatar-03-img')) }}"
                                                 class="img-fluid avatar" alt="User"></a>
                                         <div class="user-name">
                                             <h6><a href="javascript:void(0);">John</a></h6>
@@ -928,7 +928,7 @@ use App\Helpers\Helper;
                         <div class="blog-card" data-aos="fade-down" data-aos-duration="2000">
                             <div class="blog-img">
                                 <a href="{{ url('blog-details') }}"><img
-                                        src="{{ URL::asset('/assets/img/blog/blog-3.jpg') }}" alt="Blog Image"></a>
+                                        src="{{ URL::asset(Helper::pageContent('home','blog-3-img')) }}" alt="Blog Image"></a>
                             </div>
                             <div class="blog-content">
                                 <div class="blog-property">
@@ -943,7 +943,7 @@ use App\Helpers\Helper;
                                 <ul class="property-category d-flex justify-content-between align-items-center">
                                     <li class="user-info">
                                         <a href="javascript:void(0);"><img
-                                                src="{{ URL::asset('/assets/img/profiles/avatar-05.jpg') }}"
+                                                src="{{ URL::asset(Helper::pageContent('home','avatar-05-img')) }}"
                                                 class="img-fluid avatar" alt="User"></a>
                                         <div class="user-name">
                                             <h6><a href="javascript:void(0);">Eric Krok</a></h6>
@@ -963,7 +963,7 @@ use App\Helpers\Helper;
                         <div class="blog-card" data-aos="fade-down" data-aos-duration="2000">
                             <div class="blog-img">
                                 <a href="{{ url('blog-details') }}"><img
-                                        src="{{ URL::asset('/assets/img/blog/blog-2.jpg') }}" alt="Blog Image"></a>
+                                        src="{{ URL::asset(Helper::pageContent('home','blog-2-img')) }}" alt="Blog Image"></a>
                             </div>
                             <div class="blog-content">
                                 <div class="blog-property">
@@ -977,7 +977,7 @@ use App\Helpers\Helper;
                                 <ul class="property-category d-flex justify-content-between align-items-center">
                                     <li class="user-info">
                                         <a href="javascript:void(0);"><img
-                                                src="{{ URL::asset('/assets/img/profiles/avatar-07.jpg') }}"
+                                                src="{{ URL::asset(Helper::pageContent('home','avatar-07-img')) }}"
                                                 class="img-fluid avatar" alt="User"></a>
                                         <div class="user-name">
                                             <h6><a href="javascript:void(0);">Francis</a></h6>
@@ -997,7 +997,7 @@ use App\Helpers\Helper;
                         <div class="blog-card" data-aos="fade-down" data-aos-duration="2000">
                             <div class="blog-img">
                                 <a href="{{ url('blog-details') }}"><img
-                                        src="{{ URL::asset('/assets/img/blog/blog-1.jpg') }}" alt="Blog Image"></a>
+                                        src="{{ URL::asset(Helper::pageContent('home','blog-1-img')) }}" alt="Blog Image"></a>
                             </div>
                             <div class="blog-content">
                                 <div class="blog-property">
@@ -1011,7 +1011,7 @@ use App\Helpers\Helper;
                                 <ul class="property-category d-flex justify-content-between align-items-center">
                                     <li class="user-info">
                                         <a href="javascript:void(0);"><img
-                                                src="{{ URL::asset('/assets/img/profiles/avatar-03.jpg') }}"
+                                                src="{{ URL::asset(Helper::pageContent('home','avatar-03-img')) }}"
                                                 class="img-fluid avatar" alt="User"></a>
                                         <div class="user-name">
                                             <h6><a href="javascript:void(0);">Rafael</a></h6>
