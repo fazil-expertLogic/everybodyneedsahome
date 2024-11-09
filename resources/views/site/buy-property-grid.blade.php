@@ -32,7 +32,7 @@
                                 <div class="doc-img">
                                     <a href="{{ url('property-detail/'. $property->id) }}" class="property-img">
                                         <img class="img-fluid" alt="Property Image"
-                                            src="{{ $property->main_picture ? asset('storage/' . $property->main_picture) : URL::asset('assets/img/product/product-1.jpg') }}">
+                                            src="{{ $property->main_picture ? asset('storage/' . $property->main_picture) : URL::asset(Helper::pageContent('buy-property-grid','product-1-img')) }}">
                                     </a>
                                     <div class="product-amount">
                                         <span>${{ number_format($property->bed_fee + $property->bedroom_fee + $property->unit_fee,2) }}</span>
@@ -57,7 +57,7 @@
                                         </a> --}}
                                     </div>
                                     <div class="user-avatar">
-                                        <img src="{{ URL::asset('assets/img/profiles/avatar-01.jpg') }}" alt="User">
+                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-grid','avatar-01-img')) }}" alt="User">
                                     </div>
                                 </div>
                                 <div class="pro-content">
@@ -77,11 +77,11 @@
                                     <p><i class="feather-map-pin"></i>{{$property->property_address}}</p>
                                     <ul class="d-flex details">
                                         <li>
-                                            <img src="{{ URL::asset('assets/img/icons/bed-icon.svg') }}" alt="bed-icon">
+                                            <img src="{{ URL::asset(Helper::pageContent('buy-property-grid','bed-icon-img')) }}" alt="bed-icon">
                                             {{$property->number_of_bedrooms_house}} Beds
                                         </li>
                                         <li>
-                                            <img src="{{ URL::asset('assets/img/icons/bath-icon.svg') }}" alt="bath-icon">
+                                            <img src="{{ URL::asset( Helper::pageContent('buy-property-grid','bath-icon-img')) }}" alt="bath-icon">
                                             {{$property->number_of_bath_house}} Baths
                                         </li>
                                         {{-- <li>
