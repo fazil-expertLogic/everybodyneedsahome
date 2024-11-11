@@ -735,6 +735,71 @@ document.addEventListener("touchstart", function() {},false);
 			}
 		}
 	}
+
+
+
+
+	// =======================================================================================================================================
+	function previousStep5() {
+		$( "#section-5" ).removeClass( "slide-left" );
+		$( "#section-5" ).addClass( "open" );
+		$( "#section-6" ).removeClass( "open" );
+		$( "#section-6" ).addClass( "slide-right" );
+	}
+
+
+	function nextStep7() {
+		console.log("asdasdads");
+		var cus_more_friends = $('#cus_more_friends').val(); 
+		var cus_is_inv_rom = $('#cus_is_inv_rom').val(); 
+		var cus_is_mental_ill = $('#cus_is_mental_ill').val(); 
+		var cus_phy_dis = $('#cus_phy_dis').val(); 
+		var cus_comments = $('#cus_comments').val();
+		var cus_counselor = $('#cus_counselor').val(); 
+		
+		if( cus_counselor )
+			$( ".valid_cus_counselor .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_counselor .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter carrier</li></ul>' );
+
+		if( cus_more_friends )
+			$( ".valid_cus_more_friends .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_more_friends .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
+
+		if( cus_is_inv_rom )
+			$( ".valid_cus_is_inv_rom .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_is_inv_rom .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter member id</li></ul>' );
+		
+		if( cus_is_mental_ill )
+			$( ".valid_cus_is_mental_ill .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_is_mental_ill .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter group no</li></ul>' );
+
+		if( cus_phy_dis )
+			$( ".valid_cus_phy_dis .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_phy_dis .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter group no</li></ul>' );
+
+		if( cus_comments )
+			$( ".valid_cus_comments .help-block.with-errors" ).html( '' );
+		else
+			$( ".valid_cus_comments .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter group no</li></ul>' );	
+
+		if(cus_more_friends && cus_counselor && cus_is_inv_rom && cus_is_mental_ill && cus_phy_dis && cus_comments ) {
+			$( "#section-6 .help-block.with-errors.mandatory-error" ).html( '' );
+			$( "#section-6" ).removeClass( "open" );
+			$( "#section-6" ).addClass( "slide-left" );
+			$( "#section-7" ).removeClass( "slide-right" );
+			$( "#section-7" ).addClass( "open" );
+		}
+		else {
+			$( "#section-6 .help-block.with-errors.mandatory-error" ).html( '<ul class="list-unstyled"><li>Please Fill the Form Properly</li></ul>' );
+			sweetAlert("Oops...", "Please Fill the Form Properly!", "error");
+		}
+	}
+
 	function birthDiv() {
 		var selectedValue = $('#cus_bcert').val();
 		if (selectedValue === '1') {
@@ -915,7 +980,19 @@ document.addEventListener("touchstart", function() {},false);
 	function deletechild(id){
 		$('#childinfobox'+id).remove();
 	}
-	
+
+	function payment_plan(){
+		console.log("adasd");
+		$('input[name="plan"]').on('change', function() {
+			if ($('#monthly-tab').is(':checked')) {
+				$('#monthly').addClass('show active');
+				$('#yearly').removeClass('show active');
+			} else if ($('#yearly-tab').is(':checked')) {
+				$('#yearly').addClass('show active');
+				$('#monthly').removeClass('show active');
+			}
+		});
+	}
 /*
 |--------------------------------------------------------------------------
 | End

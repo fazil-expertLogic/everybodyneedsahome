@@ -35,7 +35,8 @@ class MembershipController extends Controller
         if ($request->filled('search')) {
             $query->where(function($subquery) use ($request) {
                 $subquery->where('name', 'like', '%' . $request->search . '%')
-                        ->orWhere('price', 'like', '%' . $request->search . '%');
+                        ->orWhere('price', 'like', '%' . $request->search . '%')
+                        ->orWhere('plan_type', 'like', '%' . $request->search . '%');
             });
         }
 
@@ -65,7 +66,7 @@ class MembershipController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name'  => 'required|string|max:255',
-                'price'  => 'required|integer|min:0',
+                'price'  => 'required',
                 'features'  => 'required|string|max:255',
                 'description'  => 'required|string|max:255',
             ]);
@@ -78,6 +79,7 @@ class MembershipController extends Controller
                 'price' => $request->price,
                 'features' => $request->features,
                 'description' => $request->description,
+                'plan_type'=> $request->plan_type
             ]);
             DB::commit();
             return redirect()->route('memberships.index')->with('success', 'membership create successfully.');
@@ -124,7 +126,7 @@ class MembershipController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name'  => 'required|string|max:255',
-                'price'  => 'required|integer|min:0',
+                'price'  => 'required|string|max:255',
                 'features'  => 'required|string|max:255',
                 'description'  => 'required|string|max:255',
             ]);
@@ -138,6 +140,7 @@ class MembershipController extends Controller
                 'price' => $request->price,
                 'features' => $request->features,
                 'description' => $request->description,
+                'plan_type'=> $request->plan_type
             ]);
             DB::commit();
             return redirect()->route('memberships.index')->with('success', 'membership update successfully.');

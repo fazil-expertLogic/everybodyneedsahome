@@ -19,7 +19,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_name  @if ($errors->has('name')) has-error has-danger @endif">
                                                     <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="name" class="form-control py-2" id="name" placeholder="name" value="" required data-error="Please enter name">
+                                                    <input type="text" name="name" class="form-control py-2" id="name" placeholder="name" value="{{old('name')}}" required data-error="Please enter name">
                                                     <div class="help-block with-errors"></div>
                                                     @if ($errors->has('name'))
                                                         <div class="help-block with-errors">{{ $errors->first('name') }}</div>
@@ -28,7 +28,7 @@
                                                 
                                                 <div class="form-group valid_use_name  @if ($errors->has('icon')) has-error has-danger @endif">
                                                     <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
-                                                    <input type="text" name="icon" class="form-control py-2" id="icon" placeholder="icon" value="" required data-error="Please enter icon">
+                                                    <input type="text" name="icon" class="form-control py-2" id="icon" placeholder="icon" value="{{old('icon')}}" required data-error="Please enter icon">
                                                     <div class="help-block with-errors"></div>
                                                     @if ($errors->has('icon'))
                                                         <div class="help-block with-errors">{{ $errors->first('icon') }}</div>

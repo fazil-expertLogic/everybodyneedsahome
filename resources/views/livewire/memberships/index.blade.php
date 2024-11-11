@@ -76,6 +76,7 @@
                                 <tr>
                                     <th class="wd-15p border-bottom-0">Name</th>
                                     <th class="wd-15p border-bottom-0">price</th>
+                                    <th class="wd-15p border-bottom-0">Plan Type</th>
                                     <th class="wd-25p border-bottom-0">Created ON</th>
                                     <th class="wd-25p border-bottom-0">Action</th>
                                 </tr>
@@ -86,6 +87,7 @@
                                 <tr>
                                     <td>{{$membership->name}}</td>
                                     <td>{{$membership->price}}</td>
+                                    <td>{{$membership->plan_type}}</td>
                                     <td>{{$membership->created_at}}</td>
                                     <td>
                                         @if($allow_show)

@@ -32,14 +32,13 @@
                             <div class="signUpForm-step-holder">
                                 <div id="section-1" class="signUpForm-step-wrap">
                                     <h3 class="section-form-title mt-3">Client Registration</h3>
-                                    <h3 class="section-title">Step 1 of 5</h3>
+                                    <h3 class="section-title">Step 1 of 6</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
                                                 <div class="form-layer-progress-line" style="width: 0%;"></div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step currentstep">
                                                         <div class="form-layer-step-icon activestep"><i
@@ -56,14 +55,14 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
-                                                        <div class="form-layer-step-icon"><i class="far fa-credit-card"></i>
+                                                        <div class="form-layer-step-icon"><i class="fas fa-poll"></i>
                                                         </div>
                                                         <p class="steptitle">3- Needs Survey</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
-                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                        <div class="form-layer-step-icon"><i class="fa-solid fa-suitcase-medical"></i>
                                                         </div>
                                                         <p class="steptitle">4- Health Insurance</p>
                                                     </div>
@@ -75,7 +74,13 @@
                                                         <p class="steptitle">5- Others info</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i class="fa fa-credit-card"></i>
+                                                        </div>
+                                                        <p class="steptitle">6- Payment</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -414,7 +419,7 @@
                                 </div>
 
                                 <div id="section-2" class="signUpForm-step-wrap slide-right">
-                                    <h3 class="section-title">Step 2 of 5</h3>
+                                    <h3 class="section-title">Step 2 of 6</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -422,7 +427,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
@@ -441,13 +445,13 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i
-                                                                class="far fa-credit-card"></i></div>
+                                                                class="fas fa-poll"></i></div>
                                                         <p class="steptitle">3- Needs Survey</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
-                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                        <div class="form-layer-step-icon"><i class="fa-solid fa-suitcase-medical"></i>
                                                         </div>
                                                         <p class="steptitle">4- Health Insurance</p>
                                                     </div>
@@ -459,7 +463,14 @@
                                                         <p class="steptitle">5- Others info</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fa fa-credit-card"></i>
+                                                        </div>
+                                                        <p class="steptitle">6- Payment</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -567,7 +578,7 @@
                                 </div>
 
                                 <div id="section-3" class="signUpForm-step-wrap slide-right">
-                                    <h3 class="section-title">Step 3 of 5</h3>
+                                    <h3 class="section-title">Step 3 of 6</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -575,7 +586,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
@@ -593,13 +603,13 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step currentstep">
                                                         <div class="form-layer-step-icon activestep"><i
-                                                                class="far fa-credit-card"></i></div>
+                                                                class="fas fa-poll"></i></div>
                                                         <p class="steptitle">3- Needs Survey</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
-                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                        <div class="form-layer-step-icon"><i class="fa-solid fa-suitcase-medical"></i>
                                                         </div>
                                                         <p class="steptitle">4- Health Insurance</p>
                                                     </div>
@@ -611,7 +621,14 @@
                                                         <p class="steptitle">5- Others info</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fa fa-credit-card"></i>
+                                                        </div>
+                                                        <p class="steptitle">6- Payment</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -948,7 +965,7 @@
                                 </div>
 
                                 <div id="section-4" class="signUpForm-step-wrap review-submit-section slide-right">
-                                    <h3 class="section-title">Step 4 of 5</h3>
+                                    <h3 class="section-title">Step 4 of 6</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -956,7 +973,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
@@ -974,14 +990,14 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
-                                                                class="far fa-credit-card"></i></div>
+                                                                class="fas fa-poll"></i></div>
                                                         <p class="steptitle">3- Needs Survey</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step currentstep">
                                                         <div class="form-layer-step-icon activestep"><i
-                                                                class="fas fa-check"></i>
+                                                                class="fa-solid fa-suitcase-medical"></i>
                                                         </div>
                                                         <p class="steptitle">4- Health Insurance</p>
                                                     </div>
@@ -993,7 +1009,14 @@
                                                         <p class="steptitle">5- Others info</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fa fa-credit-card"></i>
+                                                        </div>
+                                                        <p class="steptitle">6- Payment</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -1060,7 +1083,7 @@
                                 </div>
 
                                 <div id="section-5" class="signUpForm-step-wrap review-submit-section slide-right">
-                                    <h3 class="section-title">Step 5 of 5</h3>
+                                    <h3 class="section-title">Step 5 of 6</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -1068,7 +1091,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
@@ -1086,13 +1108,13 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
-                                                                class="far fa-credit-card"></i></div>
+                                                                class="fas fa-poll"></i></div>
                                                         <p class="steptitle">3- Needs Survey</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
-                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                        <div class="form-layer-step-icon"><i class="fa-solid fa-suitcase-medical"></i>
                                                         </div>
                                                         <p class="steptitle">4- Health Insurance</p>
                                                     </div>
@@ -1105,7 +1127,14 @@
                                                         <p class="steptitle">5- Others info</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fa fa-credit-card"></i>
+                                                        </div>
+                                                        <p class="steptitle">6- Payment</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -1192,13 +1221,150 @@
                                                 @endif
                                             </div>
 
-                                            <div id="mgsFormSubmit" class="hidden"></div>
+                                            
                                             <div id="final-step-buttons" class="form-group  signUpForm-step-5">
                                                 <button class="btn btn-custom" type="button"
-                                                    onclick="previousStep4()"><span class="fas fa-arrow-left"></span>
+                                                    onclick="previousStep5()"><span class="fas fa-arrow-left"></span>
                                                     Back</button>
-                                                <button id="Submit" class="btn btn-custom float-end" type="submit"
-                                                    onclick="nextStep6()">Submit </button>
+                                                    <button class="btn btn-custom float-end" type="button"
+                                                    onclick="nextStep6()">Next <span
+                                                        class="fas fa-arrow-right"></span></button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div id="section-6" class="signUpForm-step-wrap review-submit-section slide-right">
+                                    <h3 class="section-title">Step 6 of 6</h3>
+                                    <fieldset>
+                                        <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
+                                            <div class="form-layer-progress">
+                                                <div class="form-layer-progress-line" style="width: 100%;">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fas fa-unlock-alt"></i></div>
+                                                        <p class="steptitle">1- Basic Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i class="fas fa-user"></i>
+                                                        </div>
+                                                        <p class="steptitle">2- Criminal History</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fas fa-poll"></i></div>
+                                                        <p class="steptitle">3- Needs Survey</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i class="fa-solid fa-suitcase-medical"></i>
+                                                        </div>
+                                                        <p class="steptitle">4- Health Insurance</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fas fa-check"></i>
+                                                        </div>
+                                                        <p class="steptitle">5- Others info</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step currentstep">
+                                                        <div class="form-layer-step-icon  activestep"><i
+                                                                class="fa fa-credit-card"></i>
+                                                        </div>
+                                                        <p class="steptitle">6- Payment</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{-- <h3 class="section-form-title">Others info</h3> --}}
+                                        <div class="row">
+                                            
+                                            <div class="container">
+                                                <div class="text-center mb-4">
+                                                    <!-- Radio buttons for Monthly and Yearly tabs -->
+                                                    <input type="radio" name="plan" id="monthly-tab" class="radio-tab" checked onchange="payment_plan()" style="display: none;">
+                                                    <label for="monthly-tab" class="radio-label btn btn-outline-primary"  >Monthly</label>
+                                            
+                                                    <input type="radio" name="plan" id="yearly-tab" class="radio-tab" onchange="payment_plan()" style="display: none;">
+                                                    <label for="yearly-tab" class="radio-label btn btn-outline-primary">Yearly</label>
+                                                </div>
+                                            
+                                                <div class="tab-content" id="pricing-tabContent">
+                                                    <!-- Monthly Pricing -->
+                                                    <div class="tab-pane fade show active" id="monthly" role="tabpanel">
+                                                        <div class="row justify-content-center">
+                                                            @foreach ( $membershipsMonthly as $membership)
+                                                            <div class="col-lg-4 col-md-6 mb-4">
+                                                                <div class="card text-center shadow">
+                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
+                                                                        <input type="radio" name="membership_id" value="{{ $membership->id }}">
+                                                                        <h3>{{$membership->name}}</h3>
+                                                                        <p class="text-center">{{$membership->price}}</p>
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Key Features</h5>
+                                                                        <ul class="list-unstyled">
+                                                                            @foreach(explode('^', $membership->features) as $feature)
+                                                                                <li class="text-start"><i class="fa-regular fa-check-square me-2"></i>{{$feature}}</li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                            
+                                                    <!-- Yearly Pricing -->
+                                                    <div class="tab-pane fade" id="yearly" role="tabpanel">
+                                                        <div class="row justify-content-center">
+                                                            @foreach ( $membershipsYearly as $membership)
+                                                            <div class="col-lg-4 col-md-6 mb-4">
+                                                                <div class="card text-center shadow">
+                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
+                                                                        <input type="radio" name="membership_id" value="{{ $membership->id }}">
+                                                                        <h3>{{$membership->name}}</h3>
+                                                                        <p class="text-center">{{$membership->price}}</p>
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Key Features</h5>
+                                                                        <ul class="list-unstyled">
+                                                                            @foreach(explode('^', $membership->features) as $feature)
+                                                                                <li class="text-start"><i class="fa-regular fa-check-square me-2"></i>{{$feature}}</li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            
+
+                                            <div id="mgsFormSubmit" class="hidden"></div>
+                                            <div id="final-step-buttons" class="form-group  signUpForm-step-6">
+                                                <button class="btn btn-custom" type="button"
+                                                    onclick="previousStep5()"><span class="fas fa-arrow-left"></span>
+                                                    Back</button>
+                                                    <button id="Submit" class="btn btn-custom float-end" type="submit"
+                                                    onclick="nextStep7()">Submit </button>
                                             </div>
                                         </div>
                                     </fieldset>
