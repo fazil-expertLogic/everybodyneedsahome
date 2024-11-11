@@ -1027,6 +1027,47 @@ document.addEventListener("touchstart", function() {},false);
 		});
 	}
 
+
+	//-------------------------------- Stripe --------------------------------
+	var stripe, elements, card;
+
+    function initializeStripe() {
+        console.log("Initializing Stripe...");
+        if (!stripe) {
+            stripe = Stripe("{{ env('STRIPE_PUBLISHABLE_KEY') }}"); // Replace with your Stripe publishable key
+        }
+        if (!elements) {
+            elements = stripe.elements();
+        }
+        if (!card) {
+            const style = {
+                base: {
+                    color: '#32325d',
+                    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                    fontSmoothing: 'antialiased',
+                    fontSize: '16px',
+                    '::placeholder': {
+                        color: '#aab7c4'
+                    }
+                },
+                invalid: {
+                    color: '#fa755a',
+                    iconColor: '#fa755a'
+                }
+            };
+
+            card = elements.create('card', { style: style });
+            card.mount('#card-element'); // Mount the card Element in the div
+            card.on('change', function(event) {
+                const displayError = document.getElementById('card-errors');
+                displayError.textContent = event.error ? event.error.message : '';
+            });
+        }
+    }
+
+    $(document).ready(function() {
+        initializeStripe();
+    });
 	
 /*
 |--------------------------------------------------------------------------

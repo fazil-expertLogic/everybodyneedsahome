@@ -21,6 +21,20 @@
     <link rel="stylesheet" href="{{ asset('wizard-form/css/reg-form.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('wizard-form/css/reg-form-modern.css') }}" type="text/css">
 
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+
+
+    <script src="{{ asset('build/assets/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('build/assets/plugins/bootstrap/popper.min.js') }}"></script>
+    <script src="{{ asset('build/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('wizard-form/js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('wizard-form/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('wizard-form/js/validator.min.js') }}"></script>
+    <script src="{{ asset('wizard-form/js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('wizard-form/js/reg-form.js') }}"></script>
+
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -1526,25 +1540,11 @@
     </div>
 
 
-    <script src="{{ asset('build/assets/plugins/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/bootstrap/popper.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-    {{-- <script src="{{ asset('build/assets/plugins/p-scroll/perfect-scrollbar.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/p-scroll/pscroll.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/sidemenu/sidemenu.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/sidebar/sidebar.js') }}"></script> --}}
+    
+    
     @vite('resources/js/app.js')
 
 
 
-    <script src="{{ asset('wizard-form/js/jquery-3.5.1.min.js') }}"></script>
-    <!-- bootstrap-datepicker Js -->
-    <script src="{{ asset('wizard-form/js/bootstrap-datepicker.min.js') }}"></script>
-    <!-- Form validator Js -->
-    <script src="{{ asset('wizard-form/js/validator.min.js') }}"></script>
-    <!-- sweetalert Js -->
-    <script src="{{ asset('wizard-form/js/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('wizard-form/js/reg-form.js') }}"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://js.stripe.com/v3/"></script>
+   
 @endsection
