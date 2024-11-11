@@ -32,14 +32,13 @@
                             <div class="signUpForm-step-holder">
                                 <div id="section-1" class="signUpForm-step-wrap">
                                     <h3 class="section-form-title mt-3">Client Registration</h3>
-                                    <h3 class="section-title">Step 1 of 5</h3>
+                                    <h3 class="section-title">Step 1 of 6</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
                                                 <div class="form-layer-progress-line" style="width: 0%;"></div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step currentstep">
                                                         <div class="form-layer-step-icon activestep"><i
@@ -75,7 +74,14 @@
                                                         <p class="steptitle">5- Others info</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fas fa-check"></i>
+                                                        </div>
+                                                        <p class="steptitle">6- Payment</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -414,7 +420,7 @@
                                 </div>
 
                                 <div id="section-2" class="signUpForm-step-wrap slide-right">
-                                    <h3 class="section-title">Step 2 of 5</h3>
+                                    <h3 class="section-title">Step 2 of 6</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -422,7 +428,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
@@ -459,7 +464,14 @@
                                                         <p class="steptitle">5- Others info</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fas fa-check"></i>
+                                                        </div>
+                                                        <p class="steptitle">6- Payment</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -567,7 +579,7 @@
                                 </div>
 
                                 <div id="section-3" class="signUpForm-step-wrap slide-right">
-                                    <h3 class="section-title">Step 3 of 5</h3>
+                                    <h3 class="section-title">Step 3 of 6</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -575,7 +587,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
@@ -611,7 +622,14 @@
                                                         <p class="steptitle">5- Others info</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fas fa-check"></i>
+                                                        </div>
+                                                        <p class="steptitle">6- Payment</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -948,7 +966,7 @@
                                 </div>
 
                                 <div id="section-4" class="signUpForm-step-wrap review-submit-section slide-right">
-                                    <h3 class="section-title">Step 4 of 5</h3>
+                                    <h3 class="section-title">Step 4 of 6</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -956,7 +974,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
@@ -993,7 +1010,14 @@
                                                         <p class="steptitle">5- Others info</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fas fa-check"></i>
+                                                        </div>
+                                                        <p class="steptitle">6- Payment</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -1060,7 +1084,7 @@
                                 </div>
 
                                 <div id="section-5" class="signUpForm-step-wrap review-submit-section slide-right">
-                                    <h3 class="section-title">Step 5 of 5</h3>
+                                    <h3 class="section-title">Step 5 of 6</h3>
                                     <fieldset>
                                         <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
                                             <div class="form-layer-progress">
@@ -1068,7 +1092,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-1"></div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
@@ -1105,7 +1128,14 @@
                                                         <p class="steptitle">5- Others info</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fas fa-check"></i>
+                                                        </div>
+                                                        <p class="steptitle">6- Payment</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -1195,10 +1225,161 @@
                                             <div id="mgsFormSubmit" class="hidden"></div>
                                             <div id="final-step-buttons" class="form-group  signUpForm-step-5">
                                                 <button class="btn btn-custom" type="button"
-                                                    onclick="previousStep4()"><span class="fas fa-arrow-left"></span>
+                                                    onclick="previousStep5()"><span class="fas fa-arrow-left"></span>
                                                     Back</button>
-                                                <button id="Submit" class="btn btn-custom float-end" type="submit"
-                                                    onclick="nextStep6()">Submit </button>
+                                                    <button class="btn btn-custom float-end" type="button"
+                                                    onclick="nextStep6()">Next <span
+                                                        class="fas fa-arrow-right"></span></button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div id="section-6" class="signUpForm-step-wrap review-submit-section slide-right">
+                                    <h3 class="section-title">Step 6 of 6</h3>
+                                    <fieldset>
+                                        <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
+                                            <div class="form-layer-progress">
+                                                <div class="form-layer-progress-line" style="width: 100%;">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fas fa-unlock-alt"></i></div>
+                                                        <p class="steptitle">1- Basic Information</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i class="fas fa-user"></i>
+                                                        </div>
+                                                        <p class="steptitle">2- Criminal History</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="far fa-credit-card"></i></div>
+                                                        <p class="steptitle">3- Needs Survey</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                        </div>
+                                                        <p class="steptitle">4- Health Insurance</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step active">
+                                                        <div class="form-layer-step-icon"><i
+                                                                class="fas fa-check"></i>
+                                                        </div>
+                                                        <p class="steptitle">5- Others info</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-layer-step currentstep">
+                                                        <div class="form-layer-step-icon  activestep"><i
+                                                                class="fas fa-check"></i>
+                                                        </div>
+                                                        <p class="steptitle">6- Payment</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{-- <h3 class="section-form-title">Others info</h3> --}}
+                                        <div class="row">
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_more_friends @if($errors->has('cus_more_friends')) has-error has-danger @endif">
+                                                <label for="cus_more_friends">Could you use more friends?<span
+                                                        class="text-danger">*</span></label>
+                                                <select class="form-select" name="cus_more_friends" id="cus_more_friends"
+                                                    required data-error="Please select" onchange="friendsDiv()">
+                                                    <option value="">Please select</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
+                                                </select>
+                                                <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_more_friends'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_more_friends') }}</div>
+                                                @endif
+                                            </div>
+
+                                            <div id="friendsDiv">
+                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_counselor @if($errors->has('cus_counselor')) has-error has-danger @endif">
+                                                    <label for="cus_counselor">Do you believe you could benefit from having
+                                                        a mentor or counselor?<span class="text-danger">*</span></label>
+                                                    <select class="form-select" name="cus_counselor" id="cus_counselor"
+                                                        data-error="Please select">
+                                                        <option value="">Please select</option>
+                                                        <option value="1">Yes</option>
+                                                        <option value="2">No</option>
+                                                    </select>
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('cus_counselor'))
+                                                        <div class="help-block with-errors">{{ $errors->first('cus_counselor') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_inv_rom @if($errors->has('cus_is_inv_rom')) has-error has-danger @endif">
+                                                <label for="cus_is_inv_rom">Are you looking for someone with whom you could
+                                                    be involved romantically?<span class="text-danger">*</span></label>
+                                                <select class="form-select" name="cus_is_inv_rom" id="cus_is_inv_rom"
+                                                    required data-error="Please select">
+                                                    <option value="">Please select</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
+                                                </select>
+                                                <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_is_inv_rom'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_is_inv_rom') }}</div>
+                                                @endif
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_mental_ill @if($errors->has('cus_is_mental_ill')) has-error has-danger @endif">
+                                                <label for="cus_is_mental_ill">Have you ever been diagnosed with a mental
+                                                    illness?<span class="text-danger">*</span></label>
+                                                <select class="form-select" name="cus_is_mental_ill"
+                                                    id="cus_is_mental_ill" required data-error="Please select">
+                                                    <option value="">Please select</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
+                                                </select>
+                                                <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_is_mental_ill'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_is_mental_ill') }}</div>
+                                                @endif
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_phy_dis @if($errors->has('cus_phy_dis')) has-error has-danger @endif">
+                                                <label for="cus_phy_dis">Do you have any known physical disabilities<span
+                                                        class="text-danger">*</span></label>
+                                                <textarea class="form-control" id="cus_phy_dis" name="cus_phy_dis" required data-error="Please select"></textarea>
+                                                <div class="help-block with-errors"></div>
+                                                @if ($errors->has('cus_phy_dis'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_phy_dis') }}</div>
+                                                @endif
+                                            </div>
+
+                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_comments @if($errors->has('cus_comments')) has-error has-danger @endif">
+                                                <label for="cus_comments">Please enter anything else you would like for us
+                                                    to know?</label><br>
+                                                <textarea class="form-control" id="cus_comments" name="cus_comments"></textarea>
+                                                @if ($errors->has('cus_comments'))
+                                                    <div class="help-block with-errors">{{ $errors->first('cus_comments') }}</div>
+                                                @endif
+                                            </div>
+
+                                            <div id="mgsFormSubmit" class="hidden"></div>
+                                            <div id="final-step-buttons" class="form-group  signUpForm-step-5">
+                                                <button class="btn btn-custom" type="button"
+                                                    onclick="previousStep5()"><span class="fas fa-arrow-left"></span>
+                                                    Back</button>
+                                                    <button id="Submit" class="btn btn-custom float-end" type="submit"
+                                                    onclick="nextStep7()">Submit </button>
                                             </div>
                                         </div>
                                     </fieldset>
