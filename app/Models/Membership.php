@@ -14,6 +14,7 @@ class Membership extends Model
         'features',
         'description',
         'status',
+        'plan_type'
     ];
 
     public function scopeActive($query)

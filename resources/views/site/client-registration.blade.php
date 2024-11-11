@@ -55,14 +55,14 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
-                                                        <div class="form-layer-step-icon"><i class="far fa-credit-card"></i>
+                                                        <div class="form-layer-step-icon"><i class="fas fa-poll"></i>
                                                         </div>
                                                         <p class="steptitle">3- Needs Survey</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
-                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                        <div class="form-layer-step-icon"><i class="fa-solid fa-suitcase-medical"></i>
                                                         </div>
                                                         <p class="steptitle">4- Health Insurance</p>
                                                     </div>
@@ -76,8 +76,7 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
-                                                        <div class="form-layer-step-icon"><i
-                                                                class="fas fa-check"></i>
+                                                        <div class="form-layer-step-icon"><i class="fa fa-credit-card"></i>
                                                         </div>
                                                         <p class="steptitle">6- Payment</p>
                                                     </div>
@@ -446,13 +445,13 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i
-                                                                class="far fa-credit-card"></i></div>
+                                                                class="fas fa-poll"></i></div>
                                                         <p class="steptitle">3- Needs Survey</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
-                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                        <div class="form-layer-step-icon"><i class="fa-solid fa-suitcase-medical"></i>
                                                         </div>
                                                         <p class="steptitle">4- Health Insurance</p>
                                                     </div>
@@ -467,7 +466,7 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i
-                                                                class="fas fa-check"></i>
+                                                                class="fa fa-credit-card"></i>
                                                         </div>
                                                         <p class="steptitle">6- Payment</p>
                                                     </div>
@@ -604,13 +603,13 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step currentstep">
                                                         <div class="form-layer-step-icon activestep"><i
-                                                                class="far fa-credit-card"></i></div>
+                                                                class="fas fa-poll"></i></div>
                                                         <p class="steptitle">3- Needs Survey</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
-                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                        <div class="form-layer-step-icon"><i class="fa-solid fa-suitcase-medical"></i>
                                                         </div>
                                                         <p class="steptitle">4- Health Insurance</p>
                                                     </div>
@@ -625,7 +624,7 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i
-                                                                class="fas fa-check"></i>
+                                                                class="fa fa-credit-card"></i>
                                                         </div>
                                                         <p class="steptitle">6- Payment</p>
                                                     </div>
@@ -991,14 +990,14 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
-                                                                class="far fa-credit-card"></i></div>
+                                                                class="fas fa-poll"></i></div>
                                                         <p class="steptitle">3- Needs Survey</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step currentstep">
                                                         <div class="form-layer-step-icon activestep"><i
-                                                                class="fas fa-check"></i>
+                                                                class="fa-solid fa-suitcase-medical"></i>
                                                         </div>
                                                         <p class="steptitle">4- Health Insurance</p>
                                                     </div>
@@ -1013,7 +1012,7 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i
-                                                                class="fas fa-check"></i>
+                                                                class="fa fa-credit-card"></i>
                                                         </div>
                                                         <p class="steptitle">6- Payment</p>
                                                     </div>
@@ -1109,13 +1108,13 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
-                                                                class="far fa-credit-card"></i></div>
+                                                                class="fas fa-poll"></i></div>
                                                         <p class="steptitle">3- Needs Survey</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
-                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                        <div class="form-layer-step-icon"><i class="fa-solid fa-suitcase-medical"></i>
                                                         </div>
                                                         <p class="steptitle">4- Health Insurance</p>
                                                     </div>
@@ -1131,7 +1130,7 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step">
                                                         <div class="form-layer-step-icon"><i
-                                                                class="fas fa-check"></i>
+                                                                class="fa fa-credit-card"></i>
                                                         </div>
                                                         <p class="steptitle">6- Payment</p>
                                                     </div>
@@ -1260,13 +1259,13 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
                                                         <div class="form-layer-step-icon"><i
-                                                                class="far fa-credit-card"></i></div>
+                                                                class="fas fa-poll"></i></div>
                                                         <p class="steptitle">3- Needs Survey</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step active">
-                                                        <div class="form-layer-step-icon"><i class="fas fa-check"></i>
+                                                        <div class="form-layer-step-icon"><i class="fa-solid fa-suitcase-medical"></i>
                                                         </div>
                                                         <p class="steptitle">4- Health Insurance</p>
                                                     </div>
@@ -1282,7 +1281,7 @@
                                                 <div class="col-md-2">
                                                     <div class="form-layer-step currentstep">
                                                         <div class="form-layer-step-icon  activestep"><i
-                                                                class="fas fa-check"></i>
+                                                                class="fa fa-credit-card"></i>
                                                         </div>
                                                         <p class="steptitle">6- Payment</p>
                                                     </div>
@@ -1307,136 +1306,50 @@
                                                     <!-- Monthly Pricing -->
                                                     <div class="tab-pane fade show active" id="monthly" role="tabpanel">
                                                         <div class="row justify-content-center">
+                                                            @foreach ( $membershipsMonthly as $membership)
                                                             <div class="col-lg-4 col-md-6 mb-4">
                                                                 <div class="card text-center shadow">
                                                                     <div class="card-header text-white" style="background-color: #3e3e3e">
-                                                                        <h3>Basic</h3>
-                                                                        <p class="text-center">(Free) / Monthly</p>
+                                                                        <input type="radio" name="membership_id" value="{{ $membership->id }}">
+                                                                        <h3>{{$membership->name}}</h3>
+                                                                        <p class="text-center">{{$membership->price}}</p>
                                                                     </div>
                                                                     <div class="card-body">
                                                                         <h5 class="card-title">Key Features</h5>
                                                                         <ul class="list-unstyled">
-                                                                            <li class="text-start"><i class="fa-regular fa-check-square me-2"></i>Property listing with property name displayed.</li>
-                                                                            <li class="text-start"><i class="fa-regular fa-check-square me-2"></i>Contact form sends inquiries to the website, not directly to the landlord.</li>
+                                                                            @foreach(explode('^', $membership->features) as $feature)
+                                                                                <li class="text-start"><i class="fa-regular fa-check-square me-2"></i>{{$feature}}</li>
+                                                                            @endforeach
                                                                         </ul>
-                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
-
-                                                            <div class="col-lg-4 col-md-6 mb-4">
-                                                                <div class="card text-center shadow">
-                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
-                                                                        <h3>Bronze</h3>
-                                                                        <p class="mb-0">$10 / month</p>
-                                                                    </div>
-                                                                    <div class="card-body">
-                                                                        <h5 class="card-title">Key Features</h5>
-                                                                        <ul class="list-unstyled">
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Property listing includes full contact information.</li>
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Displays the landlord’s website link.</li>
-                                                                        </ul>
-                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-4 col-md-6 mb-4">
-                                                                <div class="card text-center shadow">
-                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
-                                                                        <h3>Silver</h3>
-                                                                        <p class="mb-0">$25 / month</p>
-                                                                    </div>
-                                                                    <div class="card-body">
-                                                                        <h5 class="card-title">Key Features</h5>
-                                                                        <ul class="list-unstyled">
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>All Bronze features.</li>
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Enables tracking of available inventory.</li>
-                                                                        </ul>
-                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-                                                            {{-- ------------------------------------------------- --}}
-                                                            <div class="col-lg-4 col-md-6 mb-4">
-                                                                <div class="card text-center shadow">
-                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
-                                                                        <h3>Gold</h3>
-                                                                        <p class="mb-0">$35 / Monthly</p>
-                                                                    </div>
-                                                                    <div class="card-body">
-                                                                        <h5 class="card-title">Key Features</h5>
-                                                                        <ul class="list-unstyled">
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>All Silver features.</li>
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Provides online application functionality.</li>
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Choice between landlord’s application form or a website-native application.</li>
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Additional cost: $10 per application.</li>
-                                                                        </ul>
-                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-4 col-md-6 mb-4">
-                                                                <div class="card text-center shadow">
-                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
-                                                                        <h3>Platinum</h3>
-                                                                        <p class="mb-0">$50 / month + 6% processing fee</p>
-                                                                    </div>
-                                                                    <div class="card-body">
-                                                                        <h5 class="card-title">Key Features</h5>
-                                                                        <ul class="list-unstyled">
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>All Gold features.</li>
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Enables online payments for application fees, deposits, and recurring fees.</li>
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Includes Organizational CRM for interaction between the owner/manager and guest/tenant.</li>
-                                                                        </ul>
-                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-4 col-md-6 mb-4">
-                                                                <div class="card text-center shadow">
-                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
-                                                                        <h3>Titanium </h3>
-                                                                        <p class="mb-0">$75 / month + $1 / tenant</p>
-                                                                    </div>
-                                                                    <div class="card-body">
-                                                                        <h5 class="card-title">Key Features</h5>
-                                                                        <ul class="list-unstyled">
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>All Platinum features.</li>
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Access to an advanced Organizational CRM.</li>
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Includes HFE-like rating system for tenant evaluation.</li>
-                                                                        </ul>
-                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
+                                                            @endforeach
                                                         </div>
-
-                                                        
                                                     </div>
                                             
                                                     <!-- Yearly Pricing -->
                                                     <div class="tab-pane fade" id="yearly" role="tabpanel">
                                                         <div class="row justify-content-center">
+                                                            @foreach ( $membershipsYearly as $membership)
                                                             <div class="col-lg-4 col-md-6 mb-4">
                                                                 <div class="card text-center shadow">
                                                                     <div class="card-header text-white" style="background-color: #3e3e3e">
-                                                                        <h3>Basic</h3>
-                                                                        <p class="mb-0">Yearly Plan</p>
+                                                                        <input type="radio" name="membership_id" value="{{ $membership->id }}">
+                                                                        <h3>{{$membership->name}}</h3>
+                                                                        <p class="text-center">{{$membership->price}}</p>
                                                                     </div>
                                                                     <div class="card-body">
                                                                         <h5 class="card-title">Key Features</h5>
                                                                         <ul class="list-unstyled">
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Feature 1</li>
-                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Feature 2</li>
+                                                                            @foreach(explode('^', $membership->features) as $feature)
+                                                                                <li class="text-start"><i class="fa-regular fa-check-square me-2"></i>{{$feature}}</li>
+                                                                            @endforeach
                                                                         </ul>
-                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>

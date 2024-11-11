@@ -21,7 +21,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_name @if ($errors->has('name')) has-error has-danger @endif">
                                                     <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="name" class="form-control py-2" id="name" placeholder="name" value="{{$membership->name}}" required data-error="Please enter name">
+                                                    <input type="text" name="name" class="form-control py-2" id="name" placeholder="name" value="{{old('name',$membership->name)}}" required data-error="Please enter name">
                                                     <div class="help-block with-errors"></div>
                                                     @if ($errors->has('name'))
                                                     <div class="help-block with-errors">{{ $errors->first('name') }}</div>
@@ -31,7 +31,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_name @if ($errors->has('price')) has-error has-danger @endif">
                                                     <label for="price" class="form-label">price<span class="text-danger">*</span></label>
-                                                    <input type="number" name="price" class="form-control py-2" id="price" placeholder="price" value="{{$membership->price}}" required data-error="Please enter price">
+                                                    <input type="text" name="price" class="form-control py-2" id="price" placeholder="price" value="{{old('price',$membership->price)}}" required data-error="Please enter price">
                                                     <div class="help-block with-errors"></div>
                                                     @if ($errors->has('price'))
                                                     <div class="help-block with-errors">{{ $errors->first('price') }}</div>
@@ -41,7 +41,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_name @if ($errors->has('features')) has-error has-danger @endif">
                                                     <label for="features" class="form-label">Features<span class="text-danger">*</span></label>
-                                                    <input type="text" name="features" class="form-control py-2" id="features" placeholder="features" value="{{$membership->features}}" required data-error="Please enter features">
+                                                    <input type="text" name="features" class="form-control py-2" id="features" placeholder="features" value="{{old('features',$membership->features)}}" required data-error="Please enter features">
                                                     <div class="help-block with-errors"></div>
                                                     @if ($errors->has('features'))
                                                     <div class="help-block with-errors">{{ $errors->first('features') }}</div>
@@ -49,10 +49,19 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_plan_type">
+                                                    <label for="plan_type" class="form-label">Plan Type<span class="text-danger">*</span></label>
+                                                    <select name="plan_type" class="form-select" id="plan_type" aria-label="" required data-error="Please select Plan Type">
+                                                        <option @if( $membership->plan_type  == 'Monthly') selected @endif value="Monthly">Monthly</option>
+                                                        <option @if( $membership->plan_type  == 'Yearly') selected @endif value="Yearly">Yearly</option>
+                                                    </select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_name">
                                                     <label for="description" class="form-label">description<span class="text-danger">*</span></label>
-                                                    
-                                                    <textarea class="form-control" id="description" name="description">{{$membership->description}}</textarea>
+                                                    <textarea class="form-control" id="description" name="description" required>{{$membership->description}}</textarea>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
