@@ -1222,7 +1222,7 @@
                                                 @endif
                                             </div>
 
-                                            <div id="mgsFormSubmit" class="hidden"></div>
+                                            
                                             <div id="final-step-buttons" class="form-group  signUpForm-step-5">
                                                 <button class="btn btn-custom" type="button"
                                                     onclick="previousStep5()"><span class="fas fa-arrow-left"></span>
@@ -1292,89 +1292,161 @@
 
                                         {{-- <h3 class="section-form-title">Others info</h3> --}}
                                         <div class="row">
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_more_friends @if($errors->has('cus_more_friends')) has-error has-danger @endif">
-                                                <label for="cus_more_friends">Could you use more friends?<span
-                                                        class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_more_friends" id="cus_more_friends"
-                                                    required data-error="Please select" onchange="friendsDiv()">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                                @if ($errors->has('cus_more_friends'))
-                                                    <div class="help-block with-errors">{{ $errors->first('cus_more_friends') }}</div>
-                                                @endif
-                                            </div>
+                                            
+                                            <div class="container">
+                                                <div class="text-center mb-4">
+                                                    <!-- Radio buttons for Monthly and Yearly tabs -->
+                                                    <input type="radio" name="plan" id="monthly-tab" class="radio-tab" checked onchange="payment_plan()" style="display: none;">
+                                                    <label for="monthly-tab" class="radio-label btn btn-outline-primary"  >Monthly</label>
+                                            
+                                                    <input type="radio" name="plan" id="yearly-tab" class="radio-tab" onchange="payment_plan()" style="display: none;">
+                                                    <label for="yearly-tab" class="radio-label btn btn-outline-primary">Yearly</label>
+                                                </div>
+                                            
+                                                <div class="tab-content" id="pricing-tabContent">
+                                                    <!-- Monthly Pricing -->
+                                                    <div class="tab-pane fade show active" id="monthly" role="tabpanel">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-lg-4 col-md-6 mb-4">
+                                                                <div class="card text-center shadow">
+                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
+                                                                        <h3>Basic</h3>
+                                                                        <p class="text-center">(Free) / Monthly</p>
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Key Features</h5>
+                                                                        <ul class="list-unstyled">
+                                                                            <li class="text-start"><i class="fa-regular fa-check-square me-2"></i>Property listing with property name displayed.</li>
+                                                                            <li class="text-start"><i class="fa-regular fa-check-square me-2"></i>Contact form sends inquiries to the website, not directly to the landlord.</li>
+                                                                        </ul>
+                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                                            <div id="friendsDiv">
-                                                <div class="col-sm-6 col-lg-6 form-group valid_cus_counselor @if($errors->has('cus_counselor')) has-error has-danger @endif">
-                                                    <label for="cus_counselor">Do you believe you could benefit from having
-                                                        a mentor or counselor?<span class="text-danger">*</span></label>
-                                                    <select class="form-select" name="cus_counselor" id="cus_counselor"
-                                                        data-error="Please select">
-                                                        <option value="">Please select</option>
-                                                        <option value="1">Yes</option>
-                                                        <option value="2">No</option>
-                                                    </select>
-                                                    <div class="help-block with-errors"></div>
-                                                    @if ($errors->has('cus_counselor'))
-                                                        <div class="help-block with-errors">{{ $errors->first('cus_counselor') }}</div>
-                                                    @endif
+                                                            <div class="col-lg-4 col-md-6 mb-4">
+                                                                <div class="card text-center shadow">
+                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
+                                                                        <h3>Bronze</h3>
+                                                                        <p class="mb-0">$10 / month</p>
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Key Features</h5>
+                                                                        <ul class="list-unstyled">
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Property listing includes full contact information.</li>
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Displays the landlord’s website link.</li>
+                                                                        </ul>
+                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-6 mb-4">
+                                                                <div class="card text-center shadow">
+                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
+                                                                        <h3>Silver</h3>
+                                                                        <p class="mb-0">$25 / month</p>
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Key Features</h5>
+                                                                        <ul class="list-unstyled">
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>All Bronze features.</li>
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Enables tracking of available inventory.</li>
+                                                                        </ul>
+                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            {{-- ------------------------------------------------- --}}
+                                                            <div class="col-lg-4 col-md-6 mb-4">
+                                                                <div class="card text-center shadow">
+                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
+                                                                        <h3>Gold</h3>
+                                                                        <p class="mb-0">$35 / Monthly</p>
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Key Features</h5>
+                                                                        <ul class="list-unstyled">
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>All Silver features.</li>
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Provides online application functionality.</li>
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Choice between landlord’s application form or a website-native application.</li>
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Additional cost: $10 per application.</li>
+                                                                        </ul>
+                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-4 col-md-6 mb-4">
+                                                                <div class="card text-center shadow">
+                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
+                                                                        <h3>Platinum</h3>
+                                                                        <p class="mb-0">$50 / month + 6% processing fee</p>
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Key Features</h5>
+                                                                        <ul class="list-unstyled">
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>All Gold features.</li>
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Enables online payments for application fees, deposits, and recurring fees.</li>
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Includes Organizational CRM for interaction between the owner/manager and guest/tenant.</li>
+                                                                        </ul>
+                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-6 mb-4">
+                                                                <div class="card text-center shadow">
+                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
+                                                                        <h3>Titanium </h3>
+                                                                        <p class="mb-0">$75 / month + $1 / tenant</p>
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Key Features</h5>
+                                                                        <ul class="list-unstyled">
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>All Platinum features.</li>
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Access to an advanced Organizational CRM.</li>
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Includes HFE-like rating system for tenant evaluation.</li>
+                                                                        </ul>
+                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        
+                                                    </div>
+                                            
+                                                    <!-- Yearly Pricing -->
+                                                    <div class="tab-pane fade" id="yearly" role="tabpanel">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-lg-4 col-md-6 mb-4">
+                                                                <div class="card text-center shadow">
+                                                                    <div class="card-header text-white" style="background-color: #3e3e3e">
+                                                                        <h3>Basic</h3>
+                                                                        <p class="mb-0">Yearly Plan</p>
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Key Features</h5>
+                                                                        <ul class="list-unstyled">
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Feature 1</li>
+                                                                            <li><i class="fa-regular fa-check-square me-2"></i>Feature 2</li>
+                                                                        </ul>
+                                                                        <a href="javascript:void(0);" class="btn btn-primary">Get Quote</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_inv_rom @if($errors->has('cus_is_inv_rom')) has-error has-danger @endif">
-                                                <label for="cus_is_inv_rom">Are you looking for someone with whom you could
-                                                    be involved romantically?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_is_inv_rom" id="cus_is_inv_rom"
-                                                    required data-error="Please select">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                                @if ($errors->has('cus_is_inv_rom'))
-                                                    <div class="help-block with-errors">{{ $errors->first('cus_is_inv_rom') }}</div>
-                                                @endif
-                                            </div>
 
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_is_mental_ill @if($errors->has('cus_is_mental_ill')) has-error has-danger @endif">
-                                                <label for="cus_is_mental_ill">Have you ever been diagnosed with a mental
-                                                    illness?<span class="text-danger">*</span></label>
-                                                <select class="form-select" name="cus_is_mental_ill"
-                                                    id="cus_is_mental_ill" required data-error="Please select">
-                                                    <option value="">Please select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                                @if ($errors->has('cus_is_mental_ill'))
-                                                    <div class="help-block with-errors">{{ $errors->first('cus_is_mental_ill') }}</div>
-                                                @endif
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_phy_dis @if($errors->has('cus_phy_dis')) has-error has-danger @endif">
-                                                <label for="cus_phy_dis">Do you have any known physical disabilities<span
-                                                        class="text-danger">*</span></label>
-                                                <textarea class="form-control" id="cus_phy_dis" name="cus_phy_dis" required data-error="Please select"></textarea>
-                                                <div class="help-block with-errors"></div>
-                                                @if ($errors->has('cus_phy_dis'))
-                                                    <div class="help-block with-errors">{{ $errors->first('cus_phy_dis') }}</div>
-                                                @endif
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6 form-group valid_cus_comments @if($errors->has('cus_comments')) has-error has-danger @endif">
-                                                <label for="cus_comments">Please enter anything else you would like for us
-                                                    to know?</label><br>
-                                                <textarea class="form-control" id="cus_comments" name="cus_comments"></textarea>
-                                                @if ($errors->has('cus_comments'))
-                                                    <div class="help-block with-errors">{{ $errors->first('cus_comments') }}</div>
-                                                @endif
-                                            </div>
+                                            
 
                                             <div id="mgsFormSubmit" class="hidden"></div>
-                                            <div id="final-step-buttons" class="form-group  signUpForm-step-5">
+                                            <div id="final-step-buttons" class="form-group  signUpForm-step-6">
                                                 <button class="btn btn-custom" type="button"
                                                     onclick="previousStep5()"><span class="fas fa-arrow-left"></span>
                                                     Back</button>

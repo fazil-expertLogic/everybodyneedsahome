@@ -18,6 +18,7 @@ use App\Models\ClientsHealthIns;
 use App\Models\ClientCriminalHistory;
 use App\Models\Mail;
 use App\Models\Role;
+use App\Models\Membership;
 
 class ClientController extends Controller
 {
@@ -79,6 +80,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $validator = Validator::make($request->all(), [
             'cus_name' => 'required|string|max:255',
             'cus_email' => 'required|email|max:255',
@@ -446,7 +448,9 @@ class ClientController extends Controller
 
     public function client_registration_website()
     {
-        return view('site.client-registration');
+        $membershipsMonthly = Membership::monthlyPlan()->get();
+        $membershipsYearly = Membership::yearlyPlan()->get();
+        return view('site.client-registration',compact('membershipsMonthly','membershipsYearly'));
     }
 
     public function composeMail($id)

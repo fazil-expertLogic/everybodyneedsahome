@@ -980,7 +980,19 @@ document.addEventListener("touchstart", function() {},false);
 	function deletechild(id){
 		$('#childinfobox'+id).remove();
 	}
-	
+
+	function payment_plan(){
+		console.log("adasd");
+		$('input[name="plan"]').on('change', function() {
+			if ($('#monthly-tab').is(':checked')) {
+				$('#monthly').addClass('show active');
+				$('#yearly').removeClass('show active');
+			} else if ($('#yearly-tab').is(':checked')) {
+				$('#yearly').addClass('show active');
+				$('#monthly').removeClass('show active');
+			}
+		});
+	}
 /*
 |--------------------------------------------------------------------------
 | End
