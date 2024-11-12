@@ -19,7 +19,7 @@
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_name">
                                                     <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="name" class="form-control py-2" id="name" placeholder="Your name" value="" required data-error="Please enter name">
+                                                    <input type="text" name="name" class="form-control py-2" id="name" placeholder="Your name" value="{{old('name')}}" required data-error="Please enter name">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>

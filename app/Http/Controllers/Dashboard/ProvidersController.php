@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Provider;
 use App\Helpers\Helper;
 use App\Models\User;
+use App\Models\Membership;
+use App\Models\PurchasePlan;
 
 class ProvidersController extends Controller
 {
@@ -74,6 +76,7 @@ class ProvidersController extends Controller
      */
     public function store(Request $request)
     {
+        
         try {
              // Validate the incoming request
             $validator = Validator::make($request->all(), [
@@ -91,6 +94,15 @@ class ProvidersController extends Controller
                 'custom_area_served' => 'nullable|string|max:255',
                 'pass' => 'required|string|min:8|confirmed',
             ]);
+            if($request->front){
+                $validator->addRules([
+                    'membership_id' => 'required',
+                    'stripeToken' => 'required',
+                    'last4' => 'required',
+                    'exp_month' => 'required',
+                    'exp_year' => 'required',
+                ]);
+            }
 
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 422);
@@ -123,6 +135,18 @@ class ProvidersController extends Controller
                 'user_id' => $user->id,
                 'profile_image' => $mainPicturePath ?? '',
             ]);
+            
+            if($request->front){
+                PurchasePlan::create([
+                    'user_id'=> $user->id,
+                    'membership_id' => $request->membership_id,
+                    'purchase_date' => now(),
+                    'stripeToken' => $request->stripeToken,
+                    'last4' => $request->last4,
+                    'exp_month' => $request->exp_month,
+                    'exp_year' => $request->exp_year,
+                ]);
+            }
 
             DB::commit();
             return redirect()->route('providers.index')->with('success', 'Providers create successfully.');
@@ -242,6 +266,8 @@ class ProvidersController extends Controller
     }
     
     public function provider_registration_website(){
-        return view('site.provider-registration');
+        $membershipsMonthly = Membership::monthlyPlan()->get();
+        $membershipsYearly = Membership::yearlyPlan()->get();
+        return view('site.provider-registration',compact('membershipsMonthly','membershipsYearly'));
     }
 }

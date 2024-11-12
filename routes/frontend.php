@@ -37,6 +37,7 @@ Route::post('property-reviews', [FrontendController::class, 'propertyReviews'])-
 // sendEmail
 Route::get('contact-us',[FrontendController::class, 'contactUs'])->name('contactUs');
 Route::post('contact-us-send-email', [FrontendController::class, 'contactUsSendEmail'])->name('contactUsSendEmail');
+Route::get('test_stripe', [FrontendController::class, 'test_stripe'])->name('test_stripe');
 
 
 
@@ -254,3 +255,5 @@ Route::post('provider-registration-post', [ProvidersController::class, 'store'])
 
 Route::get('guest-registration', [GuestController::class, 'guest_registration_website'])->name('guests.guest_registration');
 Route::post('guest-registration-post', [GuestController::class, 'store'])->name('guests.guest_registration_post');
+
+

@@ -6,25 +6,28 @@
             <div class="col-sm-12">
                 <div class="form-wrap clearfix">
                     <div class="col-md-12">
-                        <form method="post" action="{{ route('states.store') }}" id="signUpForm" class="signUpForm"
+                        <form method="post" action="{{ route('states.update', $state->id) }}" id="signUpForm" class="signUpForm"
                             enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
+                            <input type="hidden" value="1" id="is_edit"/>
                             <div class="signUpForm-step-holder">
                                 <div id="section-1" class="signUpForm-step-wrap">
                                     <fieldset>
-                                        <h3 class="section-form-title">Create New state</h3>
+                                        <h3 class="section-form-title">Edit State</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_use_name @if ($errors->has('name')) has-error has-danger @endif">
+                                                <div class="form-group valid_use_name  @if ($errors->has('name')) has-error has-danger @endif">
                                                     <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="name" class="form-control py-2" id="name" placeholder="name" value="{{old('name')}}" required data-error="Please enter name">
+                                                    <input type="text" name="name" class="form-control py-2" id="name" placeholder="name" value="{{$state->name}}" required data-error="Please enter name">
                                                     <div class="help-block with-errors"></div>
                                                     @if ($errors->has('name'))
                                                         <div class="help-block with-errors">{{ $errors->first('name') }}</div>
                                                     @endif
                                                 </div>
+                                              
                                             </div>
                                             
                                         </div>
