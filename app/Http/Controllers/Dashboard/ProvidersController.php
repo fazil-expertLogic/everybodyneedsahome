@@ -74,6 +74,7 @@ class ProvidersController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         try {
              // Validate the incoming request
             $validator = Validator::make($request->all(), [

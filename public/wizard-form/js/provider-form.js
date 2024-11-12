@@ -65,39 +65,7 @@ document.addEventListener("touchstart", function() {},false);
 | signUpForm
 |--------------------------------------------------------------------------
 */	
-	$("#signUpForm").validator().on("submit", function (event) {
-		if (event.isDefaultPrevented()) {
-
-			$(this).find(":input[required]").each(function() {
-				if (!this.checkValidity()) {
-					console.log("Invalid field name:", $(this).attr("name"));
-					$(this).addClass("is-invalid");  // Optionally add an error class
-				} else {
-					$(this).removeClass("is-invalid");  // Optionally remove error class
-				}
-			});
-
-			//handle the invalid form...
-			formError();
-			submitMSG(false, "Please fill in the form properly!");
-		} else {
-			// var mathPart_1 = parseInt( $("#mathfirstnum").val(), 10 );
-			// var mathPart_2 = parseInt( $("#mathsecondnum").val(), 10 );       
-			// var correctMathSolution = parseInt( ( mathPart_1 + mathPart_2 ), 10 );
-			// var inputHumanAns = $("#humanCheckCaptchaInput").val();
-			// if (inputHumanAns == correctMathSolution){
-				//everything looks good!
-				// event.preventDefault();
-				submitForm();					
-				return true;
-			// }
-			// else{
-			// 	submitMSG(false, "Please solve Human Captcha!!!");
-			// 	sweetAlert("Oops...", "Please solve Human Captcha!!!", "error");
-			// 	return false;
-			// }
-		}
-	});
+	
 	
 	function submitForm(){
 		
@@ -321,8 +289,107 @@ document.addEventListener("touchstart", function() {},false);
 		}
 	}
 
+	var stripe, elements, card;
 
+    function initializeStripe() {
+        console.log("Initializing Stripe...");
+        if (!stripe) {
+            stripe = Stripe("pk_test_51QK09gFvlUHXvmXR6KStptAv1Gs6hGaZ55eVnUGIJB49rXQxiq2Y9AU4j1xHAONGfLnS1lgfyhfFzEN55kjDfOnI00Kedj8TAE"); // Replace with your Stripe publishable key
+        }
+        if (!elements) {
+            elements = stripe.elements();
+        }
+        if (!card) {
+            const style = {
+                base: {
+                    color: '#32325d',
+                    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                    fontSmoothing: 'antialiased',
+                    fontSize: '16px',
+                    '::placeholder': {
+                        color: '#aab7c4'
+                    }
+                },
+                invalid: {
+                    color: '#fa755a',
+                    iconColor: '#fa755a'
+                }
+            };
 
+            card = elements.create('card', {
+                style: style
+            });
+            card.mount('#card-element'); // Mount the card Element in the div
+            card.on('change', function(event) {
+                const displayError = document.getElementById('card-errors');
+                displayError.textContent = event.error ? event.error.message : '';
+            });
+        }
+    }
+
+	$(document).ready(function() {
+        initializeStripe();
+    });
+
+	$('#signUpForm').submit(function(event) {
+        console.log('form submitted');
+		 // Prevent the default form submission
+
+        if (card) {
+			console.log("fazil");
+			event.preventDefault();
+            // Use Stripe.js to create a token
+            stripe.createToken(card).then(function(result) {
+				console.log("sdadaasd",result);
+					event.preventDefault();
+                if (result.error) {
+                    // Handle any errors from Stripe.js
+                    const errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+					console.log("sdadaasd");
+					event.preventDefault();
+                } else {
+
+					console.log(result.token.id);
+					event.preventDefault();	
+                    // Token successfully created, insert token ID into the form
+                    const form = document.getElementById('signUpForm');
+                    const hiddenInput = document.createElement('input');
+                    hiddenInput.setAttribute('type', 'hidden');
+                    hiddenInput.setAttribute('name', 'stripeToken');
+                    hiddenInput.setAttribute('value', result.token.id);
+                    form.appendChild(hiddenInput);
+
+                    // Include last 4 digits, expiration month, and year of the card from the token object
+                    const hiddenInputLast4 = document.createElement('input');
+                    hiddenInputLast4.setAttribute('type', 'hidden');
+                    hiddenInputLast4.setAttribute('name', 'last4');
+                    hiddenInputLast4.setAttribute('value', result.token.card.last4);
+                    form.appendChild(hiddenInputLast4);
+
+                    const hiddenInputExpMonth = document.createElement('input');
+                    hiddenInputExpMonth.setAttribute('type', 'hidden');
+                    hiddenInputExpMonth.setAttribute('name', 'exp_month');
+                    hiddenInputExpMonth.setAttribute('value', result.token.card.exp_month);
+                    form.appendChild(hiddenInputExpMonth);
+
+                    const hiddenInputExpYear = document.createElement('input');
+                    hiddenInputExpYear.setAttribute('type', 'hidden');
+                    hiddenInputExpYear.setAttribute('name', 'exp_year');
+                    hiddenInputExpYear.setAttribute('value', result.token.card.exp_year);
+                    form.appendChild(hiddenInputExpYear);
+
+                    // Submit the form
+                    form.submit();
+                }
+            });
+        } else {
+			console.log("asdasd");
+			event.preventDefault();
+            // No Stripe card required, submit the form directly
+            document.getElementById('signUpForm').submit();
+        }
+    });
 
 	
 	
