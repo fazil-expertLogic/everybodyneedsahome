@@ -20,10 +20,10 @@ class PurchasePlanController extends Controller
     public function index(Request $request)
     {
         // PurchasePlan::get();
-        $allow_show = Helper::check_rights(4)->is_show;
-        $allow_create = Helper::check_rights(4)->is_create;
-        $allow_edit = Helper::check_rights(4)->is_edit;
-        $allow_delete = Helper::check_rights(4)->is_delete;
+        $allow_show = Helper::check_rights(20)->is_show;
+        $allow_create = Helper::check_rights(20)->is_create;
+        $allow_edit = Helper::check_rights(20)->is_edit;
+        $allow_delete = Helper::check_rights(20)->is_delete;
 
         $query = PurchasePlan::query();
         

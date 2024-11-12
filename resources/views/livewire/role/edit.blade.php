@@ -25,6 +25,11 @@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
+                                            <div class="form-group col-sm-3 col-lg-3">
+                                                <label for="selectAllCheckbox">
+                                                    <input type="checkbox" id="selectAllCheckbox" onclick="toggleSelectAll()"> Select All
+                                                </label>
+                                            </div>
                                             <div class="col-sm-12 col-lg-12">
                                                 @foreach ($menus as $key => $menu)
                                                     @php
@@ -38,27 +43,27 @@
                                                         <div class="col-sm-1 col-lg-1"></div>
                                             
                                                         <div class="col-sm-2 col-lg-2">
-                                                            <input type="checkbox" id="is_listing_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_listing]" value="1" {{ $menuPermission && $menuPermission->is_listing ? 'checked' : '' }}>
+                                                            <input type="checkbox" class="selectableCheckbox" id="is_listing_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_listing]" value="1" {{ $menuPermission && $menuPermission->is_listing ? 'checked' : '' }}>
                                                             <label for="is_listing_{{ $menu->id }}"> Listing </label>
                                                         </div>
                                             
                                                         <div class="col-sm-2 col-lg-2">
-                                                            <input type="checkbox" id="is_show_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_show]" value="1" {{ $menuPermission && $menuPermission->is_show ? 'checked' : '' }}>
+                                                            <input type="checkbox" class="selectableCheckbox" id="is_show_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_show]" value="1" {{ $menuPermission && $menuPermission->is_show ? 'checked' : '' }}>
                                                             <label for="is_show_{{ $menu->id }}"> Show </label>
                                                         </div>
                                             
                                                         <div class="col-sm-2 col-lg-2">
-                                                            <input type="checkbox" id="is_create_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_create]" value="1" {{ $menuPermission && $menuPermission->is_create ? 'checked' : '' }}>
+                                                            <input type="checkbox" class="selectableCheckbox" id="is_create_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_create]" value="1" {{ $menuPermission && $menuPermission->is_create ? 'checked' : '' }}>
                                                             <label for="is_create_{{ $menu->id }}"> Create </label>
                                                         </div>
                                             
                                                         <div class="col-sm-2 col-lg-2">
-                                                            <input type="checkbox" id="is_edit_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_edit]" value="1" {{ $menuPermission && $menuPermission->is_edit ? 'checked' : '' }}>
+                                                            <input type="checkbox" class="selectableCheckbox" id="is_edit_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_edit]" value="1" {{ $menuPermission && $menuPermission->is_edit ? 'checked' : '' }}>
                                                             <label for="is_edit_{{ $menu->id }}"> Edit </label>
                                                         </div>
                                             
                                                         <div class="col-sm-2 col-lg-2">
-                                                            <input type="checkbox" id="is_delete_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_delete]" value="1" {{ $menuPermission && $menuPermission->is_delete ? 'checked' : '' }}>
+                                                            <input type="checkbox" class="selectableCheckbox" id="is_delete_{{ $menu->id }}" name="permissions[{{ $menu->id }}][is_delete]" value="1" {{ $menuPermission && $menuPermission->is_delete ? 'checked' : '' }}>
                                                             <label for="is_delete_{{ $menu->id }}"> Delete</label>
                                                         </div>
                                             
@@ -85,4 +90,15 @@
 @endsection
 @section('js')
 <script src="{{asset('wizard-form/js/user-form.js')}}"></script>
+<script type="text/javascript">
+    function toggleSelectAll() {
+        var selectAllCheckbox = document.getElementById('selectAllCheckbox');
+        var checkboxes = document.getElementsByClassName('selectableCheckbox');
+        
+        // If 'Select All' checkbox is checked, check all checkboxes
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = selectAllCheckbox.checked;
+        }
+    }
+</script>
 @endsection

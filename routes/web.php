@@ -109,7 +109,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['permission:19']], function () {
         Route::resource('pageContents', PageContentController::class);
     });       
-
-    Route::resource('purchase_plans', PurchasePlanController::class);
+    Route::group(['middleware' => ['permission:20']], function () {
+        Route::resource('purchase_plans', PurchasePlanController::class);
+    });
     
 });

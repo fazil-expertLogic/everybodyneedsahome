@@ -8,8 +8,8 @@
     <div class="page-header d-sm-flex d-block">
         <ol class="breadcrumb mb-sm-0 mb-3">
             <!-- breadcrumb -->
-            <li class="breadcrumb-item"><a href="javascript:void(0);">purchase_plan</a></li>
-            <li class="breadcrumb-item active" aria-current="page">purchase_plan Tables</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0);">Purchase Plan</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Purchase Plan Tables</li>
         </ol><!-- End breadcrumb -->
     </div>
     <!-- END PAGE-HEADER -->
@@ -19,7 +19,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">purchase_plan Data</h3>
+                    <h3 class="card-title">Purchase Plan Data</h3>
                 </div>
                 <div class="mb-3 text-end">
                     @if($allow_create)
@@ -68,7 +68,7 @@
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                         @endif
-                                        @if($allow_edit)
+                                        {{-- @if($allow_edit)
                                         <a href="{{ route('purchase_plans.edit', $purchase_plan->id) }}" class="btn btn-primary btn-sm badge" title="Edit">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
@@ -77,7 +77,7 @@
                                         <button class="btn btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('purchase_plans.destroy', $purchase_plan->id) }}');">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
-                                        @endif
+                                        @endif --}}
                                     </td>
                                 </tr>
                                 @endforeach 
