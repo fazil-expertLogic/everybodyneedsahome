@@ -360,7 +360,6 @@ document.addEventListener("touchstart", function() {},false);
 					   // Handle any errors from Stripe.js
 					   const errorElement = document.getElementById('card-errors');
 					   errorElement.textContent = result.error.message;
-					   console.log("sdadaasd");
 					   event.preventDefault();
 				   } else {
    
@@ -397,7 +396,6 @@ document.addEventListener("touchstart", function() {},false);
 				   }
 			   });
 		   } else {
-			   console.log("asdasd");
 			   event.preventDefault();
 			   // No Stripe card required, submit the form directly
 			   document.getElementById('signUpForm').submit();
