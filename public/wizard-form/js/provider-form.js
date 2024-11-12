@@ -259,7 +259,69 @@ document.addEventListener("touchstart", function() {},false);
 		
 	}
 	
-	
+	function previousStep1() {
+		$( "#section-1" ).removeClass( "slide-left" );
+		$( "#section-1" ).addClass( "open" );
+		$( "#section-2" ).removeClass( "open" );
+		$( "#section-2" ).addClass( "slide-right" );
+	}
+
+	function nextStep3() {
+		var membership_id = $('#membership_id').val(); 
+		
+		if(membership_id) {
+			$( "#section-2 .help-block.with-errors.mandatory-error" ).html( '' );
+			$( "#section-2" ).removeClass( "open" );
+			$( "#section-2" ).addClass( "slide-left" );
+			$( "#section-3" ).removeClass( "slide-right" );
+			$( "#section-3" ).addClass( "open" );
+		}
+		else {
+			$( "#section-2 .help-block.with-errors.mandatory-error" ).html( '<ul class="list-unstyled"><li>Please Fill the Form Properly</li></ul>' );
+			sweetAlert("Oops...", "Please Fill the Form Properly!", "error");
+		}
+	}
+
+	function previousStep2() {
+		$( "#section-2" ).removeClass( "slide-left" );
+		$( "#section-2" ).addClass( "open" );
+		$( "#section-3" ).removeClass( "open" );
+		$( "#section-3" ).addClass( "slide-right" );
+	}
+
+
+	// ---------------------------------------------------------------------------------------------------
+	function nextStep4() {
+		console.log("asdasdads");
+		
+			$( "#section-3 .help-block.with-errors.mandatory-error" ).html( '' );
+			$( "#section-3" ).removeClass( "open" );
+			$( "#section-3" ).addClass( "slide-left" );
+			$( "#section-4" ).removeClass( "slide-right" );
+			$( "#section-4" ).addClass( "open" );
+		
+	}
+
+	function previousStep3() {
+
+		$( "#section-3" ).removeClass( "slide-left" );
+		$( "#section-3" ).addClass( "open" );
+		$( "#section-4" ).removeClass( "open" );
+		$( "#section-4" ).addClass( "slide-right" );
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	// ----------------------------------------------------------------------------------------
 	$('#childinfobox').hide();
 	$('#birthDiv').hide();
 	$('#stateDiv').hide();
@@ -288,6 +350,21 @@ document.addEventListener("touchstart", function() {},false);
 			$('#childinfobox').hide();
 		}
 	}
+
+
+	function payment_plan(){
+		console.log("adasd");
+		$('input[name="plan"]').on('change', function() {
+			if ($('#monthly-tab').is(':checked')) {
+				$('#monthly').addClass('show active');
+				$('#yearly').removeClass('show active');
+			} else if ($('#yearly-tab').is(':checked')) {
+				$('#yearly').addClass('show active');
+				$('#monthly').removeClass('show active');
+			}
+		});
+	}
+	
 	// ---------------------------------------------------- Stripe ----------------------------------------------------
 	var stripe, elements, card;
 

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Provider;
 use App\Helpers\Helper;
 use App\Models\User;
+use App\Models\Membership;
 
 class ProvidersController extends Controller
 {
@@ -243,6 +244,8 @@ class ProvidersController extends Controller
     }
     
     public function provider_registration_website(){
-        return view('site.provider-registration');
+        $membershipsMonthly = Membership::monthlyPlan()->get();
+        $membershipsYearly = Membership::yearlyPlan()->get();
+        return view('site.provider-registration',compact('membershipsMonthly','membershipsYearly'));
     }
 }
