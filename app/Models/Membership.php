@@ -17,6 +17,11 @@ class Membership extends Model
         'plan_type'
     ];
 
+    public function purchasePlans()
+    {
+        return $this->hasMany(PurchasePlan::class);
+    }
+
     public function scopeActive($query)
     {
         return $query->where('status', 1);

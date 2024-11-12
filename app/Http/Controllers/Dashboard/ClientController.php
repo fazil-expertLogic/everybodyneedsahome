@@ -19,6 +19,7 @@ use App\Models\ClientCriminalHistory;
 use App\Models\Mail;
 use App\Models\Role;
 use App\Models\Membership;
+use App\Models\PurchasePlan;
 
 class ClientController extends Controller
 {
@@ -131,10 +132,19 @@ class ClientController extends Controller
             'cus_comments' => 'nullable|string|max:255',
             'pass' => 'required|string|min:8|confirmed',
         ]);
+        if($request->front){
+            $validator->addRules([
+                'membership_id' => 'required',
+                'stripeToken' => 'required',
+                'last4' => 'required',
+                'exp_month' => 'required',
+                'exp_year' => 'required',
+            ]);
+        }
 
         if ($validator->fails()) {
             dd($validator->errors());
-            return response()->json($validator->errors(), 422);
+            return back()->withErrors($validator)->withInput();
         }
 
         DB::beginTransaction(); // Start the transaction
@@ -225,6 +235,17 @@ class ClientController extends Controller
                 'is_mental_ill' => $request->cus_is_mental_ill,
                 'phy_dis' => $request->cus_phy_dis,
                 'comments' => $request->cus_comments,
+            ]);
+
+
+            PurchasePlan::create([
+                'user_id'=> $user->id,
+                'membership_id' => $request->membership_id,
+                'purchase_date' => now(),
+                'stripeToken' => $request->stripeToken,
+                'last4' => $request->last4,
+                'exp_month' => $request->exp_month,
+                'exp_year' => $request->exp_year,
             ]);
 
             DB::commit(); // Commit the transaction if everything works

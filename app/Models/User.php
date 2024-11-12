@@ -47,7 +47,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
-    
+
+    public function purchasePlans()
+    {
+        return $this->hasMany(PurchasePlan::class);
+    }
+
     public function hasPermission($menuId, $permissionType)
     {
         // Check if the user has a role
@@ -57,9 +62,9 @@ class User extends Authenticatable
 
         // Check if the role has the specific permission type for the given menu
         return $this->role->permissions()
-                        ->where('menu_id', $menuId)
-                        ->where($permissionType, true)
-                        ->exists();
+            ->where('menu_id', $menuId)
+            ->where($permissionType, true)
+            ->exists();
     }
 
 

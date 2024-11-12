@@ -43,6 +43,7 @@
                         <form method="post" action="{{ route('clients.client_registration_post') }}" id="signUpForm" class="signUpForm"
                             enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="front" class="form-control py-2" value="front">
                             <div class="signUpForm-step-holder">
                                 <div id="section-1" class="signUpForm-step-wrap">
                                     <h3 class="section-form-title mt-3">Client Registration</h3>
