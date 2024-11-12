@@ -237,16 +237,17 @@ class ClientController extends Controller
                 'comments' => $request->cus_comments,
             ]);
 
-
-            PurchasePlan::create([
-                'user_id'=> $user->id,
-                'membership_id' => $request->membership_id,
-                'purchase_date' => now(),
-                'stripeToken' => $request->stripeToken,
-                'last4' => $request->last4,
-                'exp_month' => $request->exp_month,
-                'exp_year' => $request->exp_year,
-            ]);
+            if($request->front){
+                PurchasePlan::create([
+                    'user_id'=> $user->id,
+                    'membership_id' => $request->membership_id,
+                    'purchase_date' => now(),
+                    'stripeToken' => $request->stripeToken,
+                    'last4' => $request->last4,
+                    'exp_month' => $request->exp_month,
+                    'exp_year' => $request->exp_year,
+                ]);
+            }
 
             DB::commit(); // Commit the transaction if everything works
             return redirect()->route('clients.index')->with('success', 'client updated successfully.');

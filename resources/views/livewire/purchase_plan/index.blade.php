@@ -32,9 +32,11 @@
                     <div class="mb-3 text-end">
                         <div class="input-group w-100">
                             <div class="col">
-                                <input type="text" name="name" class="form-control" placeholder="name" value="{{ request('name') }}">
+                                <input type="text" name="user_name" class="form-control" placeholder="User Name" value="{{ request('user_name') }}">
                             </div>
-                            
+                            <div class="col">
+                                <input type="text" name="plan_name" class="form-control" placeholder="Plan Name" value="{{ request('plan_name') }}">
+                            </div>
                             <input type="text" name="search" class="form-control bg-white" placeholder="Search here..." value="{{ request('search') }}">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-search" aria-hidden="true"></i>

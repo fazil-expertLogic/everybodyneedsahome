@@ -27,26 +27,25 @@ class PurchasePlanController extends Controller
 
         $query = PurchasePlan::query();
         
-        if ($request->filled('provider_name')) {
-            $query->where('provider_name', 'like', '%' . $request->provider_name . '%');
+        if ($request->filled('user_name')) {
+            $query->whereHas('user', function($subquery) use ($request) {
+                $subquery->where('name', 'like', '%' . $request->user_name . '%');
+            });
         }
-        
-        if ($request->filled('provider_email')) {
-            $query->where('email', 'like', '%' . $request->provider_email . '%');
-        }
-        
-        if ($request->filled('state')) {
-            $query->where('state', 'like', '%' . $request->state . '%');
-        }
-        
-        if ($request->filled('provider_company_name')) {
-            $query->where('comany_name', 'like', '%' . $request->provider_company_name . '%');
+        if ($request->filled('plan_name')) {
+            $query->whereHas('membership', function($subquery) use ($request) {
+                $subquery->where('name', 'like', '%' . $request->plan_name . '%');
+            });
         }
     
         if ($request->filled('search')) {
             $query->where(function($subquery) use ($request) {
-                $subquery->where('provider_name', 'like', '%' . $request->search . '%')
-                         ->orWhere('comany_name', 'like', '%' . $request->search . '%');
+                $subquery->whereHas('user', function($subquery) use ($request) {
+                    $subquery->where('name', 'like', '%' . $request->search . '%');
+                })
+                ->orWhereHas('membership', function($subquery) use ($request) {
+                    $subquery->where('name', 'like', '%' . $request->search . '%');
+                });
             });
         }
     
@@ -75,7 +74,35 @@ class PurchasePlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $validator = Validator::make($request->all(), [
+                'user_id' => 'required|exists:users,id',
+                'member_ship_id' => 'required|exists:memberships,id',
+                'stripeToken' => 'required|string',
+                'last4' => 'required|numeric|digits:4',
+                'exp_month' => 'required|numeric|between:1,12',
+                'exp_year' => 'required|numeric|digits:4|after_or_equal:' . now()->year,
+            ]);
+            if ($validator->fails()) {
+                return response()->json($validator->errors(), 422);
+            }
+            DB::beginTransaction();
+            PurchasePlan::create([
+                'user_id'=> $request->user_id,
+                'membership_id' => $request->member_ship_id,
+                'purchase_date' => now(),
+                'stripeToken' => $request->stripeToken,
+                'last4' => $request->last4,
+                'exp_month' => $request->exp_month,
+                'exp_year' => $request->exp_year,
+            ]);
+        DB::commit();
+            return redirect()->route('purchase_plans.index')->with('success', 'State create successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'An error occurred while updating the State. Please try again.']);
+        }
     }
 
     /**
@@ -86,7 +113,8 @@ class PurchasePlanController extends Controller
      */
     public function show($id)
     {
-        //
+        $purchase_plan = PurchasePlan::with('user','membership')->findOrFail($id);
+        return view('livewire.purchase_plan.show', compact('purchase_plan'));
     }
 
     /**
