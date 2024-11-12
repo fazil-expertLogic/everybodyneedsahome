@@ -17,6 +17,8 @@ use App\Http\Controllers\Dashboard\StatesController;
 use App\Http\Controllers\Dashboard\PropertyReviewController;
 use App\Http\Controllers\Dashboard\GuestController;
 use App\Http\Controllers\Dashboard\PageContentController;
+use App\Http\Controllers\Dashboard\PurchasePlanController;
+
 use App\Http\Controllers\Site\CustomAuthController;
 use App\Http\Controllers\Site\FrontendController;
 use App\Http\Livewire\Index;
@@ -107,4 +109,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['permission:19']], function () {
         Route::resource('pageContents', PageContentController::class);
     });       
+
+    Route::resource('purchase_plans', PurchasePlanController::class);
+    
 });

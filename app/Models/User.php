@@ -78,4 +78,9 @@ class User extends Authenticatable
     {
         return $query->where('status', 1);
     }
+
+    public function scopeClientProvider($query)
+    {
+        return $query->whereIn('role_id', [3,4]);
+    }
 }
