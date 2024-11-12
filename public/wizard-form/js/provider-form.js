@@ -331,65 +331,79 @@ document.addEventListener("touchstart", function() {},false);
         initializeStripe();
     });
 
-	$('#signUpForm').submit(function(event) {
-        console.log('form submitted');
-		 // Prevent the default form submission
+	$("#signUpForm").validator().on("submit", function (event) {
+		if (event.isDefaultPrevented()) {
 
-        if (card) {
-			console.log("fazil");
-			event.preventDefault();
-            // Use Stripe.js to create a token
-            stripe.createToken(card).then(function(result) {
-				console.log("sdadaasd",result);
-					event.preventDefault();
-                if (result.error) {
-                    // Handle any errors from Stripe.js
-                    const errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = result.error.message;
-					console.log("sdadaasd");
-					event.preventDefault();
-                } else {
+			$(this).find(":input[required]").each(function() {
+				if (!this.checkValidity()) {
+					console.log("Invalid field name:", $(this).attr("name"));
+					$(this).addClass("is-invalid");  // Optionally add an error class
+				} else {
+					$(this).removeClass("is-invalid");  // Optionally remove error class
+				}
+			});
 
-					console.log(result.token.id);
-					event.preventDefault();	
-                    // Token successfully created, insert token ID into the form
-                    const form = document.getElementById('signUpForm');
-                    const hiddenInput = document.createElement('input');
-                    hiddenInput.setAttribute('type', 'hidden');
-                    hiddenInput.setAttribute('name', 'stripeToken');
-                    hiddenInput.setAttribute('value', result.token.id);
-                    form.appendChild(hiddenInput);
-
-                    // Include last 4 digits, expiration month, and year of the card from the token object
-                    const hiddenInputLast4 = document.createElement('input');
-                    hiddenInputLast4.setAttribute('type', 'hidden');
-                    hiddenInputLast4.setAttribute('name', 'last4');
-                    hiddenInputLast4.setAttribute('value', result.token.card.last4);
-                    form.appendChild(hiddenInputLast4);
-
-                    const hiddenInputExpMonth = document.createElement('input');
-                    hiddenInputExpMonth.setAttribute('type', 'hidden');
-                    hiddenInputExpMonth.setAttribute('name', 'exp_month');
-                    hiddenInputExpMonth.setAttribute('value', result.token.card.exp_month);
-                    form.appendChild(hiddenInputExpMonth);
-
-                    const hiddenInputExpYear = document.createElement('input');
-                    hiddenInputExpYear.setAttribute('type', 'hidden');
-                    hiddenInputExpYear.setAttribute('name', 'exp_year');
-                    hiddenInputExpYear.setAttribute('value', result.token.card.exp_year);
-                    form.appendChild(hiddenInputExpYear);
-
-                    // Submit the form
-                    form.submit();
-                }
-            });
-        } else {
-			console.log("asdasd");
-			event.preventDefault();
-            // No Stripe card required, submit the form directly
-            document.getElementById('signUpForm').submit();
-        }
-    });
+			//handle the invalid form...
+			formError();
+			submitMSG(false, "Please fill in the form properly!");
+		} else {
+			console.log('form submitted');
+			// Prevent the default form submission
+   
+		   if (card) {
+			
+			   event.preventDefault();
+			   // Use Stripe.js to create a token
+			   stripe.createToken(card).then(function(result) {
+				
+				   if (result.error) {
+					   // Handle any errors from Stripe.js
+					   const errorElement = document.getElementById('card-errors');
+					   errorElement.textContent = result.error.message;
+					   console.log("sdadaasd");
+					   event.preventDefault();
+				   } else {
+   
+					   // Token successfully created, insert token ID into the form
+					   const form = document.getElementById('signUpForm');
+					   const hiddenInput = document.createElement('input');
+					   hiddenInput.setAttribute('type', 'hidden');
+					   hiddenInput.setAttribute('name', 'stripeToken');
+					   hiddenInput.setAttribute('value', result.token.id);
+					   form.appendChild(hiddenInput);
+   
+					   // Include last 4 digits, expiration month, and year of the card from the token object
+					   const hiddenInputLast4 = document.createElement('input');
+					   hiddenInputLast4.setAttribute('type', 'hidden');
+					   hiddenInputLast4.setAttribute('name', 'last4');
+					   hiddenInputLast4.setAttribute('value', result.token.card.last4);
+					   form.appendChild(hiddenInputLast4);
+   
+					   const hiddenInputExpMonth = document.createElement('input');
+					   hiddenInputExpMonth.setAttribute('type', 'hidden');
+					   hiddenInputExpMonth.setAttribute('name', 'exp_month');
+					   hiddenInputExpMonth.setAttribute('value', result.token.card.exp_month);
+					   form.appendChild(hiddenInputExpMonth);
+   
+					   const hiddenInputExpYear = document.createElement('input');
+					   hiddenInputExpYear.setAttribute('type', 'hidden');
+					   hiddenInputExpYear.setAttribute('name', 'exp_year');
+					   hiddenInputExpYear.setAttribute('value', result.token.card.exp_year);
+					   form.appendChild(hiddenInputExpYear);
+   
+					   // Submit the form
+					   form.submit();
+					   submitForm();
+				   }
+			   });
+		   } else {
+			   console.log("asdasd");
+			   event.preventDefault();
+			   // No Stripe card required, submit the form directly
+			   document.getElementById('signUpForm').submit();
+		   }
+		}
+	});
 
 	
 	
