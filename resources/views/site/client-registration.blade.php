@@ -1509,14 +1509,15 @@
                                             <div class="container">
 
                                                 <div class="form-row row card-related">
-                                                    <label for="card-element">
-                                                        Credit or debit card
-                                                    </label>
+                                                    <label for="card-element">Credit or debit card</label>
                                                     <div id="card-element">
                                                         <!-- A Stripe Element will be inserted here. -->
                                                     </div>
-                                                    <div id="empty-elemet"></div>
+                                                    <!-- Move card-errors outside of card-element -->
+                                                    <div id="card-errors" role="alert"></div>
+                                                    <div id="empty-element"></div>
                                                 </div>
+                                                
                                                 
                                             </div>
 

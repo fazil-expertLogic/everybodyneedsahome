@@ -164,4 +164,9 @@ class FrontendController extends Controller
             return redirect()->back()->withErrors(['error' => 'An error occurred while updating the property. Please try again.']);
         }
     }
+    public function test_stripe()
+    {
+        return view('site.test_stripe');
+    }
+
 }

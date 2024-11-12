@@ -775,54 +775,13 @@ document.addEventListener("touchstart", function() {},false);
 	// ---------------------------------------------------------------------------------------------------
 	function nextStep8() {
 		console.log("asdasdads");
-		var cus_more_friends = $('#cus_more_friends').val(); 
-		var cus_is_inv_rom = $('#cus_is_inv_rom').val(); 
-		var cus_is_mental_ill = $('#cus_is_mental_ill').val(); 
-		var cus_phy_dis = $('#cus_phy_dis').val(); 
-		var cus_comments = $('#cus_comments').val();
-		var cus_counselor = $('#cus_counselor').val(); 
 		
-		if( cus_counselor )
-			$( ".valid_cus_counselor .help-block.with-errors" ).html( '' );
-		else
-			$( ".valid_cus_counselor .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter carrier</li></ul>' );
-
-		if( cus_more_friends )
-			$( ".valid_cus_more_friends .help-block.with-errors" ).html( '' );
-		else
-			$( ".valid_cus_more_friends .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please select</li></ul>' );
-
-		if( cus_is_inv_rom )
-			$( ".valid_cus_is_inv_rom .help-block.with-errors" ).html( '' );
-		else
-			$( ".valid_cus_is_inv_rom .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter member id</li></ul>' );
-		
-		if( cus_is_mental_ill )
-			$( ".valid_cus_is_mental_ill .help-block.with-errors" ).html( '' );
-		else
-			$( ".valid_cus_is_mental_ill .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter group no</li></ul>' );
-
-		if( cus_phy_dis )
-			$( ".valid_cus_phy_dis .help-block.with-errors" ).html( '' );
-		else
-			$( ".valid_cus_phy_dis .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter group no</li></ul>' );
-
-		if( cus_comments )
-			$( ".valid_cus_comments .help-block.with-errors" ).html( '' );
-		else
-			$( ".valid_cus_comments .help-block.with-errors" ).html( '<ul class="list-unstyled"><li>Please enter group no</li></ul>' );	
-
-		if(cus_more_friends && cus_counselor && cus_is_inv_rom && cus_is_mental_ill && cus_phy_dis && cus_comments ) {
 			$( "#section-7 .help-block.with-errors.mandatory-error" ).html( '' );
 			$( "#section-7" ).removeClass( "open" );
 			$( "#section-7" ).addClass( "slide-left" );
 			$( "#section-8" ).removeClass( "slide-right" );
 			$( "#section-8" ).addClass( "open" );
-		}
-		else {
-			$( "#section-6 .help-block.with-errors.mandatory-error" ).html( '<ul class="list-unstyled"><li>Please Fill the Form Properly</li></ul>' );
-			sweetAlert("Oops...", "Please Fill the Form Properly!", "error");
-		}
+		
 	}
 
 	function previousStep7() {
