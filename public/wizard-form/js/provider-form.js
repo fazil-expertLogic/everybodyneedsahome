@@ -288,7 +288,7 @@ document.addEventListener("touchstart", function() {},false);
 			$('#childinfobox').hide();
 		}
 	}
-
+	// ---------------------------------------------------- Stripe ----------------------------------------------------
 	var stripe, elements, card;
 
     function initializeStripe() {
