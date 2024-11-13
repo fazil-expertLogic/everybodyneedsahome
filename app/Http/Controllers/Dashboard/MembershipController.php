@@ -69,6 +69,7 @@ class MembershipController extends Controller
                 'price'  => 'required',
                 'features'  => 'required|string|max:255',
                 'description'  => 'required|string|max:255',
+                'stripe_id' => 'nullable|string|max:255',
             ]);
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
@@ -79,7 +80,8 @@ class MembershipController extends Controller
                 'price' => $request->price,
                 'features' => $request->features,
                 'description' => $request->description,
-                'plan_type'=> $request->plan_type
+                'plan_type'=> $request->plan_type,
+                'stripe_id'=> $request->stripe_id,
             ]);
             DB::commit();
             return redirect()->route('memberships.index')->with('success', 'membership create successfully.');
@@ -129,6 +131,7 @@ class MembershipController extends Controller
                 'price'  => 'required|string|max:255',
                 'features'  => 'required|string|max:255',
                 'description'  => 'required|string|max:255',
+                'stripe_id' => 'nullable|string|max:255',
             ]);
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 422);
@@ -140,7 +143,8 @@ class MembershipController extends Controller
                 'price' => $request->price,
                 'features' => $request->features,
                 'description' => $request->description,
-                'plan_type'=> $request->plan_type
+                'plan_type'=> $request->plan_type,
+                'stripe_id'=> $request->stripe_id,
             ]);
             DB::commit();
             return redirect()->route('memberships.index')->with('success', 'membership update successfully.');

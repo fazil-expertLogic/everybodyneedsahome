@@ -24,6 +24,9 @@ class PurchasePlan extends Model
         'last4',
         'exp_month',
         'exp_year',
+        'stripe_customer_id',
+        'stripe_id',
+        'stripe_current_period_end'
     ];
 
     public function user()

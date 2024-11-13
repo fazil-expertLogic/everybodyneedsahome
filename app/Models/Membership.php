@@ -9,6 +9,7 @@ class Membership extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'stripe_id',
         'name',
         'price',
         'features',

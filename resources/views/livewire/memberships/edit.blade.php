@@ -59,6 +59,16 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_stripe_id @if ($errors->has('stripe_id')) has-error has-danger @endif">
+                                                    <label for="stripe_id" class="form-label">Stripe Id<span class="text-danger">*</span></label>
+                                                    <input type="text" name="stripe_id" class="form-control py-2" id="stripe_id" placeholder="stripe id" value="{{old('stripe_id',$membership->stripe_id)}}" required data-error="Please enter stripe id">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('stripe_id'))
+                                                    <div class="help-block with-errors">{{ $errors->first('stripe_id') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_name">
                                                     <label for="description" class="form-label">description<span class="text-danger">*</span></label>
                                                     <textarea class="form-control" id="description" name="description" required>{{$membership->description}}</textarea>

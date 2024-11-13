@@ -58,7 +58,18 @@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
-                                            
+
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group valid_stripe_id @if ($errors->has('stripe_id')) has-error has-danger @endif">
+                                                    <label for="stripe_id" class="form-label">Stripe Id<span class="text-danger">*</span></label>
+                                                    <input type="text" name="stripe_id" class="form-control py-2" id="stripe_id" placeholder="stripe id" value="" required data-error="Please enter stripe id">
+                                                    <div class="help-block with-errors"></div>
+                                                    @if ($errors->has('stripe_id'))
+                                                    <div class="help-block with-errors">{{ $errors->first('stripe_id') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_name">
                                                     <label for="description" class="form-label">description<span class="text-danger">*</span></label>
@@ -67,6 +78,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                         <div class="form-group signUpForm-step-1" style="margin-top: 50px;">
                                             <button id="Submit" class="btn btn-custom float-end"
                                                     type="submit" onclick="nextStep2()">Submit </button>
