@@ -59,10 +59,10 @@
         <script src="{{asset('build/assets/plugins/jquery/jquery.min.js')}}"></script>
         <script src="{{asset('build/assets/plugins/bootstrap/popper.min.js')}}"></script>
         <script src="{{asset('build/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('build/assets/plugins/p-scroll/perfect-scrollbar.js')}}"></script>
+        {{-- <script src="{{asset('build/assets/plugins/p-scroll/perfect-scrollbar.js')}}"></script>
         <script src="{{asset('build/assets/plugins/p-scroll/pscroll.js')}}"></script>
+        <script src="{{asset('build/assets/plugins/sidebar/sidebar.js')}}"></script> --}}
         <script src="{{asset('build/assets/plugins/sidemenu/sidemenu.js')}}"></script>
-        <script src="{{asset('build/assets/plugins/sidebar/sidebar.js')}}"></script>
 		@vite('resources/js/app.js')
 
 
