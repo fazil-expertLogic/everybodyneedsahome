@@ -90,5 +90,5 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('wizard-form/js/user-form.js') }}"></script>
+    <script src="{{ asset('wizard-form/js/purchase_plan.js') }}"></script>
 @endsection
