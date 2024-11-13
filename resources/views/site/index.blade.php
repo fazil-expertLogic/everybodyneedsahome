@@ -1,16 +1,13 @@
-<?php $page = 'index'; 
-use App\Helpers\Helper;
-?>
+<?php $page = 'index'; ?>
 @extends('site.layout.mainlayout')
 @section('content')
-    <!-- Home Banner -->
     <section class="banner-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="banner-content" data-aos="fade-down">
-                        <h1>{!! Helper::pageContent('home','banner-section banner-content-h1') !!} <span>  {!! Helper::pageContent('home','banner-section banner-content-span') !!}</span></h1>
-                        <p>{!! Helper::pageContent('home','banner-section banner-content-p') !!}</p>
+                        <h1>{!! $page_content['banner-section banner-content-h1'] !!} <span>  {!! $page_content['banner-section banner-content-span'] !!}</span></h1>
+                        <p>{!! $page_content['banner-section banner-content-p'] !!}</p>
                     </div>
                 </div>
             </div>
@@ -23,7 +20,7 @@ use App\Helpers\Helper;
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="rent-property" data-bs-toggle="tab" href="#rent_property"
                                         role="tab" aria-controls="rent_property" aria-selected="false">
-                                        <img src="{{ URL::asset(Helper::pageContent('home','rent-icon-img')) }}" alt="icon"> {!! Helper::pageContent('home','banner-section nav-link') !!}
+                                        <img src="{{ URL::asset($page_content['rent-icon-img']) }}" alt="icon"> {!! $page_content['banner-section nav-link'] !!}
                                     </a>
                                 </li>
                             </ul>
@@ -67,23 +64,20 @@ use App\Helpers\Helper;
             </div>
         </div>
     </section>
-    <!-- /Home Banner -->
-
-    <!-- How It Work -->
     <section class="howit-work">
         <div class="container">
             <div class="section-heading text-center">
-                <h2> {!! Helper::pageContent('home','howit-work section-heading-h2') !!}</h2>
+                <h2> {!! $page_content['howit-work section-heading-h2'] !!}</h2>
                 <div class="sec-line">
                     <span class="sec-line1"></span>
                     <span class="sec-line2"></span>
                 </div>
- <p> {!! Helper::pageContent('home','howit-work section-heading-p') !!}
+ <p> {!! $page_content['howit-work section-heading-p'] !!}
 </p>
 <br />
 
 <div class="price-btn">
- <a href="https://staging.everybodyneedsahome.com/client-registration" class="btn-primary">{!! Helper::pageContent('home','howit-work price-btn') !!}</a>
+ <a href="https://staging.everybodyneedsahome.com/client-registration" class="btn-primary">{!! $page_content['howit-work price-btn'] !!}</a>
 </div>
             </div>
         </div>
@@ -93,23 +87,23 @@ use App\Helpers\Helper;
             <div class="row">
                 <div class="col-lg-5">
                     <div class="faq-img">
-                        <img src="{{ URL::asset(Helper::pageContent('home','faq-img')) }}" alt="icon">
+                        <img src="{{ URL::asset($page_content['faq-img']) }}" alt="icon">
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="section-heading" data-aos="fade-down" data-aos-duration="2000">
-                        <h2>{!! Helper::pageContent('home','faq-section section-heading-h2') !!}</h2>
+                        <h2>{!! $page_content['faq-section section-heading-h2'] !!}</h2>
                         <div class="sec-line">
                             <span class="sec-line1"></span>
                             <span class="sec-line2"></span>
                         </div>
-                        <p>{!! Helper::pageContent('home','faq-section section-heading-p') !!}
+                        <p>{!! $page_content['faq-section section-heading-p'] !!}
 
 </p>
 <br />
 
 <div class="price-btn">
- <a href="https://staging.everybodyneedsahome.com/provider-registration" class="btn-primary"> {!! Helper::pageContent('home','faq-section price-btn') !!} </a>
+ <a href="https://staging.everybodyneedsahome.com/provider-registration" class="btn-primary"> {!! $page_content['faq-section price-btn'] !!} </a>
 </div>
                     </div>
                    
@@ -123,22 +117,22 @@ use App\Helpers\Helper;
     <!-- Property Type -->
     <section class="property-type-sec">
         <div class="section-shape-imgs">
-            <img src="{{ URL::asset(Helper::pageContent('home','property-sec-bg-1-img')) }}" class="rectangle-left"
+            <img src="{{ URL::asset($page_content['property-sec-bg-1-img']) }}" class="rectangle-left"
                 alt="icon">
-            <img src="{{ URL::asset(Helper::pageContent('home','property-sec-bg-2-img')) }}" class="rectangle-right"
+            <img src="{{ URL::asset($page_content['property-sec-bg-2-img']) }}" class="rectangle-right"
                 alt="icon">
-            <img src="{{ URL::asset(Helper::pageContent('home','property-sec-bg-3-img')) }}" class="bg-09" alt="Image">
+            <img src="{{ URL::asset($page_content['property-sec-bg-3-img']) }}" class="bg-09" alt="Image">
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
                     <div class="section-heading" data-aos="fade-down" data-aos-duration="1000">
-                        <h2>{!! Helper::pageContent('home','property-type-sec section-heading-h2') !!}</h2>
+                        <h2>{!! $page_content['property-type-sec section-heading-h2'] !!}</h2>
                         <div class="sec-line">
                             <span class="sec-line1"></span>
                             <span class="sec-line2"></span>
                         </div>
-                        <p>{!! Helper::pageContent('home','property-type-sec section-heading-p') !!}</p>
+                        <p>{!! $page_content['property-type-sec section-heading-p'] !!}</p>
                     </div>
                     <div class="owl-navigation">
                         <div class="owl-nav mynav1 nav-control"></div>
@@ -148,7 +142,7 @@ use App\Helpers\Helper;
                     <div class="property-type-slider owl-carousel">
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-1-img')) }}" alt="icon">
+                                <img src="{{ URL::asset($page_content['property-icon-1-img']) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Houses</h4>
@@ -157,7 +151,7 @@ use App\Helpers\Helper;
                         </div>
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-2-img')) }}" alt="icon">
+                                <img src="{{ URL::asset($page_content['property-icon-2-img']) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Offices</h4>
@@ -166,7 +160,7 @@ use App\Helpers\Helper;
                         </div>
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-3-img')) }}" alt="icon">
+                                <img src="{{ URL::asset($page_content['property-icon-3-img']) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Villas</h4>
@@ -175,7 +169,7 @@ use App\Helpers\Helper;
                         </div>
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-4-img')) }}" alt="icon">
+                                <img src="{{ URL::asset($page_content['property-icon-4-img']) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Apartment</h4>
@@ -184,7 +178,7 @@ use App\Helpers\Helper;
                         </div>
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-3-img')) }}" alt="icon">
+                                <img src="{{ URL::asset($page_content['property-icon-3-img']) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Villas</h4>
@@ -193,7 +187,7 @@ use App\Helpers\Helper;
                         </div>
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-1-img')) }}" alt="icon">
+                                <img src="{{ URL::asset($page_content['property-icon-1-img']) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Houses</h4>
@@ -202,7 +196,7 @@ use App\Helpers\Helper;
                         </div>
                         <div class="property-card" data-aos="fade-down" data-aos-duration="1000">
                             <div class="property-img">
-                                <img src="{{ URL::asset(Helper::pageContent('home','property-icon-4-img')) }}" alt="icon">
+                                <img src="{{ URL::asset($page_content['property-icon-4-img']) }}" alt="icon">
                             </div>
                             <div class="property-name">
                                 <h4>Apartment</h4>
@@ -220,12 +214,12 @@ use App\Helpers\Helper;
     <section class="feature-property-sec">
         <div class="container">
             <div class="section-heading text-center">
-                <h2>{!! Helper::pageContent('home','feature-property-sec section-heading-h2') !!}</h2>
+                <h2>{!! $page_content['feature-property-sec section-heading-h2'] !!}</h2>
                 <div class="sec-line">
                     <span class="sec-line1"></span>
                     <span class="sec-line2"></span>
                 </div>
-                <p>{!! Helper::pageContent('home','feature-property-sec section-heading-p') !!} </p>
+                <p>{!! $page_content['feature-property-sec section-heading-p'] !!} </p>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -238,7 +232,7 @@ use App\Helpers\Helper;
                                     <div class="doc-img">
                                         <a href="{{ url('property-detail/'. $property->id) }}" class="property-img">
                                             <img class="img-fluid" alt="Property Image"
-                                                src="{{ $property->main_picture ? asset('storage/' . $property->main_picture) : URL::asset(Helper::pageContent('home','product-1-img')) }}">
+                                                src="{{ $property->main_picture ? asset('storage/' . $property->main_picture) : URL::asset($page_content['product-1-img']) }}">
                                         </a>
                                         <div class="product-amount">
                                             <span>${{ number_format($property->bed_fee + $property->bedroom_fee + $property->unit_fee,2) }}</span>
@@ -263,7 +257,7 @@ use App\Helpers\Helper;
                                             </a> --}}
                                         </div>
                                         <div class="user-avatar">
-                                            <img src="{{ URL::asset(Helper::pageContent('home','avatar-01-img')) }}" alt="User">
+                                            <img src="{{ URL::asset($page_content['avatar-01-img']) }}" alt="User">
                                         </div>
                                     </div>
                                     <div class="pro-content">
@@ -283,11 +277,11 @@ use App\Helpers\Helper;
                                         <p><i class="feather-map-pin"></i>{{$property->property_address}}</p>
                                         <ul class="d-flex details">
                                             <li>
-                                                <img src="{{ URL::asset(Helper::pageContent('home','bed-icon-img')) }}" alt="bed-icon">
+                                                <img src="{{ URL::asset($page_content['bed-icon-img']) }}" alt="bed-icon">
                                                 {{$property->number_of_beds}} Beds
                                             </li>
                                             <li>
-                                                <img src="{{ URL::asset(Helper::pageContent('home','bath-icon-img')) }}" alt="bath-icon">
+                                                <img src="{{ URL::asset($page_content['bath-icon-img']) }}" alt="bath-icon">
                                                 {{$property->number_of_bedrooms}} Baths
                                             </li>
                                             {{-- <li>
@@ -316,156 +310,27 @@ use App\Helpers\Helper;
                     </div>
                     <div class="view-property-btn d-flex justify-content-center" data-aos="fade-down"
                         data-aos-duration="1000">
-                        <a href="{{ url('#') }}" class="btn-primary"> {!! Helper::pageContent('home','feature-property-sec view-property-btn') !!}</a>
+                        <a href="{{ url('#') }}" class="btn-primary"> {!! $page_content['feature-property-sec view-property-btn'] !!}</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="bg-imgs">
-            <img src="{{ URL::asset(Helper::pageContent('home','price-bg-img')) }}" class="bg-01" alt="icon">
-            <img src="{{ URL::asset(Helper::pageContent('home','blue-circle-img')) }}" class="bg-02" alt="icon">
-            <img src="{{ URL::asset(Helper::pageContent('home','red-circle-img')) }}" class="bg-03" alt="icon">
+            <img src="{{ URL::asset($page_content['price-bg-img']) }}" class="bg-01" alt="icon">
+            <img src="{{ URL::asset($page_content['blue-circle-img']) }}" class="bg-02" alt="icon">
+            <img src="{{ URL::asset($page_content['red-circle-img']) }}" class="bg-03" alt="icon">
         </div>
     </section>
     <!-- /Feature Properties For Sale -->
 
-    <!-- Cities List -->
-    {{-- <section class="cities-list-sec">
-        <div class="container">
-            <div class="section-heading">
-                <h2>Cities With Listing</h2>
-                <div class="sec-line">
-                    <span class="sec-line1"></span>
-                    <span class="sec-line2"></span>
-                </div>
-                <p>Destinations we love the most</p>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="city-card-slider owl-carousel">
-                        <div class="city-first-card" data-aos="fade-down" data-aos-duration="2000">
-                            <div class="city-list">
-                                <div class="city-img">
-                                    <img src="{{ URL::asset('/assets/img/city/city-1.jpg') }}" alt="City">
-                                </div>
-                                <div class="city-name">
-                                    <h5>New York</h5>
-                                    <p>300 Properties</p>
-                                </div>
-                                <div class="arrow-overlay">
-                                    <a href="{{ url('rent-property-grid') }}"><i class='fa-solid fa-arrow-right'></i></a>
-                                </div>
-                            </div>
-                            <div class="city-list">
-                                <div class="city-img">
-                                    <img src="{{ URL::asset('/assets/img/city/city-2.jpg') }}" alt="City">
-                                </div>
-                                <div class="city-name">
-                                    <h5>Singapore</h5>
-                                    <p>400 Properties</p>
-                                </div>
-                                <div class="arrow-overlay">
-                                    <a href="{{ url('rent-property-grid') }}"><i class='fa-solid fa-arrow-right'></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="city-card-two" data-aos="fade-down" data-aos-duration="2000">
-                            <div class="city-list">
-                                <div class="city-img">
-                                    <img src="{{ URL::asset('/assets/img/city/city-3.jpg') }}" alt="City">
-                                </div>
-                                <div class="city-name">
-                                    <h5>Thailand</h5>
-                                    <p>200 Properties</p>
-                                </div>
-                                <div class="arrow-overlay">
-                                    <a href="{{ url('rent-property-grid') }}"><i class='fa-solid fa-arrow-right'></i></a>
-                                </div>
-                            </div>
-                            <div class="city-list">
-                                <div class="city-img">
-                                    <img src="{{ URL::asset('/assets/img/city/city-4.jpg') }}" alt="City">
-                                </div>
-                                <div class="city-name">
-                                    <h5>Argentina</h5>
-                                    <p>740 Properties</p>
-                                </div>
-                                <div class="arrow-overlay">
-                                    <a href="{{ url('rent-property-grid') }}"><i class='fa-solid fa-arrow-right'></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="city-card-three" data-aos="fade-down" data-aos-duration="2000">
-                            <div class="city-list">
-                                <div class="city-img">
-                                    <img src="{{ URL::asset('/assets/img/city/city-5.jpg') }}" alt="City">
-                                </div>
-                                <div class="city-name">
-                                    <h5>United Kingdom</h5>
-                                    <p>1450 Properties</p>
-                                </div>
-                                <div class="arrow-overlay">
-                                    <a href="{{ url('rent-property-grid') }}"><i class='fa-solid fa-arrow-right'></i></a>
-                                </div>
-                            </div>
-                            <div class="city-list">
-                                <div class="city-img">
-                                    <img src="{{ URL::asset('/assets/img/city/city-1.jpg') }}" alt="City">
-                                </div>
-                                <div class="city-name">
-                                    <h5>United Arab Emirates</h5>
-                                    <p>100 Properties</p>
-                                </div>
-                                <div class="arrow-overlay">
-                                    <a href="{{ url('rent-property-grid') }}"><i class='fa-solid fa-arrow-right'></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="city-first-card" data-aos="fade-down" data-aos-duration="2000">
-                            <div class="city-list">
-                                <div class="city-img">
-                                    <img src="{{ URL::asset('/assets/img/city/city-1.jpg') }}" alt="City">
-                                </div>
-                                <div class="city-name">
-                                    <h5>USA</h5>
-                                    <p>320 Properties</p>
-                                </div>
-                                <div class="arrow-overlay">
-                                    <a href="{{ url('rent-property-grid') }}"><i class='fa-solid fa-arrow-right'></i></a>
-                                </div>
-                            </div>
-                            <div class="city-list">
-                                <div class="city-img">
-                                    <img src="{{ URL::asset('/assets/img/city/city-2.jpg') }}" alt="City">
-                                </div>
-                                <div class="city-name">
-                                    <h5>Singapore</h5>
-                                    <p>500 Properties</p>
-                                </div>
-                                <div class="arrow-overlay">
-                                    <a href="{{ url('rent-property-grid') }}"><i class='fa-solid fa-arrow-right'></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- /Cities List -->
-
-    <!-- Feature Property For Rent -->
-  
-    <!-- /Feature Property For Rent -->
-
-    <!-- Couter -->
+    
     <section class="counter-sec">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
                     <div class="counter-box flex-fill" data-aos="fade-down" data-aos-duration="2000">
                         <div class="counter-icon">
-                            <img src="{{ URL::asset(Helper::pageContent('home','counter-icon-1-img')) }}" alt="icon">
+                            <img src="{{ URL::asset($page_content['counter-icon-1-img']) }}" alt="icon">
                         </div>
                         <div class="counter-value">
                             <h3 class="dash-count"><span class="counter-up">50</span>K</h3>
@@ -476,7 +341,7 @@ use App\Helpers\Helper;
                 <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
                     <div class="counter-box flex-fill" data-aos="fade-down" data-aos-duration="2000">
                         <div class="counter-icon">
-                            <img src="{{ URL::asset(Helper::pageContent('home','counter-icon-2-img')) }}" alt="icon">
+                            <img src="{{ URL::asset($page_content['counter-icon-2-img']) }}" alt="icon">
                         </div>
                         <div class="counter-value">
                             <h3 class="dash-count"><span class="counter-up">3000</span>+</h3>
@@ -488,7 +353,7 @@ use App\Helpers\Helper;
                 <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
                     <div class="counter-box flex-fill" data-aos="fade-down" data-aos-duration="2000">
                         <div class="counter-icon">
-                            <img src="{{ URL::asset(Helper::pageContent('home','counter-icon-4-img')) }}" alt="icon">
+                            <img src="{{ URL::asset($page_content['counter-icon-4-img']) }}" alt="icon">
                         </div>
                         <div class="counter-value">
                             <h3 class="dash-count"><span class="counter-up">5000</span>+</h3>
@@ -574,7 +439,7 @@ use App\Helpers\Helper;
                             <div class="price-card" data-aos="flip-right" data-aos-easing="ease-out-cubic"
                                 data-aos-duration="1000">
                                 <div class="price-sticker">
-                                    <img src="{{ URL::asset(Helper::pageContent('home','pricing-icon-img')) }}"
+                                    <img src="{{ URL::asset($page_content['pricing-icon-img']) }}"
                                         alt="price-sticker">
                                 </div>
                                 <div class="price-title">
@@ -753,7 +618,7 @@ use App\Helpers\Helper;
             </div>
         </div>
         <div class="bg-imgs">
-            <img src="{{ URL::asset(Helper::pageContent('home','price-bg-img')) }}" class="bg-05" alt="icon">
+            <img src="{{ URL::asset($page_content['price-bg-img']) }}" class="bg-05" alt="icon">
         </div>
     </section>
     <!-- /Pricing -->
@@ -764,66 +629,66 @@ use App\Helpers\Helper;
             <div class="row">
                 <div class="col-lg-4">
                     <div class="faq-img">
-                        <img src="{{ URL::asset(Helper::pageContent('home','faq-img')) }}" alt="icon">
+                        <img src="{{ URL::asset($page_content['faq-img']) }}" alt="icon">
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <div class="section-heading" data-aos="fade-down" data-aos-duration="2000">
-                        <h2>{!! Helper::pageContent('home','faq-section1 section-heading-h2') !!}</h2>
+                        <h2>{!! $page_content['faq-section1 section-heading-h2'] !!}</h2>
                         <div class="sec-line">
                             <span class="sec-line1"></span>
                             <span class="sec-line2"></span>
                         </div>
-                        <p>{!! Helper::pageContent('home','faq-section1 section-heading-p') !!}</p>
+                        <p>{!! $page_content['faq-section1 section-heading-p'] !!}</p>
                     </div>
                     <div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
                         <h4 class="faq-title">
-                            <a class="collapsed" data-bs-toggle="collapse" href="#faqone" aria-expanded="false">{!! Helper::pageContent('home','faq-section1 faqone') !!}</a>
+                            <a class="collapsed" data-bs-toggle="collapse" href="#faqone" aria-expanded="false">{!! $page_content['faq-section1 faqone'] !!}</a>
                         </h4>
                         <div id="faqone" class="card-collapse collapse">
                             <div class="faq-info">
-                                <p>{!! Helper::pageContent('home','faq-section1 faqone-p') !!}</p>
+                                <p>{!! $page_content['faq-section1 faqone-p'] !!}</p>
                             </div>
                         </div>
                     </div>
                     <div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
                         <h4 class="faq-title">
-                            <a class="collapsed" data-bs-toggle="collapse" href="#faqtwo" aria-expanded="false">{!! Helper::pageContent('home','faq-section1 faqtwo') !!}</a>
+                            <a class="collapsed" data-bs-toggle="collapse" href="#faqtwo" aria-expanded="false">{!! $page_content['faq-section1 faqtwo'] !!}</a>
                         </h4>
                         <div id="faqtwo" class="card-collapse collapse">
                             <div class="faq-info">
-                                <p>{!! Helper::pageContent('home','faq-section1 faqtwo-p') !!}</p>
+                                <p>{!! $page_content['faq-section1 faqtwo-p'] !!}</p>
                             </div>
                         </div>
                     </div>
                     <div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
                         <h4 class="faq-title">
-                            <a class="" data-bs-toggle="collapse" href="#faqthree" aria-expanded="false">{!! Helper::pageContent('home','faq-section1 faqthree') !!}</a>
+                            <a class="" data-bs-toggle="collapse" href="#faqthree" aria-expanded="false">{!! $page_content['faq-section1 faqthree'] !!}</a>
                         </h4>
                         <div id="faqthree" class="card-collapse collapse show">
                             <div class="faq-info">
-                                <p>{!! Helper::pageContent('home','faq-section1 faqthree-p') !!}</p>
+                                <p>{!! $page_content['faq-section1 faqthree-p'] !!}</p>
                             </div>
                         </div>
                     </div>
                     <div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
                         <h4 class="faq-title">
-                            <a class="collapsed" data-bs-toggle="collapse" href="#faqfour" aria-expanded="false">{!! Helper::pageContent('home','faq-section1 faqfour') !!}</a>
+                            <a class="collapsed" data-bs-toggle="collapse" href="#faqfour" aria-expanded="false">{!! $page_content['faq-section1 faqfour'] !!}</a>
                         </h4>
                         <div id="faqfour" class="card-collapse collapse">
                             <div class="faq-info">
-                                <p>{!! Helper::pageContent('home','faq-section1 faqfour-p') !!}</p>
+                                <p>{!! $page_content['faq-section1 faqfour-p'] !!}</p>
                             </div>
                         </div>
                     </div>
                     <div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
                         <h4 class="faq-title">
                             <a class="collapsed" data-bs-toggle="collapse" href="#faqfive"
-                                aria-expanded="false">{!! Helper::pageContent('home','faq-section1 faqfive') !!}</a>
+                                aria-expanded="false">{!! $page_content['faq-section1 faqfive'] !!}</a>
                         </h4>
                         <div id="faqfive" class="card-collapse collapse">
                             <div class="faq-info">
-                                <p>{!! Helper::pageContent('home','faq-section1 faqfive-p') !!}</p>
+                                <p>{!! $page_content['faq-section1 faqfive-p'] !!}</p>
                             </div>
                         </div>
                     </div>
@@ -843,12 +708,12 @@ use App\Helpers\Helper;
             <div class="row">
                 <div class="col-md-8 mx-auto">
                     <div class="section-heading text-center">
-                        <h2>{!! Helper::pageContent('home','latest-blog-sec section-heading-h2') !!}</h2>
+                        <h2>{!! $page_content['latest-blog-sec section-heading-h2'] !!}</h2>
                         <div class="sec-line">
                             <span class="sec-line1"></span>
                             <span class="sec-line2"></span>
                         </div>
-                        <p>{!! Helper::pageContent('home','latest-blog-sec section-heading-p') !!}</p>
+                        <p>{!! $page_content['latest-blog-sec section-heading-p'] !!}</p>
                     </div>
                 </div>
             </div>
@@ -860,7 +725,7 @@ use App\Helpers\Helper;
                         <div class="blog-card" data-aos="fade-down" data-aos-duration="2000">
                             <div class="blog-img">
                                 <a href="{{ url('blog-details') }}"><img
-                                        src="{{ URL::asset(Helper::pageContent('home','blog-1-img')) }}" alt="Blog Image"></a>
+                                        src="{{ URL::asset($page_content['blog-1-img']) }}" alt="Blog Image"></a>
                             </div>
                             <div class="blog-content">
                                 <div class="blog-property">
@@ -874,7 +739,7 @@ use App\Helpers\Helper;
                                 <ul class="property-category d-flex justify-content-between align-items-center">
                                     <li class="user-info">
                                         <a href="javascript:void(0);"><img
-                                                src="{{ URL::asset(Helper::pageContent('home','avatar-01-img')) }}"
+                                                src="{{ URL::asset($page_content['avatar-01-img']) }}"
                                                 class="img-fluid avatar" alt="User"></a>
                                         <div class="user-name">
                                             <h6><a href="javascript:void(0);">Doe John</a></h6>
@@ -894,7 +759,7 @@ use App\Helpers\Helper;
                         <div class="blog-card" data-aos="fade-down" data-aos-duration="2000">
                             <div class="blog-img">
                                 <a href="{{ url('blog-details') }}"><img
-                                        src="{{ URL::asset(Helper::pageContent('home','blog-2-img')) }}" alt="Blog Image"></a>
+                                        src="{{ URL::asset($page_content['blog-2-img']) }}" alt="Blog Image"></a>
                             </div>
                             <div class="blog-content">
                                 <div class="blog-property">
@@ -908,7 +773,7 @@ use App\Helpers\Helper;
                                 <ul class="property-category d-flex justify-content-between align-items-center">
                                     <li class="user-info">
                                         <a href="javascript:void(0);"><img
-                                                src="{{ URL::asset(Helper::pageContent('home','avatar-03-img')) }}"
+                                                src="{{ URL::asset($page_content['avatar-03-img']) }}"
                                                 class="img-fluid avatar" alt="User"></a>
                                         <div class="user-name">
                                             <h6><a href="javascript:void(0);">John</a></h6>
@@ -928,7 +793,7 @@ use App\Helpers\Helper;
                         <div class="blog-card" data-aos="fade-down" data-aos-duration="2000">
                             <div class="blog-img">
                                 <a href="{{ url('blog-details') }}"><img
-                                        src="{{ URL::asset(Helper::pageContent('home','blog-3-img')) }}" alt="Blog Image"></a>
+                                        src="{{ URL::asset($page_content['blog-3-img']) }}" alt="Blog Image"></a>
                             </div>
                             <div class="blog-content">
                                 <div class="blog-property">
@@ -943,7 +808,7 @@ use App\Helpers\Helper;
                                 <ul class="property-category d-flex justify-content-between align-items-center">
                                     <li class="user-info">
                                         <a href="javascript:void(0);"><img
-                                                src="{{ URL::asset(Helper::pageContent('home','avatar-05-img')) }}"
+                                                src="{{ URL::asset($page_content['avatar-05-img']) }}"
                                                 class="img-fluid avatar" alt="User"></a>
                                         <div class="user-name">
                                             <h6><a href="javascript:void(0);">Eric Krok</a></h6>
@@ -963,7 +828,7 @@ use App\Helpers\Helper;
                         <div class="blog-card" data-aos="fade-down" data-aos-duration="2000">
                             <div class="blog-img">
                                 <a href="{{ url('blog-details') }}"><img
-                                        src="{{ URL::asset(Helper::pageContent('home','blog-2-img')) }}" alt="Blog Image"></a>
+                                        src="{{ URL::asset($page_content['blog-2-img']) }}" alt="Blog Image"></a>
                             </div>
                             <div class="blog-content">
                                 <div class="blog-property">
@@ -977,7 +842,7 @@ use App\Helpers\Helper;
                                 <ul class="property-category d-flex justify-content-between align-items-center">
                                     <li class="user-info">
                                         <a href="javascript:void(0);"><img
-                                                src="{{ URL::asset(Helper::pageContent('home','avatar-07-img')) }}"
+                                                src="{{ URL::asset($page_content['avatar-07-img']) }}"
                                                 class="img-fluid avatar" alt="User"></a>
                                         <div class="user-name">
                                             <h6><a href="javascript:void(0);">Francis</a></h6>
@@ -997,7 +862,7 @@ use App\Helpers\Helper;
                         <div class="blog-card" data-aos="fade-down" data-aos-duration="2000">
                             <div class="blog-img">
                                 <a href="{{ url('blog-details') }}"><img
-                                        src="{{ URL::asset(Helper::pageContent('home','blog-1-img')) }}" alt="Blog Image"></a>
+                                        src="{{ URL::asset($page_content['blog-1-img']) }}" alt="Blog Image"></a>
                             </div>
                             <div class="blog-content">
                                 <div class="blog-property">
@@ -1011,7 +876,7 @@ use App\Helpers\Helper;
                                 <ul class="property-category d-flex justify-content-between align-items-center">
                                     <li class="user-info">
                                         <a href="javascript:void(0);"><img
-                                                src="{{ URL::asset(Helper::pageContent('home','avatar-03-img')) }}"
+                                                src="{{ URL::asset($page_content['avatar-03-img']) }}"
                                                 class="img-fluid avatar" alt="User"></a>
                                         <div class="user-name">
                                             <h6><a href="javascript:void(0);">Rafael</a></h6>
@@ -1040,15 +905,15 @@ use App\Helpers\Helper;
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="news-heading" data-aos="fade-down" data-aos-duration="2000">
-                        <h2>{!! Helper::pageContent('home','news-letter-sec news-heading-h2') !!}</h2>
-                        <p>{!! Helper::pageContent('home','news-letter-sec news-heading-p') !!} </p>
+                        <h2>{!! $page_content['news-letter-sec news-heading-h2'] !!}</h2>
+                        <p>{!! $page_content['news-letter-sec news-heading-p'] !!} </p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="email-form" data-aos="fade-down" data-aos-duration="2000">
                         <form action="#">
                             <input type="email" class="form-control" placeholder="Enter Email Address">
-                            <button class="btn-primary">{!! Helper::pageContent('home','news-letter-sec news-heading-btn') !!}</button>
+                            <button class="btn-primary">{!! $page_content['news-letter-sec news-heading-btn'] !!}</button>
                         </form>
                     </div>
                 </div>

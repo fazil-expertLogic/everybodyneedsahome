@@ -21,9 +21,9 @@ Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout')
 // Route::get('/', function () {
 //     return view('site.index');
 // })->name('index');
-Route::get('/about-us', function () {
-    return view('site.about-us');
-})->name('about-us');
+// Route::get('/about-us', function () {
+//     return view('site.about-us');
+// })->name('about-us');
 // Route::get('/buy-property-grid', function () {
 //     return view('site.buy-property-grid');
 // })->name('buy-property-grid');
@@ -32,6 +32,8 @@ Route::get('/', [FrontendController::class, 'home'])->name('index');
 Route::get('buy-property-grid', [FrontendController::class, 'buyPropertyGrid'])->name('buy_property_grid');
 Route::get('pricing', [FrontendController::class, 'pricing'])->name('pricing');
 Route::get('property-list', [FrontendController::class, 'propertyList'])->name('property-list');
+Route::get('about-us', [FrontendController::class, 'about_us'])->name('about-us');
+Route::get('buy-property-list', [FrontendController::class, 'buy_property_list'])->name('buy-property-list');
 Route::get('property-detail/{id}', [FrontendController::class, 'propertyDetail'])->name('property-detail');
 Route::post('property-reviews', [FrontendController::class, 'propertyReviews'])->name('property_reviews');
 // sendEmail
@@ -116,9 +118,6 @@ Route::get('/rental-order', function () {
 
 
 
-Route::get('/buy-property-list', function () {
-    return view('site.buy-property-list');
-})->name('buy-property-list');
 
 
 

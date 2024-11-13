@@ -28,13 +28,12 @@ class Helper
         ];
     }
 
-    public static function pageContent($page_url, $variable){
+    public static function pageContent($page_url){
         $page_content = PageContent::where('page_url', $page_url)
-            ->where('variable', $variable)
-            ->select('text')
-            ->first();
-            
-        return $page_content ? $page_content->text : null;
+            ->select( 'variable','text')
+            ->get()->pluck('text','variable');
+        
+        return $page_content ?? null;
     }
 
 }
