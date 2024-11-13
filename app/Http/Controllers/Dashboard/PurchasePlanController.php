@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\PurchasePlan;
 use App\Models\Membership;
 use App\Helpers\Helper;
+use App\Helpers\StripeHelper;
 
 class PurchasePlanController extends Controller
 {
@@ -17,6 +18,12 @@ class PurchasePlanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $StripeHelper;
+
+    public function __construct(StripeHelper $StripeHelper){
+        $this->StripeHelper = $StripeHelper;
+    }
+
     public function index(Request $request)
     {
         // PurchasePlan::get();
@@ -84,12 +91,23 @@ class PurchasePlanController extends Controller
                 'exp_year' => 'required|numeric|digits:4|after_or_equal:' . now()->year,
             ]);
             if ($validator->fails()) {
+                dd($validator->errors());
                 return response()->json($validator->errors(), 422);
             }
             DB::beginTransaction();
+            // stripe
+            $user = User::findOrFail($request->user_id);
+            $member_ship = Membership::findOrFail($request->member_ship_id);
+            $customerId = $this->StripeHelper->createCustomer($user->email, $user->name, $request->stripeToken);   
+            $memberShipId = $member_ship->stripe_id;
+            $stripeSubscription = $this->StripeHelper->createSubscription($customerId, $memberShipId, '');
+            // end stripe
             PurchasePlan::create([
                 'user_id'=> $request->user_id,
                 'membership_id' => $request->member_ship_id,
+                'stripe_customer_id'=>$customerId,
+                'stripe_id'=>$stripeSubscription->id,
+                'stripe_current_period_end' => $stripeSubscription->current_period_end,
                 'purchase_date' => now(),
                 'stripeToken' => $request->stripeToken,
                 'last4' => $request->last4,

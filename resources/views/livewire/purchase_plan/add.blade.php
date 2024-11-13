@@ -14,7 +14,7 @@
                             <div class="signUpForm-step-holder">
                                 <div id="section-1" class="signUpForm-step-wrap">
                                     <fieldset>
-                                        <h3 class="section-form-title">Assigine Membership Plan</h3>
+                                        <h3 class="section-form-title">Assigine Plan</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
 
                                         <div class="row">
@@ -44,7 +44,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <div
                                                     class="form-group valid_member_ship_id @if ($errors->has('member_ship_id')) has-error has-danger @endif">
-                                                    <label for="member_ship_id" class="form-label">member plan<span
+                                                    <label for="member_ship_id" class="form-label">Plan<span
                                                             class="text-danger">*</span></label>
                                                     <select name="member_ship_id" class="form-select" id="member_ship_id"
                                                         aria-label="" required data-error="Please select member plan">
