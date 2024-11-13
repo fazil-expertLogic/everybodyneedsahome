@@ -1,17 +1,16 @@
 <?php $page = 'buy-property-grid'; 
-    use App\Helpers\Helper;
 ?>
 @extends('site.layout.mainlayout')
 @section('content')
     @component('site.components.breadcrumb')
         @slot('title')
-        {!! Helper::pageContent('buy-property-grid','buy-property-grid title') !!} 
+        {!! $page_content['buy-property-grid title'] !!} 
         @endslot
         @slot('li_1')
-        {!! Helper::pageContent('buy-property-grid','buy-property-grid li_1') !!} 
+        {!! $page_content['buy-property-grid li_1'] !!} 
         @endslot
         @slot('li_2')
-        {!! Helper::pageContent('buy-property-grid','buy-property-grid li_2') !!}
+        {!! $page_content['buy-property-grid li_2'] !!}
         @endslot
     @endcomponent
 
@@ -32,7 +31,7 @@
                                 <div class="doc-img">
                                     <a href="{{ url('property-detail/'. $property->id) }}" class="property-img">
                                         <img class="img-fluid" alt="Property Image"
-                                            src="{{ $property->main_picture ? asset('storage/' . $property->main_picture) : URL::asset(Helper::pageContent('buy-property-grid','product-1-img')) }}">
+                                            src="{{ $property->main_picture ? asset('storage/' . $property->main_picture) : URL::asset($page_content['product-1-img']) }}">
                                     </a>
                                     <div class="product-amount">
                                         <span>${{ number_format($property->bed_fee + $property->bedroom_fee + $property->unit_fee,2) }}</span>
@@ -57,7 +56,7 @@
                                         </a> --}}
                                     </div>
                                     <div class="user-avatar">
-                                        <img src="{{ URL::asset(Helper::pageContent('buy-property-grid','avatar-01-img')) }}" alt="User">
+                                        <img src="{{ URL::asset($page_content['avatar-01-img']) }}" alt="User">
                                     </div>
                                 </div>
                                 <div class="pro-content">
@@ -77,11 +76,11 @@
                                     <p><i class="feather-map-pin"></i>{{$property->property_address}}</p>
                                     <ul class="d-flex details">
                                         <li>
-                                            <img src="{{ URL::asset(Helper::pageContent('buy-property-grid','bed-icon-img')) }}" alt="bed-icon">
+                                            <img src="{{ URL::asset($page_content['bed-icon-img']) }}" alt="bed-icon">
                                             {{$property->number_of_bedrooms_house}} Beds
                                         </li>
                                         <li>
-                                            <img src="{{ URL::asset( Helper::pageContent('buy-property-grid','bath-icon-img')) }}" alt="bath-icon">
+                                            <img src="{{ URL::asset( $page_content['bath-icon-img']) }}" alt="bath-icon">
                                             {{$property->number_of_bath_house}} Baths
                                         </li>
                                         {{-- <li>

@@ -1,17 +1,17 @@
 <?php $page = 'buy-details';
-use App\Helpers\Helper;
+
 ?>
 @extends('site.layout.mainlayout')
 @section('content')
     @component('site.components.breadcrumb')
         @slot('title')
-        {!! Helper::pageContent('buy-property-detail','buy-property-detail title') !!}
+        {!! $page_content['buy-property-detail title'] !!}
         @endslot
         @slot('li_1')
-        {!! Helper::pageContent('buy-property-detail','buy-property-detail li_1') !!}
+        {!! $page_content['buy-property-detail li_1'] !!}
         @endslot
         @slot('li_2')
-        {!! Helper::pageContent('buy-property-detail','buy-property-detail li_2') !!}
+        {!! $page_content['buy-property-detail li_2'] !!}
         @endslot
     @endcomponent
     <!-- Detail View Section -->
@@ -55,23 +55,23 @@ use App\Helpers\Helper;
                         <div id="overview" class="card-collapse collapse show">
                             <ul class="property-overview  collapse-view">
                                 <li>
-                                    <img src="{{ URL::asset(Helper::pageContent('buy-property-detail','bed-icon-img')) }}" alt="Image">
+                                    <img src="{{ URL::asset($page_content['bed-icon-img']) }}" alt="Image">
                                     <p>{{ $property->number_of_bedrooms_house }} Beds</p>
                                 </li>
                                 <li>
-                                    <img src="{{ URL::asset(Helper::pageContent('buy-property-detail','bed-icon-img') '/assets/img/icons/bath-icon.svg') }}" alt="Image">
+                                    <img src="{{ URL::asset($page_content['bath-icon-img']) }}" alt="Image">
                                     <p>{{ $property->number_of_bath_house }} Baths</p>
                                 </li>
                                 <li>
-                                    <img src="{{ URL::asset(Helper::pageContent('buy-property-detail','bed-icon-img') '/assets/img/icons/building-icon.svg') }}" alt="Image">
+                                    <img src="{{ URL::asset($page_content['building-icon-img']) }}" alt="Image">
                                     <p>35000 Sqft</p>
                                 </li>
                                 <li>
-                                    <img src="{{ URL::asset(Helper::pageContent('buy-property-detail','bed-icon-img') '/assets/img/icons/garage-icon.svg') }}" alt="Image">
+                                    <img src="{{ URL::asset($page_content['garage-icon-img']) }}" alt="Image">
                                     <p>2 Garages</p>
                                 </li>
                                 <li>
-                                    <img src="{{ URL::asset( Helper::pageContent('buy-property-detail','bed-icon-img')'/assets/img/icons/calender-icon.svg') }}" alt="Image">
+                                    <img src="{{ URL::asset( $page_content['calender-icon-img']) }}" alt="Image">
                                     <p>Year Built: 2005</p>
                                 </li>
                             </ul>
@@ -315,7 +315,7 @@ use App\Helpers\Helper;
                                     <div class="customer-info">
                                         <div class="customer-name">
                                             <a href="javascript:void(0);"><img
-                                                    src="{{ URL::asset(Helper::pageContent('buy-property-detail','avatar-01-img')) }}"
+                                                    src="{{ URL::asset($page_content['avatar-01-img']) }}"
                                                     alt="User"></a>
                                             <div>
                                                 <h5><a href="javascript:void(0);">{{$propertyReview->reviewer_name}}</a></h5>
@@ -395,7 +395,7 @@ use App\Helpers\Helper;
                             <div class="user-active">
                                 <div class="user-img">
                                     <a href="javascript:void(0);"><img class="avatar"
-                                            src="{{ URL::asset(Helper::pageContent('buy-property-detail','bed-icon-img')) }}"
+                                            src="{{ URL::asset($page_content['user-img']) }}"
                                             alt="Image"></a>
                                     <span class="avatar-online"></span>
                                 </div>
@@ -434,7 +434,7 @@ use App\Helpers\Helper;
                             <div class="user-active bg-white p-0">
                                 <div class="user-img">
                                     <a href="javascript:void(0);"><img class="avatar"
-                                            src="{{ URL::asset(Helper::pageContent('buy-property-detail','bed-icon-img')) }}"
+                                            src="{{ URL::asset($page_content['user-img']) }}"
                                             alt="Image"></a>
                                 </div>
                                 <div class="user-name">

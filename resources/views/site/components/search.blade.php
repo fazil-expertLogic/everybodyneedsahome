@@ -1,5 +1,7 @@
 <!-- Sidebar -->
-<?php use App\Helpers\Helper;?>
+<?php use App\Helpers\Helper;
+$page_content = Helper::pageContent('buy-property-list-search');
+?>
 @if (Route::is(['property-list']))
 <div class="col-xl-3 theiaStickySidebar">
     @else
@@ -9,7 +11,7 @@
             <!-- Advanced Search -->
             <div class="collapse-card">
                 <h4 class="card-title">
-                    <a class="collapsed" data-bs-toggle="collapse" href="#advance-search" aria-expanded="false">{!! Helper::pageContent('buy-property-list-search','buy-property-list-search title') !!}</a>
+                    <a class="collapsed" data-bs-toggle="collapse" href="#advance-search" aria-expanded="false">{!! $page_content['buy-property-list-search title'] !!}</a>
                 </h4>
                 <div id="advance-search" class="card-collapse collapse show">
                     <ul class="show-list">
@@ -55,8 +57,8 @@
 
             <!-- Apply filter -->
             <div class="apply-btn">
-                <button type="button" class="btn btn-primary" id="apply-filters">{!! Helper::pageContent('buy-property-list-search','buy-property-list-search apply-filters') !!}</button>
-                <a href="javascript:void(0);" class="reset-btn">{!! Helper::pageContent('buy-property-list-search','buy-property-list-search reset-btn') !!} </a>
+                <button type="button" class="btn btn-primary" id="apply-filters">{!! $page_content['buy-property-list-search apply-filters'] !!}</button>
+                <a href="javascript:void(0);" class="reset-btn">{!! $page_content['buy-property-list-search reset-btn'] !!} </a>
             </div>
             <!-- /Apply filter -->
 

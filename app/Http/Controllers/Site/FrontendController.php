@@ -14,14 +14,15 @@ use App\Models\Membership;
 use App\Models\Amenity;
 use App\Models\PropertyReview;
 use App\Models\ContactUs;
-
+use App\Helpers\Helper;
 
 class FrontendController extends Controller
 {
     public function buyPropertyGrid(Request $request)
     {
         $properties = Property::with('category')->active()->paginate(9);
-        return view('site.buy-property-grid', compact('properties'));
+        $page_content = Helper::pageContent('buy-property-grid');
+        return view('site.buy-property-grid', compact('properties','page_content'));
     }
     
     public function scopeActive($query)
@@ -46,10 +47,20 @@ class FrontendController extends Controller
     public function home()
     {
         $properties = Property::feature()->take(3)->get();
-
-        return view('site.index', compact('properties'));
+        $page_content = Helper::pageContent('home');
+        return view('site.index', compact('properties','page_content'));
     }
 
+    public function about_us()
+    {
+        $page_content = Helper::pageContent('about-us');
+        return view('site.about-us',compact('page_content'));
+    }
+    public function buy_property_list()
+    {
+        $page_content = Helper::pageContent('buy-property-list');
+        return view('site.buy-property-list',compact('page_content'));
+    }
     public function searchProperties(Request $request)
     {
         $query = Property::query();
@@ -85,7 +96,8 @@ class FrontendController extends Controller
             $amenities = null;
         }
         $propertyReviewes = PropertyReview::where('property_id', $id)->active()->approved()->get();
-        return view('site.buy-details', compact('property', 'amenities','propertyReviewes'));
+        $page_content = Helper::pageContent('buy-property-detail');
+        return view('site.buy-details', compact('property', 'amenities','propertyReviewes','page_content'));
     }
 
     public function propertyReviews(Request $request)
@@ -120,7 +132,8 @@ class FrontendController extends Controller
     }
 
     public function contactUs(){
-        return view('site.contact-us');
+        $page_content = Helper::pageContent('contact-us');
+        return view('site.contact-us',compact('page_content'));
     }   
 
     public function contactUsSendEmail(Request $request)
