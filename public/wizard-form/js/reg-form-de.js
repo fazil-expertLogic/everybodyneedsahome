@@ -95,7 +95,7 @@ document.addEventListener("touchstart", function() {},false);
 		//process your form here.
 		$( "#mgsFormSubmit" ).html( '' );
 		$( "#final-step-buttons" ).html( '<div class="h3 text-center text-success"> Sie haben alle Schritte dieses HTML-Formulars erfolgreich beendet </div>' );
-		swal("Good job!", "Sie haben alle Schritte erfolgreich beendet!", "success");
+		swal("Success!", "Sie haben alle Schritte erfolgreich beendet!", "success");
 		
 	}
 	
