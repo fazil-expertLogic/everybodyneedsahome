@@ -29,9 +29,9 @@ Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout')
 // })->name('buy-property-grid');
 
 Route::get('/', [FrontendController::class, 'home'])->name('index');
-Route::get('buy-property-grid', [FrontendController::class, 'buyPropertyGrid'])->name('buy_property_grid');
+Route::get('second-chance-house', [FrontendController::class, 'buyPropertyGrid'])->name('buy_property_grid');
 Route::get('pricing', [FrontendController::class, 'pricing'])->name('pricing');
-Route::get('property-list', [FrontendController::class, 'propertyList'])->name('property-list');
+Route::get('second-chance-house-list', [FrontendController::class, 'propertyList'])->name('property-list');
 Route::get('about-us', [FrontendController::class, 'about_us'])->name('about-us');
 Route::get('buy-property-list', [FrontendController::class, 'buy_property_list'])->name('buy-property-list');
 Route::get('property-detail/{id}', [FrontendController::class, 'propertyDetail'])->name('property-detail');
