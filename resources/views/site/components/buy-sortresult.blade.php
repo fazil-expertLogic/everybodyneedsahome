@@ -31,24 +31,24 @@
                     </div>
                 </div> --}}
                 <div class="grid-list-view">
-                    @if (Route::is(['buy-property-grid', 'buy-property-list', 'buy-list-map']))
+                    @if (Route::is(['second-chance-house', 'second-chance-house-list']))
                         <ul>
-                            <li><a href="{{ url('buy-property-grid') }}"
-                                    class="{{ Request::is('buy-property-grid') ? 'active' : '' }}"><i
+                            <li><a href="{{ url('second-chance-house') }}"
+                                    class="{{ Request::is('second-chance-house') ? 'active' : '' }}"><i
                                         class="bx bx-grid"></i></a></li>
-                            <li><a href="{{ url('property-list') }}"
-                                    class="{{ Request::is('property-list') ? 'active' : '' }}"><i
+                            <li><a href="{{ url('second-chance-house-list') }}"
+                                    class="{{ Request::is('second-chance-house-list') ? 'active' : '' }}"><i
                                         class="bx bx-list-ul"></i></a></li>
                             
                         </ul>
                     @endif
-                    @if (!Route::is(['buy-property-grid', 'buy-property-list', 'buy-list-map']))
+                    @if (!Route::is(['second-chance-house', 'second-chance-house-list']))
                         <ul>
-                            <li><a href="{{ url('buy-property-grid') }}"
-                                    class="{{ Request::is('buy_property_grid') ? 'active' : '' }}"><i
+                            <li><a href="{{ url('second-chance-house') }}"
+                                    class="{{ Request::is('second-chance-house') ? 'active' : '' }}"><i
                                         class="bx bx-grid"></i></a></li>
-                            <li><a href="{{ url('property-list') }}"
-                                    class="{{ Request::is('property-list') ? 'active' : '' }}"><i
+                            <li><a href="{{ url('second-chance-house-list') }}"
+                                    class="{{ Request::is('second-chance-house-list') ? 'active' : '' }}"><i
                                         class="bx bx-list-ul"></i></a></li>
                           
                         </ul>
