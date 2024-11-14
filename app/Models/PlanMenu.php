@@ -19,4 +19,10 @@ class PlanMenu extends Model
         return $query->where('status', 1);
     }
 
+   
+
+    public function planPermissions()
+    {
+        return $this->hasMany(PlanPermission::class, 'plan_menu_id');
+    }
 }

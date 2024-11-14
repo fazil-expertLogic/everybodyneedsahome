@@ -30,15 +30,9 @@ class PlanPermissionsController extends Controller
         $allow_edit = Helper::check_rights(6)->is_edit;
         $allow_delete = Helper::check_rights(6)->is_delete;
 
-        $query = Role::active();
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $query->where(function ($q) use ($search) {
-                $q->where('name', 'LIKE', '%' . $search . '%');
-            });
-        }
-        $roles = $query->paginate(10);
-        return view('livewire.role.index', compact('roles','allow_show','allow_create','allow_edit','allow_delete'));
+        $plan_permissions =  PlanPermission::with('membership','planMenu')->get();
+
+    return view('livewire.plan_permissions.index', compact('plan_permissions','allow_show','allow_create','allow_edit','allow_delete'));
     }
 
     /**
