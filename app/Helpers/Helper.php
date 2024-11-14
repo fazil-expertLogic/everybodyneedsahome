@@ -32,10 +32,9 @@ class Helper
     public static function check_plan_rights($plan_right_id)
     {
         $plan_role_right_actions = PlanPermission::where('plan_menu_id', $plan_right_id)
-            ->where('plan_id', Auth::user()->purchasePlans->id)
+            ->where('plan_id', Auth::user()->purchasePlans[0]->membership_id)
             ->select('is_view')
             ->first();
-            
         return $plan_role_right_actions ?? (object)[
             'is_view' => false,
         ];

@@ -96,8 +96,8 @@
                                         </a>
                                         @endif
                                         @if($allow_show)
-                                        <a href="{{ route('assign_permission', $membership->id) }}" class="btn btn-warning btn-sm badge" title="Show">
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        <a href="{{ route('assign_permission', $membership->id) }}" class="btn btn-info btn-sm badge" title="Show">
+                                            <i class="fa fa-key" aria-hidden="true"></i>
                                         </a>
                                         @endif
 
