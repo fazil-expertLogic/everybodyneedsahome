@@ -12,7 +12,8 @@ class Menu extends Model
     protected $fillable = [
         'name',
         'icon',
-        'route'
+        'route',
+        'order_by'
     ];
 
     public function softDeleteRelations()
@@ -23,7 +24,7 @@ class Menu extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('status', 1);
+        return $query->where('status', 1)->orderBy('order_by','asc');
     }
     public function permissions()
     {
