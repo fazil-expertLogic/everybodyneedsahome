@@ -375,6 +375,7 @@ class GuestController extends Controller
     
     public function guest_registration_website()
     {
-        return view('site.guest-registration');
+        $page_content = Helper::pageContent('guest-registration');
+        return view('site.guest-registration',compact('page_content'));
     }
 }
