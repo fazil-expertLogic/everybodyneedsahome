@@ -18,6 +18,8 @@ use App\Http\Controllers\Dashboard\PropertyReviewController;
 use App\Http\Controllers\Dashboard\GuestController;
 use App\Http\Controllers\Dashboard\PageContentController;
 use App\Http\Controllers\Dashboard\PurchasePlanController;
+use App\Http\Controllers\Dashboard\PlanMenusController;
+
 
 use App\Http\Controllers\Site\CustomAuthController;
 use App\Http\Controllers\Site\FrontendController;
@@ -112,5 +114,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['permission:20']], function () {
         Route::resource('purchase_plans', PurchasePlanController::class);
     });
+    Route::resource('plan_menus', PlanMenusController::class);
+    
     
 });
