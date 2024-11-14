@@ -27,8 +27,6 @@
                                                         <div class="help-block with-errors">{{ $errors->first('name') }}</div>
                                                     @endif
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_name" @if ($errors->has('route')) has-error has-danger @endif>
                                                     <label for="route" class="form-label">Route<span class="text-danger">*</span></label>
                                                     <input type="text" name="route" class="form-control py-2" id="route" placeholder="route" value="{{old('route',$menu->route)}}" required data-error="Please enter route">
@@ -37,8 +35,6 @@
                                                         <div class="help-block with-errors">{{ $errors->first('route') }}</div>
                                                     @endif
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-6 col-lg-6">                                             
                                                 <div class="form-group valid_use_name" @if ($errors->has('icon')) has-error has-danger @endif>
                                                     <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
                                                     <input type="text" name="icon" class="form-control py-2" id="icon" placeholder="icon" value="{{old('icon',$menu->icon)}}" required data-error="Please enter icon">
@@ -47,18 +43,8 @@
                                                         <div class="help-block with-errors">{{ $errors->first('icon') }}</div>
                                                     @endif
                                                 </div>
-                                                
                                             </div>
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_order_by @if ($errors->has('order_by')) has-error has-danger @endif">
-                                                    <label for="order_by" class="form-label">Order By<span class="text-danger">*</span></label>
-                                                    <input type="number" name="order_by" class="form-control py-2" id="order_by" placeholder="order by" value="{{old('order_by',$menu->order_by)}}" required data-error="Please enter order by">
-                                                    <div class="help-block with-errors"></div>
-                                                    @if ($errors->has('order_by'))
-                                                    <div class="help-block with-errors">{{ $errors->first('order_by') }}</div>
-                                                    @endif
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                         
                                         <div class="form-group signUpForm-step-1" style="margin-top: 50px;">

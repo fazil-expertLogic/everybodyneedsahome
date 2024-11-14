@@ -24,29 +24,15 @@
                                                     <input type="text" name="name" class="form-control py-2" id="name" placeholder="name" value="{{$menu->name}}" required data-error="Please enter name" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_name">
                                                     <label for="route" class="form-label">Route<span class="text-danger">*</span></label>
                                                     <input type="text" name="route" class="form-control py-2" id="route" placeholder="route" value="{{$menu->route}}" required data-error="Please enter route" disabled>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_use_name">
                                                     <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
                                                     <input type="text" name="icon" class="form-control py-2" id="icon" placeholder="icon" value="{{$menu->icon}}" required data-error="Please enter icon" disabled>
                                                     <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-lg-6">
-                                                <div class="form-group valid_order_by @if ($errors->has('order_by')) has-error has-danger @endif">
-                                                    <label for="order_by" class="form-label">Order By<span class="text-danger">*</span></label>
-                                                    <input type="number" name="order_by" class="form-control py-2" id="order_by" disabled placeholder="order by" value="{{old('order_by',$menu->order_by)}}" required data-error="Please enter order by">
-                                                    <div class="help-block with-errors"></div>
-                                                    @if ($errors->has('order_by'))
-                                                    <div class="help-block with-errors">{{ $errors->first('order_by') }}</div>
-                                                    @endif
                                                 </div>
                                             </div>
                                             

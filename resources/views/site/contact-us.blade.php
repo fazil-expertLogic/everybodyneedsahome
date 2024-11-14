@@ -1,4 +1,5 @@
 <?php $page = 'contact-us'; 
+use App\Helpers\Helper;
 ?>
 @extends('site.layout.mainlayout')
 @section('content')
@@ -26,7 +27,9 @@
                                     <div class="card-body contact-info flex-fill">
                                         <h3>{!! $page_content['contact-section-h3_1'] !!}</h3>
                                         <p>{!! $page_content['contact-section-p_1'] !!}</p>
+                                        @if(Helper::check_plan_rights(1)->is_view)
                                         <a href="javascript:void(0);" class="btn-primary d-inline-block">{!! $page_content['contact-section-a_1'] !!}</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
