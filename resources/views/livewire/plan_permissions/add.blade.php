@@ -6,7 +6,7 @@
             <div class="col-sm-12">
                 <div class="form-wrap clearfix">
                     <div class="col-md-12">
-                        <form method="post" action="{{ route('permissions.store') }}" id="signUpForm" class="signUpForm"
+                        <form method="post" action="{{ route('plan_permissions.store') }}" id="signUpForm" class="signUpForm"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="signUpForm-step-holder">
@@ -14,45 +14,28 @@
                                     <fieldset>
                                         <h3 class="section-form-title">Create New Permissions</h3>
                                         <div class="help-block with-errors mandatory-error"></div>
-
                                         <div class="row">
                                             <div class="col-sm-6 col-lg-6">
                                                 <div class="form-group valid_cus_is_child">
-                                                    <label for="role" class="form-label">Role<span class="text-danger">*</span></label>
-                                                    <select name="role" class="form-select" id="role" aria-label="" required data-error="Please select Role">
+                                                    <label for="plan_id" class="form-label">Plan<span class="text-danger">*</span></label>
+                                                    <select name="plan_id" class="form-select" id="plan_id" aria-label="" required data-error="Please select plan_id">
                                                       <option value="">Please Select</option>
-                                                        @foreach ($roles as $role)
-                                                            <option value="{{$role->id}}">{{$role->name}}</option>
+                                                        @foreach ($membership as $member_ship_id => $member_ship)
+                                                        <option value="{{ $member_ship_id }}">{{ $member_ship }}</option>
                                                         @endforeach
                                                     </select>
                                                     <div class="help-block with-errors"></div>
                                                   </div>
                                             </div>
                                             <div class="col-sm-12 col-lg-12">
-                                                @foreach ( $menus as $key => $menu)
-                                                    <h3>{{ $menu->name }} </h3>
-                                                    <input type="hidden" id="menu_id" name="menu_id[{{$key}}]" value="{{$menu->id}}">
+                                                @foreach ( $plan_menus as $key => $plan_menu)
+                                                    <h3>{{ $plan_menu->name }} </h3>
+                                                    <input type="hidden" id="plan_menu_id" name="plan_menu_id[{{$key}}]" value="{{$plan_menu->id}}">
                                                     <div class="row">
                                                         <div class="col-sm-1 col-lg-1"></div>
                                                         <div class="col-sm-2 col-lg-2">
-                                                            <input type="checkbox" id="is_listing" name="permissions[{{$menu->id}}][is_listing]" value="1">
-                                                            <label for="is_listing"> Listing </label>
-                                                        </div>
-                                                        <div class="col-sm-2 col-lg-2">
-                                                            <input type="checkbox" id="is_show" name="permissions[{{$menu->id}}][is_show]" value="1">
-                                                            <label for="is_show"> show </label>
-                                                        </div>
-                                                        <div class="col-sm-2 col-lg-2">
-                                                            <input type="checkbox" id="is_create" name="permissions[{{$menu->id}}][is_create]" value="1">
-                                                            <label for="is_create"> Create </label>
-                                                        </div>
-                                                        <div class="col-sm-2 col-lg-2">
-                                                            <input type="checkbox" id="is_edit" name="permissions[{{$menu->id}}][is_edit]" value="1">
-                                                            <label for="is_edit"> Edit </label>
-                                                        </div>
-                                                        <div class="col-sm-2 col-lg-2">
-                                                            <input type="checkbox" id="is_delete" name="permissions[{{$menu->id}}][is_delete]" value="1">
-                                                            <label for="is_delete"> Delete</label>
+                                                            <input type="checkbox" id="is_view" name="permissions[{{$plan_menu->id}}][is_view]" value="1">
+                                                            <label for="is_view"> Is View </label>
                                                         </div>
                                                         <div class="col-sm-1 col-lg-1"></div>
                                                     </div>

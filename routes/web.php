@@ -19,6 +19,7 @@ use App\Http\Controllers\Dashboard\GuestController;
 use App\Http\Controllers\Dashboard\PageContentController;
 use App\Http\Controllers\Dashboard\PurchasePlanController;
 use App\Http\Controllers\Dashboard\PlanMenusController;
+use App\Http\Controllers\Dashboard\PlanPermissionsController;
 
 
 use App\Http\Controllers\Site\CustomAuthController;
@@ -115,6 +116,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('purchase_plans', PurchasePlanController::class);
     });
     Route::resource('plan_menus', PlanMenusController::class);
-    
+    Route::resource('plan_permissions', PlanPermissionsController::class);
     
 });
