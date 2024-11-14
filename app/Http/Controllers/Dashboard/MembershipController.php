@@ -186,6 +186,7 @@ class MembershipController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'plan_id' => 'required',
+                'plan_menu_id' => 'required|array',
                 'permissions' => 'array',
                 'permissions.*.is_view' => 'nullable|boolean',
             ]);
@@ -195,7 +196,7 @@ class MembershipController extends Controller
             
             // -------------------- permissions --------------------------
             $permissions = $request->input('permissions', []);
-
+            PlanPermission::where('plan_id', $request->plan_id)->update(['is_view' => 0]);
             foreach ($permissions as $menuId => $permissionData) {
 
                 $permissionData = array_merge([
@@ -214,11 +215,11 @@ class MembershipController extends Controller
             }
             // -------------------- permissions --------------------------
             DB::commit();
-            return redirect()->route('memberships.index')->with('success', 'Providers create successfully.');
+            return redirect()->route('memberships.index')->with('success', 'Permissions assigned successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
             dd($e->getMessage());
-            return redirect()->back()->withErrors(['error' => 'An error occurred while updating the property. Please try again.']);
+            return redirect()->back()->withErrors(['error' => 'An error occurred: ' . $e->getMessage()]);
         }
     }
 
