@@ -1,5 +1,7 @@
 <?php $page = 'guest-registration'; ?>
 @extends('site.layout.mainlayout')
+
+@section(section: 'content')
 <link rel="icon" href="{{ asset('build/assets/images/brand/favicon.ico') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('build/assets/images/brand/favicon.ico') }}" type="image/x-icon">
     <link id="style" href="{{ asset('build/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -18,16 +20,15 @@
     <!-- Template Main Stylesheets -->
     <link rel="stylesheet" href="{{ asset('wizard-form/css/reg-form.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('wizard-form/css/reg-form-modern.css') }}" type="text/css">
-@section(section: 'content')
 @component('site.components.breadcrumb')
 @slot('title')
-{!! $page_content['about-us title'] !!}
+{!! $page_content['guest-registration title'] !!}
 @endslot
 @slot('li_1')
-{!! $page_content['about-us li_1'] !!}
+{!! $page_content['guest-registration li_1'] !!}
 @endslot
 @slot('li_2')
-{!! $page_content['about-us li_2'] !!}
+{!! $page_content['guest-registration li_2'] !!}
 @endslot
 @endcomponent
 
