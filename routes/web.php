@@ -18,6 +18,9 @@ use App\Http\Controllers\Dashboard\PropertyReviewController;
 use App\Http\Controllers\Dashboard\GuestController;
 use App\Http\Controllers\Dashboard\PageContentController;
 use App\Http\Controllers\Dashboard\PurchasePlanController;
+use App\Http\Controllers\Dashboard\PlanMenusController;
+use App\Http\Controllers\Dashboard\PlanPermissionsController;
+
 
 use App\Http\Controllers\Site\CustomAuthController;
 use App\Http\Controllers\Site\FrontendController;
@@ -44,13 +47,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::group(['middleware' => ['permission:2']], function () {
-        Route::get('properties', [PropertiesController::class, 'index'])->name('properties.index');
-        Route::get('properties/add', [PropertiesController::class, 'add'])->name('properties.add');
-        Route::post('properties/store', [PropertiesController::class, 'store'])->name('properties.store');
-        Route::get('properties/edit/{id}', [PropertiesController::class, 'edit'])->name('properties.edit');
-        Route::post('properties/update', [PropertiesController::class, 'update'])->name('properties.update');
-        Route::get('properties/{id}', [PropertiesController::class, 'show'])->name('properties.show');
-        Route::DELETE('properties/destroy/{id}', [PropertiesController::class, 'destroy'])->name('properties.destroy');
+        Route::get('my-properties', [PropertiesController::class, 'index'])->name('properties.index');
+        Route::get('my-properties/add', [PropertiesController::class, 'add'])->name('properties.add');
+        Route::post('my-properties/store', [PropertiesController::class, 'store'])->name('properties.store');
+        Route::get('my-properties/edit/{id}', [PropertiesController::class, 'edit'])->name('properties.edit');
+        Route::post('my-properties/update', [PropertiesController::class, 'update'])->name('properties.update');
+        Route::get('my-properties/{id}', [PropertiesController::class, 'show'])->name('properties.show');
+        Route::DELETE('my-properties/destroy/{id}', [PropertiesController::class, 'destroy'])->name('properties.destroy');
         
     });
 
@@ -84,6 +87,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => ['permission:11']], function () {
         Route::resource('memberships', MembershipController::class);
+        Route::get('assign-permission/{id}', [MembershipController::class, 'assign_permission'])->name('assign_permission');
+        Route::post('post-assign-permission', [MembershipController::class, 'post_assign_permission'])->name('post_assign_permission');
+
     });
 
     Route::group(['middleware' => ['permission:15']], function () {
@@ -112,5 +118,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['permission:20']], function () {
         Route::resource('purchase_plans', PurchasePlanController::class);
     });
-    
+    Route::resource('plan_menus', PlanMenusController::class);
+    // Route::resource('plan_permissions', PlanPermissionsController::class);
+
 });

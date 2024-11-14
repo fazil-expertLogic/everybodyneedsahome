@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Helpers\Helper;
 use App\Models\Membership;
+use App\Models\PlanMenu;
+use App\Models\PlanPermission;
 
 class MembershipController extends Controller
 {
@@ -167,4 +169,58 @@ class MembershipController extends Controller
         $membership->softDeleteRelations();
         return redirect()->route('memberships.index')->with('success', 'user have been soft deleted successfully');
     }
+
+    public function assign_permission($plan_id)
+    {
+        
+        $membership = Membership::NameWithPrice();
+        $plan_menus = PlanMenu::active()->get();
+        $plan_permissions = PlanPermission::where('plan_id',$plan_id)->get();
+
+        return view('livewire.memberships.plan_permission',compact('membership','plan_menus','plan_permissions','plan_id'));
+    }
+
+    public function post_assign_permission(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $validator = Validator::make($request->all(), [
+                'plan_id' => 'required',
+                'plan_menu_id' => 'required|array',
+                'permissions' => 'array',
+                'permissions.*.is_view' => 'nullable|boolean',
+            ]);
+            if ($validator->fails()) {
+                return response()->json($validator->errors(), 422);
+            }
+            
+            // -------------------- permissions --------------------------
+            $permissions = $request->input('permissions', []);
+            PlanPermission::where('plan_id', $request->plan_id)->update(['is_view' => 0]);
+            foreach ($permissions as $menuId => $permissionData) {
+
+                $permissionData = array_merge([
+                    'is_view' => 0,
+                ], $permissionData);
+
+                PlanPermission::updateOrCreate(
+                    [
+                        'plan_id' => $request->plan_id,
+                        'plan_menu_id' => $menuId,
+                    ],
+                    [
+                        'is_view' => $permissionData['is_view'],
+                    ]
+                );
+            }
+            // -------------------- permissions --------------------------
+            DB::commit();
+            return redirect()->route('memberships.index')->with('success', 'Permissions assigned successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'An error occurred: ' . $e->getMessage()]);
+        }
+    }
+
 }

@@ -50,5 +50,16 @@ class Membership extends Model
             return [$membership->id => $membership->name . ' - ' . $membership->price];
         });
     }
+    public function membership()
+    {
+        return $this->belongsTo(Membership::class, 'membership_id');
+    }
 
+    /**
+     * Get the plan menu associated with this plan permission.
+     */
+    public function planMenu()
+    {
+        return $this->belongsTo(PlanMenu::class, 'plan_menu_id');
+    }
 }

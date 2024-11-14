@@ -26,13 +26,13 @@
 @component('site.components.loader')
 @endcomponent
 <!-- Main Wrapper -->
-@if (!Route::is(['reset-password', 'forgot-password', 'login', 'register', 'about-us','clients.client_registration','guests.guest_registration','providers.provider_registration']))
+@if (!Route::is(['reset-password', 'forgot-password', 'login', 'register', 'about-us']))
     <div class="main-wrapper">
 @endif
 @if (Route::is(['about-us']))
     <div class="main-wrapper aboutus-page">
 @endif
-@if (Route::is(['reset-password', 'forgot-password', 'login', 'register','clients.client_registration','guests.guest_registration','providers.provider_registration']))
+@if (Route::is(['reset-password', 'forgot-password', 'login', 'register']))
     <div class="main-wrapper login-body">
         <div class="container">
 @endif
@@ -51,9 +51,7 @@
         'error-404',
         'error-500',
         'maintenance',
-        'clients.client_registration',
-        'providers.provider_registration',
-        'guests.guest_registration'
+        
     ]))
     @include('site.layout.partials.footer')
 @endif
@@ -71,9 +69,7 @@
         'error-404',
         'error-500',
         'maintenance',
-        'clients.client_registration',
-        'providers.provider_registration',
-        'guests.guest_registration'
+
     ]))
     @component('site.components.scrolltotop')
     @endcomponent
