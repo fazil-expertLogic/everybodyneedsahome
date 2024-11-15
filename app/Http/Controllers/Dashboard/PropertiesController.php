@@ -337,7 +337,7 @@ class PropertiesController extends Controller
     {
         // Fetch data dynamically based on request filters
         $query = DB::table('properties')
-            ->select('id', 'property_name', 'property_description', 'property_address', 'city', 'state', 'zipcode','created_at');
+            ->select('id', 'property_description','property_address','city','state','zipcode','property_management_address','property_management_city','property_management_state','property_management_zipcode','property_type','number_of_beds','rent_bed','bed_deposit','bed_fee','number_of_bedrooms','stay_one_bedroom','bedroom_deposit','bedroom_fee','number_of_bedrooms_house','number_of_bath_house','rent_unit','unit_deposit','unit_fee','is_property_occupied','main_picture','more_pictures','is_feature','is_new','created_by','category_id','property_amenities','created_at');
     
         // Apply filters (if passed in the request)
         if ($request->has('start_date')) {
@@ -349,46 +349,58 @@ class PropertiesController extends Controller
         }
     
         // Get the filtered data
-        $properties = $query->get();
+        $data = $query->get();
     
         // Check if there are any users to export
-        if ($properties->isEmpty()) {
+        if ($data->isEmpty()) {
             return response()->json(['message' => 'No users found for the given criteria.'], 404);
         }
     
         // Prepare CSV headers
-        $csvData = "ID,User Type,First Name,Last Name,Email,Billing Address,City,State,Zip,Phone,Promo Opt Out,Created At\n";
+        $csvData = "ID,Property Description,Property Address,City,State,Zipcode,Property Management Address,Property Management City,Property Management State,Property Management Zipcode,Property Type,Number Of Beds,Rent Bed,Bed Deposit,Bed Fee,Number Of Bedrooms,Stay One Bedroom,Bedroom Deposit,Bedroom Fee,Number Of Bedrooms House,Number Of Bath House,Rent Unit,Unit Deposit,Unit Fee,Is Property Occupied,Main Picture,More Pictures,Is Feature,Is New,Created By,Category Id,Property Amenities,Created At\n";
     
         // Loop through the users and append data to CSV
-        foreach ($properties as $property) {
+        foreach ($data as $value) {
             // Format the creation date
-            $createdAt = Carbon::parse($property->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
-            
-            // Determine promotion option
-            // $promotionOption = $user->promotion_opt == '1' ? 'Yes' : 'No';
-            
-            // Escape potentially harmful characters for CSV injection
-            // $firstname = str_replace(["=", "+", "-", "@"], '', $user->firstname);
-            // $lastname = str_replace(["=", "+", "-", "@"], '', $user->lastname);
-            // $email = str_replace(["=", "+", "-", "@"], '', $user->email);
-    
+            $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
             // Append data to CSV
-            $csvData .= "{$property->id},"
-                . "{$property->property_name},"
-                // . "{$firstname},"
-                // . "{$lastname},"
-                // . "{$email},"
-                // . "{$user->billing_address},"
-                // . "{$user->city},"
-                // . "{$user->state},"
-                // . "{$user->zip},"
-                // . "{$user->phone},"
-                // . "{$promotionOption},"
+            $csvData .= "{$value->id},"
+                . "{$value->property_description},"
+                . "{$value->property_address},"
+                . "{$value->city},"
+                . "{$value->state},"
+                . "{$value->zipcode},"
+                . "{$value->property_management_address},"
+                . "{$value->property_management_city},"
+                . "{$value->property_management_state},"
+                . "{$value->property_management_zipcode},"
+                . "{$value->property_type},"
+                . "{$value->number_of_beds},"
+                . "{$value->rent_bed},"
+                . "{$value->bed_deposit},"
+                . "{$value->bed_fee},"
+                . "{$value->number_of_bedrooms},"
+                . "{$value->stay_one_bedroom},"
+                . "{$value->bedroom_deposit},"
+                . "{$value->bedroom_fee},"
+                . "{$value->number_of_bedrooms_house},"
+                . "{$value->number_of_bath_house},"
+                . "{$value->rent_unit},"
+                . "{$value->unit_deposit},"
+                . "{$value->unit_fee},"
+                . "{$value->is_property_occupied},"
+                . "{$value->main_picture},"
+                . "{$value->more_pictures},"
+                . "{$value->is_feature},"
+                . "{$value->is_new},"
+                . "{$value->created_by},"
+                . "{$value->category_id},"
+                . "{$value->property_amenities},"
                 . "{$createdAt}\n";
         }
     
         // Set the filename with a timestamp
-        $fileName = 'users_export_' . now()->format('Y_m_d_H_i_s') . '.csv';
+        $fileName = 'Property_export_' . now()->format('Y_m_d_H_i_s') . '.csv';
     
         // Return the CSV response with proper headers
         return Response::make($csvData, 200, [

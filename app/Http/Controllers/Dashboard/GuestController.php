@@ -383,11 +383,9 @@ class GuestController extends Controller
     
     public function export(Request $request)
     {
-        // Fetch data dynamically based on request filters
-        $query = DB::table('properties')
-            ->select('id', 'property_name', 'property_description', 'property_address', 'city', 'state', 'zipcode','created_at');
-    
-        // Apply filters (if passed in the request)
+        $query = DB::table('guests')
+            ->select('id','name','ssn','dob','address','address2','city','state','zip','phone','email','evicted','eviction_property_name','eviction_manager_name','eviction_address','eviction_phone','eviction_date','eviction_comments','convicted','conviction_year','conviction_charge','conviction_sentence','sex_offender','probation','probation_officer_name','probation_officer_phone','probation_officer_email','ref1_name','ref1_phone','ref1_email','ref2_name','ref2_phone','ref2_email','ref3_name','ref3_phone','ref3_email','emergency_contact_name','emergency_contact_phone','emergency_contact_email','employer_name','employer_phone','income','expenses','rental_budget','user_id','created_at');
+
         if ($request->has('start_date')) {
             $query->where('created_at', '>=', $request->start_date);
         }
@@ -396,47 +394,93 @@ class GuestController extends Controller
             $query->where('created_at', '<=', $request->end_date);
         }
     
-        // Get the filtered data
-        $properties = $query->get();
+
+        $data = $query->get();
     
         // Check if there are any users to export
-        if ($properties->isEmpty()) {
+        if ($data->isEmpty()) {
             return response()->json(['message' => 'No users found for the given criteria.'], 404);
         }
     
         // Prepare CSV headers
-        $csvData = "ID,User Type,First Name,Last Name,Email,Billing Address,City,State,Zip,Phone,Promo Opt Out,Created At\n";
+        $csvData = "ID,Tenant Name,Social Security Number,Date Of Birth,Address,Address2,City,State,Zip Code,Phone,Email,Evicted,Eviction Property Name,Eviction Manager Name,Eviction Address,Eviction Phone,Eviction Date,Eviction Comments,Convicted,Conviction Year,Conviction Charge,Conviction Sentence,Sex Offender,Probation,Probation Officer Name,Probation Officer Phone,Probation Officer Email,Ref1 Name,Ref1 Phone,Ref1 Email,Ref2 Name,Ref2 Phone,Ref2 Email,Ref3 Name,Ref3 Phone,Ref3 Email,Emergency Contact Name,Emergency Contact Phone,Emergency Contact Email,Employer Name,Employer Phone,Monthly Income ($),Monthly Expenses ($),Monthly Rental Budget ($),User ID,Created At\n";
+
     
         // Loop through the users and append data to CSV
-        foreach ($properties as $property) {
+        foreach ($data as $value) {
             // Format the creation date
-            $createdAt = Carbon::parse($property->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
+            $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
+
+            if($value->evicted == 1){
+                $evicted = 'Yes';
+            }else{
+                $evicted = 'No';
+            }
+
+            if($value->convicted == 1){
+                $convicted = 'Yes';
+            }else{
+                $convicted = 'No';
+            }
+
+            if($value->sex_offender == 1){
+                $sex_offender = 'Yes';
+            }else{
+                $sex_offender = 'No';
+            }
             
-            // Determine promotion option
-            // $promotionOption = $user->promotion_opt == '1' ? 'Yes' : 'No';
-            
-            // Escape potentially harmful characters for CSV injection
-            // $firstname = str_replace(["=", "+", "-", "@"], '', $user->firstname);
-            // $lastname = str_replace(["=", "+", "-", "@"], '', $user->lastname);
-            // $email = str_replace(["=", "+", "-", "@"], '', $user->email);
     
             // Append data to CSV
-            $csvData .= "{$property->id},"
-                . "{$property->property_name},"
-                // . "{$firstname},"
-                // . "{$lastname},"
-                // . "{$email},"
-                // . "{$user->billing_address},"
-                // . "{$user->city},"
-                // . "{$user->state},"
-                // . "{$user->zip},"
-                // . "{$user->phone},"
-                // . "{$promotionOption},"
+            $csvData .= "{$value->id},"
+                . "{$value->name},"
+                . "{$value->ssn},"
+                . "{$value->dob},"
+                . "{$value->address},"
+                . "{$value->address2},"
+                . "{$value->city},"
+                . "{$value->state},"
+                . "{$value->zip},"
+                . "{$value->phone},"
+                . "{$value->email},"
+                . "{$evicted},"
+                . "{$value->eviction_property_name},"
+                . "{$value->eviction_manager_name},"
+                . "{$value->eviction_address},"
+                . "{$value->eviction_phone},"
+                . "{$value->eviction_date},"
+                . "{$value->eviction_comments},"
+                . "{$convicted},"
+                . "{$value->conviction_year},"
+                . "{$value->conviction_charge},"
+                . "{$value->conviction_sentence},"
+                . "{$sex_offender},"
+                . "{$value->probation},"
+                . "{$value->probation_officer_name},"
+                . "{$value->probation_officer_phone},"
+                . "{$value->probation_officer_email},"
+                . "{$value->ref1_name},"
+                . "{$value->ref1_phone},"
+                . "{$value->ref1_email},"
+                . "{$value->ref2_name},"
+                . "{$value->ref2_phone},"
+                . "{$value->ref2_email},"
+                . "{$value->ref3_name},"
+                . "{$value->ref3_phone},"
+                . "{$value->ref3_email},"
+                . "{$value->emergency_contact_name},"
+                . "{$value->emergency_contact_phone},"
+                . "{$value->emergency_contact_email},"
+                . "{$value->employer_name},"
+                . "{$value->employer_phone},"
+                . "{$value->income},"
+                . "{$value->expenses},"
+                . "{$value->rental_budget},"
+                . "{$value->user_id},"
                 . "{$createdAt}\n";
         }
     
         // Set the filename with a timestamp
-        $fileName = 'users_export_' . now()->format('Y_m_d_H_i_s') . '.csv';
+        $fileName = 'Tenant_export_' . now()->format('Y_m_d_H_i_s') . '.csv';
     
         // Return the CSV response with proper headers
         return Response::make($csvData, 200, [

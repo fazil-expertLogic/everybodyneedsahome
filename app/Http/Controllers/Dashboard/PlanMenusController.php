@@ -152,8 +152,8 @@ class PlanMenusController extends Controller
     public function export(Request $request)
     {
         // Fetch data dynamically based on request filters
-        $query = DB::table('properties')
-            ->select('id', 'property_name', 'property_description', 'property_address', 'city', 'state', 'zipcode','created_at');
+        $query = DB::table('plan_menus')
+            ->select('id', 'name','created_at');
     
         // Apply filters (if passed in the request)
         if ($request->has('start_date')) {
@@ -165,46 +165,29 @@ class PlanMenusController extends Controller
         }
     
         // Get the filtered data
-        $properties = $query->get();
+        $data = $query->get();
     
         // Check if there are any users to export
-        if ($properties->isEmpty()) {
+        if ($data->isEmpty()) {
             return response()->json(['message' => 'No users found for the given criteria.'], 404);
         }
     
         // Prepare CSV headers
-        $csvData = "ID,User Type,First Name,Last Name,Email,Billing Address,City,State,Zip,Phone,Promo Opt Out,Created At\n";
+        $csvData = "ID,Plan Menu,Created At\n";
     
         // Loop through the users and append data to CSV
-        foreach ($properties as $property) {
+        foreach ($data as $value) {
             // Format the creation date
-            $createdAt = Carbon::parse($property->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
-            
-            // Determine promotion option
-            // $promotionOption = $user->promotion_opt == '1' ? 'Yes' : 'No';
-            
-            // Escape potentially harmful characters for CSV injection
-            // $firstname = str_replace(["=", "+", "-", "@"], '', $user->firstname);
-            // $lastname = str_replace(["=", "+", "-", "@"], '', $user->lastname);
-            // $email = str_replace(["=", "+", "-", "@"], '', $user->email);
+            $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
     
             // Append data to CSV
-            $csvData .= "{$property->id},"
-                . "{$property->property_name},"
-                // . "{$firstname},"
-                // . "{$lastname},"
-                // . "{$email},"
-                // . "{$user->billing_address},"
-                // . "{$user->city},"
-                // . "{$user->state},"
-                // . "{$user->zip},"
-                // . "{$user->phone},"
-                // . "{$promotionOption},"
+            $csvData .= "{$value->id},"
+                . "{$value->name},"
                 . "{$createdAt}\n";
         }
     
         // Set the filename with a timestamp
-        $fileName = 'users_export_' . now()->format('Y_m_d_H_i_s') . '.csv';
+        $fileName = 'Plan_Menus_export_' . now()->format('Y_m_d_H_i_s') . '.csv';
     
         // Return the CSV response with proper headers
         return Response::make($csvData, 200, [

@@ -120,7 +120,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('states', StatesController::class);
     });
 
-    Route::group(['middleware' => ['permission:15']], function () {
+    Route::group(['middleware' => ['permission:17']], function () {
         Route::resource('propertyReview', PropertyReviewController::class);
         Route::get('propertyReview-export', [PropertyReviewController::class, 'export'])->name('propertyReview.export');
     });
