@@ -46,7 +46,7 @@
                         @csrf
                         <div class="signUpForm-step-holder">
                             <div id="section-1" class="signUpForm-step-wrap">
-                                <h3 class="section-form-title mt-3">Guest Registration</h3>
+                                {{-- <h3 class="section-form-title mt-3">Guest Registration</h3> --}}
                                 <h3 class="section-title">Step 1 of 5</h3>
                                 <fieldset>
                                     <div class="form-layer-steps mgscmultisteptheme2 form-layer-tolal-steps-4">
@@ -147,7 +147,7 @@
                                         <div class="col-sm-6 col-lg-6">
                                             <div class="form-group valid_ssn @if($errors->has('ssn')) has-error has-danger @endif">
                                                 <label for="ssn" class="form-label">Social Security Number<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control py-2 ssn-input-mask" value="{{old('ssn')}}" name="ssn" id="ssn" placeholder="*****" required data-error="Please enter Social Security Number">
+                                                <input type="text" class="form-control py-2 ssn-input-mask" maxlength="11" value="{{old('ssn')}}" name="ssn" id="ssn" placeholder="*****" required data-error="Please enter Social Security Number">
                                                 <div class="help-block with-errors"></div>
                                                 @if ($errors->has('ssn'))
                                                 <div class="help-block with-errors">{{ $errors->first('ssn') }}</div>
@@ -322,7 +322,7 @@
                                         <div class="col-sm-6 col-lg-6">
                                             <div class="form-group valid_zip_code @if($errors->has('zip_code')) has-error has-danger @endif">
                                                 <label for="zip_code" class="form-label">Zip<span class="text-danger">*</span></label>
-                                                <input type="text" name="zip_code" class="form-control py-2 zip-input-mask" id="zip_code" placeholder="Zip Code" value="{{old('zip_code')}}" required data-error="Please enter Zip Code">
+                                                <input type="text" name="zip_code" class="form-control py-2 zip-input-mask"  maxlength="10" id="zip_code" placeholder="Zip Code" value="{{old('zip_code')}}" required data-error="Please enter Zip Code">
                                                 <div class="help-block with-errors"></div>
                                                 @if ($errors->has('zip_code'))
                                                 <div class="help-block with-errors">{{ $errors->first('zip_code') }}</div>
@@ -607,7 +607,7 @@
                                                         <div class="col-sm-6 col-lg-6">
                                                             <div class="form-group valid_probation_officer_phone @if($errors->has('probation_officer_phone')) has-error has-danger @endif">
                                                                 <label for="probation_officer_phone" class="form-label">Supervising Officer Phone<span class="text-danger">*</span></label>
-                                                                <input type="text" name="probation_officer_phone" class="form-control py-2" id="probation_officer_phone" placeholder="Supervising Officer Phone" value="{{old('probation_officer_phone')}}" data-error="Please enter Supervising Officer Phone">
+                                                                <input type="text" name="probation_officer_phone" class="form-control py-2" maxlength="11" id="probation_officer_phone" placeholder="Supervising Officer Phone" value="{{old('probation_officer_phone')}}" data-error="Please enter Supervising Officer Phone">
                                                                 <div class="help-block with-errors"></div>
                                                                 @if ($errors->has('probation_officer_phone'))
                                                                 <div class="help-block with-errors">{{ $errors->first('probation_officer_phone') }}</div>
@@ -706,7 +706,7 @@
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref1_phone @if($errors->has('ref1_phone')) has-error has-danger @endif">
                                             <label for="ref1_phone">Phone<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" value="{{old('ref1_phone')}}" id="ref1_phone" name="ref1_phone" data-error="Please enter Reference 1 - Phone">
+                                            <input type="text" class="form-control" value="{{old('ref1_phone')}}" id="ref1_phone"  maxlength="11" name="ref1_phone" data-error="Please enter Reference 1 - Phone">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('ref1_phone'))
                                             <div class="help-block with-errors">{{ $errors->first('ref1_phone') }}</div>
@@ -733,7 +733,7 @@
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref2_phone @if($errors->has('ref2_phone')) has-error has-danger @endif">
                                             <label for="ref2_phone">Phone<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" value="{{old('ref2_phone')}}" id="ref2_phone" name="ref2_phone" data-error="Please enter Reference 2 - Phone">
+                                            <input type="text" class="form-control" value="{{old('ref2_phone')}}" id="ref2_phone"  maxlength="11" name="ref2_phone" data-error="Please enter Reference 2 - Phone">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('ref2_phone'))
                                             <div class="help-block with-errors">{{ $errors->first('ref2_phone') }}</div>
@@ -760,7 +760,7 @@
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref3_phone @if($errors->has('ref3_phone')) has-error has-danger @endif">
                                             <label for="ref3_phone">Phone<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" value="{{old('ref3_phone')}}" id="ref3_phone" name="ref3_phone" data-error="Please enter Reference 3 - Phone">
+                                            <input type="text" class="form-control" value="{{old('ref3_phone')}}" id="ref3_phone"  maxlength="11" name="ref3_phone" data-error="Please enter Reference 3 - Phone">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('ref3_phone'))
                                             <div class="help-block with-errors">{{ $errors->first('ref3_phone') }}</div>
@@ -790,7 +790,7 @@
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_emergency_contact_phone @if($errors->has('emergency_contact_phone')) has-error has-danger @endif">
                                             <label for="emergency_contact_phone">Emergency Contact Phone<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" value="{{old('emergency_contact_phone')}}" id="emergency_contact_phone" name="emergency_contact_phone" data-error="Please enter Reference 3 - Phone">
+                                            <input type="text" class="form-control" value="{{old('emergency_contact_phone')}}"  maxlength="11" id="emergency_contact_phone" name="emergency_contact_phone" data-error="Please enter Reference 3 - Phone">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('emergency_contact_phone'))
                                             <div class="help-block with-errors">{{ $errors->first('emergency_contact_phone') }}</div>
@@ -882,7 +882,7 @@
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_employer_phone @if($errors->has('employer_phone')) has-error has-danger @endif">
                                             <label for="employer_phone">Employer Phone<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" value="{{old('employer_phone')}}" id="employer_phone" name="employer_phone" data-error="Please Enter Employer Phone">
+                                            <input type="text" class="form-control" value="{{old('employer_phone')}}" id="employer_phone"  maxlength="11" name="employer_phone" data-error="Please Enter Employer Phone">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('employer_phone'))
                                             <div class="help-block with-errors">{{ $errors->first('employer_phone') }}</div>
@@ -890,7 +890,7 @@
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_income @if($errors->has('income')) has-error has-danger @endif">
-                                            <label for="income">Income<span class="text-danger">*</span></label>
+                                            <label for="income"> MONTHLY INCOME($)<span class="text-danger">*</span></label>
                                             <input type="number" class="form-control" value="{{old('income')}}" id="income" name="income" data-error="Please Enter Income">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('income'))
@@ -899,7 +899,7 @@
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_expenses @if($errors->has('expenses')) has-error has-danger @endif">
-                                            <label for="expenses">Expenses<span class="text-danger">*</span></label>
+                                            <label for="expenses">MONTHLY EXPENSES($)<span class="text-danger">*</span></label>
                                             <input type="number" class="form-control" value="{{old('expenses')}}" id="expenses" name="expenses" data-error="Please Enter expenses">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('expenses'))
@@ -908,7 +908,7 @@
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_rental_budget @if($errors->has('rental_budget')) has-error has-danger @endif">
-                                            <label for="rental_budget">Rental Budget<span class="text-danger">*</span></label>
+                                            <label for="rental_budget">MONTHLY RENTAL BUGDET($)<span class="text-danger">*</span></label>
                                             <input type="number" class="form-control" value="{{old('rental_budget')}}" id="rental_budget" name="rental_budget" data-error="Please Enter Rental Budget">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('rental_budget'))
