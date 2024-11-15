@@ -72,12 +72,15 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::group(['middleware' => ['permission:4']], function () {
         Route::resource('providers', ProvidersController::class);
+        Route::get('providers-export', [ProvidersController::class, 'export'])->name('providers.export');
     });
     Route::group(['middleware' => ['permission:5']], function () {
         Route::resource('users', UsersController::class);
+        Route::get('users-export', [UsersController::class, 'export'])->name('users.export');
     });
     Route::group(['middleware' => ['permission:6']], function () {
         Route::resource('roles', RolesController::class);
+        Route::get('roles-export', [RolesController::class, 'export'])->name('roles.export');
     });
 
     // Route::group(['middleware' => ['permission:7']], function () {
@@ -88,6 +91,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => ['permission:8']], function () {
         Route::resource('menus', MenusController::class);
+        Route::get('menus-export', [MenusController::class, 'export'])->name('menus.export');
     });
 
     Route::group(['middleware' => ['permission:10']], function () {
@@ -98,15 +102,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('memberships', MembershipController::class);
         Route::get('assign-permission/{id}', [MembershipController::class, 'assign_permission'])->name('assign_permission');
         Route::post('post-assign-permission', [MembershipController::class, 'post_assign_permission'])->name('post_assign_permission');
+        Route::get('memberships-export', [MembershipController::class, 'export'])->name('memberships.export');
 
     });
 
     Route::group(['middleware' => ['permission:15']], function () {
         Route::resource('amenities', AmenitiesController::class);
+        Route::get('amenities-export', [AmenitiesController::class, 'export'])->name('amenities.export');
     });
 
     Route::group(['middleware' => ['permission:15']], function () {
         Route::resource('states', StatesController::class);
+        Route::get('states-export', [StatesController::class, 'export'])->name('states.export');
     });
 
     Route::group(['middleware' => ['permission:15']], function () {
@@ -115,19 +122,24 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => ['permission:15']], function () {
         Route::resource('propertyReview', PropertyReviewController::class);
+        Route::get('propertyReview-export', [PropertyReviewController::class, 'export'])->name('propertyReview.export');
     });
 
     Route::group(['middleware' => ['permission:18']], function () {
         Route::resource('guests', GuestController::class);
+        Route::get('guests-export', [GuestController::class, 'export'])->name('guests.export');
     });
 
     Route::group(['middleware' => ['permission:19']], function () {
         Route::resource('pageContents', PageContentController::class);
+        Route::get('pageContents-export', [PageContentController::class, 'export'])->name('pageContents.export');
     });       
     Route::group(['middleware' => ['permission:20']], function () {
         Route::resource('purchase_plans', PurchasePlanController::class);
+        Route::get('purchase_plans-export', [PurchasePlanController::class, 'export'])->name('purchase_plans.export');
     });
     Route::resource('plan_menus', PlanMenusController::class);
+    Route::get('plan_menus-export', [PlanMenusController::class, 'export'])->name('plan_menus.export');
     // Route::resource('plan_permissions', PlanPermissionsController::class);
 
 });

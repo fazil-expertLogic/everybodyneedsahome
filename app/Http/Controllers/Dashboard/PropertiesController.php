@@ -335,7 +335,6 @@ class PropertiesController extends Controller
 
     public function export(Request $request)
     {
-        
         // Fetch data dynamically based on request filters
         $query = DB::table('properties')
             ->select('id', 'property_name', 'property_description', 'property_address', 'city', 'state', 'zipcode','created_at');

@@ -74,6 +74,7 @@
                     </div>
                 </div>
             </form>
+            {{--  --------------------------------- export ------------------------------------- --}}
             <form action="{{ route('properties.export') }}" method="get">
                 <div class="mb-3 text-end">
                     <div class="input-group w-100">
@@ -83,13 +84,13 @@
                         <div class="col">
                             <input type="date" name="end_date" class="form-control" placeholder="End Date" value="{{ request('end_date') }}">
                         </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                            
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa fa-file" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
             </form>
+            {{--  --------------------------------- export ------------------------------------- --}}
             <div class="card-body">
                 <div class="table-responsive">
                     <div class="table-responsive">
