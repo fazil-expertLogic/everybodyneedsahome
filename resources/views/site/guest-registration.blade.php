@@ -333,7 +333,7 @@
                                         <div class="col-sm-6 col-lg-6">
                                             <div class="form-group valid_phone @if($errors->has('phone')) has-error has-danger @endif">
                                                 <label for="phone" class="form-label">Phone<span class="text-danger">*</span></label>
-                                                <input type="text" name="phone" class="form-control py-2 phone-input-mask" id="phone" placeholder="Phone" value="{{old('phone')}}" required data-error="Please enter phone">
+                                                <input type='tel' name="phone" class="form-control py-2 phone-input-mask" id="phone" placeholder="Phone" value="{{old('phone')}}" required data-error="Please enter phone">
                                                 <div class="help-block with-errors"></div>
                                                 @if ($errors->has('phone'))
                                                 <div class="help-block with-errors">{{ $errors->first('phone') }}</div>
@@ -694,7 +694,7 @@
 
 
                                     <div class="row">
-
+                                        
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref1_name @if($errors->has('ref1_name')) has-error has-danger @endif">
                                             <label for="ref1_name">Reference 1 - Name<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref1_name')}}" id="ref1_name" name="ref1_name" data-error="Please enter Reference 1 - Name">
@@ -705,7 +705,7 @@
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref1_phone @if($errors->has('ref1_phone')) has-error has-danger @endif">
-                                            <label for="ref1_phone">Reference 1 - Phone<span class="text-danger">*</span></label>
+                                            <label for="ref1_phone">Phone<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref1_phone')}}" id="ref1_phone" name="ref1_phone" data-error="Please enter Reference 1 - Phone">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('ref1_phone'))
@@ -714,14 +714,14 @@
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref1_email @if($errors->has('ref1_email')) has-error has-danger @endif">
-                                            <label for="ref1_email">Reference 1 - Email<span class="text-danger">*</span></label>
+                                            <label for="ref1_email">Email<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref1_email')}}" id="ref1_email" name="ref1_email" data-error="Please enter Reference 1 - Email">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('ref1_email'))
                                             <div class="help-block with-errors">{{ $errors->first('ref1_email') }}</div>
                                             @endif
                                         </div>
-
+                                        <div class="col-sm-6 col-lg-6"></div>
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref2_name @if($errors->has('ref2_name')) has-error has-danger @endif">
                                             <label for="ref2_name">Reference 2 - Name<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref2_name')}}" id="ref2_name" name="ref2_name" data-error="Please enter Reference 2 - Name">
@@ -732,7 +732,7 @@
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref2_phone @if($errors->has('ref2_phone')) has-error has-danger @endif">
-                                            <label for="ref2_phone">Reference 2 - Phone<span class="text-danger">*</span></label>
+                                            <label for="ref2_phone">Phone<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref2_phone')}}" id="ref2_phone" name="ref2_phone" data-error="Please enter Reference 2 - Phone">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('ref2_phone'))
@@ -741,14 +741,14 @@
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref2_email @if($errors->has('ref2_email')) has-error has-danger @endif">
-                                            <label for="ref2_email">Reference 2 - Email<span class="text-danger">*</span></label>
+                                            <label for="ref2_email">Email<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref2_email')}}" id="ref2_email" name="ref2_email" data-error="Please enter Reference 2 - Email">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('ref2_email'))
                                             <div class="help-block with-errors">{{ $errors->first('ref2_email') }}</div>
                                             @endif
                                         </div>
-
+                                        <div class="col-sm-6 col-lg-6"></div>
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref3_name @if($errors->has('ref3_name')) has-error has-danger @endif">
                                             <label for="ref3_name">Reference 3 - Name<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref3_name')}}" id="ref3_name" name="ref3_name" data-error="Please enter Reference 3 - Name">
@@ -759,7 +759,7 @@
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref3_phone @if($errors->has('ref3_phone')) has-error has-danger @endif">
-                                            <label for="ref3_phone">Reference 3 - Phone<span class="text-danger">*</span></label>
+                                            <label for="ref3_phone">Phone<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref3_phone')}}" id="ref3_phone" name="ref3_phone" data-error="Please enter Reference 3 - Phone">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('ref3_phone'))
@@ -768,7 +768,7 @@
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref3_email @if($errors->has('ref3_email')) has-error has-danger @endif">
-                                            <label for="ref3_email">Reference 3 - Email<span class="text-danger">*</span></label>
+                                            <label for="ref3_email">Email<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref3_email')}}" id="ref3_email" name="ref3_email" data-error="Please enter Reference 3 - Email">
                                             <div class="help-block with-errors"></div>
                                             @if ($errors->has('ref3_email'))

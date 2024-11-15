@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\ChatController;
 use App\Http\Controllers\Dashboard\Login;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Dashboard\RegistrationsController;
 use App\Http\Controllers\Dashboard\PropertiesController;
 use App\Http\Controllers\Dashboard\ClientController;
@@ -30,6 +31,12 @@ use App\Http\Livewire\Index;
 
 require __DIR__ . '/frontend.php';
 
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('optimize:clear');
+    return 'Cache cleared successfully';
+});
+
 Route::get('login', [RegistrationsController::class, 'showLogin'])->name('login');
 Route::post('loginPerform', [RegistrationsController::class, 'loginPerform'])->name('login.perform');
 Route::get('logout', [RegistrationsController::class, 'logout'])->name('logout');
@@ -47,6 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::group(['middleware' => ['permission:2']], function () {
+        
         Route::get('my-properties', [PropertiesController::class, 'index'])->name('properties.index');
         Route::get('my-properties/add', [PropertiesController::class, 'add'])->name('properties.add');
         Route::post('my-properties/store', [PropertiesController::class, 'store'])->name('properties.store');
@@ -54,6 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('my-properties/update', [PropertiesController::class, 'update'])->name('properties.update');
         Route::get('my-properties/{id}', [PropertiesController::class, 'show'])->name('properties.show');
         Route::DELETE('my-properties/destroy/{id}', [PropertiesController::class, 'destroy'])->name('properties.destroy');
+        Route::get('my-properties-export', [PropertiesController::class, 'export'])->name('properties.export');
         
     });
 
