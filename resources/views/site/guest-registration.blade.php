@@ -470,7 +470,7 @@
                                                 <div class="col-sm-6 col-lg-6">
                                                     <div class="form-group valid_eviction_phone @if($errors->has('eviction_phone')) has-error has-danger @endif">
                                                         <label for="eviction_phone" class="form-label">Eviction phone<span class="text-danger">*</span></label>
-                                                        <input type="text" name="eviction_phone" class="form-control py-2 eviction_phone-input-mask" id="eviction_phone" placeholder="eviction_phone" value="{{old('eviction_phone')}}" data-error="Please enter eviction_phone">
+                                                        <input type="text" name="eviction_phone" class="form-control py-2 eviction_phone-input-mask" id="eviction_phone" placeholder="Eviction Phone" value="{{old('eviction_phone')}}" data-error="Please enter eviction_phone">
                                                         <div class="help-block with-errors"></div>
                                                         @if ($errors->has('eviction_phone'))
                                                         <div class="help-block with-errors">{{ $errors->first('eviction_phone') }}</div>
