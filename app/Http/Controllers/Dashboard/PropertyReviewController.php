@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Pagination\Paginator;
 use App\Helpers\Helper;
 use App\Models\PropertyReview;
-
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Response;
 class PropertyReviewController extends Controller
 {
     /**
@@ -124,5 +125,68 @@ class PropertyReviewController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function export(Request $request)
+    {
+        // Fetch data dynamically based on request filters
+        $query = DB::table('property_reviews')
+            ->select('id','property_id','reviewer_name','reviewer_email','comment','rating','status','approved','created_at');
+    
+        // Apply filters (if passed in the request)
+        if ($request->has('start_date')) {
+            $query->where('created_at', '>=', $request->start_date);
+        }
+    
+        if ($request->has('end_date')) {
+            $query->where('created_at', '<=', $request->end_date);
+        }
+    
+        // Get the filtered data
+        $data = $query->get();
+    
+        // Check if there are any users to export
+        if ($data->isEmpty()) {
+            return response()->json(['message' => 'No users found for the given criteria.'], 404);
+        }
+    
+        // Prepare CSV headers
+        $csvData = "ID,Property Id,Reviewer Name,Reviewer Email,Comment,Rating,Status,Approved,Created At\n";
+    
+        // Loop through the users and append data to CSV
+        foreach ($data as $value) {
+            // Format the creation date
+            $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
+            if($value->status){
+                $status = 'Active';
+            }else{
+                $status = "In Active";
+            }
+
+            if($value->approved){
+                $approved = 'Approve';
+            }else{
+                $approved = "Not Approve";
+            }
+            // Append data to CSV
+            $csvData .= "{$value->id},"
+                . "{$value->property_id},"
+                . "{$value->reviewer_name},"
+                . "{$value->reviewer_email},"
+                . "{$value->comment},"
+                . "{$value->rating},"
+                . "{$status},"
+                . "{$approved},"
+                . "{$createdAt}\n";
+        }
+    
+        // Set the filename with a timestamp
+        $fileName = 'Property_Review_export_' . now()->format('Y_m_d_H_i_s') . '.csv';
+    
+        // Return the CSV response with proper headers
+        return Response::make($csvData, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => "attachment; filename={$fileName}",
+        ]);
     }
 }

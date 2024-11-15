@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Models\PageContent;
 use App\Helpers\Helper;
-
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Response;
 class PageContentController extends Controller
 {
     /**
@@ -157,5 +158,54 @@ class PageContentController extends Controller
         $pageContent = PageContent::findOrFail($id);
         $pageContent->softDeleteRelations();
         return redirect()->route('pageContents.index')->with('success', 'user have been soft deleted successfully');
+    }
+
+    public function export(Request $request)
+    {
+        // Fetch data dynamically based on request filters
+        $query = DB::table('page_contents')
+            ->select('id', 'page_url','variable','text','created_at');
+    
+        // Apply filters (if passed in the request)
+        if ($request->has('start_date')) {
+            $query->where('created_at', '>=', $request->start_date);
+        }
+    
+        if ($request->has('end_date')) {
+            $query->where('created_at', '<=', $request->end_date);
+        }
+    
+        // Get the filtered data
+        $data = $query->get();
+    
+        // Check if there are any users to export
+        if ($data->isEmpty()) {
+            return response()->json(['message' => 'No users found for the given criteria.'], 404);
+        }
+    
+        // Prepare CSV headers
+        $csvData = "ID,Page Url,Variable,Text,Created At\n";
+    
+        // Loop through the users and append data to CSV
+        foreach ($data as $value) {
+            // Format the creation date
+            $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
+    
+            // Append data to CSV
+            $csvData .= "{$value->id},"
+                . "{$value->page_url},"
+                . "{$value->variable},"
+                . "{$value->text},"
+                . "{$createdAt}\n";
+        }
+    
+        // Set the filename with a timestamp
+        $fileName = 'Page_Content_export_' . now()->format('Y_m_d_H_i_s') . '.csv';
+    
+        // Return the CSV response with proper headers
+        return Response::make($csvData, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => "attachment; filename={$fileName}",
+        ]);
     }
 }

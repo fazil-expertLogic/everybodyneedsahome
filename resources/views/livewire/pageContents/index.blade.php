@@ -47,6 +47,23 @@
                         </div>
                     </div>
                 </form>
+                 {{--  --------------------------------- export ------------------------------------- --}}
+                <form action="{{ route('pageContents.export') }}" method="get">
+                    <div class="mb-3 text-end">
+                        <div class="input-group w-100">
+                            <div class="col">
+                                <input type="date" name="start_date" class="form-control" placeholder="Start Date" value="{{ request('start_date') }}">
+                            </div>
+                            <div class="col">
+                                <input type="date" name="end_date" class="form-control" placeholder="End Date" value="{{ request('end_date') }}">
+                            </div>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-file" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                {{--  --------------------------------- export ------------------------------------- --}}
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">

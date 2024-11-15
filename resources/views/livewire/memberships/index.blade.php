@@ -8,8 +8,8 @@
     <div class="page-header d-sm-flex d-block">
         <ol class="breadcrumb mb-sm-0 mb-3">
             <!-- breadcrumb -->
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Menu</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Menu Tables</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0);">Memberships</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Memberships Tables</li>
         </ol><!-- End breadcrumb -->
         <div class="ms-auto">
             <!-- <div>
@@ -41,7 +41,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Menu Data</h3>
+                    <h3 class="card-title">Memberships Data</h3>
                 </div>
                 <div class="mb-3 text-end">
                     @if($allow_create)
@@ -69,6 +69,23 @@
                         </div>
                     </div>
                 </form>
+                 {{--  --------------------------------- export ------------------------------------- --}}
+                <form action="{{ route('memberships.export') }}" method="get">
+                    <div class="mb-3 text-end">
+                        <div class="input-group w-100">
+                            <div class="col">
+                                <input type="date" name="start_date" class="form-control" placeholder="Start Date" value="{{ request('start_date') }}">
+                            </div>
+                            <div class="col">
+                                <input type="date" name="end_date" class="form-control" placeholder="End Date" value="{{ request('end_date') }}">
+                            </div>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-file" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                {{--  --------------------------------- export ------------------------------------- --}}
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">

@@ -10,7 +10,8 @@ use App\Models\PurchasePlan;
 use App\Models\Membership;
 use App\Helpers\Helper;
 use App\Helpers\StripeHelper;
-
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Response;
 class PurchasePlanController extends Controller
 {
     /**
@@ -167,5 +168,61 @@ class PurchasePlanController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function export(Request $request)
+    {
+        // Fetch data dynamically based on request filters
+        $query = DB::table('purchase_plan')
+            ->select('id', 'user_id','membership_id','stripeToken','last4','exp_month','exp_year','stripe_customer_id','stripe_id','stripe_current_period_end','purchase_date','created_at');
+    
+        // Apply filters (if passed in the request)
+        if ($request->has('start_date')) {
+            $query->where('created_at', '>=', $request->start_date);
+        }
+    
+        if ($request->has('end_date')) {
+            $query->where('created_at', '<=', $request->end_date);
+        }
+    
+        // Get the filtered data
+        $data = $query->get();
+    
+        // Check if there are any users to export
+        if ($data->isEmpty()) {
+            return response()->json(['message' => 'No users found for the given criteria.'], 404);
+        }
+    
+        // Prepare CSV headers
+        $csvData = "ID,Membership Id,Stripe Token,Last4,Exp Month,Exp Year,Stripe Customer Id,Stripe Id,Stripe Current Period End,Purchase Date,Created At\n";
+    
+        // Loop through the users and append data to CSV
+        foreach ($data as $value) {
+            // Format the creation date
+            $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
+            
+    
+            // Append data to CSV
+            $csvData .= "{$value->id},"
+                . "{$value->user_id},"
+                . "{$value->membership_id},"
+                . "{$value->stripeToken},"
+                . "{$value->last4},"
+                . "{$value->exp_month},"
+                . "{$value->exp_year},"
+                . "{$value->stripe_customer_id},"
+                . "{$value->stripe_id},"
+                . "{$value->stripe_current_period_end},"
+                . "{$value->purchase_date},"
+                . "{$createdAt}\n";
+        }
+    
+        // Set the filename with a timestamp
+        $fileName = 'Purchase_Plan_export_' . now()->format('Y_m_d_H_i_s') . '.csv';
+    
+        // Return the CSV response with proper headers
+        return Response::make($csvData, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => "attachment; filename={$fileName}",
+        ]);
     }
 }

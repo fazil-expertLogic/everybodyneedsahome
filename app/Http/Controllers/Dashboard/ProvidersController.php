@@ -12,6 +12,8 @@ use App\Helpers\Helper;
 use App\Models\User;
 use App\Models\Membership;
 use App\Models\PurchasePlan;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Response;
 
 class ProvidersController extends Controller
 {
@@ -269,5 +271,70 @@ class ProvidersController extends Controller
         $membershipsMonthly = Membership::monthlyPlan()->get();
         $membershipsYearly = Membership::yearlyPlan()->get();
         return view('site.provider-registration',compact('membershipsMonthly','membershipsYearly'));
+    }
+    public function export(Request $request)
+    {
+        // Fetch data dynamically based on request filters
+        $query = DB::table('providers')
+            ->select('id','gl_ID','provider_name','comany_name','Type','address','city','state','zipcode','phone','email','website','area_served','custom_area_served','status','user_id','profile_image','created_at');
+    
+        // Apply filters (if passed in the request)
+        if ($request->has('start_date')) {
+            $query->where('created_at', '>=', $request->start_date);
+        }
+    
+        if ($request->has('end_date')) {
+            $query->where('created_at', '<=', $request->end_date);
+        }
+    
+        // Get the filtered data
+        $data = $query->get();
+    
+        // Check if there are any users to export
+        if ($data->isEmpty()) {
+            return response()->json(['message' => 'No users found for the given criteria.'], 404);
+        }
+    
+        // Prepare CSV headers
+        $csvData = "ID,Gl Id,Provider Name,Company Name,Type,Address,City,State,Zipcode,Phone,Email,Website,Area Served,Custom Area Served,Status,User Id,Profile Image,Created At\n";
+    
+        // Loop through the users and append data to CSV
+        foreach ($data as $value) {
+            // Format the creation date
+            $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
+            // Append data to CSV
+            if($value->status){
+                $status = 'Active';
+            }else{
+                $status = "In Active";
+            }
+            $csvData .= "{$value->id},"
+                . "{$value->gl_ID},"
+                . "{$value->provider_name},"
+                . "{$value->comany_name},"
+                . "{$value->Type},"
+                . "{$value->address},"
+                . "{$value->city},"
+                . "{$value->state},"
+                . "{$value->zipcode},"
+                . "{$value->phone},"
+                . "{$value->email},"
+                . "{$value->website},"
+                . "{$value->area_served},"
+                . "{$value->custom_area_served},"
+                . "{$status},"
+                . "{$value->user_id},"
+                . "{$value->profile_image},"
+                . "{$createdAt}\n";
+        }
+    
+        // Set the filename with a timestamp
+        $fileName = 'Provider_export_' . now()->format('Y_m_d_H_i_s') . '.csv';
+    
+        // Return the CSV response with proper headers
+        return Response::make($csvData, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => "attachment; filename={$fileName}",
+        ]);
     }
 }
