@@ -79,6 +79,7 @@ class MenusController extends Controller
                 'name' =>  $request->name,
                 'route' =>  $request->route,
                 'icon' =>  $request->icon,
+                'order_by'=>$request->order_by,
             ]);
             DB::commit();
             return redirect()->route('menus.index')->with('success', 'menu create successfully.');
@@ -129,6 +130,7 @@ class MenusController extends Controller
                 'icon' => 'required|string|max:255',
             ]);
             if ($validator->fails()) {
+                dd($validator->errors());
                 return response()->json($validator->errors(), 422);
             }
             DB::beginTransaction();
@@ -137,6 +139,7 @@ class MenusController extends Controller
                 'name' =>  $request->name,
                 'route' =>  $request->route,
                 'icon' =>  $request->icon,
+                'order_by'=>$request->order_by,
             ]);
             DB::commit();
             return redirect()->route('menus.index')->with('success', 'menu create successfully.');

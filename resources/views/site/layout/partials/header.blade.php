@@ -92,12 +92,12 @@
         </ul>
         @else
         <ul class="nav header-navbar-rht">
-            <li class="new-property-btn">
+            {{-- <li class="new-property-btn">
                 <a href="{{ url('#') }}"
                     class="{{ Request::is('add-new-property') ? 'active' : '' }}">
                     <i class="bx bxs-plus-circle"></i> Add New Property
                 </a>
-            </li>
+            </li> --}}
             {{-- <li class="{{ Request::is('register') ? 'active' : '' }}">
             <a href="{{ url('register') }}" class="btn btn-primary"><i class="feather-user-plus"></i>Sign
                 Up</a>
@@ -108,9 +108,9 @@
                     <i class="feather-user-plus"></i> Sign Up
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('guests.guest_registration') }}">Guest</a>
-                    <a class="dropdown-item" href="{{ route('clients.client_registration') }}">Client</a>
-                    <a class="dropdown-item" href="{{ route('providers.provider_registration') }}">Provider</a>
+                    <a class="dropdown-item" href="{{ route('guests.guest_registration') }}">Tenant Register</a>
+                    {{-- <a class="dropdown-item" href="{{ route('clients.client_registration') }}">Client</a> --}}
+                    <a class="dropdown-item" href="{{ route('providers.provider_registration') }}">Property Owner</a>
                 </div>
             </li>
             </li>

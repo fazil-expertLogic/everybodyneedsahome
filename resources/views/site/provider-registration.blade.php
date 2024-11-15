@@ -98,27 +98,39 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6 col-lg-6 @if($errors->has('pass')) has-error has-danger @endif">
-                                                <div class="form-group valid_use_pass  @if($errors->has('pass')) has-error has-danger @endif">
-                                                    <label for="pass" class="form-label">password<span class="text-danger">*</span></label>
-                                                    <input type="password" class="form-control py-2" id="pass" name="pass" placeholder="password" required data-error="Please enter password">
+                                            <div class="col-sm-6 col-lg-6">
+                                                <div class="form-group validpass @if($errors->has('pass')) has-error has-danger @endif">
+                                                    <label for="pass" class="form-label">Password<span class="text-danger">*</span></label>
+                                                    <div class="input-group">
+                                                        <input type="password" class="form-control py-2" id="pass" name="pass" placeholder="Password" required data-error="Please enter password">
+                                                        <button type="button" id="toggle-password" class="input-group-text">
+                                                            <i class="ti-eye"></i>
+                                                        </button>
+                                                    </div>
                                                     <div class="help-block with-errors"></div>
                                                     @if ($errors->has('pass'))
                                                         <div class="help-block with-errors">{{ $errors->first('pass') }}</div>
                                                     @endif
                                                 </div>
                                             </div>
-
+                                            
                                             <div class="col-sm-6 col-lg-6 @if($errors->has('pass_confirmation')) has-error has-danger @endif">
-                                                <div class="form-group valid_use_cpass">
+                                                <div class="form-group validpass">
                                                     <label for="pass_confirmation" class="form-label">Confirm Password <span class="text-danger">*</span></label>
-                                                    <input type="password" class="form-control py-2" id="pass_confirmation" name="pass_confirmation" placeholder="Confirm Password" required data-error="Please enter confirm password">
+                                                    <div class="input-group">
+                                                        <input type="password" class="form-control py-2" id="pass_confirmation" name="pass_confirmation" placeholder="Confirm Password" required data-error="Please confirm password">
+                                                        <button type="button" id="toggle-password-confirm" class="input-group-text">
+                                                            <i class="ti-eye"></i>
+                                                        </button>
+                                                    </div>
                                                     <div class="help-block with-errors"></div>
                                                     @if ($errors->has('pass_confirmation'))
                                                         <div class="help-block with-errors">{{ $errors->first('pass_confirmation') }}</div>
                                                     @endif
                                                 </div>
                                             </div>
+                                            
+                                            <div id="password-feedback" class="col-sm-12 "></div>
 
                                             <div class="col-sm-6 col-lg-6 @if($errors->has('type')) has-error has-danger @endif">
                                                 <div class="form-group valid_prov_type">
@@ -496,7 +508,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="container">
+                                            <div class="container" style="margin-bottom: 200px;">
 
                                                 <div class="form-row row card-related">
                                                     <label for="card-element">Credit or debit card</label>

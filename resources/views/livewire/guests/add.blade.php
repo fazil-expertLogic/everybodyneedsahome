@@ -84,20 +84,38 @@
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6">
-                                            <div class="form-group validpass">
+                                            <div class="form-group validpass @if($errors->has('pass')) has-error has-danger @endif">
                                                 <label for="pass" class="form-label">Password<span class="text-danger">*</span></label>
-                                                <input type="password" class="form-control py-2" id="pass" name="pass" placeholder="password" required data-error="Please enter password">
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control py-2" id="pass" name="pass" placeholder="Password" required data-error="Please enter password">
+                                                    <button type="button" id="toggle-password" class="input-group-text">
+                                                        <i class="ti-eye"></i>
+                                                    </button>
+                                                </div>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('pass'))
+                                                    <div class="help-block with-errors">{{ $errors->first('pass') }}</div>
+                                                @endif
                                             </div>
                                         </div>
-
-                                        <div class="col-sm-6 col-lg-6">
+                                        
+                                        <div class="col-sm-6 col-lg-6 @if($errors->has('pass_confirmation')) has-error has-danger @endif">
                                             <div class="form-group validpass">
                                                 <label for="pass_confirmation" class="form-label">Confirm Password <span class="text-danger">*</span></label>
-                                                <input type="password" class="form-control py-2" id="pass_confirmation" name="pass_confirmation" placeholder="Confirm Password" required data-error="Please enter confirm password">
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control py-2" id="pass_confirmation" name="pass_confirmation" placeholder="Confirm Password" required data-error="Please confirm password">
+                                                    <button type="button" id="toggle-password-confirm" class="input-group-text">
+                                                        <i class="ti-eye"></i>
+                                                    </button>
+                                                </div>
                                                 <div class="help-block with-errors"></div>
+                                                @if ($errors->has('pass_confirmation'))
+                                                    <div class="help-block with-errors">{{ $errors->first('pass_confirmation') }}</div>
+                                                @endif
                                             </div>
                                         </div>
+                                        
+                                        <div id="password-feedback" class="col-sm-12 "></div>
 
                                         <div class="col-sm-6 col-lg-6">
                                             <div class="form-group valid_ssn @if($errors->has('ssn')) has-error has-danger @endif">
@@ -262,7 +280,7 @@
                                         <div class="col-sm-6 col-lg-6">
                                             <div class="form-group valid_zip_code">
                                                 <label for="zip_code" class="form-label">Zip<span class="text-danger">*</span></label>
-                                                <input type="text" name="zip_code" class="form-control py-2 zip-input-mask" id="zip_code" placeholder="Zip Code" value="{{old('zip_code')}}" required data-error="Please enter Zip Code">
+                                                <input type="text" name="zip_code" maxlength="10" class="form-control py-2 zip-input-mask" id="zip_code" placeholder="Zip Code" value="{{old('zip_code')}}" required data-error="Please enter Zip Code">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
@@ -270,7 +288,7 @@
                                         <div class="col-sm-6 col-lg-6">
                                             <div class="form-group valid_phone">
                                                 <label for="phone" class="form-label">Phone<span class="text-danger">*</span></label>
-                                                <input type="text" name="phone" class="form-control py-2 phone-input-mask" id="phone" placeholder="Phone" value="{{old('phone')}}" required data-error="Please enter phone">
+                                                <input type="text" name="phone" maxlength="11" class="form-control py-2 phone-input-mask" id="phone" placeholder="Phone" value="{{old('phone')}}" required data-error="Please enter phone">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
@@ -380,7 +398,7 @@
                                                 <div class="col-sm-6 col-lg-6">
                                                     <div class="form-group valid_eviction_phone">
                                                         <label for="eviction_phone" class="form-label">Eviction phone<span class="text-danger">*</span></label>
-                                                        <input type="text" name="eviction_phone" class="form-control py-2 eviction_phone-input-mask" id="eviction_phone" placeholder="eviction_phone" value="{{old('eviction_phone')}}" data-error="Please enter eviction_phone">
+                                                        <input type="text" name="eviction_phone" class="form-control py-2 eviction_phone-input-mask" maxlength="11" id="eviction_phone" placeholder="Eviction Phone" value="{{old('eviction_phone')}}" data-error="Please enter eviction_phone">
                                                         <div class="help-block with-errors"></div>
                                                     </div>
                                                 </div>
@@ -493,7 +511,7 @@
                                                         <div class="col-sm-6 col-lg-6">
                                                             <div class="form-group valid_probation_officer_phone">
                                                                 <label for="probation_officer_phone" class="form-label">Supervising Officer Phone<span class="text-danger">*</span></label>
-                                                                <input type="text" name="probation_officer_phone" class="form-control py-2" id="probation_officer_phone" placeholder="Supervising Officer Phone" value="{{old('probation_officer_phone')}}" data-error="Please enter Supervising Officer Phone">
+                                                                <input type="text" name="probation_officer_phone" class="form-control py-2" id="probation_officer_phone" maxlength="11" placeholder="Supervising Officer Phone" value="{{old('probation_officer_phone')}}" data-error="Please enter Supervising Officer Phone">
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                         </div>
@@ -576,55 +594,55 @@
                                     <div class="row">
                                         
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref1_name">
-                                            <label for="ref1_name">Reference 1 - Name<span class="text-danger">*</span></label>
+                                            <label for="ref1_name">1st Reference Name<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref1_name')}}" id="ref1_name" name="ref1_name" data-error="Please enter Reference 1 - Name">
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref1_phone">
-                                            <label for="ref1_phone">Reference 1 - Phone<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" value="{{old('ref1_phone')}}" id="ref1_phone" name="ref1_phone" data-error="Please enter Reference 1 - Phone">
+                                            <label for="ref1_phone">Phone<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" value="{{old('ref1_phone')}}" id="ref1_phone" maxlength="11" name="ref1_phone" data-error="Please enter Reference 1 - Phone">
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref1_email">
-                                            <label for="ref1_email">Reference 1 - Email<span class="text-danger">*</span></label>
+                                            <label for="ref1_email">Email<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref1_email')}}" id="ref1_email" name="ref1_email" data-error="Please enter Reference 1 - Email">
                                             <div class="help-block with-errors"></div>
                                         </div>
-
+                                        <div class="col-sm-6 col-lg-6"></div>
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref2_name">
-                                            <label for="ref2_name">Reference 2 - Name<span class="text-danger">*</span></label>
+                                            <label for="ref2_name">2nd Reference Name<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref2_name')}}" id="ref2_name" name="ref2_name" data-error="Please enter Reference 2 - Name">
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref2_phone">
-                                            <label for="ref2_phone">Reference 2 - Phone<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" value="{{old('ref2_phone')}}" id="ref2_phone" name="ref2_phone" data-error="Please enter Reference 2 - Phone">
+                                            <label for="ref2_phone">Phone<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" value="{{old('ref2_phone')}}" id="ref2_phone" name="ref2_phone" maxlength="11" data-error="Please enter Reference 2 - Phone">
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref2_email">
-                                            <label for="ref2_email">Reference 2 - Email<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" value="{{old('ref2_email')}}" id="ref2_email" name="ref2_email" data-error="Please enter Reference 2 - Email">
+                                            <label for="ref2_email">Email<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" value="{{old('ref2_email')}}" id="ref2_email" name="ref2_email"  data-error="Please enter Reference 2 - Email">
                                             <div class="help-block with-errors"></div>
                                         </div>
-
+                                        <div class="col-sm-6 col-lg-6"></div>
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref3_name">
-                                            <label for="ref3_name">Reference 3 - Name<span class="text-danger">*</span></label>
+                                            <label for="ref3_name">3rd Reference Name<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref3_name')}}" id="ref3_name" name="ref3_name" data-error="Please enter Reference 3 - Name">
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref3_phone">
-                                            <label for="ref3_phone">Reference 3 - Phone<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" value="{{old('ref3_phone')}}" id="ref3_phone" name="ref3_phone" data-error="Please enter Reference 3 - Phone">
+                                            <label for="ref3_phone">Phone<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" value="{{old('ref3_phone')}}" id="ref3_phone" name="ref3_phone" maxlength="11" data-error="Please enter Reference 3 - Phone">
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_ref3_email">
-                                            <label for="ref3_email">Reference 3 - Email<span class="text-danger">*</span></label>
+                                            <label for="ref3_email">Email<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" value="{{old('ref3_email')}}" id="ref3_email" name="ref3_email" data-error="Please enter Reference 3 - Email">
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -640,7 +658,7 @@
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_emergency_contact_phone">
                                             <label for="emergency_contact_phone">Emergency Contact Phone<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" value="{{old('emergency_contact_phone')}}" id="emergency_contact_phone" name="emergency_contact_phone" data-error="Please enter Reference 3 - Phone">
+                                            <input type="text" class="form-control" value="{{old('emergency_contact_phone')}}" maxlength="11" id="emergency_contact_phone" name="emergency_contact_phone" data-error="Please enter Reference 3 - Phone">
                                             <div class="help-block with-errors"></div>
                                         </div>
 
@@ -723,24 +741,24 @@
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_employer_phone">
                                             <label for="employer_phone">Employer Phone<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" value="{{old('employer_phone')}}" id="employer_phone" name="employer_phone" data-error="Please Enter Employer Phone">
+                                            <input type="text" class="form-control" value="{{old('employer_phone')}}" maxlength="11" id="employer_phone" name="employer_phone" data-error="Please Enter Employer Phone">
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_income">
-                                            <label for="income">Income<span class="text-danger">*</span></label>
+                                            <label for="income">Monthly Income ($)<span class="text-danger">*</span></label>
                                             <input type="number" class="form-control" value="{{old('income')}}" id="income" name="income" data-error="Please Enter Income">
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_expenses">
-                                            <label for="expenses">Expenses<span class="text-danger">*</span></label>
+                                            <label for="expenses">Monthly Expenses ($)<span class="text-danger">*</span></label>
                                             <input type="number" class="form-control" value="{{old('expenses')}}" id="expenses" name="expenses" data-error="Please Enter expenses">
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="col-sm-6 col-lg-6 form-group valid_rental_budget">
-                                            <label for="rental_budget">Rental Budget<span class="text-danger">*</span></label>
+                                            <label for="rental_budget">Monthly Rental Budget ($)<span class="text-danger">*</span></label>
                                             <input type="number" class="form-control" value="{{old('rental_budget')}}" id="rental_budget" name="rental_budget" data-error="Please Enter Rental Budget">
                                             <div class="help-block with-errors"></div>
                                         </div>
