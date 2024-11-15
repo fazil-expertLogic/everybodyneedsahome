@@ -170,7 +170,15 @@ class RolesController extends Controller
             ]);
             // -------------------- permissions --------------------------
             $permissions = $request->input('permissions', []);
-
+            
+            Permission::where('role_id', $role->id)->update([
+                'is_listing' => 0,
+                'is_show' => 0,
+                'is_create' => 0,
+                'is_edit' => 0,
+                'is_delete' => 0
+            ]);
+            
             foreach ($permissions as $menuId => $permissionData) {
 
                 $permissionData = array_merge([
