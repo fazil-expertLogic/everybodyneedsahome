@@ -795,6 +795,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 	});
 
 });
+// ------------------------------------------- Password ---------------------------------------------------------- 
 // Toggle visibility for new password
 const togglePassword = document.getElementById("toggle-password");
 const newPassword = document.getElementById("pass");

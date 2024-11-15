@@ -166,11 +166,25 @@ document.addEventListener("touchstart", function() {},false);
 		var email = $("#email").val();
 		var validcusemail = isEmail(email);
 		var website = $("#website").val();
+		var pass = $("#pass").val();
+		var cpass = $("#pass_confirmation").val();
+
+
+
+
 		var other_area_served_option = $('#other-area-served-option').is(':checked');
 		if(other_area_served_option === true){
 			var custom_area_served = $("#custom-area-served").val();
 		}
 
+		if (pass != cpass) {
+			console.log(pass == cpass);
+			$(".validpass .help-block.with-errors").html('<ul class="list-unstyled"><li>Password and Confirm Password do not match</li></ul>');
+			sweetAlert("Oops...", "Password and Confirm Password do not match!!!", "error");
+			return false;
+		}
+		else
+			$(".validpass .help-block.with-errors").html('');
 
 		if( provider_name )
 			$( ".valid_prov_name .help-block.with-errors" ).html( '' );
@@ -230,7 +244,7 @@ document.addEventListener("touchstart", function() {},false);
 		}
 		// ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		if(other_area_served_option === true){
-			if( provider_name && company_name && type && address && city && state && zip && phone && email && validcusemail && website && custom_area_served) {
+			if( provider_name && pass && company_name && type && address && city && state && zip && phone && email && validcusemail && website && custom_area_served) {
 				$( "#section-1 .help-block.with-errors" ).html( '' );
 				$( "#section-1" ).removeClass( "open" );
 				$( "#section-1" ).addClass( "slide-left" );
@@ -243,7 +257,7 @@ document.addEventListener("touchstart", function() {},false);
 			}
 		}else{
 
-			if( provider_name && company_name && type && address && city && state && zip && phone && email && validcusemail && website ) {
+			if( provider_name && pass && company_name && type && address && city && state && zip && phone && email && validcusemail && website ) {
 				$( "#section-1 .help-block.with-errors" ).html( '' );
 				$( "#section-1" ).removeClass( "open" );
 				$( "#section-1" ).addClass( "slide-left" );
@@ -479,8 +493,102 @@ document.addEventListener("touchstart", function() {},false);
 		   }
 		}
 	});
-
+	// ---------------------------- Zip Code ----------------------------
+	document.addEventListener('DOMContentLoaded', (event) => {
+		// ------------------ phone ----------------------------
+		const phoneInput = document.getElementById('phone');
+		phoneInput.addEventListener('input', function (e) {
+			let value = e.target.value.replace(/\D/g, '');
+			let formattedValue = '';
 	
+			if (value.length > 0) {
+				formattedValue += value.substring(0, 3);
+			}
+			if (value.length > 3) {
+				formattedValue += '-' + value.substring(3, 6);
+			}
+			if (value.length > 6) {
+				formattedValue += '-' + value.substring(6, 10);
+			}
+	
+			e.target.value = formattedValue;
+		});
+	
+		phoneInput.addEventListener('keydown', function (e) {
+			if ((e.keyCode < 48 || e.keyCode > 57) && (e.keyCode < 96 || e.keyCode > 105) && e.keyCode !== 8 && e.keyCode !== 46 && e.keyCode !== 37 && e.keyCode !== 39) {
+				e.preventDefault();
+			}
+		});
+		// ----------------------- Zip code ---------------------------------------------
+		const zipInput = document.getElementById('zip');
+
+		zipInput.addEventListener('input', function (e) {
+			let value = e.target.value.replace(/\D/g, ''); // Remove all non-digit characters
+			let formattedValue = '';
+
+			// Format as XXXXX or XXXXX-XXXX
+			if (value.length > 0) {
+				formattedValue += value.substring(0, 5);
+			}
+			if (value.length > 5) {
+				formattedValue += '-' + value.substring(5, 9);
+			}
+
+			e.target.value = formattedValue;
+		});
+
+		zipInput.addEventListener('keydown', function (e) {
+			// Allow only numeric keys, backspace, delete, left arrow, right arrow
+			const allowedKeys = [8, 46, 37, 39];
+			const isNumericKey = (e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105);
+
+			if (!isNumericKey && !allowedKeys.includes(e.keyCode)) {
+				e.preventDefault();
+			}
+		});
+	});
+	// ------------------------------------------- Password ---------------------------------------------------------- 
+	// Toggle visibility for new password
+	const togglePassword = document.getElementById("toggle-password");
+	const newPassword = document.getElementById("pass");
+	togglePassword.addEventListener("click", function () {
+		// Toggle the type attribute
+		const type = newPassword.getAttribute("type") === "password" ? "text" : "password";
+		newPassword.setAttribute("type", type);
+		// Toggle the eye icon
+		this.querySelector("i").classList.toggle("ti-eye");
+		this.querySelector("i").classList.toggle("ti-eye-check");
+	});
+
+	// Toggle visibility for confirm password
+	const togglePasswordConfirm = document.getElementById("toggle-password-confirm");
+	const confirmPassword = document.getElementById("pass_confirmation");
+	togglePasswordConfirm.addEventListener("click", function () {
+		// Toggle the type attribute
+		const type = confirmPassword.getAttribute("type") === "password" ? "text" : "password";
+		confirmPassword.setAttribute("type", type);
+		// Toggle the eye icon
+		this.querySelector("i").classList.toggle("ti-eye");
+		this.querySelector("i").classList.toggle("ti-eye-check");
+	});
+
+	// Validate password and confirmation on keyup
+	document.getElementById('pass').addEventListener('keyup', validatePasswordMatch);
+	document.getElementById('pass_confirmation').addEventListener('keyup', validatePasswordMatch);
+
+	function validatePasswordMatch() {
+		const password = document.getElementById('pass').value;
+		const confirmPassword = document.getElementById('pass_confirmation').value;
+		const feedback = document.getElementById('password-feedback');
+
+		if (password !== confirmPassword) {
+			feedback.textContent = "Passwords do not match!";
+			feedback.style.color = "red";
+		} else {
+			feedback.textContent = "Passwords match.";
+			feedback.style.color = "green";
+		}
+	}
 	
 /*
 |--------------------------------------------------------------------------
