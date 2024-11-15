@@ -98,7 +98,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('categories', CategoryController::class);
     });
 
-    Route::group(['middleware' => ['permission:11']], function () {
+    Route::group(['middleware' => ['permission:13']], function () {
         Route::resource('memberships', MembershipController::class);
         Route::get('assign-permission/{id}', [MembershipController::class, 'assign_permission'])->name('assign_permission');
         Route::post('post-assign-permission', [MembershipController::class, 'post_assign_permission'])->name('post_assign_permission');
