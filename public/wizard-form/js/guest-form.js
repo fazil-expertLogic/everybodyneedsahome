@@ -793,8 +793,49 @@ document.addEventListener('DOMContentLoaded', (event) => {
 			e.preventDefault();
 		}
 	});
-	
+
 });
+// Toggle visibility for new password
+const togglePassword = document.getElementById("toggle-password");
+const newPassword = document.getElementById("new_password");
+togglePassword.addEventListener("click", function () {
+	// Toggle the type attribute
+	const type = newPassword.getAttribute("type") === "password" ? "text" : "password";
+	newPassword.setAttribute("type", type);
+	// Toggle the eye icon
+	this.querySelector("i").classList.toggle("ti-eye");
+	this.querySelector("i").classList.toggle("ti-eye-check");
+});
+
+// Toggle visibility for confirm password
+const togglePasswordConfirm = document.getElementById("toggle-password-confirm");
+const confirmPassword = document.getElementById("confirm_password");
+togglePasswordConfirm.addEventListener("click", function () {
+	// Toggle the type attribute
+	const type = confirmPassword.getAttribute("type") === "password" ? "text" : "password";
+	confirmPassword.setAttribute("type", type);
+	// Toggle the eye icon
+	this.querySelector("i").classList.toggle("ti-eye");
+	this.querySelector("i").classList.toggle("ti-eye-check");
+});
+
+// Validate password and confirmation on keyup
+document.getElementById('new_password').addEventListener('keyup', validatePasswordMatch);
+document.getElementById('confirm_password').addEventListener('keyup', validatePasswordMatch);
+
+function validatePasswordMatch() {
+	const password = document.getElementById('new_password').value;
+	const confirmPassword = document.getElementById('confirm_password').value;
+	const feedback = document.getElementById('password-feedback');
+
+	if (password !== confirmPassword) {
+		feedback.textContent = "Passwords do not match!";
+		feedback.style.color = "red";
+	} else {
+		feedback.textContent = "Passwords match.";
+		feedback.style.color = "green";
+	}
+}
 
 /*
 |--------------------------------------------------------------------------
