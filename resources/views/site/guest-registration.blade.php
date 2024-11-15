@@ -126,7 +126,7 @@
                                             <div class="form-group validpass @if($errors->has('pass')) has-error has-danger @endif">
                                                 <label for="pass" class="form-label">Password<span class="text-danger">*</span></label>
                                                 <div class="input-group">
-                                                    <input type="password" class="form-control py-2" id="new_password" name="pass" placeholder="Password" required data-error="Please enter password">
+                                                    <input type="password" class="form-control py-2" id="pass" name="pass" placeholder="Password" required data-error="Please enter password">
                                                     <button type="button" id="toggle-password" class="input-group-text">
                                                         <i class="ti-eye"></i>
                                                     </button>
@@ -142,7 +142,7 @@
                                             <div class="form-group validpass">
                                                 <label for="pass_confirmation" class="form-label">Confirm Password <span class="text-danger">*</span></label>
                                                 <div class="input-group">
-                                                    <input type="password" class="form-control py-2" id="confirm_password" name="pass_confirmation" placeholder="Confirm Password" required data-error="Please confirm password">
+                                                    <input type="password" class="form-control py-2" id="pass_confirmation" name="pass_confirmation" placeholder="Confirm Password" required data-error="Please confirm password">
                                                     <button type="button" id="toggle-password-confirm" class="input-group-text">
                                                         <i class="ti-eye"></i>
                                                     </button>
