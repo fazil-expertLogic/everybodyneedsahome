@@ -22,10 +22,10 @@ class MembershipController extends Controller
      */
     public function index(Request $request)
     {
-        $allow_show = Helper::check_rights(11)->is_show;
-        $allow_create = Helper::check_rights(11)->is_create;
-        $allow_edit = Helper::check_rights(11)->is_edit;
-        $allow_delete = Helper::check_rights(11)->is_delete;
+        $allow_show = Helper::check_rights(13)->is_show;
+        $allow_create = Helper::check_rights(13)->is_create;
+        $allow_edit = Helper::check_rights(13)->is_edit;
+        $allow_delete = Helper::check_rights(13)->is_delete;
 
         $query = Membership::query();
         if ($request->filled('name')) {
@@ -345,8 +345,8 @@ class MembershipController extends Controller
             DB::commit(); // Commit the transaction if everything is successful
             return back()->with('success', 'CSV imported successfully!');
         } catch (\Exception $e) {
-            dd($e->getMessage());
             DB::rollBack(); // Roll back the transaction on error
+            dd($e->getMessage());
             return back()->withErrors(['error' => 'Failed to import CSV: ' . $e->getMessage()]);
         }
     }

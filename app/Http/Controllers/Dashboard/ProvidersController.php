@@ -374,7 +374,11 @@ class ProvidersController extends Controller
                         ->where('email', $data['Email'] ?? null)
                         ->exists();
                     
-                    if ($exists) {
+                    $user_exists = User::where('name', $data['Tenant Name'] ?? null)
+                        ->where('email', $data['Email'] ?? null)
+                        ->exists();
+
+                    if ($exists && $user_exists) {
                         continue; // Skip this row if a duplicate record exists
                     }       
 
@@ -383,10 +387,17 @@ class ProvidersController extends Controller
                     }else{
                         $status = 0;
                     }
+                    
+                    $user = User::create([
+                        'name' => $data['Provider Name'] ?? null,
+                        'email' => $data['Email'] ?? null,
+                        'password' => Hash::make('Pa$$w0rd!'), 
+                        'role_id' => "4",
+                    ]);
 
                     // Map CSV data to database fields
                     $provider = [
-                        'gl_ID' => $data['Gl Id'] ?? null,
+                        'gl_ID' => !empty($data['gl_ID']) ? $data['gl_ID'] : null,
                         'provider_name' => $data['Provider Name'] ?? null,
                         'comany_name' => $data['Company Name'] ?? null,
                         'Type' => $data['Type'] ?? null,
@@ -400,7 +411,7 @@ class ProvidersController extends Controller
                         'area_served' => $data['Area Served'] ?? null,
                         'custom_area_served' => $data['Custom Area Served'] ?? null,
                         'status' => $status,
-                        'user_id' => $data['User Id'] ?? null,
+                        'user_id' => $user->id,
                         'profile_image' => $data['Profile Image'] ?? null,
                     ];    
 
@@ -412,8 +423,8 @@ class ProvidersController extends Controller
             DB::commit(); // Commit the transaction if everything is successful
             return back()->with('success', 'CSV imported successfully!');
         } catch (\Exception $e) {
-            dd($e->getMessage());
             DB::rollBack(); // Roll back the transaction on error
+            dd($e->getMessage());
             return back()->withErrors(['error' => 'Failed to import CSV: ' . $e->getMessage()]);
         }
     }

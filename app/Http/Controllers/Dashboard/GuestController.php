@@ -499,6 +499,7 @@ class GuestController extends Controller
         // Escape double quotes
         return str_replace('"', '""', $value);
     }
+    
     public function import(Request $request)
     {   
         $request->validate([
@@ -522,9 +523,14 @@ class GuestController extends Controller
                     // Check for duplicate records based on unique columns
                     $exists = Guest::where('name', $data['Tenant Name'] ?? null)
                         ->where('email', $data['Email'] ?? null)
+                        ->where('ssn', $data['Social Security Number'] ?? null)
+                        ->exists();
+
+                    $user_exists = User::where('name', $data['Tenant Name'] ?? null)
+                        ->where('email', $data['Email'] ?? null)
                         ->exists();
                     
-                    if ($exists) {
+                    if ($exists && $user_exists) {
                         continue; // Skip this row if a duplicate record exists
                     }
 
@@ -546,11 +552,18 @@ class GuestController extends Controller
                         $sex_offender = 2;
                     }
 
-                    // Map CSV data to database fields
-                    $amenity = [
+                    $user = User::create([
                         'name' => $data['Tenant Name'],
-                        'ssn' => $data['Social Security'],
-                        'dob' => $data['Date Of Birth'],
+                        'email' => $data['Email'],
+                        'password' => Hash::make('Pa$$w0rd!'),
+                        'role_id' => "7",
+                    ]);
+                    
+                    // Map CSV data to database fields
+                    $guest = [
+                        'name' => $data['Tenant Name'],
+                        'ssn' => $data['Social Security Number'],
+                        'dob' => $data['Date Of Birth'] = !empty($data['Date Of Birth']) ? Carbon::createFromFormat('m/d/Y', $data['Date Of Birth'])->format('Y-m-d') : null,
                         'address' => $data['Address'],
                         'address2' => $data['Address2'],
                         'city' => $data['City'],
@@ -563,7 +576,7 @@ class GuestController extends Controller
                         'eviction_manager_name' => $data['Eviction Manager Name'],
                         'eviction_address' => $data['Eviction Address'],
                         'eviction_phone' => $data['Eviction Phone'],
-                        'eviction_date' => $data['Eviction Date'],
+                        'eviction_date' => !empty($data['Eviction Date']) ? Carbon::createFromFormat('m/d/Y', $data['Eviction Date'])->format('Y-m-d') : null,
                         'eviction_comments' => $data['Eviction Comments'],
                         'convicted' => $convicted,
                         'conviction_year' => $data['Conviction Year'],
@@ -591,18 +604,18 @@ class GuestController extends Controller
                         'income' => $data['Monthly Income ($)'],
                         'expenses' => $data['Monthly Expenses ($)'],
                         'rental_budget' => $data['Monthly Rental Budget ($)'],
-                        'user_id' => $data['User ID'],
+                        'user_id' => $user->id,
                     ];    
                     // Save the property
-                    Guest::create($amenity);
+                    Guest::create($guest);
                 }
                 fclose($handle);
             }
             DB::commit(); // Commit the transaction if everything is successful
             return back()->with('success', 'CSV imported successfully!');
         } catch (\Exception $e) {
-            dd($e->getMessage());
             DB::rollBack(); // Roll back the transaction on error
+            dd($e->getMessage());
             return back()->withErrors(['error' => 'Failed to import CSV: ' . $e->getMessage()]);
         }
     }

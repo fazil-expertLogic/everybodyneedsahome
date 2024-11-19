@@ -258,8 +258,8 @@ class AmenitiesController extends Controller
             DB::commit(); // Commit the transaction if everything is successful
             return back()->with('success', 'CSV imported successfully!');
         } catch (\Exception $e) {
-            dd($e->getMessage());
             DB::rollBack(); // Roll back the transaction on error
+            dd($e->getMessage());
             return back()->withErrors(['error' => 'Failed to import CSV: ' . $e->getMessage()]);
         }
     }
