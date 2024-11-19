@@ -63,6 +63,11 @@
                     </div>
                 </form>
                 {{--  --------------------------------- export ------------------------------------- --}}
+                {{--  --------------------------------- import ------------------------------------- --}}
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#import">
+                    Import CSV
+                </button>
+                {{--  --------------------------------- import ------------------------------------- --}}
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
@@ -182,6 +187,32 @@
         </div>
     </div>
 </div>
+{{-- ------------------------------------------------- import ------------------------------------------------- --}}
+<div class="modal fade" id="import" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabel">Import CSV File</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="{{ route('amenities.import') }}" method="POST" enctype="multipart/form-data" id="modalForm">
+                @csrf
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="csv_file">Choose CSV File:</label>
+                        <input type="file" name="csv_file" id="csv_file" accept=".csv" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{-- ------------------------------------------------- import ------------------------------------------------- --}}
    
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

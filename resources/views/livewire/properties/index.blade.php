@@ -83,11 +83,11 @@
                         <div class="input-group w-100">
                             <div class="col">
                                 <input type="date" name="start_date" class="form-control" placeholder="Start Date"
-                                    value="{{ now()->startOfMonth()->toDateString() }}">
+                                    value="{{ now()->startOfMonth()->toDateString(); }}">
                             </div>
                             <div class="col">
                                 <input type="date" name="end_date" class="form-control" placeholder="End Date"
-                                    value="{{ now()->toDateString() }}">
+                                    value="{{ now()->toDateString(); }}">
                             </div>
                             <button type="submit" class="btn btn-success">
                                 <i class="fa fa-file" aria-hidden="true"></i>

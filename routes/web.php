@@ -110,6 +110,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['permission:15']], function () {
         Route::resource('amenities', AmenitiesController::class);
         Route::get('amenities-export', [AmenitiesController::class, 'export'])->name('amenities.export');
+        Route::post('amenities-import', [AmenitiesController::class, 'import'])->name('amenities.import');
     });
 
     Route::group(['middleware' => ['permission:15']], function () {
