@@ -63,6 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('my-properties/{id}', [PropertiesController::class, 'show'])->name('properties.show');
         Route::DELETE('my-properties/destroy/{id}', [PropertiesController::class, 'destroy'])->name('properties.destroy');
         Route::get('my-properties-export', [PropertiesController::class, 'export'])->name('properties.export');
+        Route::post('my-properties-import', [PropertiesController::class, 'import'])->name('properties.import');
         
     });
 

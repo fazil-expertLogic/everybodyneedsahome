@@ -337,7 +337,7 @@ class PropertiesController extends Controller
     {
         // Fetch data dynamically based on request filters
         $query = DB::table('properties')
-            ->select('id', 'property_description','property_address','city','state','zipcode','property_management_address','property_management_city','property_management_state','property_management_zipcode','property_type','number_of_beds','rent_bed','bed_deposit','bed_fee','number_of_bedrooms','stay_one_bedroom','bedroom_deposit','bedroom_fee','number_of_bedrooms_house','number_of_bath_house','rent_unit','unit_deposit','unit_fee','is_property_occupied','main_picture','more_pictures','is_feature','is_new','created_by','category_id','property_amenities','created_at');
+            ->select('id','property_name' ,'property_description', 'property_address', 'city', 'state', 'zipcode', 'property_management_address', 'property_management_city', 'property_management_state', 'property_management_zipcode', 'property_type', 'number_of_beds', 'rent_bed', 'bed_deposit', 'bed_fee', 'number_of_bedrooms', 'stay_one_bedroom', 'bedroom_deposit', 'bedroom_fee', 'number_of_bedrooms_house', 'number_of_bath_house', 'rent_unit', 'unit_deposit', 'unit_fee', 'is_property_occupied', 'main_picture', 'more_pictures', 'is_feature', 'is_new', 'created_by', 'category_id', 'property_amenities', 'created_at');
     
         // Apply filters (if passed in the request)
         if ($request->has('start_date')) {
@@ -353,59 +353,157 @@ class PropertiesController extends Controller
     
         // Check if there are any users to export
         if ($data->isEmpty()) {
-            return response()->json(['message' => 'No users found for the given criteria.'], 404);
+            return response()->json(['message' => 'No properties found for the given criteria.'], 404);
         }
     
         // Prepare CSV headers
-        $csvData = "ID,Property Description,Property Address,City,State,Zipcode,Property Management Address,Property Management City,Property Management State,Property Management Zipcode,Property Type,Number Of Beds,Rent Bed,Bed Deposit,Bed Fee,Number Of Bedrooms,Stay One Bedroom,Bedroom Deposit,Bedroom Fee,Number Of Bedrooms House,Number Of Bath House,Rent Unit,Unit Deposit,Unit Fee,Is Property Occupied,Main Picture,More Pictures,Is Feature,Is New,Created By,Category Id,Property Amenities,Created At\n";
+        $csvData = "ID,Property Name,Property Description,Property Address,City,State,Zipcode,Property Management Address,Property Management City,Property Management State,Property Management Zipcode,Property Type,Number Of Beds,Rent Bed,Bed Deposit,Bed Fee,Number Of Bedrooms,Stay One Bedroom,Bedroom Deposit,Bedroom Fee,Number Of Bedrooms House,Number Of Bath House,Rent Unit,Unit Deposit,Unit Fee,Is Property Occupied,Main Picture,More Pictures,Is Feature,Is New,Created By,Category Id,Property Amenities,Created At\n";
     
         // Loop through the users and append data to CSV
         foreach ($data as $value) {
             // Format the creation date
-            $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
-            // Append data to CSV
-            $csvData .= "{$value->id},"
-                . "{$value->property_description},"
-                . "{$value->property_address},"
-                . "{$value->city},"
-                . "{$value->state},"
-                . "{$value->zipcode},"
-                . "{$value->property_management_address},"
-                . "{$value->property_management_city},"
-                . "{$value->property_management_state},"
-                . "{$value->property_management_zipcode},"
-                . "{$value->property_type},"
-                . "{$value->number_of_beds},"
-                . "{$value->rent_bed},"
-                . "{$value->bed_deposit},"
-                . "{$value->bed_fee},"
-                . "{$value->number_of_bedrooms},"
-                . "{$value->stay_one_bedroom},"
-                . "{$value->bedroom_deposit},"
-                . "{$value->bedroom_fee},"
-                . "{$value->number_of_bedrooms_house},"
-                . "{$value->number_of_bath_house},"
-                . "{$value->rent_unit},"
-                . "{$value->unit_deposit},"
-                . "{$value->unit_fee},"
-                . "{$value->is_property_occupied},"
-                . "{$value->main_picture},"
-                . "{$value->more_pictures},"
-                . "{$value->is_feature},"
-                . "{$value->is_new},"
-                . "{$value->created_by},"
-                . "{$value->category_id},"
-                . "{$value->property_amenities},"
-                . "{$createdAt}\n";
+            $createdAt = \Carbon\Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
+    
+            // Safely wrap each value in double quotes
+            $csvData .= '"' . implode('","', [
+                $value->id,
+                $this->sanitizeForCsv($value->property_name),
+                $this->sanitizeForCsv($value->property_description),
+                $this->sanitizeForCsv($value->property_address),
+                $this->sanitizeForCsv($value->city),
+                $this->sanitizeForCsv($value->state),
+                $this->sanitizeForCsv($value->zipcode),
+                $this->sanitizeForCsv($value->property_management_address),
+                $this->sanitizeForCsv($value->property_management_city),
+                $this->sanitizeForCsv($value->property_management_state),
+                $this->sanitizeForCsv($value->property_management_zipcode),
+                $this->sanitizeForCsv($value->property_type),
+                $value->number_of_beds,
+                $value->rent_bed,
+                $value->bed_deposit,
+                $value->bed_fee,
+                $value->number_of_bedrooms,
+                $value->stay_one_bedroom,
+                $value->bedroom_deposit,
+                $value->bedroom_fee,
+                $value->number_of_bedrooms_house,
+                $value->number_of_bath_house,
+                $value->rent_unit,
+                $value->unit_deposit,
+                $value->unit_fee,
+                $value->is_property_occupied,
+                $this->sanitizeForCsv($value->main_picture),
+                $this->sanitizeForCsv($value->more_pictures),
+                $value->is_feature,
+                $value->is_new,
+                $value->created_by,
+                $value->category_id,
+                $this->sanitizeForCsv($value->property_amenities),
+                $createdAt
+            ]) . "\"\n";
         }
     
         // Set the filename with a timestamp
         $fileName = 'Property_export_' . now()->format('Y_m_d_H_i_s') . '.csv';
     
         // Return the CSV response with proper headers
-        return Response::make($csvData, 200, [
+        return response($csvData, 200, [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename={$fileName}",
         ]);
+    }
+    
+    // Helper function to sanitize values for CSV
+    private function sanitizeForCsv($value)
+    {
+        if ($value === null) {
+            return '';
+        }
+    
+        // Escape double quotes
+        return str_replace('"', '""', $value);
+    }
+    
+    public function import(Request $request)
+    {   
+        $request->validate([
+            'csv_file' => 'required|file|mimes:csv,txt',
+        ]);
+        $file = $request->file('csv_file');
+        $path = $file->getRealPath();
+        DB::beginTransaction(); // Start a database transaction
+        try {
+            if (($handle = fopen($path, 'r')) !== false) {
+                $header = fgetcsv($handle, 1000, ','); // Get the first row as headers
+                
+                while (($row = fgetcsv($handle, 1000, ',')) !== false) {
+                    
+                    if (count($header) !== count($row)) {
+                        continue;
+                    }
+                    
+                    $data = array_combine($header, $row);
+
+                    // Check for duplicate records based on unique columns
+                    $exists = Property::where('property_name', $data['Property Name'] ?? null)
+                        ->where('property_address', $data['Property Address'] ?? null)
+                        ->exists();
+
+                    if ($exists) {
+                        continue; // Skip this row if a duplicate record exists
+                    }         
+                    // Map CSV data to database fields
+                    $property = [
+                        'property_name' => $data['Property Name'] ?? null,
+                        'property_description' => $data['Property Description'] ?? null,
+                        'property_address' => $data['Property Address'] ?? null,
+                        'city' => $data['City'] ?? null,
+                        'state' => $data['State'] ?? null,
+                        'zipcode' => $data['Zipcode'] ?? null,
+                        'property_management_address' => $data['Property Management Address'] ?? null,
+                        'property_management_city' => $data['Property Management City'] ?? null,
+                        'property_management_state' => $data['Property Management State'] ?? null,
+                        'property_management_zipcode' => $data['Property Management Zipcode'] ?? null,
+                        'property_type' => $data['Property Type'] ?? null,
+                        'number_of_beds' => $data['Number Of Beds'] ?? null,
+                        'rent_bed' => $data['Rent Bed'] ?? null,
+                        'bed_deposit' => $data['Bed Deposit'] ?? null,
+                        'bed_fee' => $data['Bed Fee'] ?? null,
+                        'number_of_bedrooms' => $data['Number Of Bedrooms'] ?? null,
+                        'stay_one_bedroom' => $data['Stay One Bedroom'] ?? null,
+                        'bedroom_deposit' => $data['Bedroom Deposit'] ?? null,
+                        'bedroom_fee' => $data['Bedroom Fee'] ?? null,
+                        'number_of_bedrooms_house' => $data['Number Of Bedrooms House'] ?? null,
+                        'number_of_bath_house' => $data['Number Of Bath House'] ?? null,
+                        'rent_unit' => $data['Rent Unit'] ?? null,
+                        'unit_deposit' => $data['Unit Deposit'] ?? null,
+                        'unit_fee' => $data['Unit Fee'] ?? null,
+                        'is_property_occupied' => $data['Is Property Occupied'] ?? null,
+                        'utilities_inscluded' => $data['Utilities Included'] ?? null,
+                        'status' => 1,
+                        'is_feature' => $data['Is Feature'] ?? 0,
+                        'is_new' => $data['Is New'] ?? 0,
+                        'category_id' => $data['Category Id'] ?? null,
+                        'created_by' => Auth::user()->id,
+                    ];
+                    
+                    // Add 'property_amenities' if it exists
+                    if (!empty($data['Property Amenities'])) {
+                        $property['property_amenities'] = is_array($data['Property Amenities'])
+                            ? json_encode($data['Property Amenities'])
+                            : $data['Property Amenities'];
+                    }
+                    // Save the property
+                    Property::create($property);
+                }
+                fclose($handle);
+            }
+            DB::commit(); // Commit the transaction if everything is successful
+            return back()->with('success', 'CSV imported successfully!');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            DB::rollBack(); // Roll back the transaction on error
+            return back()->withErrors(['error' => 'Failed to import CSV: ' . $e->getMessage()]);
+        }
     }
 }
