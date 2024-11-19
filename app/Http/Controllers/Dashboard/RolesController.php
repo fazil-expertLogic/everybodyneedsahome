@@ -263,10 +263,12 @@ class RolesController extends Controller
                 $status = "In Active";
             }
             // Append data to CSV
-            $csvData .= "{$value->id},"
-                . "{$value->name},"
-                . "{$status},"
-                . "{$createdAt}\n";
+            $csvData .= '"' . implode('","', [
+                $this->sanitizeForCsv($value->id),
+                $this->sanitizeForCsv($value->name),
+                $status,
+                $createdAt
+            ]) . "\"\n";
         }
     
         // Set the filename with a timestamp
@@ -277,5 +279,14 @@ class RolesController extends Controller
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename={$fileName}",
         ]);
+    }
+    
+    private function sanitizeForCsv($value)
+    {
+        if ($value === null) {
+            return '';
+        }
+        // Escape double quotes
+        return str_replace('"', '""', $value);
     }
 }

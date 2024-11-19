@@ -308,24 +308,27 @@ class ProvidersController extends Controller
             }else{
                 $status = "In Active";
             }
-            $csvData .= "{$value->id},"
-                . "{$value->gl_ID},"
-                . "{$value->provider_name},"
-                . "{$value->comany_name},"
-                . "{$value->Type},"
-                . "{$value->address},"
-                . "{$value->city},"
-                . "{$value->state},"
-                . "{$value->zipcode},"
-                . "{$value->phone},"
-                . "{$value->email},"
-                . "{$value->website},"
-                . "{$value->area_served},"
-                . "{$value->custom_area_served},"
-                . "{$status},"
-                . "{$value->user_id},"
-                . "{$value->profile_image},"
-                . "{$createdAt}\n";
+
+            $csvData .= '"' . implode('","', [
+                $this->sanitizeForCsv($value->id),
+                $this->sanitizeForCsv($value->gl_ID),
+                $this->sanitizeForCsv($value->provider_name),
+                $this->sanitizeForCsv($value->comany_name),
+                $this->sanitizeForCsv($value->Type),
+                $this->sanitizeForCsv($value->address),
+                $this->sanitizeForCsv($value->city),
+                $this->sanitizeForCsv($value->state),
+                $this->sanitizeForCsv($value->zipcode),
+                $this->sanitizeForCsv($value->phone),
+                $this->sanitizeForCsv($value->email),
+                $this->sanitizeForCsv($value->website),
+                $this->sanitizeForCsv($value->area_served),
+                $this->sanitizeForCsv($value->custom_area_served),
+                $status,
+                $this->sanitizeForCsv($value->user_id),
+                $this->sanitizeForCsv($value->profile_image),
+                $createdAt
+            ]) . "\"\n";
         }
     
         // Set the filename with a timestamp
@@ -336,5 +339,14 @@ class ProvidersController extends Controller
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename={$fileName}",
         ]);
+    }
+
+    private function sanitizeForCsv($value)
+    {
+        if ($value === null) {
+            return '';
+        }
+        // Escape double quotes
+        return str_replace('"', '""', $value);
     }
 }

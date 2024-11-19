@@ -198,12 +198,15 @@ class MenusController extends Controller
             $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
             
             // Append data to CSV
-            $csvData .= "{$value->id},"
-                . "{$value->name},"
-                . "{$value->icon},"
-                . "{$value->route},"
-                . "{$value->order_by},"
-                . "{$createdAt}\n";
+            $csvData .= '"' . implode('","', [
+                $this->sanitizeForCsv($value->id),
+                $this->sanitizeForCsv($value->name),
+                $this->sanitizeForCsv($value->icon),
+                $this->sanitizeForCsv($value->route),
+                $this->sanitizeForCsv($value->order_by),
+                $createdAt
+            ]) . "\"\n";
+
         }
     
         // Set the filename with a timestamp
@@ -214,5 +217,15 @@ class MenusController extends Controller
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename={$fileName}",
         ]);
+    }
+    
+    private function sanitizeForCsv($value)
+    {
+        if ($value === null) {
+            return '';
+        }
+    
+        // Escape double quotes
+        return str_replace('"', '""', $value);
     }
 }

@@ -20,10 +20,10 @@ class PlanMenusController extends Controller
      */
     public function index(Request $request)
     {
-        $allow_show = Helper::check_rights(8)->is_show;
-        $allow_create = Helper::check_rights(8)->is_create;
-        $allow_edit = Helper::check_rights(8)->is_edit;
-        $allow_delete = Helper::check_rights(8)->is_delete;
+        $allow_show = Helper::check_rights(21)->is_show;
+        $allow_create = Helper::check_rights(21)->is_create;
+        $allow_edit = Helper::check_rights(21)->is_edit;
+        $allow_delete = Helper::check_rights(21)->is_delete;
     
         $query = PlanMenu::query();
                 
@@ -149,6 +149,7 @@ class PlanMenusController extends Controller
         $plan_menu->softDeleteRelations();
         return redirect()->route('plan_menus.index')->with('success', 'user have been soft deleted successfully');
     }
+
     public function export(Request $request)
     {
         // Fetch data dynamically based on request filters
@@ -181,9 +182,11 @@ class PlanMenusController extends Controller
             $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
     
             // Append data to CSV
-            $csvData .= "{$value->id},"
-                . "{$value->name},"
-                . "{$createdAt}\n";
+            $csvData .= '"' . implode('","', [
+                $this->sanitizeForCsv($value->id),
+                $this->sanitizeForCsv($value->name),
+                $createdAt
+            ]) . "\"\n";
         }
     
         // Set the filename with a timestamp
@@ -194,5 +197,14 @@ class PlanMenusController extends Controller
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename={$fileName}",
         ]);
+    }
+
+    private function sanitizeForCsv($value)
+    {
+        if ($value === null) {
+            return '';
+        }
+        // Escape double quotes
+        return str_replace('"', '""', $value);
     }
 }

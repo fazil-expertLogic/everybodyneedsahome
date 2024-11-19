@@ -199,21 +199,22 @@ class PurchasePlanController extends Controller
         foreach ($data as $value) {
             // Format the creation date
             $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
-            
-    
+
             // Append data to CSV
-            $csvData .= "{$value->id},"
-                . "{$value->user_id},"
-                . "{$value->membership_id},"
-                . "{$value->stripeToken},"
-                . "{$value->last4},"
-                . "{$value->exp_month},"
-                . "{$value->exp_year},"
-                . "{$value->stripe_customer_id},"
-                . "{$value->stripe_id},"
-                . "{$value->stripe_current_period_end},"
-                . "{$value->purchase_date},"
-                . "{$createdAt}\n";
+            $csvData .= '"' . implode('","', [
+                $this->sanitizeForCsv($value->id),
+                $this->sanitizeForCsv($value->user_id),
+                $this->sanitizeForCsv($value->membership_id),
+                $this->sanitizeForCsv($value->stripeToken),
+                $this->sanitizeForCsv($value->last4),
+                $this->sanitizeForCsv($value->exp_month),
+                $this->sanitizeForCsv($value->exp_year),
+                $this->sanitizeForCsv($value->stripe_customer_id),
+                $this->sanitizeForCsv($value->stripe_id),
+                $this->sanitizeForCsv($value->stripe_current_period_end),
+                $this->sanitizeForCsv($value->purchase_date),
+                $createdAt
+            ]) . "\"\n";
         }
     
         // Set the filename with a timestamp
@@ -224,5 +225,14 @@ class PurchasePlanController extends Controller
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename={$fileName}",
         ]);
+    }
+    
+    private function sanitizeForCsv($value)
+    {
+        if ($value === null) {
+            return '';
+        }
+        // Escape double quotes
+        return str_replace('"', '""', $value);
     }
 }

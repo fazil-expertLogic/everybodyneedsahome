@@ -169,15 +169,17 @@ class PropertyReviewController extends Controller
                 $approved = "Not Approve";
             }
             // Append data to CSV
-            $csvData .= "{$value->id},"
-                . "{$value->property_id},"
-                . "{$value->reviewer_name},"
-                . "{$value->reviewer_email},"
-                . "{$value->comment},"
-                . "{$value->rating},"
-                . "{$status},"
-                . "{$approved},"
-                . "{$createdAt}\n";
+            $csvData .= '"' . implode('","', [
+                $this->sanitizeForCsv($value->id),
+                $this->sanitizeForCsv($value->property_id),
+                $this->sanitizeForCsv($value->reviewer_name),
+                $this->sanitizeForCsv($value->reviewer_email),
+                $this->sanitizeForCsv($value->comment),
+                $this->sanitizeForCsv($value->rating),
+                $status,
+                $approved,
+                $createdAt
+            ]) . "\"\n";
         }
     
         // Set the filename with a timestamp
@@ -188,5 +190,14 @@ class PropertyReviewController extends Controller
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename={$fileName}",
         ]);
+    }
+
+    private function sanitizeForCsv($value)
+    {
+        if ($value === null) {
+            return '';
+        }
+        // Escape double quotes
+        return str_replace('"', '""', $value);
     }
 }

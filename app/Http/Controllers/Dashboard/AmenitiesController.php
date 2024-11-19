@@ -184,11 +184,13 @@ class AmenitiesController extends Controller
             else
                 $status= 'In Active';
 
-            $csvData .= "{$value->id},"
-                . "{$value->name},"
-                . "{$value->icon},"
-                . "{$status},"
-                . "{$createdAt}\n";
+                $csvData .= '"' . implode('","', [
+                    $value->id,
+                    $this->sanitizeForCsv($value->name),
+                    $this->sanitizeForCsv($value->icon),
+                    $status,
+                    $createdAt
+                ]) . "\"\n";
         }
     
         // Set the filename with a timestamp
@@ -199,5 +201,14 @@ class AmenitiesController extends Controller
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename={$fileName}",
         ]);
+    }
+    private function sanitizeForCsv($value)
+    {
+        if ($value === null) {
+            return '';
+        }
+    
+        // Escape double quotes
+        return str_replace('"', '""', $value);
     }
 }
