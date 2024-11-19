@@ -255,16 +255,22 @@ class MembershipController extends Controller
         foreach ($data as $value) {
             // Format the creation date
             $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
+            if($value->status) 
+                $status = 'Active';
+            else
+                $status= 'In Active';
             
-            $csvData .= "{$value->id},"
-                . "{$value->stripe_id},"
-                . "{$value->name},"
-                . "{$value->price},"
-                . "{$value->features},"
-                . "{$value->description},"
-                . "{$value->status},"
-                . "{$value->plan_type},"
-                . "{$createdAt}\n";
+            $csvData .= '"' . implode('","', [
+                $this->sanitizeForCsv($value->id),
+                $this->sanitizeForCsv($value->stripe_id),
+                $this->sanitizeForCsv($value->name),
+                $this->sanitizeForCsv($value->price),
+                $this->sanitizeForCsv($value->features),
+                $this->sanitizeForCsv($value->description),
+                $this->sanitizeForCsv($status),
+                $this->sanitizeForCsv($value->plan_type),
+                $createdAt
+                ]) . "\"\n";
         }
     
         // Set the filename with a timestamp
@@ -275,5 +281,15 @@ class MembershipController extends Controller
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename={$fileName}",
         ]);
+    }
+    
+    private function sanitizeForCsv($value)
+    {
+        if ($value === null) {
+            return '';
+        }
+    
+        // Escape double quotes
+        return str_replace('"', '""', $value);
     }
 }

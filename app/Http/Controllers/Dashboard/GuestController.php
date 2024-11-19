@@ -428,55 +428,56 @@ class GuestController extends Controller
             }else{
                 $sex_offender = 'No';
             }
-            
-    
-            // Append data to CSV
-            $csvData .= "{$value->id},"
-                . "{$value->name},"
-                . "{$value->ssn},"
-                . "{$value->dob},"
-                . "{$value->address},"
-                . "{$value->address2},"
-                . "{$value->city},"
-                . "{$value->state},"
-                . "{$value->zip},"
-                . "{$value->phone},"
-                . "{$value->email},"
-                . "{$evicted},"
-                . "{$value->eviction_property_name},"
-                . "{$value->eviction_manager_name},"
-                . "{$value->eviction_address},"
-                . "{$value->eviction_phone},"
-                . "{$value->eviction_date},"
-                . "{$value->eviction_comments},"
-                . "{$convicted},"
-                . "{$value->conviction_year},"
-                . "{$value->conviction_charge},"
-                . "{$value->conviction_sentence},"
-                . "{$sex_offender},"
-                . "{$value->probation},"
-                . "{$value->probation_officer_name},"
-                . "{$value->probation_officer_phone},"
-                . "{$value->probation_officer_email},"
-                . "{$value->ref1_name},"
-                . "{$value->ref1_phone},"
-                . "{$value->ref1_email},"
-                . "{$value->ref2_name},"
-                . "{$value->ref2_phone},"
-                . "{$value->ref2_email},"
-                . "{$value->ref3_name},"
-                . "{$value->ref3_phone},"
-                . "{$value->ref3_email},"
-                . "{$value->emergency_contact_name},"
-                . "{$value->emergency_contact_phone},"
-                . "{$value->emergency_contact_email},"
-                . "{$value->employer_name},"
-                . "{$value->employer_phone},"
-                . "{$value->income},"
-                . "{$value->expenses},"
-                . "{$value->rental_budget},"
-                . "{$value->user_id},"
-                . "{$createdAt}\n";
+            $csvData .= '"' . implode('","', [
+                // ---------------------------------
+                $this->sanitizeForCsv($value->id),
+                $this->sanitizeForCsv($value->name),
+                $this->sanitizeForCsv($value->ssn),
+                $this->sanitizeForCsv($value->dob),
+                $this->sanitizeForCsv($value->address),
+                $this->sanitizeForCsv($value->address2),
+                $this->sanitizeForCsv($value->city),
+                $this->sanitizeForCsv($value->state),
+                $this->sanitizeForCsv($value->zip),
+                $this->sanitizeForCsv($value->phone),
+                $this->sanitizeForCsv($value->email),
+                $this->sanitizeForCsv($evicted),
+                $this->sanitizeForCsv($value->eviction_property_name),
+                $this->sanitizeForCsv($value->eviction_manager_name),
+                $this->sanitizeForCsv($value->eviction_address),
+                $this->sanitizeForCsv($value->eviction_phone),
+                $this->sanitizeForCsv($value->eviction_date),
+                $this->sanitizeForCsv($value->eviction_comments),
+                $this->sanitizeForCsv($convicted),
+                $this->sanitizeForCsv($value->conviction_year),
+                $this->sanitizeForCsv($value->conviction_charge),
+                $this->sanitizeForCsv($value->conviction_sentence),
+                $this->sanitizeForCsv($sex_offender),
+                $this->sanitizeForCsv($value->probation),
+                $this->sanitizeForCsv($value->probation_officer_name),
+                $this->sanitizeForCsv($value->probation_officer_phone),
+                $this->sanitizeForCsv($value->probation_officer_email),
+                $this->sanitizeForCsv($value->ref1_name),
+                $this->sanitizeForCsv($value->ref1_phone),
+                $this->sanitizeForCsv($value->ref1_email),
+                $this->sanitizeForCsv($value->ref2_name),
+                $this->sanitizeForCsv($value->ref2_phone),
+                $this->sanitizeForCsv($value->ref2_email),
+                $this->sanitizeForCsv($value->ref3_name),
+                $this->sanitizeForCsv($value->ref3_phone),
+                $this->sanitizeForCsv($value->ref3_email),
+                $this->sanitizeForCsv($value->emergency_contact_name),
+                $this->sanitizeForCsv($value->emergency_contact_phone),
+                $this->sanitizeForCsv($value->emergency_contact_email),
+                $this->sanitizeForCsv($value->employer_name),
+                $this->sanitizeForCsv($value->employer_phone),
+                $this->sanitizeForCsv($value->income),
+                $this->sanitizeForCsv($value->expenses),
+                $this->sanitizeForCsv($value->rental_budget),
+                $this->sanitizeForCsv($value->user_id),
+                $createdAt
+                // ------------------------------------
+            ]) . "\"\n";
         }
     
         // Set the filename with a timestamp
@@ -487,5 +488,15 @@ class GuestController extends Controller
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename={$fileName}",
         ]);
+    }
+    
+    private function sanitizeForCsv($value)
+    {
+        if ($value === null) {
+            return '';
+        }
+    
+        // Escape double quotes
+        return str_replace('"', '""', $value);
     }
 }

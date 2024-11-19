@@ -192,11 +192,13 @@ class PageContentController extends Controller
             $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
     
             // Append data to CSV
-            $csvData .= "{$value->id},"
-                . "{$value->page_url},"
-                . "{$value->variable},"
-                . "{$value->text},"
-                . "{$createdAt}\n";
+            $csvData .= '"' . implode('","', [
+                $this->sanitizeForCsv($value->id),
+                $this->sanitizeForCsv($value->page_url),
+                $this->sanitizeForCsv($value->variable),
+                $this->sanitizeForCsv($value->text),
+                $createdAt
+            ]) . "\"\n";
         }
     
         // Set the filename with a timestamp
@@ -207,5 +209,14 @@ class PageContentController extends Controller
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename={$fileName}",
         ]);
+    }
+
+    private function sanitizeForCsv($value)
+    {
+        if ($value === null) {
+            return '';
+        }
+        // Escape double quotes
+        return str_replace('"', '""', $value);
     }
 }

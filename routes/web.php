@@ -63,6 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('my-properties/{id}', [PropertiesController::class, 'show'])->name('properties.show');
         Route::DELETE('my-properties/destroy/{id}', [PropertiesController::class, 'destroy'])->name('properties.destroy');
         Route::get('my-properties-export', [PropertiesController::class, 'export'])->name('properties.export');
+        Route::post('my-properties-import', [PropertiesController::class, 'import'])->name('properties.import');
         
     });
 
@@ -138,8 +139,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('purchase_plans', PurchasePlanController::class);
         Route::get('purchase_plans-export', [PurchasePlanController::class, 'export'])->name('purchase_plans.export');
     });
-    Route::resource('plan_menus', PlanMenusController::class);
-    Route::get('plan_menus-export', [PlanMenusController::class, 'export'])->name('plan_menus.export');
-    // Route::resource('plan_permissions', PlanPermissionsController::class);
+    Route::group(['middleware' => ['permission:21']], function () {
+        Route::resource('plan_menus', PlanMenusController::class);
+        Route::get('plan_menus-export', [PlanMenusController::class, 'export'])->name('plan_menus.export');
+    });
 
 });

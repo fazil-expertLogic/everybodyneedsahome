@@ -201,7 +201,7 @@ class UsersController extends Controller
         }
     
         // Prepare CSV headers
-        $csvData = "ID,Is Online,Name,Email,Password,Role Id,Created At\n";
+        $csvData = "ID,Is Online,Name,Email,Role Id,Created At\n";
     
         // Loop through the users and append data to CSV
         foreach ($data as $value) {
@@ -209,13 +209,21 @@ class UsersController extends Controller
             $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
     
             // Append data to CSV
-            $csvData .= "{$value->id},"
-                . "{$value->is_online},"
-                . "{$value->name},"
-                . "{$value->email},"
-                . "{$value->password},"
-                . "{$value->role_id},"
-                . "{$createdAt}\n";
+
+            if($value->is_online){
+                $is_online = 'Online';
+            }else{
+                $is_online = "Not Online";
+            }
+
+            $csvData .= '"' . implode('","', [
+                $this->sanitizeForCsv($value->id),
+                $this->sanitizeForCsv($is_online),
+                $this->sanitizeForCsv($value->name),
+                $this->sanitizeForCsv($value->email),
+                $this->sanitizeForCsv($value->role_id),
+                $createdAt
+            ]) . "\"\n";
         }
     
         // Set the filename with a timestamp
@@ -226,5 +234,14 @@ class UsersController extends Controller
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename={$fileName}",
         ]);
+    }
+
+    private function sanitizeForCsv($value)
+    {
+        if ($value === null) {
+            return '';
+        }
+        // Escape double quotes
+        return str_replace('"', '""', $value);
     }
 }
