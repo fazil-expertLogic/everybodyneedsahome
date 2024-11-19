@@ -22,7 +22,7 @@
                     <h3 class="card-title">Property Review Data</h3>
                 </div>
                 <div class="mb-3 text-end">
-                    {{-- @if($allow_create)
+                    {{-- @if ($allow_create)
                     <a href="{{ route('propertyReview.create') }}" class="btn bg-primary btn-sm badge" data-bs-toggle="tooltip" title="Add New">
                         <span><i class="fa fa-plus"></i></span>
                     </a>
@@ -32,31 +32,37 @@
                     <div class="mb-3 text-end">
                         <div class="input-group w-100">
                             <div class="col">
-                                <input type="text" name="reviewer_name" class="form-control" placeholder="Reviewer Name" value="{{ request('reviewer_name') }}">
+                                <input type="text" name="reviewer_name" class="form-control" placeholder="Reviewer Name"
+                                    value="{{ request('reviewer_name') }}">
                             </div>
                             <div class="col">
-                                <input type="text" name="reviewer_email" class="form-control" placeholder="Reviewer Email" value="{{ request('reviewer_email') }}">
+                                <input type="text" name="reviewer_email" class="form-control"
+                                    placeholder="Reviewer Email" value="{{ request('reviewer_email') }}">
                             </div>
                             <div class="col">
-                                <input type="text" name="comment" class="form-control" placeholder="Comment" value="{{ request('comment') }}">
+                                <input type="text" name="comment" class="form-control" placeholder="Comment"
+                                    value="{{ request('comment') }}">
                             </div>
-                            
-                            <input type="text" name="search" class="form-control bg-white" placeholder="Search here..." value="{{ request('search') }}">
+
+                            <input type="text" name="search" class="form-control bg-white" placeholder="Search here..."
+                                value="{{ request('search') }}">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
                 </form>
-                 {{--  --------------------------------- export ------------------------------------- --}}
+                {{--  --------------------------------- export ------------------------------------- --}}
                 <form action="{{ route('propertyReview.export') }}" method="get">
                     <div class="mb-3 text-end">
                         <div class="input-group w-100">
                             <div class="col">
-                                <input type="date" name="start_date" class="form-control" placeholder="Start Date" value="{{ now()->startOfMonth()->toDateString(); }}">
+                                <input type="date" name="start_date" class="form-control" placeholder="Start Date"
+                                    value="{{ now()->startOfMonth()->toDateString() }}">
                             </div>
                             <div class="col">
-                                <input type="date" name="end_date" class="form-control" placeholder="End Date" value="{{ now()->toDateString(); }}">
+                                <input type="date" name="end_date" class="form-control" placeholder="End Date"
+                                    value="{{ now()->toDateString() }}">
                             </div>
                             <button type="submit" class="btn btn-success">
                                 <i class="fa fa-file" aria-hidden="true"></i>
@@ -65,6 +71,11 @@
                     </div>
                 </form>
                 {{--  --------------------------------- export ------------------------------------- --}}
+                {{--  --------------------------------- import ------------------------------------- --}}
+                <button type="button" class="btn btn-primary w-10 ms-auto" data-bs-toggle="modal" data-bs-target="#import">
+                    Import CSV
+                </button>
+                {{--  --------------------------------- import ------------------------------------- --}}
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
@@ -80,38 +91,42 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ( $propertyReviewes as $propertyReview )   
-                                <tr>
-                                    <td>{{$propertyReview->property ?  $propertyReview->property->property_name : ''}}</td>
-                                    <td>{{$propertyReview->reviewer_name}}</td>
-                                    <td>{{$propertyReview->reviewer_email}}</td>
-                                    <td>{{$propertyReview->comment}}</td>
-                                    <td>{{ $propertyReview->approved == 0 ? 'Not Approved' : 'Approved' }}</td>
-                                    <td>{{$propertyReview->created_at}}</td>
-                                    <td>
-                                        @if($allow_show)
-                                        <a href="{{ route('propertyReview.show', $propertyReview->id) }}" class="btn btn-warning btn-sm badge" title="Show">
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                        </a>
-                                        @endif
-                                        @if($allow_edit)
-                                        <a href="{{ route('propertyReview.edit', $propertyReview->id) }}" class="btn btn-primary btn-sm badge" title="Edit">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </a>
-                                        @endif
-                                        @if($allow_delete)
-                                        <button class="btn btn-danger btn-sm badge" title="Delete" onclick="confirmDelete('{{ route('propertyReview.destroy', $propertyReview->id) }}');">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                        @endif
-                                    </td>
-                                </tr>
-                                @endforeach 
+                                @foreach ($propertyReviewes as $propertyReview)
+                                    <tr>
+                                        <td>{{ $propertyReview->property ? $propertyReview->property->property_name : '' }}
+                                        </td>
+                                        <td>{{ $propertyReview->reviewer_name }}</td>
+                                        <td>{{ $propertyReview->reviewer_email }}</td>
+                                        <td>{{ $propertyReview->comment }}</td>
+                                        <td>{{ $propertyReview->approved == 0 ? 'Not Approved' : 'Approved' }}</td>
+                                        <td>{{ $propertyReview->created_at }}</td>
+                                        <td>
+                                            @if ($allow_show)
+                                                <a href="{{ route('propertyReview.show', $propertyReview->id) }}"
+                                                    class="btn btn-warning btn-sm badge" title="Show">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </a>
+                                            @endif
+                                            @if ($allow_edit)
+                                                <a href="{{ route('propertyReview.edit', $propertyReview->id) }}"
+                                                    class="btn btn-primary btn-sm badge" title="Edit">
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                </a>
+                                            @endif
+                                            @if ($allow_delete)
+                                                <button class="btn btn-danger btn-sm badge" title="Delete"
+                                                    onclick="confirmDelete('{{ route('propertyReview.destroy', $propertyReview->id) }}');">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         <!-- Pagination Links -->
                         <div class="card">
-                           
+
                             <div class="card-body">
                                 <!-- Display total entry count -->
                                 <p>Total Entries: {{ $propertyReviewes->total() }}</p>
@@ -120,44 +135,46 @@
                                     <ul class="pagination justify-content-center mb-0">
                                         {{-- Previous Button --}}
                                         @if ($propertyReviewes->onFirstPage())
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="javascript:void(0);" tabindex="-1">
-                                                <i class="fa fa-angle-left"></i>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="javascript:void(0);" tabindex="-1">
+                                                    <i class="fa fa-angle-left"></i>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                            </li>
                                         @else
-                                        <li class="page-item">
-                                            <a class="page-link" href="{{ $propertyReviewes->previousPageUrl() }}">
-                                                <i class="fa fa-angle-left"></i>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="{{ $propertyReviewes->previousPageUrl() }}">
+                                                    <i class="fa fa-angle-left"></i>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                            </li>
                                         @endif
 
                                         {{-- Page Links --}}
                                         @for ($i = 1; $i <= $propertyReviewes->lastPage(); $i++)
-                                            <li class="page-item {{ ($propertyReviewes->currentPage() == $i) ? 'active' : '' }}">
-                                                <a class="page-link" href="{{ $propertyReviewes->url($i) }}">{{ $i }}</a>
+                                            <li
+                                                class="page-item {{ $propertyReviewes->currentPage() == $i ? 'active' : '' }}">
+                                                <a class="page-link"
+                                                    href="{{ $propertyReviewes->url($i) }}">{{ $i }}</a>
                                             </li>
-                                            @endfor
+                                        @endfor
 
-                                            {{-- Next Button --}}
-                                            @if ($propertyReviewes->hasMorePages())
+                                        {{-- Next Button --}}
+                                        @if ($propertyReviewes->hasMorePages())
                                             <li class="page-item">
                                                 <a class="page-link" href="{{ $propertyReviewes->nextPageUrl() }}">
                                                     <i class="fa fa-angle-right"></i>
                                                     <span class="sr-only">Next</span>
                                                 </a>
                                             </li>
-                                            @else
+                                        @else
                                             <li class="page-item disabled">
                                                 <a class="page-link" href="javascript:void(0);">
                                                     <i class="fa fa-angle-right"></i>
                                                     <span class="sr-only">Next</span>
                                                 </a>
                                             </li>
-                                            @endif
+                                        @endif
                                     </ul>
                                 </nav>
                             </div>
@@ -168,53 +185,78 @@
         </div>
     </div>
     <!-- END ROW -->
-<!-- Delete Confirmation Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this property?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form id="deleteForm" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
             </div>
-            <div class="modal-body">
-                Are you sure you want to delete this property?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form id="deleteForm" method="POST" style="display:inline;">
+        </div>
+    </div>
+    {{-- ------------------------------------------------- import ------------------------------------------------- --}}
+    <div class="modal fade" id="import" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModalLabel">Import CSV File</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form action="{{ route('propertyReview.import') }}" method="POST" enctype="multipart/form-data"
+                    id="modalForm">
                     @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="csv_file">Choose CSV File:</label>
+                            <input type="file" name="csv_file" id="csv_file" accept=".csv" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
-   
+    {{-- ------------------------------------------------- import ------------------------------------------------- --}}
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- SELECT2 JS -->
-    <script src="{{ asset('build/assets/plugins/select2/select2.full.min.js') }}"></script>
-    <script>
-        function confirmDelete(url) {
-            document.getElementById('deleteForm').action = url; // Set the action of the form
-            var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal')); // Initialize the modal
-            deleteModal.show(); // Show the modal
-        }
-    </script>
-    
+<!-- SELECT2 JS -->
+<script src="{{ asset('build/assets/plugins/select2/select2.full.min.js') }}"></script>
+<script>
+    function confirmDelete(url) {
+        document.getElementById('deleteForm').action = url; // Set the action of the form
+        var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal')); // Initialize the modal
+        deleteModal.show(); // Show the modal
+    }
+</script>
 
-    <!-- DATA TABLE JS -->
-    <script src="{{ asset('build/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/jszip.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('build/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
-    
+
+<!-- DATA TABLE JS -->
+<script src="{{ asset('build/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/jszip.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('build/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>

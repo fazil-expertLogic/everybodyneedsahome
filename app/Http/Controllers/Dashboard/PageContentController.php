@@ -219,4 +219,52 @@ class PageContentController extends Controller
         // Escape double quotes
         return str_replace('"', '""', $value);
     }
+
+    public function import(Request $request)
+    {   
+        $request->validate([
+            'csv_file' => 'required|file|mimes:csv,txt',
+        ]);
+        $file = $request->file('csv_file');
+        $path = $file->getRealPath();
+        DB::beginTransaction(); // Start a database transaction
+        try {
+            if (($handle = fopen($path, 'r')) !== false) {
+                $header = fgetcsv($handle, 1000, ','); // Get the first row as headers
+                
+                while (($row = fgetcsv($handle, 1000, ',')) !== false) {
+                    
+                    if (count($header) !== count($row)) {
+                        continue;
+                    }
+                    $data = array_combine($header, $row);
+                    
+                    // Check for duplicate records based on unique columns
+                    $exists = PageContent::where('name', $data['Page Url'] ?? null)
+                        ->where('variable', $data['Variable'] ?? null)
+                        ->exists();
+                    
+                    if ($exists) {
+                        continue; // Skip this row if a duplicate record exists
+                    }         
+                    
+                    // Map CSV data to database fields
+                    $page_content = [
+                        'page_url' =>  $data['page_url'] ?? null,
+                        'variable' => $data['variable'] ?? null,
+                        'text' => $data['text'] ?? null
+                    ];
+                    // Save the property
+                    PageContent::create($page_content);
+                }
+                fclose($handle);
+            }
+            DB::commit(); // Commit the transaction if everything is successful
+            return back()->with('success', 'CSV imported successfully!');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            DB::rollBack(); // Roll back the transaction on error
+            return back()->withErrors(['error' => 'Failed to import CSV: ' . $e->getMessage()]);
+        }
+    }
 }

@@ -349,4 +349,72 @@ class ProvidersController extends Controller
         // Escape double quotes
         return str_replace('"', '""', $value);
     }
+    public function import(Request $request)
+    {   
+        $request->validate([
+            'csv_file' => 'required|file|mimes:csv,txt',
+        ]);
+        $file = $request->file('csv_file');
+        $path = $file->getRealPath();
+        DB::beginTransaction(); // Start a database transaction
+        try {
+            if (($handle = fopen($path, 'r')) !== false) {
+                $header = fgetcsv($handle, 1000, ','); // Get the first row as headers
+                
+                while (($row = fgetcsv($handle, 1000, ',')) !== false) {
+                    
+                    if (count($header) !== count($row)) {
+                        continue;
+                    }
+                    
+                    $data = array_combine($header, $row);
+
+                    // Check for duplicate records based on unique columns
+                    $exists = Provider::where('provider_name', $data['Provider Name'] ?? null)
+                        ->where('email', $data['Email'] ?? null)
+                        ->exists();
+                    
+                    if ($exists) {
+                        continue; // Skip this row if a duplicate record exists
+                    }       
+
+                    if($data['Status'] == 'Active'){
+                        $status = 1;
+                    }else{
+                        $status = 0;
+                    }
+
+                    // Map CSV data to database fields
+                    $provider = [
+                        'gl_ID' => $data['Gl Id'] ?? null,
+                        'provider_name' => $data['Provider Name'] ?? null,
+                        'comany_name' => $data['Company Name'] ?? null,
+                        'Type' => $data['Type'] ?? null,
+                        'address' => $data['Address'] ?? null,
+                        'city' => $data['City'] ?? null,
+                        'state' => $data['State'] ?? null,
+                        'zipcode' => $data['Zipcode'] ?? null,
+                        'phone' => $data['Phone'] ?? null,
+                        'email' => $data['Email'] ?? null,
+                        'website' => $data['Website'] ?? null,
+                        'area_served' => $data['Area Served'] ?? null,
+                        'custom_area_served' => $data['Custom Area Served'] ?? null,
+                        'status' => $status,
+                        'user_id' => $data['User Id'] ?? null,
+                        'profile_image' => $data['Profile Image'] ?? null,
+                    ];    
+
+                    // Save the property
+                    Provider::create($provider);
+                }
+                fclose($handle);
+            }
+            DB::commit(); // Commit the transaction if everything is successful
+            return back()->with('success', 'CSV imported successfully!');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            DB::rollBack(); // Roll back the transaction on error
+            return back()->withErrors(['error' => 'Failed to import CSV: ' . $e->getMessage()]);
+        }
+    }
 }
