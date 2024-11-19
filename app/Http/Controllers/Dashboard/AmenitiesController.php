@@ -174,7 +174,7 @@ class AmenitiesController extends Controller
         if ($data->isEmpty()) {
             return response()->json(['message' => 'No users found for the given criteria.'], 404);
         }
-        $csvData = "ID, Amenity Name, Amenity Icon, Amenity Status, Created At\n";
+        $csvData = "ID,Amenity Name,Amenity Icon,Amenity Status,Created At\n";
         foreach ($data as $value) {
     
             $createdAt = Carbon::parse($value->created_at)->format('M d, Y g:i A'); // Format as 'Sep 30, 2024 3:45 PM'
@@ -210,5 +210,57 @@ class AmenitiesController extends Controller
     
         // Escape double quotes
         return str_replace('"', '""', $value);
+    }
+
+    public function import(Request $request)
+    {   
+        $request->validate([
+            'csv_file' => 'required|file|mimes:csv,txt',
+        ]);
+        $file = $request->file('csv_file');
+        $path = $file->getRealPath();
+        DB::beginTransaction(); // Start a database transaction
+        try {
+            if (($handle = fopen($path, 'r')) !== false) {
+                $header = fgetcsv($handle, 1000, ','); // Get the first row as headers
+                
+                while (($row = fgetcsv($handle, 1000, ',')) !== false) {
+                    
+                    if (count($header) !== count($row)) {
+                        continue;
+                    }
+                    $data = array_combine($header, $row);
+                    // Check for duplicate records based on unique columns
+                    $exists = Amenity::where('name', $data['Amenity Name'] ?? null)
+                        ->where('icon', $data['Amenity Icon'] ?? null)
+                        ->exists();
+                    
+                    if ($exists) {
+                        continue; // Skip this row if a duplicate record exists
+                    }         
+                    if($data['Amenity Status'] == 'Active'){
+                        $status = 1;
+                    }else{
+                        $status = 0;
+                    }
+
+                    // Map CSV data to database fields
+                    $amenity = [
+                        'name' => $data['Amenity Name'] ?? null,
+                        'icon' => $data['Amenity Icon'] ?? null,
+                        'staus' => $status
+                    ];    
+                    // Save the property
+                    Amenity::create($amenity);
+                }
+                fclose($handle);
+            }
+            DB::commit(); // Commit the transaction if everything is successful
+            return back()->with('success', 'CSV imported successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack(); // Roll back the transaction on error
+            dd($e->getMessage());
+            return back()->withErrors(['error' => 'Failed to import CSV: ' . $e->getMessage()]);
+        }
     }
 }

@@ -173,7 +173,7 @@ class PurchasePlanController extends Controller
     {
         // Fetch data dynamically based on request filters
         $query = DB::table('purchase_plan')
-            ->select('id', 'user_id','membership_id','stripeToken','last4','exp_month','exp_year','stripe_customer_id','stripe_id','stripe_current_period_end','purchase_date','created_at');
+            ->select('id','user_id','membership_id','stripeToken','last4','exp_month','exp_year','stripe_customer_id','stripe_id','stripe_current_period_end','purchase_date','created_at');
     
         // Apply filters (if passed in the request)
         if ($request->has('start_date')) {
@@ -193,7 +193,7 @@ class PurchasePlanController extends Controller
         }
     
         // Prepare CSV headers
-        $csvData = "ID,Membership Id,Stripe Token,Last4,Exp Month,Exp Year,Stripe Customer Id,Stripe Id,Stripe Current Period End,Purchase Date,Created At\n";
+        $csvData = "ID,User ID,Membership Id,Stripe Token,Last4,Exp Month,Exp Year,Stripe Customer Id,Stripe Id,Stripe Current Period End,Purchase Date,Created At\n";
     
         // Loop through the users and append data to CSV
         foreach ($data as $value) {
@@ -234,5 +234,62 @@ class PurchasePlanController extends Controller
         }
         // Escape double quotes
         return str_replace('"', '""', $value);
+    }
+    public function import(Request $request)
+    {   
+        
+        $request->validate([
+            'csv_file' => 'required|file|mimes:csv,txt',
+        ]);
+        $file = $request->file('csv_file');
+        $path = $file->getRealPath();
+        DB::beginTransaction(); // Start a database transaction
+        try {
+            if (($handle = fopen($path, 'r')) !== false) {
+                $header = fgetcsv($handle, 1000, ','); // Get the first row as headers
+                
+                while (($row = fgetcsv($handle, 1000, ',')) !== false) {
+                    
+                    if (count($header) !== count($row)) {
+                        continue;
+                    }
+
+                    $data = array_combine($header, $row);
+
+                    // Check for duplicate records based on unique columns
+                    $exists = PurchasePlan::where('membership_id', $data['Membership Id'] ?? null)
+                        ->where('user_id', $data['User ID'] ?? null)
+                        ->where('stripeToken', $data['Stripe Token'] ?? null)
+                        ->exists();
+                    
+                    if ($exists) {
+                        continue; // Skip this row if a duplicate record exists
+                    }         
+
+                    // Map CSV data to database fields
+                    $purchase_plan = [
+                        'user_id'=> $data['User ID']?? null,
+                        'membership_id' => $data['Membership Id']?? null,
+                        'stripeToken' => $data['Stripe Token']?? null,
+                        'last4' => $data['Last4']?? null,
+                        'stripe_customer_id'=>$data['Stripe Customer Id']?? null,
+                        'stripe_id'=>$data['Stripe Id']?? null,
+                        'stripe_current_period_end' => $data['Stripe Current Period End']?? null,
+                        'purchase_date' => $data['Purchase Date'],
+                        'exp_month' => $data['Exp Month']?? null,
+                        'exp_year' => $data['Exp Year']?? null,
+                    ];    
+                    // Save the property
+                    PurchasePlan::create($purchase_plan);
+                }
+                fclose($handle);
+            }
+            DB::commit(); // Commit the transaction if everything is successful
+            return back()->with('success', 'CSV imported successfully!');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            DB::rollBack(); // Roll back the transaction on error
+            return back()->withErrors(['error' => 'Failed to import CSV: ' . $e->getMessage()]);
+        }
     }
 }

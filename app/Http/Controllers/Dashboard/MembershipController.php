@@ -22,10 +22,10 @@ class MembershipController extends Controller
      */
     public function index(Request $request)
     {
-        $allow_show = Helper::check_rights(11)->is_show;
-        $allow_create = Helper::check_rights(11)->is_create;
-        $allow_edit = Helper::check_rights(11)->is_edit;
-        $allow_delete = Helper::check_rights(11)->is_delete;
+        $allow_show = Helper::check_rights(13)->is_show;
+        $allow_create = Helper::check_rights(13)->is_create;
+        $allow_edit = Helper::check_rights(13)->is_edit;
+        $allow_delete = Helper::check_rights(13)->is_delete;
 
         $query = Membership::query();
         if ($request->filled('name')) {
@@ -291,5 +291,63 @@ class MembershipController extends Controller
     
         // Escape double quotes
         return str_replace('"', '""', $value);
+    }
+    
+    public function import(Request $request)
+    {   
+        $request->validate([
+            'csv_file' => 'required|file|mimes:csv,txt',
+        ]);
+        $file = $request->file('csv_file');
+        $path = $file->getRealPath();
+        DB::beginTransaction(); // Start a database transaction
+        try {
+            if (($handle = fopen($path, 'r')) !== false) {
+                $header = fgetcsv($handle, 1000, ','); // Get the first row as headers
+                
+                while (($row = fgetcsv($handle, 1000, ',')) !== false) {
+                    
+                    if (count($header) !== count($row)) {
+                        continue;
+                    }
+                    $data = array_combine($header, $row);
+
+                    // Check for duplicate records based on unique columns
+                    $exists = Membership::where('name', $data['Name'] ?? null)
+                        ->where('price', $data['Price'] ?? null)
+                        ->exists();
+                    
+                    if ($exists) {
+                        continue; // Skip this row if a duplicate record exists
+                    }         
+                    
+                    if($data['Status'] == 'Active'){
+                        $status = 1;
+                    }else{
+                        $status = 0;
+                    }
+
+                    // Map CSV data to database fields
+                    $membership = [
+                        'name' => $data['Name'] ?? null,
+                        'price' => $data['Price'] ?? null,
+                        'features' => $data['Features'] ?? null,
+                        'description' => $data['Description'] ?? null,
+                        'plan_type'=> $data['Plan Type'] ?? null,
+                        'stripe_id'=> $data['Stripe Id'] ?? null,
+                        'status' => $status
+                    ];
+                    // Save the property
+                    Membership::create($membership);
+                }
+                fclose($handle);
+            }
+            DB::commit(); // Commit the transaction if everything is successful
+            return back()->with('success', 'CSV imported successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack(); // Roll back the transaction on error
+            dd($e->getMessage());
+            return back()->withErrors(['error' => 'Failed to import CSV: ' . $e->getMessage()]);
+        }
     }
 }

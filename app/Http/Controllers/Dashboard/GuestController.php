@@ -499,4 +499,124 @@ class GuestController extends Controller
         // Escape double quotes
         return str_replace('"', '""', $value);
     }
+    
+    public function import(Request $request)
+    {   
+        $request->validate([
+            'csv_file' => 'required|file|mimes:csv,txt',
+        ]);
+        $file = $request->file('csv_file');
+        $path = $file->getRealPath();
+        DB::beginTransaction(); // Start a database transaction
+        try {
+            if (($handle = fopen($path, 'r')) !== false) {
+                $header = fgetcsv($handle, 1000, ','); // Get the first row as headers
+                
+                while (($row = fgetcsv($handle, 1000, ',')) !== false) {
+                    
+                    if (count($header) !== count($row)) {
+                        continue;
+                    }
+
+                    $data = array_combine($header, $row);
+
+                    // Check for duplicate records based on unique columns
+                    $exists = Guest::where('name', $data['Tenant Name'] ?? null)
+                        ->where('email', $data['Email'] ?? null)
+                        ->where('ssn', $data['Social Security Number'] ?? null)
+                        ->exists();
+
+                    $user_exists = User::where('name', $data['Tenant Name'] ?? null)
+                        ->where('email', $data['Email'] ?? null)
+                        ->exists();
+                    
+                    if ($exists && $user_exists) {
+                        continue; // Skip this row if a duplicate record exists
+                    }
+
+                    if($data['Evicted'] == 'Yes'){
+                        $evicted = 1;
+                    }else{
+                        $evicted = 2;
+                    }
+
+                    if($data['Convicted'] == 'Yes'){
+                        $convicted = 1;
+                    }else{
+                        $convicted = 2;
+                    }
+                    
+                    if($data['Sex Offender'] == 'Yes'){
+                        $sex_offender = 1;
+                    }else{
+                        $sex_offender = 2;
+                    }
+
+                    $user = User::create([
+                        'name' => $data['Tenant Name'],
+                        'email' => $data['Email'],
+                        'password' => Hash::make('Pa$$w0rd!'),
+                        'role_id' => "7",
+                    ]);
+                    
+                    // Map CSV data to database fields
+                    $guest = [
+                        'name' => $data['Tenant Name'],
+                        'ssn' => $data['Social Security Number'],
+                        'dob' => $data['Date Of Birth'] = !empty($data['Date Of Birth']) ? Carbon::createFromFormat('m/d/Y', $data['Date Of Birth'])->format('Y-m-d') : null,
+                        'address' => $data['Address'],
+                        'address2' => $data['Address2'],
+                        'city' => $data['City'],
+                        'state' => $data['State'],
+                        'zip' => $data['Zip Code'],
+                        'phone' => $data['Phone'],
+                        'email' => $data['Email'],
+                        'evicted' => $evicted,
+                        'eviction_property_name' => $data['Eviction Property Name'],
+                        'eviction_manager_name' => $data['Eviction Manager Name'],
+                        'eviction_address' => $data['Eviction Address'],
+                        'eviction_phone' => $data['Eviction Phone'],
+                        'eviction_date' => !empty($data['Eviction Date']) ? Carbon::createFromFormat('m/d/Y', $data['Eviction Date'])->format('Y-m-d') : null,
+                        'eviction_comments' => $data['Eviction Comments'],
+                        'convicted' => $convicted,
+                        'conviction_year' => $data['Conviction Year'],
+                        'conviction_charge' => $data['Conviction Charge'],
+                        'conviction_sentence' => $data['Conviction Sentence'],
+                        'sex_offender' => $sex_offender,
+                        'probation' => $data['Probation'],
+                        'probation_officer_name' => $data['Probation Officer Name'],
+                        'probation_officer_phone' => $data['Probation Officer Phone'],
+                        'probation_officer_email' => $data['Probation Officer Email'],
+                        'ref1_name' => $data['Ref1 Name'],
+                        'ref1_phone' => $data['Ref1 Phone'],
+                        'ref1_email' => $data['Ref1 Email'],
+                        'ref2_name' => $data['Ref2 Name'],
+                        'ref2_phone' => $data['Ref2 Phone'],
+                        'ref2_email' => $data['Ref2 Email'],
+                        'ref3_name' => $data['Ref3 Name'],
+                        'ref3_phone' => $data['Ref3 Phone'],
+                        'ref3_email' => $data['Ref3 Email'],
+                        'emergency_contact_name' => $data['Emergency Contact Name'],
+                        'emergency_contact_phone' => $data['Emergency Contact Phone'],
+                        'emergency_contact_email' => $data['Emergency Contact Email'],
+                        'employer_name' => $data['Employer Name'],
+                        'employer_phone' => $data['Employer Phone'],
+                        'income' => $data['Monthly Income ($)'],
+                        'expenses' => $data['Monthly Expenses ($)'],
+                        'rental_budget' => $data['Monthly Rental Budget ($)'],
+                        'user_id' => $user->id,
+                    ];    
+                    // Save the property
+                    Guest::create($guest);
+                }
+                fclose($handle);
+            }
+            DB::commit(); // Commit the transaction if everything is successful
+            return back()->with('success', 'CSV imported successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack(); // Roll back the transaction on error
+            dd($e->getMessage());
+            return back()->withErrors(['error' => 'Failed to import CSV: ' . $e->getMessage()]);
+        }
+    }
 }

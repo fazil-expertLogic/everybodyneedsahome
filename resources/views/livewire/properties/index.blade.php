@@ -13,25 +13,25 @@
         </ol><!-- End breadcrumb -->
         <div class="ms-auto">
             <!-- <div>
-                <a href="{{ route('properties.index') }}" class="btn bg-secondary-transparent text-secondary btn-sm"
-                    data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Rating">
-                    <span>
-                        <i class="fa fa-star"></i>
-                    </span>
-                </a>
-                <a href="{{ url('lockscreen') }}" class="btn bg-primary-transparent text-primary mx-2 btn-sm"
-                    data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="lock">
-                    <span>
-                        <i class="fa fa-lock"></i>
-                    </span>
-                </a>
-                <a href="javascript:void(0);" class="btn bg-warning-transparent text-warning btn-sm"
-                    data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Add New">
-                    <span>
-                        <i class="fa fa-plus"></i>
-                    </span>
-                </a>
-            </div> -->
+                    <a href="{{ route('properties.index') }}" class="btn bg-secondary-transparent text-secondary btn-sm"
+                        data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Rating">
+                        <span>
+                            <i class="fa fa-star"></i>
+                        </span>
+                    </a>
+                    <a href="{{ url('lockscreen') }}" class="btn bg-primary-transparent text-primary mx-2 btn-sm"
+                        data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="lock">
+                        <span>
+                            <i class="fa fa-lock"></i>
+                        </span>
+                    </a>
+                    <a href="javascript:void(0);" class="btn bg-warning-transparent text-warning btn-sm"
+                        data-bs-toggle="tooltip" title="" data-bs-placement="bottom" data-bs-original-title="Add New">
+                        <span>
+                            <i class="fa fa-plus"></i>
+                        </span>
+                    </a>
+                </div> -->
         </div>
     </div>
     <!-- END PAGE-HEADER -->
@@ -98,7 +98,7 @@
                 {{--  --------------------------------- export ------------------------------------- --}}
 
                 {{--  --------------------------------- import ------------------------------------- --}}
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#import">
+                <button type="button" class="btn btn-primary w-10 ms-auto" data-bs-toggle="modal" data-bs-target="#import">
                     Import CSV
                 </button>
                 {{--  --------------------------------- import ------------------------------------- --}}
@@ -254,7 +254,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="{{ route('properties.import') }}" method="POST" enctype="multipart/form-data" id="modalForm">
+                <form action="{{ route('properties.import') }}" method="POST" enctype="multipart/form-data"
+                    id="modalForm">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
